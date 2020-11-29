@@ -1,0 +1,21 @@
+package com.geek.geekstudio.model.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 封装返回前端的AdminBean
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class AdminVO {
+    //属性待定
+    private int id;
+    private String adminId;
+    private String adminName;
+    private String password;
+    private String direction;
+    private String image;
+}
