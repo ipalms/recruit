@@ -33,9 +33,7 @@ public class AdminPermissionInterceptor implements HandlerInterceptor {
         Method method = ((HandlerMethod) handler).getMethod();
         //如果有AdminPermission注释则需要验证
         if(method.isAnnotationPresent(AdminPermission.class)){
-            //UserPO user = UserMapUtil.userMap.get(request.getHeader("token"));
             Object user=redisTemplate.opsForValue().get(request.getHeader("token"));
-            //if("teacher".equals(user.getType())||"admin".equals(user.getType())){
             if(user instanceof AdminPO ){
                 return true;
             }else{

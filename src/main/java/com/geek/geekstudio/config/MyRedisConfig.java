@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -15,7 +16,10 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Arrays;
+
 /**
  *  定制RedisTemplate序列化为JSON格式数据到Redis数据库
  *  CacheManager序列化规则也是序列化为JSON格式数据
@@ -52,5 +56,17 @@ public class MyRedisConfig {
                 .serializeKeysWith(RedisSerializationContext.SerializationPair
                         .fromSerializer(new StringRedisSerializer()))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
-        return RedisCacheManager.builder(factory).cacheDefaults(cacheConfiguration).build();}
+        return RedisCacheManager.builder(factory).cacheDefaults(cacheConfiguration).build();
+    }
+
+    //key值生成规则
+    //@Bean("myKeyGenerator")
+    public KeyGenerator keyGenerator(){
+        return new KeyGenerator(){
+            @Override
+            public Object generate(Object target, Method method, Object... params) {
+                return method.getName()+"["+ Arrays.asList(params).toString()+"]";
+            }
+        };
+    }
 }

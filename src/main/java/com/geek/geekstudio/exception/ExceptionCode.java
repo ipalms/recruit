@@ -17,10 +17,12 @@ public class ExceptionCode {
     public static final int Parameter_Error = 415;
     //token不存在
     public static final int TOKEN_MISS=420;
+    //token过期
+    public static final int TOKEN_EXPIRED=420;
     //账号或密码错误
-    public static final int USERNAME_OR_PASSWORD_WRONG=425;
+    public static final int USERNAME_OR_PASSWORD_WRONG=430;
     //密码过于简单，重设密码
-    public static final int RESET_PASSWORD = 430;
+    public static final int RESET_PASSWORD = 435;
 
     //服务器内部错误
     public static final int Server_Internal_Error = 500;

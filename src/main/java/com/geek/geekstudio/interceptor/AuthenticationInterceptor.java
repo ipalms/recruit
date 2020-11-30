@@ -20,13 +20,14 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.concurrent.TimeUnit;
 
 /**
   * 权限认证拦截器（是否携带了token）
  */
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
-
+    private static final long CLOSE_TIME= 600;
     //注入一个redisTemplate操纵redis缓存
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
@@ -42,7 +43,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(method.isAnnotationPresent(PassToken.class)){
             return true;
         }
-
         //如果有userLoginToken注释则需要验证
         if(method.isAnnotationPresent(UserLoginToken.class)){
             //从请求头中获取token
@@ -57,11 +57,16 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 //            }catch (JWTDecodeException e){
 //                throw new JWTDecodeException("401");
 //            }
+
             //待完善  token即将过期但是操作使得token时间重置
             Object user =  redisTemplate.opsForValue().get(token);
             if(user==null) {
                 throw new PermissionDeniedException();
             }
+             /*//如果当前的token还剩10分钟过期
+            if(redisTemplate.getExpire(token)<CLOSE_TIME){
+                redisTemplate.opsForValue().set(token,user,2, TimeUnit.HOURS);
+            }*/
             //token解密
             try {
                 if(user instanceof UserPO){
@@ -72,10 +77,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     DecodedJWT jwt = JWT.require(Algorithm.HMAC256(adminPO.getPassword())).build().verify(token);
                 }
             }catch (TokenExpiredException e){  //令牌过期处理
-
-                //UserMapUtil.userMap.remove(token);
-                //待完善
-                redisTemplate.delete(token);
+                //删除token后对象信息就丢失了，应该等重新申请token的时候再删除token
+              /*  //UserMapUtil.userMap.remove(token);
+                //删除redis中的令牌
+                //redisTemplate.delete(token);*/
                 throw new TokenExpiredException("资源访问受限!请重新登录！");
             }catch (JWTVerificationException e){
                 throw new JWTVerificationException("401");

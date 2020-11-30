@@ -71,14 +71,14 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * token过期处理
+     * token过期处理  前端会会重新请求一个token
      * @param tokenExpiredException
      * @return
      */
     @ExceptionHandler(TokenExpiredException.class)
     @ResponseBody
     public RestInfo tokenExpiredExceptionHandler(TokenExpiredException tokenExpiredException){
-        return handleErrorInfo(ExceptionCode.Permission_Denied, tokenExpiredException.getMessage());
+        return handleErrorInfo(ExceptionCode.TOKEN_EXPIRED, tokenExpiredException.getMessage());
     }
 
     /**
@@ -128,7 +128,6 @@ public class GlobalExceptionHandler {
 
     /**
      * exception异常，用于捕获其他异常
-     * @param exception
      * @return
     @ExceptionHandler(Exception.class)
     @ResponseBody
