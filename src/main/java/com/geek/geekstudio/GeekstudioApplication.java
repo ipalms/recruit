@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
@@ -16,6 +17,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.geek.geekstudio.mapper")
 //扫描注册过滤器
 @ServletComponentScan("com.geek.geekstudio.filter")
+//定时任务
+@EnableScheduling
 public class GeekstudioApplication {
 
     public static void main(String[] args) {

@@ -6,16 +6,14 @@ package com.geek.geekstudio.exception;
 public class UserRegisteredException extends RecruitException{
 
     public UserRegisteredException(){
-        super(ExceptionCode.FAILED,"用户已注册");
+        super(ExceptionCode.USER_EXIST,"用户已注册");
     }
 
     public UserRegisteredException(String message){
-        super(ExceptionCode.FAILED,message);
+        super(ExceptionCode.USER_EXIST,message);
     }
 
     public UserRegisteredException(int code,String message){
         super(code,message);
     }
-
-
 }

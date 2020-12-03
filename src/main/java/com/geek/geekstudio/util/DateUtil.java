@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class DateUtil {
 
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss");
 
     /**
      * 时间转字符串
@@ -41,5 +41,4 @@ public class DateUtil {
         date = format.parse(str);
         return date;
     }
-
 }

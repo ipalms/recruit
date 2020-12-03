@@ -76,11 +76,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     AdminPO adminPO=(AdminPO) user;
                     DecodedJWT jwt = JWT.require(Algorithm.HMAC256(adminPO.getPassword())).build().verify(token);
                 }
-            }catch (TokenExpiredException e){  //令牌过期处理
+            }catch (TokenExpiredException e){
+                //令牌过期处理
                 //删除token后对象信息就丢失了，应该等重新申请token的时候再删除token
-              /*  //UserMapUtil.userMap.remove(token);
                 //删除redis中的令牌
-                //redisTemplate.delete(token);*/
+                //redisTemplate.delete(token);
                 throw new TokenExpiredException("资源访问受限!请重新登录！");
             }catch (JWTVerificationException e){
                 throw new JWTVerificationException("401");

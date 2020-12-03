@@ -24,5 +24,9 @@ public class UserVO {
     private String answer;
     private String image;
     private String introduce;
-
+    private String grade;
+    //private String state;
+    private String registerTime;
+    private String token;
+    //private String activeCode;
 }

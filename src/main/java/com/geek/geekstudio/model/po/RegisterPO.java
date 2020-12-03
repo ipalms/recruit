@@ -3,19 +3,19 @@ package com.geek.geekstudio.model.po;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
-  *用户类，对应数据库user表
+ * 注册Bean 主要用于校验注册时User对象数据是否合规  (待用)
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPO {
-    //参数校验有问题
+public class RegisterPO {
     //@NonNull
     private int id;
     @NotBlank(message = "学号不能为空！")

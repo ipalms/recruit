@@ -39,6 +39,8 @@ public class SuperAdminPermissionInterceptor implements HandlerInterceptor {
                 AdminPO adminPO=(AdminPO)user;
                 if("superAdmin".equals(adminPO.getAdminId())){
                     return true;
+                }else{
+                    throw new PermissionDeniedException("权限不足！需要超级管理员权限！");
                 }
             }
             else{

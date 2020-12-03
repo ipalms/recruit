@@ -16,6 +16,9 @@ public class AdminVO {
     private String adminId;
     private String adminName;
     private String password;
-    private String direction;
+    private String courseName;
     private String image;
+    private String registerTime;
+    private String token;
+    private String type;
 }

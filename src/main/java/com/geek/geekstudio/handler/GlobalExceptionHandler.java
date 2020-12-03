@@ -3,11 +3,15 @@ package com.geek.geekstudio.handler;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.geek.geekstudio.exception.*;
 import com.geek.geekstudio.model.vo.RestInfo;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.mail.MessagingException;
 import javax.validation.ConstraintViolationException;
+import java.util.stream.Collectors;
 
 /**
  *  全局异常处理
@@ -24,6 +28,15 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public RestInfo violationExceptionHandler(ConstraintViolationException violationException){
         return handleErrorInfo(ExceptionCode.Parameter_Error, violationException.getMessage());
+    }
+
+    /**
+     *处理Get请求中 使用@Valid 验证路径中请求实体校验失败后抛出的异常
+     */
+    @ExceptionHandler(BindException.class)
+    @ResponseBody
+    public RestInfo BindExceptionHandler(BindException bindException) {
+        return handleErrorInfo(ExceptionCode.Parameter_Error, bindException.getMessage());
     }
 
     /**
@@ -45,7 +58,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoUserException.class)
     @ResponseBody
     public RestInfo noUserExceptionHandler(NoUserException noUserException){
-        return handleErrorInfo(noUserException.getMessage());
+        return handleErrorInfo(ExceptionCode.NO_USER,noUserException.getMessage());
     }
 
     /**
@@ -56,7 +69,38 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserRegisteredException.class)
     @ResponseBody
     public RestInfo userRegisteredExceptionHandler(UserRegisteredException userRegisteredException){
-        return handleErrorInfo(userRegisteredException.getMessage());
+        return handleErrorInfo(ExceptionCode.USER_EXIST,userRegisteredException.getMessage());
+    }
+
+    /**
+     * 邮箱发送失败(非自己定义的异常类)
+     * @return
+     */
+    @ExceptionHandler(MessagingException.class)
+    @ResponseBody
+    public RestInfo messagingExceptionHandler(MessagingException messagingException){
+        return handleErrorInfo(ExceptionCode.EMAIL_SEND_WRONG,messagingException.getMessage());
+    }
+
+    /**
+     * 验证码过期或不存在
+     * @return
+     */
+    @ExceptionHandler(EmailCodeWrongException.class)
+    @ResponseBody
+    public RestInfo emailSendWrongExceptionHandler(EmailCodeWrongException emailCodeWrongException){
+        return handleErrorInfo(ExceptionCode.EMAIL_CODE_WRONG,emailCodeWrongException.getMessage());
+    }
+
+    /**
+     * 用户尚未激活
+     * @param userNotActiveException
+     * @return
+     */
+    @ExceptionHandler(UserNotActiveException.class)
+    @ResponseBody
+    public RestInfo userNotActiveExceptionHandler(UserNotActiveException userNotActiveException){
+        return handleErrorInfo(ExceptionCode.USER_NO_ACTIVE,userNotActiveException.getMessage());
     }
 
     /**
@@ -125,10 +169,11 @@ public class GlobalExceptionHandler {
         return handleErrorInfo(labException.getMessage());
     }
 
-
-    /**
-     * exception异常，用于捕获其他异常
+/*    *//**
+     * exception异常，用于捕获其他异常(未定义出来的) 捕捉以后不能查看异常所在
+     * @param exception
      * @return
+     *//*
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public RestInfo exceptionHandler(Exception exception){

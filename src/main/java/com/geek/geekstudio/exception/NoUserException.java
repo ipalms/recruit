@@ -6,11 +6,11 @@ package com.geek.geekstudio.exception;
 public class NoUserException extends RecruitException {
 
     public NoUserException(){
-        super(ExceptionCode.FAILED,"查无此人");
+        super(ExceptionCode.NO_USER,"查无此人");
     }
 
     public NoUserException(String message){
-        super(ExceptionCode.FAILED,message);
+        super(ExceptionCode.NO_USER,message);
     }
 
     public NoUserException(int code,String message){

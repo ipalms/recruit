@@ -17,6 +17,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     private final AdminPermissionInterceptor adminPermissionInterceptor;
     private final SuperAdminPermissionInterceptor superAdminPermissionInterceptor;
 
+    //构造器注参
     @Autowired
     public WebMvcConfig(AuthenticationInterceptor authenticationInterceptor,
                         AdminPermissionInterceptor adminPermissionInterceptor,
