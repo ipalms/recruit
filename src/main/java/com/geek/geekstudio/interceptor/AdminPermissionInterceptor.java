@@ -5,6 +5,9 @@ import com.geek.geekstudio.annotaion.AdminPermission;
 import com.geek.geekstudio.exception.PermissionDeniedException;
 import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.UserPO;
+import com.geek.geekstudio.util.TokenUtil;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -33,8 +36,15 @@ public class AdminPermissionInterceptor implements HandlerInterceptor {
         Method method = ((HandlerMethod) handler).getMethod();
         //如果有AdminPermission注释则需要验证
         if(method.isAnnotationPresent(AdminPermission.class)){
-            Object user=redisTemplate.opsForValue().get(request.getHeader("token"));
-            if(user instanceof AdminPO ){
+            Claims message=null;
+            try {
+                message=TokenUtil.parseJWT(request.getHeader("token"));
+            } catch (ExpiredJwtException e) {
+                throw new ExpiredJwtException(e.getHeader(),e.getClaims(),"token过期了");
+            }
+            //获得token存储的type属性
+            String type=message.get("type", String.class);
+            if("admin".equals(type)||"super".equals(type)){
                 return true;
             }else{
                 throw new PermissionDeniedException("权限不足！需要管理员权限！");

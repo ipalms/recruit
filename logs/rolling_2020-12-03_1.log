@@ -1,0 +1,54 @@
+12-03 23:23:57.917 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-03 23:23:57.957 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 14664 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-03 23:23:57.959 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-03 23:23:58.499 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-03 23:23:58.506 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-03 23:23:58.532 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+12-03 23:23:58.916 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-03 23:23:58.924 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-03 23:23:58.924 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-03 23:23:58.925 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-03 23:23:58.997 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-03 23:23:58.997 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 998 ms
+12-03 23:23:59.651 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-03 23:23:59.676 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-03 23:23:59.696 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-03 23:23:59.706 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.23 seconds (JVM running for 4.244)
+12-03 23:25:19.253 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-03 23:25:19.253 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-03 23:25:19.261 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 8 ms
+12-03 23:25:19.369 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019211300, password:2222
+12-03 23:25:19.387 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-03 23:25:19.745 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-03 23:25:19.751 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-03 23:25:19.771 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-03 23:25:19.792 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-03 23:35:28.051 [ INFO] [              c.g.g.s.p.UserServiceProxy: 63] - 刷新token的refreshToken：eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDE5MjExMzAwIiwidHlwZSI6InN0dWRlbnQiLCJleHAiOjE2MDc3MDAzMTksImlhdCI6MTYwNzAwOTExOX0.uN4QJYsBYF8IXPF3vJhHHG_UHCR7Q3O2LBkag15Eojs
+12-03 23:35:28.091 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-03 23:35:28.092 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019211300(String)
+12-03 23:35:28.095 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 1
+12-03 23:46:12.126 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-03 23:46:12.172 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 16616 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-03 23:46:12.174 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-03 23:46:12.645 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-03 23:46:12.651 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-03 23:46:12.673 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-03 23:46:13.037 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-03 23:46:13.044 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-03 23:46:13.045 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-03 23:46:13.045 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-03 23:46:13.113 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-03 23:46:13.114 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 887 ms
+12-03 23:46:13.713 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-03 23:46:13.737 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-03 23:46:13.756 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-03 23:46:13.765 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.953 seconds (JVM running for 3.832)
+12-03 23:46:46.240 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-03 23:46:46.240 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-03 23:46:46.247 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
+12-03 23:46:46.342 [ INFO] [              c.g.g.s.p.UserServiceProxy: 47] - 用户登录：userId:2019211300, password:2222
+12-03 23:46:46.357 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-03 23:46:46.615 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-03 23:46:46.621 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-03 23:46:46.642 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-03 23:46:46.660 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1

@@ -1,5 +1,6 @@
 package com.geek.geekstudio.mapper;
 
+import com.geek.geekstudio.model.dto.UserDTO;
 import com.geek.geekstudio.model.po.UserPO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -28,7 +29,7 @@ public interface UserMapper {
      */
     @Insert("INSERT INTO user (userId,userName,mail,password,major,sex,image,introduce,registerTime,grade)" +
             " VALUES (#{userId},#{userName},#{mail},#{password},#{major},#{sex},#{image},#{introduce},#{registerTime},#{grade})")
-    void addUser(UserPO userPO);
+    void addUser(UserDTO userDTO);
 
     /**
      *通过id 密码查新生

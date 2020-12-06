@@ -1,16 +1,14 @@
 package com.geek.geekstudio.interceptor;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.geek.geekstudio.annotaion.PassToken;
 import com.geek.geekstudio.annotaion.UserLoginToken;
 import com.geek.geekstudio.exception.NoTokenException;
 import com.geek.geekstudio.exception.PermissionDeniedException;
 import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.UserPO;
+import com.geek.geekstudio.util.TokenUtil;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -50,41 +48,23 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             if (token==null || "".equals(token)) {
                 throw new NoTokenException();
             }
-
-//            try {
-//                //通过userId获取user信息，间接获取password
-//                userId = JWT.decode(token).getAudience().get(0);
-//            }catch (JWTDecodeException e){
-//                throw new JWTDecodeException("401");
-//            }
-
             //待完善  token即将过期但是操作使得token时间重置
-            Object user =  redisTemplate.opsForValue().get(token);
-            if(user==null) {
-                throw new PermissionDeniedException();
+            String userId = (String)redisTemplate.opsForValue().get(token);
+            if(userId==null) {
+                //userId为空 说明token过期 或 token是伪造的
+                try {
+                    TokenUtil.parseJWT(token);
+                } catch (ExpiredJwtException e) {
+                    throw new ExpiredJwtException(e.getHeader(),e.getClaims(),"token过期了");
+                } catch (SignatureException k){
+                    //否则就是伪造的token--抛出权限不够
+                    throw new PermissionDeniedException("请登录");
+                }
             }
              /*//如果当前的token还剩10分钟过期
             if(redisTemplate.getExpire(token)<CLOSE_TIME){
                 redisTemplate.opsForValue().set(token,user,2, TimeUnit.HOURS);
             }*/
-            //token解密
-            try {
-                if(user instanceof UserPO){
-                    UserPO userPO=(UserPO) user;
-                    DecodedJWT jwt = JWT.require(Algorithm.HMAC256(userPO.getPassword())).build().verify(token);
-                }else {
-                    AdminPO adminPO=(AdminPO) user;
-                    DecodedJWT jwt = JWT.require(Algorithm.HMAC256(adminPO.getPassword())).build().verify(token);
-                }
-            }catch (TokenExpiredException e){
-                //令牌过期处理
-                //删除token后对象信息就丢失了，应该等重新申请token的时候再删除token
-                //删除redis中的令牌
-                //redisTemplate.delete(token);
-                throw new TokenExpiredException("资源访问受限!请重新登录！");
-            }catch (JWTVerificationException e){
-                throw new JWTVerificationException("401");
-            }
             return true;
         }
         return true;

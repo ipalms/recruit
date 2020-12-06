@@ -1,0 +1,1556 @@
+12-02 11:22:00.075 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 11:22:00.117 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 15572 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 11:22:00.118 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 11:22:00.569 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 11:22:00.576 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 11:22:00.600 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+12-02 11:22:00.938 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 11:22:00.945 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 11:22:00.945 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 11:22:00.946 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 11:22:01.011 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 11:22:01.011 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 857 ms
+12-02 11:22:01.645 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 11:22:01.665 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 11:22:01.673 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.867 seconds (JVM running for 3.587)
+12-02 11:27:35.121 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 11:27:35.121 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 11:27:35.128 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+12-02 11:27:35.236 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 11:27:35.556 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 11:27:35.564 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:27:35.583 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019666(String)
+12-02 11:27:35.601 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
+12-02 11:28:50.617 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:28:50.618 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019211399(String)
+12-02 11:28:50.625 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 1
+12-02 11:31:07.013 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - ==>  Preparing: SELECT * FROM user WHERE mail=? 
+12-02 11:31:07.014 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - ==> Parameters: wangjiahui20011014@163.com(String)
+12-02 11:31:07.017 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - <==      Total: 0
+12-02 11:31:23.505 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - ==>  Preparing: SELECT * FROM user WHERE mail=? 
+12-02 11:31:23.506 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - ==> Parameters: 2534232295@qq.com(String)
+12-02 11:31:23.511 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - <==      Total: 4
+12-02 11:31:23.523 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.TooManyResultsException: Expected one result (or null) to be returned by selectOne(), but found: 4] with root cause
+org.apache.ibatis.exceptions.TooManyResultsException: Expected one result (or null) to be returned by selectOne(), but found: 4
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:81) ~[mybatis-3.5.0.jar:3.5.0]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at com.sun.proxy.$Proxy79.selectOne(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:84) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy83.queryUserByMail(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.sun.proxy.$Proxy84.queryUserByMail(Unknown Source) ~[?:?]
+	at com.geek.geekstudio.controller.UserController.checkEmail(UserController.java:68) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController$$FastClassBySpringCGLIB$$4e8617e2.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.UserController$$EnhancerBySpringCGLIB$$3a6cf168.checkEmail(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-02 11:34:06.802 [ INFO] [              c.g.g.s.p.UserServiceProxy: 41] - 用户注册发送验证：userId:2019666,mail:2534232295@qq.com
+12-02 11:37:54.824 [ INFO] [              c.g.g.s.p.UserServiceProxy: 32] - userPO —— userId:2019666 ,userName:验证邮箱 ,mail:2534232295@qq.com, password:4444 ,major:电子商务 ,activeCode:128434
+12-02 11:37:54.829 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:37:54.830 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019666(String)
+12-02 11:37:54.832 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
+12-02 11:37:54.852 [DEBUG] [                       c.g.g.m.U.addUser:159] - ==>  Preparing: INSERT INTO user (userId,userName,mail,password,major,sex,image,introduce,registerTime) VALUES (?,?,?,?,?,?,?,?,?) 
+12-02 11:37:54.852 [DEBUG] [                       c.g.g.m.U.addUser:159] - ==> Parameters: 2019666(String), 验证邮箱(String), 2534232295@qq.com(String), 4444(String), 电子商务(String), null, null, 亲还没有个人介绍呢~~(String), 2020-12-02(String)
+12-02 11:37:54.862 [DEBUG] [                       c.g.g.m.U.addUser:159] - <==    Updates: 1
+12-02 11:38:34.456 [ INFO] [              c.g.g.s.p.UserServiceProxy: 32] - userPO —— userId:2019666 ,userName:验证邮箱 ,mail:2534232295@qq.com, password:4444 ,major:电子商务 ,activeCode:555555
+12-02 11:38:34.460 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:38:34.461 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019666(String)
+12-02 11:38:34.463 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 1
+12-02 11:38:45.028 [ INFO] [              c.g.g.s.p.UserServiceProxy: 32] - userPO —— userId:2019667 ,userName:验证邮箱 ,mail:2534232295@qq.com, password:4444 ,major:电子商务 ,activeCode:555555
+12-02 11:38:45.033 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:38:45.034 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019667(String)
+12-02 11:38:45.036 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
+12-02 11:43:21.213 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019666, password:4444
+12-02 11:43:21.216 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 11:43:21.217 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019666(String), 4444(String)
+12-02 11:43:21.219 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 11:48:47.544 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:48:47.544 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019777(String)
+12-02 11:48:47.547 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
+12-02 11:48:51.397 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - ==>  Preparing: SELECT * FROM user WHERE mail=? 
+12-02 11:48:51.398 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - ==> Parameters: wangjiahui20011014@163.com(String)
+12-02 11:48:51.401 [DEBUG] [               c.g.g.m.U.queryUserByMail:159] - <==      Total: 0
+12-02 11:49:08.953 [ INFO] [              c.g.g.s.p.UserServiceProxy: 41] - 用户注册发送验证：userId:2019777,mail:wangjiahui20011014@163.com
+12-02 11:52:13.512 [ INFO] [              c.g.g.s.p.UserServiceProxy: 32] - userPO —— userId:2019777 ,userName:kkk ,mail:wangjiahui20011014@163.com, password:5555 ,major:信管 ,activeCode:808067
+12-02 11:52:13.516 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:52:13.517 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019777(String)
+12-02 11:52:13.519 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
+12-02 11:52:25.728 [ INFO] [              c.g.g.s.p.UserServiceProxy: 32] - userPO —— userId:2019777 ,userName:kkk ,mail:wangjiahui20011014@163.com, password:5555 ,major:信管 ,activeCode:808068
+12-02 11:52:25.731 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 11:52:25.732 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019777(String)
+12-02 11:52:25.735 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
+12-02 11:52:25.741 [DEBUG] [                       c.g.g.m.U.addUser:159] - ==>  Preparing: INSERT INTO user (userId,userName,mail,password,major,sex,image,introduce,registerTime) VALUES (?,?,?,?,?,?,?,?,?) 
+12-02 11:52:25.743 [DEBUG] [                       c.g.g.m.U.addUser:159] - ==> Parameters: 2019777(String), kkk(String), wangjiahui20011014@163.com(String), 5555(String), 信管(String), null, null, 亲还没有个人介绍呢~~(String), 2020-12-02(String)
+12-02 11:52:25.746 [DEBUG] [                       c.g.g.m.U.addUser:159] - <==    Updates: 1
+12-02 11:55:11.485 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019777, password:5554
+12-02 11:55:11.487 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 11:55:11.488 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5554(String)
+12-02 11:55:11.490 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 11:55:11.491 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE userId=? AND password=? 
+12-02 11:55:11.494 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5554(String)
+12-02 11:55:11.586 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'
+### The error may exist in com/geek/geekstudio/mapper/AdminMapper.java (best guess)
+### The error may involve com.geek.geekstudio.mapper.AdminMapper.queryAdminByUserIdAndPassword-Inline
+### The error occurred while setting parameters
+### SQL: SELECT * FROM admin WHERE userId=? AND password=?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'] with root cause
+java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-3.4.5.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-3.4.5.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy110.execute(Unknown Source) ~[?:?]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77) ~[mybatis-3.5.0.jar:3.5.0]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at com.sun.proxy.$Proxy79.selectOne(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:84) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy85.queryAdminByUserIdAndPassword(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.sun.proxy.$Proxy86.queryAdminByUserIdAndPassword(Unknown Source) ~[?:?]
+	at com.geek.geekstudio.service.impl.UserServiceImpl.login(UserServiceImpl.java:86) ~[classes/:?]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$9d2d7d4c.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$62b6a897.login(<generated>) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.UserServiceProxy.login(UserServiceProxy.java:50) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController.login(UserController.java:92) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController$$FastClassBySpringCGLIB$$4e8617e2.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.UserController$$EnhancerBySpringCGLIB$$3a6cf168.login(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-02 11:55:20.983 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019777, password:5555
+12-02 11:55:20.985 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 11:55:20.986 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5555(String)
+12-02 11:55:20.989 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 12:00:12.303 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019777, password:5557
+12-02 12:00:12.306 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:00:12.306 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5557(String)
+12-02 12:00:12.311 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:00:12.312 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE userId=? AND password=? 
+12-02 12:00:12.313 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5557(String)
+12-02 12:00:12.315 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'
+### The error may exist in com/geek/geekstudio/mapper/AdminMapper.java (best guess)
+### The error may involve com.geek.geekstudio.mapper.AdminMapper.queryAdminByUserIdAndPassword-Inline
+### The error occurred while setting parameters
+### SQL: SELECT * FROM admin WHERE userId=? AND password=?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'] with root cause
+java.sql.SQLSyntaxErrorException: Unknown column 'userId' in 'where clause'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370) ~[mysql-connector-java-8.0.21.jar:8.0.21]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-3.4.5.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-3.4.5.jar:?]
+	at jdk.internal.reflect.GeneratedMethodAccessor61.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy110.execute(Unknown Source) ~[?:?]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77) ~[mybatis-3.5.0.jar:3.5.0]
+	at jdk.internal.reflect.GeneratedMethodAccessor64.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at com.sun.proxy.$Proxy79.selectOne(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:84) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy85.queryAdminByUserIdAndPassword(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.sun.proxy.$Proxy86.queryAdminByUserIdAndPassword(Unknown Source) ~[?:?]
+	at com.geek.geekstudio.service.impl.UserServiceImpl.login(UserServiceImpl.java:86) ~[classes/:?]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$9d2d7d4c.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$62b6a897.login(<generated>) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.UserServiceProxy.login(UserServiceProxy.java:50) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController.login(UserController.java:92) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController$$FastClassBySpringCGLIB$$4e8617e2.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.UserController$$EnhancerBySpringCGLIB$$3a6cf168.login(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-02 12:01:27.962 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 12:01:28.003 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 4152 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 12:01:28.005 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 12:01:28.446 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 12:01:28.452 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 12:01:28.472 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 12ms. Found 0 Redis repository interfaces.
+12-02 12:01:28.784 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 12:01:28.790 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 12:01:28.790 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 12:01:28.791 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 12:01:28.870 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 12:01:28.871 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 816 ms
+12-02 12:01:29.401 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 12:01:29.419 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 12:01:29.426 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.728 seconds (JVM running for 3.283)
+12-02 12:01:39.882 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 12:01:39.882 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 12:01:39.890 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 8 ms
+12-02 12:01:39.984 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019777, password:5557
+12-02 12:01:40.002 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 12:01:40.217 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 12:01:40.224 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:01:40.242 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5557(String)
+12-02 12:01:40.256 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:01:40.261 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 12:01:40.261 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5557(String)
+12-02 12:01:40.262 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:02:33.947 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:200000, password:1234567
+12-02 12:02:33.950 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:02:33.952 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 200000(String), 1234567(String)
+12-02 12:02:33.954 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:02:33.956 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 12:02:33.956 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 200000(String), 1234567(String)
+12-02 12:02:33.959 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:02:37.488 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:200000, password:123456
+12-02 12:02:37.489 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:02:37.490 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 200000(String), 123456(String)
+12-02 12:02:37.492 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:02:37.493 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 12:02:37.494 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 200000(String), 123456(String)
+12-02 12:02:37.498 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 12:03:11.124 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019777, password:5555
+12-02 12:03:11.125 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:03:11.126 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5555(String)
+12-02 12:03:11.128 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 12:31:54.694 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 12:31:54.744 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 16700 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 12:31:54.747 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 12:31:55.239 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 12:31:55.245 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 12:31:55.267 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-02 12:31:55.596 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 12:31:55.602 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 12:31:55.603 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 12:31:55.603 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 12:31:55.667 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 12:31:55.668 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 865 ms
+12-02 12:31:56.221 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 12:31:56.240 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 12:31:56.248 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.841 seconds (JVM running for 3.511)
+12-02 12:32:18.655 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 12:32:18.656 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 12:32:18.666 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
+12-02 12:32:18.780 [ INFO] [              c.g.g.s.p.UserServiceProxy: 41] - 用户注册发送验证：userId:2019211290,mail:1114550440@qq.com
+12-02 12:32:18.786 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 12:32:19.023 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 12:32:20.550 [ INFO] [           c.g.g.s.i.JavaMailServiceImpl: 39] - 该用户已经发送过激活码
+12-02 12:33:52.375 [ INFO] [              c.g.g.s.p.UserServiceProxy: 41] - 用户注册发送验证：userId:2019211290,mail:1114550440@qq.com
+12-02 12:34:19.573 [ INFO] [              c.g.g.s.p.UserServiceProxy: 32] - userPO —— userId:2019211290 ,userName:掉毛 ,mail:1114550440@qq.com, password:7777 ,major:信管 ,activeCode:355906
+12-02 12:34:19.587 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
+12-02 12:34:19.621 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 2019211290(String)
+12-02 12:34:19.644 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
+12-02 12:34:19.653 [DEBUG] [                       c.g.g.m.U.addUser:159] - ==>  Preparing: INSERT INTO user (userId,userName,mail,password,major,sex,image,introduce,registerTime) VALUES (?,?,?,?,?,?,?,?,?) 
+12-02 12:34:19.655 [DEBUG] [                       c.g.g.m.U.addUser:159] - ==> Parameters: 2019211290(String), 掉毛(String), 1114550440@qq.com(String), 7777(String), 信管(String), null, null, 亲还没有个人介绍呢~~(String), 2020-12-02(String)
+12-02 12:34:19.658 [DEBUG] [                       c.g.g.m.U.addUser:159] - <==    Updates: 1
+12-02 12:34:55.760 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019211290, password:7777
+12-02 12:34:55.763 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:34:55.765 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211290(String), 7777(String)
+12-02 12:34:55.769 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 12:35:01.115 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019211290, password:77778
+12-02 12:35:01.117 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:35:01.118 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211290(String), 77778(String)
+12-02 12:35:01.119 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:35:01.120 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 12:35:01.121 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 2019211290(String), 77778(String)
+12-02 12:35:01.123 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 0
+12-02 12:35:04.008 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019211290, password:7777
+12-02 12:35:04.009 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:35:04.011 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211290(String), 7777(String)
+12-02 12:35:04.014 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 12:38:13.095 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019211290, password:7777
+12-02 12:38:13.097 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:38:13.098 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211290(String), 7777(String)
+12-02 12:38:13.104 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 12:38:22.849 [ INFO] [              c.g.g.s.p.UserServiceProxy: 49] - 用户登录：userId:2019211290, password:7777
+12-02 12:38:22.853 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 12:38:22.854 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211290(String), 7777(String)
+12-02 12:38:22.856 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 16:21:52.107 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 16:21:52.156 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 13688 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 16:21:52.158 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 16:21:52.685 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 16:21:52.691 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 16:21:52.718 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+12-02 16:21:53.122 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 16:21:53.130 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 16:21:53.131 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 16:21:53.131 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 16:21:53.201 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 16:21:53.202 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1002 ms
+12-02 16:21:53.870 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 16:21:53.891 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 16:21:53.900 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.038 seconds (JVM running for 4.314)
+12-02 16:23:39.844 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 16:23:39.899 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 6088 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 16:23:39.901 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 16:23:40.541 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 16:23:40.548 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 16:23:40.580 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 24ms. Found 0 Redis repository interfaces.
+12-02 16:23:40.940 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 16:23:40.946 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 16:23:40.947 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 16:23:40.947 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 16:23:41.012 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 16:23:41.012 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1028 ms
+12-02 16:23:41.601 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 16:23:41.621 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 16:23:41.630 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.142 seconds (JVM running for 4.406)
+12-02 16:32:13.738 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 16:32:13.738 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 16:32:13.746 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+12-02 16:32:13.845 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019211300, password:2222
+12-02 16:32:13.862 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 16:32:14.191 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 16:32:14.199 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 16:32:14.216 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-02 16:32:14.238 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 16:33:00.381 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 16:33:00.438 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 21620 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 16:33:00.441 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 16:33:00.934 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 16:33:00.942 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 16:33:00.965 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-02 16:33:01.323 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 16:33:01.329 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 16:33:01.330 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 16:33:01.331 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 16:33:01.399 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 16:33:01.399 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 914 ms
+12-02 16:33:01.986 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 16:33:02.005 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 16:33:02.013 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.0 seconds (JVM running for 4.29)
+12-02 16:33:21.031 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 16:33:21.032 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 16:33:21.037 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 5 ms
+12-02 16:33:21.136 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019211300, password:2222
+12-02 16:33:21.153 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 16:33:21.404 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 16:33:21.412 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 16:33:21.429 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-02 16:33:21.447 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 16:34:39.260 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 16:34:39.301 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 7712 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 16:34:39.303 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 16:34:39.782 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 16:34:39.789 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 16:34:39.811 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-02 16:34:40.158 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 16:34:40.164 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 16:34:40.165 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 16:34:40.165 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 16:34:40.232 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 16:34:40.233 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 882 ms
+12-02 16:34:40.883 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 16:34:40.904 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 16:34:40.911 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.91 seconds (JVM running for 3.887)
+12-02 16:34:45.986 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 16:34:45.986 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 16:34:45.990 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 4 ms
+12-02 16:34:46.074 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019211300, password:2222
+12-02 16:34:46.088 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 16:34:46.322 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 16:34:46.328 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 16:34:46.345 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-02 16:34:46.360 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 16:38:58.853 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 16:38:58.891 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 16312 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 16:38:58.893 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 16:38:59.430 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 16:38:59.437 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 16:38:59.458 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+12-02 16:38:59.856 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 16:38:59.862 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 16:38:59.863 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 16:38:59.863 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 16:38:59.928 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 16:38:59.929 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 990 ms
+12-02 16:39:00.500 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 16:39:00.519 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 16:39:00.527 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.933 seconds (JVM running for 3.964)
+12-02 16:40:00.282 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 16:40:00.283 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 16:40:00.288 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 5 ms
+12-02 16:40:00.374 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019211300, password:2222
+12-02 16:40:00.388 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 16:40:00.628 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 16:40:00.634 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 16:40:00.651 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-02 16:40:00.678 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 16:41:09.860 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: non null key required] with root cause
+java.lang.IllegalArgumentException: non null key required
+	at org.springframework.util.Assert.notNull(Assert.java:201) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations.rawKey(AbstractOperations.java:106) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations$ValueDeserializingRedisCallback.doInRedis(AbstractOperations.java:60) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:228) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:188) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:96) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.DefaultValueOperations.get(DefaultValueOperations.java:53) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl.logout(UserServiceImpl.java:108) ~[classes/:?]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$9d2d7d4c.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$11e6e71.logout(<generated>) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.UserServiceProxy.logout(UserServiceProxy.java:55) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController.logout(UserController.java:95) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController$$FastClassBySpringCGLIB$$4e8617e2.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.UserController$$EnhancerBySpringCGLIB$$1be76227.logout(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-02 16:43:51.114 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 16:43:51.148 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 15424 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 16:43:51.150 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 16:43:51.621 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 16:43:51.629 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 16:43:51.657 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+12-02 16:43:51.980 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 16:43:51.986 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 16:43:51.987 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 16:43:51.987 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 16:43:52.052 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 16:43:52.052 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 857 ms
+12-02 16:43:52.592 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 16:43:52.610 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 16:43:52.618 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.792 seconds (JVM running for 3.708)
+12-02 16:44:10.397 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 16:44:10.398 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 16:44:10.405 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+12-02 16:44:10.480 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019211300, password:2222
+12-02 16:44:10.494 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 16:44:10.736 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 16:44:10.742 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 16:44:10.760 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-02 16:44:10.776 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 16:45:09.348 [ INFO] [              c.g.g.s.p.UserServiceProxy: 55] - token:null
+12-02 16:45:09.353 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: non null key required] with root cause
+java.lang.IllegalArgumentException: non null key required
+	at org.springframework.util.Assert.notNull(Assert.java:201) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations.rawKey(AbstractOperations.java:106) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations$ValueDeserializingRedisCallback.doInRedis(AbstractOperations.java:60) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:228) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:188) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:96) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.DefaultValueOperations.get(DefaultValueOperations.java:53) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl.logout(UserServiceImpl.java:108) ~[classes/:?]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$9d2d7d4c.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$11e6e71.logout(<generated>) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.UserServiceProxy.logout(UserServiceProxy.java:56) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController.logout(UserController.java:95) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController$$FastClassBySpringCGLIB$$4e8617e2.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.UserController$$EnhancerBySpringCGLIB$$1be76227.logout(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-02 16:48:39.784 [ INFO] [              c.g.g.s.p.UserServiceProxy: 55] - token:null
+12-02 16:48:39.785 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: non null key required] with root cause
+java.lang.IllegalArgumentException: non null key required
+	at org.springframework.util.Assert.notNull(Assert.java:201) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations.rawKey(AbstractOperations.java:106) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations$ValueDeserializingRedisCallback.doInRedis(AbstractOperations.java:60) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:228) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:188) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:96) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at org.springframework.data.redis.core.DefaultValueOperations.get(DefaultValueOperations.java:53) ~[spring-data-redis-2.3.4.RELEASE.jar:2.3.4.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl.logout(UserServiceImpl.java:108) ~[classes/:?]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$9d2d7d4c.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$11e6e71.logout(<generated>) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.UserServiceProxy.logout(UserServiceProxy.java:56) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController.logout(UserController.java:95) ~[classes/:?]
+	at com.geek.geekstudio.controller.UserController$$FastClassBySpringCGLIB$$4e8617e2.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.UserController$$EnhancerBySpringCGLIB$$1be76227.logout(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-02 16:49:48.912 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 16:49:48.959 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 25108 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 16:49:48.961 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 16:49:49.548 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 16:49:49.555 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 16:49:49.578 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+12-02 16:49:50.077 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 16:49:50.084 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 16:49:50.085 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 16:49:50.086 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 16:49:50.163 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 16:49:50.163 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1141 ms
+12-02 16:49:51.046 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 16:49:51.072 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 16:49:51.084 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.5 seconds (JVM running for 4.413)
+12-02 16:50:01.709 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 16:50:01.710 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 16:50:01.717 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+12-02 16:50:03.709 [ INFO] [              c.g.g.s.p.UserServiceProxy: 55] - token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDE5MjExMzAwIiwiZXhwIjoxNjA2OTEzMDUwLCJpYXQiOjE2MDY4OTg2NTB9.bJe1IGukuBts4fPtXwHxeaWm22bHq4ufqnshA1tTwcE
+12-02 18:40:27.460 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 18:40:27.503 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 20260 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 18:40:27.504 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 18:40:27.998 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 18:40:28.004 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 18:40:28.027 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+12-02 18:40:28.390 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 18:40:28.398 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 18:40:28.399 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 18:40:28.400 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 18:40:28.468 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 18:40:28.468 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 915 ms
+12-02 18:40:29.055 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 18:40:29.080 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 18:40:29.086 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.907 seconds (JVM running for 3.854)
+12-02 18:40:42.343 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 18:40:42.344 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 18:40:42.349 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 5 ms
+12-02 18:40:42.432 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019211300, password:2222
+12-02 18:40:42.458 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 18:40:42.785 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 18:40:42.792 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 18:40:42.809 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019211300(String), 2222(String)
+12-02 18:40:42.830 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 18:42:35.983 [ INFO] [              c.g.g.s.p.UserServiceProxy: 63] - 用户操作中token过期：eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDE5MjExMzAwIiwiZXhwIjoxNjA2OTIwMDQyLCJpYXQiOjE2MDY5MDU2NDJ9.iI1KyzQstte2HUiqn58PouhSYQ8axTSMP07Ezua0uhw
+12-02 19:40:49.175 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 19:40:49.222 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 3932 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 19:40:49.225 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 19:40:49.723 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 19:40:49.730 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 19:40:49.753 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+12-02 19:40:50.118 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 19:40:50.125 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 19:40:50.126 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 19:40:50.126 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 19:40:50.196 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 19:40:50.196 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 921 ms
+12-02 19:40:50.868 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 19:40:50.888 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 19:40:50.895 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.98 seconds (JVM running for 3.949)
+12-02 19:59:24.188 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 19:59:24.253 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 19764 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 19:59:24.255 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 19:59:25.476 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 19:59:25.486 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 19:59:25.534 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 27ms. Found 0 Redis repository interfaces.
+12-02 19:59:27.197 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 19:59:27.211 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 19:59:27.212 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 19:59:27.213 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 19:59:27.313 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 19:59:27.313 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2971 ms
+12-02 19:59:28.510 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 19:59:28.541 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 19:59:28.556 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 19:59:28.556 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 19:59:28.583 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 19:59:28.585 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 19:59:28.591 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 19:59:28.591 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 19:59:28.609 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 19:59:28.611 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:01:02.487 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:01:02.542 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 19020 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:01:02.544 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:01:03.331 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:01:03.340 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:01:03.400 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 38ms. Found 0 Redis repository interfaces.
+12-02 20:01:05.118 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:01:05.128 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:01:05.128 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:01:05.129 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:01:05.215 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:01:05.215 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2618 ms
+12-02 20:01:06.472 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:01:06.511 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:01:06.549 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 20:01:06.570 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.329 seconds (JVM running for 5.177)
+12-02 20:01:21.326 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:01:21.377 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 19276 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:01:21.379 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:01:22.174 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:01:22.183 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:01:22.237 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 33ms. Found 0 Redis repository interfaces.
+12-02 20:01:23.738 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:01:23.747 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:01:23.748 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:01:23.748 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:01:23.833 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:01:23.834 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2400 ms
+12-02 20:01:24.850 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:01:24.881 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:01:24.892 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 20:01:24.893 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 20:01:24.914 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 20:01:24.915 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 20:01:24.934 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 20:01:24.935 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 20:01:24.941 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 20:01:24.942 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:01:42.344 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:01:42.393 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 11308 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:01:42.394 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:01:43.233 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:01:43.239 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:01:43.292 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 27ms. Found 0 Redis repository interfaces.
+12-02 20:01:44.820 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:01:44.829 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:01:44.829 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:01:44.830 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:01:44.910 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:01:44.910 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2461 ms
+12-02 20:01:45.931 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:01:45.955 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:01:45.968 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 20:01:45.969 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 20:01:45.989 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 20:01:45.989 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 20:01:45.998 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 20:01:45.999 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 20:01:46.005 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 20:01:46.006 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:02:06.997 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:02:07.074 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 13060 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:02:07.077 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:02:08.255 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:02:08.262 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:02:08.323 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 30ms. Found 0 Redis repository interfaces.
+12-02 20:02:09.981 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:02:09.990 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:02:09.991 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:02:09.991 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:02:10.094 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:02:10.095 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2911 ms
+12-02 20:02:11.225 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:02:11.261 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:02:11.282 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 20:02:11.283 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 20:02:11.314 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 20:02:11.315 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 20:02:11.330 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 20:02:11.331 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 20:02:11.340 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 20:02:11.342 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:02:27.210 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:02:27.261 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 12396 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:02:27.263 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:02:28.094 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:02:28.099 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:02:28.142 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 28ms. Found 0 Redis repository interfaces.
+12-02 20:02:29.812 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:02:29.825 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:02:29.825 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:02:29.826 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:02:29.931 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:02:29.932 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2611 ms
+12-02 20:02:31.167 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:02:31.200 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:02:31.218 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 20:02:31.219 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 20:02:31.252 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 20:02:31.253 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 20:02:31.264 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 20:02:31.265 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 20:02:31.272 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 20:02:31.274 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:03:04.600 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:03:04.652 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 13460 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:03:04.655 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:03:05.680 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:03:05.687 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:03:05.756 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 45ms. Found 0 Redis repository interfaces.
+12-02 20:03:07.350 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:03:07.360 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:03:07.361 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:03:07.362 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:03:07.466 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:03:07.466 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2741 ms
+12-02 20:03:08.639 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:03:08.671 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:03:08.685 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 20:03:08.685 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 20:03:08.710 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 20:03:08.711 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 20:03:08.721 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 20:03:08.721 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 20:03:08.729 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 20:03:08.731 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:04:04.232 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:04:04.276 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 2652 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:04:04.278 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:04:05.201 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:04:05.207 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:04:05.259 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 31ms. Found 0 Redis repository interfaces.
+12-02 20:04:06.821 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8081 (http)
+12-02 20:04:06.831 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+12-02 20:04:06.832 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:04:06.832 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:04:06.938 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:04:06.939 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2600 ms
+12-02 20:04:07.956 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:04:07.987 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+12-02 20:04:08.017 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8081 (http) with context path ''
+12-02 20:04:08.030 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.058 seconds (JVM running for 5.034)
+12-02 20:05:28.580 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:05:28.625 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 22128 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:05:28.627 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:05:29.126 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:05:29.132 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:05:29.155 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-02 20:05:29.502 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:05:29.508 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:05:29.509 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:05:29.509 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:05:29.584 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:05:29.585 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 910 ms
+12-02 20:05:30.191 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:05:30.212 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:05:30.223 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 20:05:30.223 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 20:05:30.239 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 20:05:30.239 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 20:05:30.243 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 20:05:30.243 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 20:05:30.247 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 20:05:30.250 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:06:13.294 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 20:06:13.295 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 20:06:13.304 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 9 ms
+12-02 20:06:13.319 [ WARN] [                    o.s.w.s.PageNotFound:1251] - No mapping for GET /
+12-02 20:06:13.465 [ WARN] [                    o.s.w.s.PageNotFound:1251] - No mapping for GET /favicon.ico
+12-02 20:09:06.974 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:09:07.031 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 6800 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:09:07.034 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:09:07.590 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:09:07.596 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:09:07.621 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+12-02 20:09:07.951 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:09:07.957 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:09:07.958 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:09:07.958 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:09:08.027 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:09:08.027 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 933 ms
+12-02 20:09:08.635 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:09:08.653 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:09:08.663 [ WARN] [ConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+12-02 20:09:08.664 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:218] - Shutting down ExecutorService 'taskScheduler'
+12-02 20:09:08.679 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+12-02 20:09:08.680 [ INFO] [                 o.a.c.c.StandardService:173] - Stopping service [Tomcat]
+12-02 20:09:08.683 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+12-02 20:09:08.683 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+12-02 20:09:08.688 [ INFO] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+12-02 20:09:08.691 [ERROR] [  o.s.b.d.LoggingFailureAnalysisReporter: 40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+12-02 20:09:24.199 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:09:24.243 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 23352 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:09:24.244 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:09:24.743 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:09:24.750 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:09:24.771 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-02 20:09:25.115 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8081 (http)
+12-02 20:09:25.121 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+12-02 20:09:25.122 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:09:25.122 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:09:25.194 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:09:25.195 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 896 ms
+12-02 20:09:25.873 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:09:25.894 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+12-02 20:09:25.918 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8081 (http) with context path ''
+12-02 20:09:25.928 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.04 seconds (JVM running for 3.957)
+12-02 20:12:01.531 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 20:12:01.531 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 20:12:01.539 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 8 ms
+12-02 20:12:01.631 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:superAdmin, password:123456
+12-02 20:12:01.646 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 20:12:01.961 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 20:12:01.969 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 20:12:01.988 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 20:12:02.003 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 20:12:02.007 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 20:12:02.008 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 20:12:02.011 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 20:15:24.372 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:15:24.412 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 20472 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:15:24.414 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:15:24.889 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:15:24.898 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:15:24.919 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-02 20:15:25.248 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8081 (http)
+12-02 20:15:25.254 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+12-02 20:15:25.255 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:15:25.255 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:15:25.320 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:15:25.320 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 864 ms
+12-02 20:15:25.880 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:15:25.900 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+12-02 20:15:25.918 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8081 (http) with context path ''
+12-02 20:15:25.927 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.833 seconds (JVM running for 4.39)
+12-02 20:15:54.348 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 20:15:54.349 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 20:15:54.355 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
+12-02 20:15:54.432 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:superAdmin, password:123456
+12-02 20:15:54.454 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 20:15:54.707 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 20:15:54.713 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 20:15:54.730 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 20:15:54.744 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 20:15:54.748 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 20:15:54.749 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 20:15:54.752 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 20:16:53.884 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is javax.validation.ConstraintDeclarationException: HV000151: A method overriding another method must not redefine the parameter constraint configuration, but method AdminController#addAdmin(AdminPO) redefines the configuration of AdminService#addAdmin(AdminPO).] with root cause
+javax.validation.ConstraintDeclarationException: HV000151: A method overriding another method must not redefine the parameter constraint configuration, but method AdminController#addAdmin(AdminPO) redefines the configuration of AdminService#addAdmin(AdminPO).
+	at org.hibernate.validator.internal.metadata.aggregated.rule.OverridingMethodMustNotAlterParameterConstraints.apply(OverridingMethodMustNotAlterParameterConstraints.java:24) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.metadata.aggregated.ExecutableMetaData$Builder.assertCorrectnessOfConfiguration(ExecutableMetaData.java:462) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.metadata.aggregated.ExecutableMetaData$Builder.build(ExecutableMetaData.java:380) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.metadata.aggregated.BeanMetaDataBuilder$BuilderDelegate.build(BeanMetaDataBuilder.java:260) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.metadata.aggregated.BeanMetaDataBuilder.build(BeanMetaDataBuilder.java:133) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.metadata.BeanMetaDataManagerImpl.createBeanMetaData(BeanMetaDataManagerImpl.java:206) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.metadata.BeanMetaDataManagerImpl.getBeanMetaData(BeanMetaDataManagerImpl.java:165) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParameters(ValidatorImpl.java:267) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParameters(ValidatorImpl.java:235) ~[hibernate-validator-6.1.5.Final.jar:6.1.5.Final]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:104) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.AdminController$$EnhancerBySpringCGLIB$$af35ea4c.addAdmin(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-02 20:32:06.465 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:32:06.514 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 10532 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:32:06.515 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:32:06.977 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:32:06.983 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:32:07.005 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+12-02 20:32:07.336 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8081 (http)
+12-02 20:32:07.343 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+12-02 20:32:07.343 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:32:07.344 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:32:07.409 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:32:07.409 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 850 ms
+12-02 20:32:07.979 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:32:07.998 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+12-02 20:32:08.016 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8081 (http) with context path ''
+12-02 20:32:08.025 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.835 seconds (JVM running for 3.732)
+12-02 20:32:39.022 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 20:32:39.022 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 20:32:39.030 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+12-02 20:32:39.116 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:superAdmin, password:123456
+12-02 20:32:39.131 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 20:32:39.381 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 20:32:39.387 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 20:32:39.405 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 20:32:39.421 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 20:32:39.427 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 20:32:39.428 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 20:32:39.431 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 20:32:55.308 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? 
+12-02 20:32:55.309 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==> Parameters: 2019133131(String)
+12-02 20:32:55.310 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - <==      Total: 0
+12-02 20:32:55.312 [DEBUG] [                      c.g.g.m.A.addAdmin:159] - ==>  Preparing: INSERT INTO admin (adminId,adminName,password,courseName,image,registerTime) VALUES (?,?,?,?,?,?) 
+12-02 20:32:55.313 [DEBUG] [                      c.g.g.m.A.addAdmin:159] - ==> Parameters: 2019133131(String), 小王同学(String), 12345(String), 后端JAVA(String), null, 2020-12-02:20-32-55(String)
+12-02 20:32:55.319 [DEBUG] [                      c.g.g.m.A.addAdmin:159] - <==    Updates: 1
+12-02 20:37:40.893 [ WARN] [                    o.s.w.s.PageNotFound:1251] - No mapping for GET /
+12-02 20:37:40.989 [ WARN] [                    o.s.w.s.PageNotFound:1251] - No mapping for GET /favicon.ico
+12-02 20:45:24.066 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:45:24.107 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 10304 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:45:24.108 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:45:24.750 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:45:24.759 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:45:24.849 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 46ms. Found 0 Redis repository interfaces.
+12-02 20:45:25.801 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8081 (http)
+12-02 20:45:25.815 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+12-02 20:45:25.817 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:45:25.818 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:45:25.950 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:45:25.951 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1805 ms
+12-02 20:45:26.753 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:45:26.776 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+12-02 20:45:26.800 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8081 (http) with context path ''
+12-02 20:45:26.820 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.988 seconds (JVM running for 5.391)
+12-02 20:45:39.098 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:45:39.140 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 3952 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:45:39.141 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:45:39.593 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:45:39.599 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:45:39.619 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 12ms. Found 0 Redis repository interfaces.
+12-02 20:45:40.035 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:45:40.042 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:45:40.043 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:45:40.043 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:45:40.116 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:45:40.117 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 933 ms
+12-02 20:45:40.653 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:45:40.672 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:45:40.690 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 20:45:40.700 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.867 seconds (JVM running for 3.727)
+12-02 20:45:53.679 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 20:45:53.680 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 20:45:53.686 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
+12-02 20:45:53.781 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:superAdmin, password:12345
+12-02 20:45:53.801 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 20:45:54.104 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 20:45:54.110 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 20:45:54.131 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 12345(String)
+12-02 20:45:54.161 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 20:45:54.166 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 20:45:54.166 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 12345(String)
+12-02 20:45:54.170 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 0
+12-02 20:46:08.813 [ WARN] [                    o.s.w.s.PageNotFound:1251] - No mapping for GET /
+12-02 20:46:08.923 [ WARN] [                    o.s.w.s.PageNotFound:1251] - No mapping for GET /favicon.ico
+12-02 20:46:40.136 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019133131, password:12345
+12-02 20:46:40.139 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 20:46:40.141 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019133131(String), 12345(String)
+12-02 20:46:40.144 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 20:46:40.145 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 20:46:40.145 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 2019133131(String), 12345(String)
+12-02 20:46:40.150 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 20:47:32.617 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? 
+12-02 20:47:32.617 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==> Parameters: 2019133132(String)
+12-02 20:47:32.618 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - <==      Total: 0
+12-02 20:47:32.620 [DEBUG] [                      c.g.g.m.A.addAdmin:159] - ==>  Preparing: INSERT INTO admin (adminId,adminName,password,courseName,image,registerTime) VALUES (?,?,?,?,?,?) 
+12-02 20:47:32.621 [DEBUG] [                      c.g.g.m.A.addAdmin:159] - ==> Parameters: 2019133132(String), kkkk(String), 12345(String), 后端JAVA(String), null, 2020-12-02:20-47-32(String)
+12-02 20:47:32.633 [DEBUG] [                      c.g.g.m.A.addAdmin:159] - <==    Updates: 1
+12-02 20:49:43.456 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019777, password:5555
+12-02 20:49:43.458 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 20:49:43.460 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019777(String), 5555(String)
+12-02 20:49:43.466 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 1
+12-02 20:51:36.864 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 20:51:36.906 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 14956 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 20:51:36.908 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 20:51:37.379 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 20:51:37.385 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 20:51:37.405 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+12-02 20:51:37.723 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 20:51:37.728 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 20:51:37.729 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 20:51:37.729 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 20:51:37.793 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 20:51:37.793 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 842 ms
+12-02 20:51:38.337 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 20:51:38.355 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 20:51:38.372 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 20:51:38.381 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.771 seconds (JVM running for 3.629)
+12-02 20:52:06.067 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 20:52:06.067 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 20:52:06.073 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
+12-02 20:52:06.161 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:2019133132, password:12345
+12-02 20:52:06.176 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 20:52:06.419 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 20:52:06.426 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 20:52:06.444 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 2019133132(String), 12345(String)
+12-02 20:52:06.458 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 20:52:06.463 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 20:52:06.464 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: 2019133132(String), 12345(String)
+12-02 20:52:06.467 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 21:18:21.858 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 21:18:21.908 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 11944 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 21:18:21.910 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 21:18:22.433 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 21:18:22.439 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 21:18:22.461 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+12-02 21:18:22.827 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 21:18:22.835 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 21:18:22.835 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 21:18:22.836 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 21:18:22.902 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 21:18:22.902 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 938 ms
+12-02 21:18:23.574 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 21:18:23.595 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 21:18:23.613 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 21:18:23.624 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.071 seconds (JVM running for 3.991)
+12-02 21:20:02.207 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 21:20:02.208 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 21:20:02.213 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 5 ms
+12-02 21:20:02.307 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:superAdmin, password:123456
+12-02 21:20:02.322 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 21:20:02.627 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 21:20:02.633 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 21:20:02.650 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 21:20:02.665 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 21:20:02.670 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 21:20:02.671 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 21:20:02.675 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 21:22:20.909 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? 
+12-02 21:22:20.910 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==> Parameters: 2019133132(String)
+12-02 21:22:20.913 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - <==      Total: 1
+12-02 21:22:20.914 [DEBUG] [          c.g.g.m.A.deleteAdminByAdminId:159] - ==>  Preparing: DELETE FROM admin WHERE adminId=? 
+12-02 21:22:20.914 [DEBUG] [          c.g.g.m.A.deleteAdminByAdminId:159] - ==> Parameters: 2019133132(String)
+12-02 21:22:20.917 [DEBUG] [          c.g.g.m.A.deleteAdminByAdminId:159] - <==    Updates: 1
+12-02 21:22:20.918 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 45] - 删除管理员：adminId2019133132
+12-02 21:22:35.864 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? 
+12-02 21:22:35.864 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - ==> Parameters: 2019133130(String)
+12-02 21:22:35.865 [DEBUG] [           c.g.g.m.A.queryAdminByAdminId:159] - <==      Total: 0
+12-02 21:44:23.950 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-02 21:44:23.993 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 16096 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-02 21:44:23.994 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-02 21:44:24.502 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-02 21:44:24.508 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-02 21:44:24.530 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+12-02 21:44:24.882 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-02 21:44:24.890 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-02 21:44:24.891 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-02 21:44:24.892 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-02 21:44:24.962 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-02 21:44:24.962 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 905 ms
+12-02 21:44:25.569 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-02 21:44:25.589 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-02 21:44:25.607 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-02 21:44:25.617 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.966 seconds (JVM running for 3.892)
+12-02 21:44:48.047 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-02 21:44:48.048 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-02 21:44:48.057 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 9 ms
+12-02 21:44:48.154 [ INFO] [              c.g.g.s.p.UserServiceProxy: 46] - 用户登录：userId:superAdmin, password:123456
+12-02 21:44:48.171 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-02 21:44:48.425 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-02 21:44:48.432 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
+12-02 21:44:48.452 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 21:44:48.465 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
+12-02 21:44:48.471 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM admin WHERE adminId=? AND password=? 
+12-02 21:44:48.471 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - ==> Parameters: superAdmin(String), 123456(String)
+12-02 21:44:48.473 [DEBUG] [ c.g.g.m.A.queryAdminByUserIdAndPassword:159] - <==      Total: 1
+12-02 21:46:41.354 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 39] - 添加课程：courseId--4,courseName--PHP
+12-02 21:46:41.359 [DEBUG] [         c.g.g.m.C.queryCourseByCourseId:159] - ==>  Preparing: SELECT * FROM course WHERE courseId=? 
+12-02 21:46:41.359 [DEBUG] [         c.g.g.m.C.queryCourseByCourseId:159] - ==> Parameters: 4(Integer)
+12-02 21:46:41.361 [DEBUG] [         c.g.g.m.C.queryCourseByCourseId:159] - <==      Total: 0
+12-02 21:46:41.363 [DEBUG] [                     c.g.g.m.C.addCourse:159] - ==>  Preparing: INSERT INTO course (courseId,courseName,addTime) VALUES (?,?,?) 
+12-02 21:46:41.364 [DEBUG] [                     c.g.g.m.C.addCourse:159] - ==> Parameters: 4(Integer), PHP(String), 2020-12-02:21-46-41(String)
+12-02 21:46:41.375 [DEBUG] [                     c.g.g.m.C.addCourse:159] - <==    Updates: 1
+12-02 21:46:58.185 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 39] - 添加课程：courseId--3,courseName--PHP
+12-02 21:46:58.188 [DEBUG] [         c.g.g.m.C.queryCourseByCourseId:159] - ==>  Preparing: SELECT * FROM course WHERE courseId=? 
+12-02 21:46:58.189 [DEBUG] [         c.g.g.m.C.queryCourseByCourseId:159] - ==> Parameters: 3(Integer)
+12-02 21:46:58.191 [DEBUG] [         c.g.g.m.C.queryCourseByCourseId:159] - <==      Total: 1
+12-02 22:51:24.432 [ WARN] [                      c.z.h.p.HikariPool:787] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h3m35s902ms520µs500ns).

@@ -1,5 +1,7 @@
 package com.geek.geekstudio;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.geek.geekstudio.mapper.UserMapper;
 import com.geek.geekstudio.model.po.UserPO;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
@@ -44,5 +48,15 @@ class GeekstudioApplicationTests {
         helper.setFrom("2534232295@qq.com");
         helper.setTo("wangjiahui20011014@163.com");
         javaMailSender.send(mimeMessage);
+    }
+    @Test
+    void testJSON (){
+        String a="{'userId':'superAdmin'}";
+        JSONObject json= JSON.parseObject(a);
+        for(Map.Entry<String, Object> b:json.entrySet()){
+            System.out.println();
+        }
+        json.entrySet();
+        String refresh_Token= (String) json.get("");
     }
 }

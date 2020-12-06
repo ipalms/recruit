@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.geekstudio.mapper.AdminMapper">
+    <!-- 如果需要封装特定需要的内容  暂时不用
+    <resultMap id="adminPO" type="com.geek.geekstudio.model.po.AdminPO">
+        <result column="id" property="id"/>
+        <result column="adminId" property="adminId"/>
+        <result column="adminName" property="adminName"/>
+        <result column="password" property="password"/>
+        <result column="courseName" property="courseName"/>
+        <result column="image" property="image"/>
+        <result column="registerTime" property="registerTime"/>
+        <result column="type" property="type"/>
+    </resultMap>
+    -->
+
+
+    <select id="queryAdminTotal" resultType="int">
+        select count(*) from admin
+        <where>
+            <if test="courseName!=null and courseName!= '' and courseName != 'null' ">
+                AND admin.courseName=#{courseName}
+            </if>
+            <if test="adminName!=null and adminName!= '' and adminName != 'null' ">
+                AND admin.adminName LIKE CONCAT('%',#{adminName},'%')
+            </if>
+            <if test="adminId!=null and adminId!= '' and adminId != 'null' ">
+                AND admin.adminId=#{adminId}
+            </if>
+            AND admin.type='admin'
+        </where>
+    </select>
+
+    <select id="queryAdmins" resultType="adminPO">
+        select id,adminId,adminName,courseName,type  from admin
+        <where>
+            <if test="courseName!=null and courseName!= '' and courseName != 'null' ">
+                AND admin.courseName=#{courseName}
+            </if>
+            <if test="adminName!=null and adminName!= '' and adminName != 'null' ">
+                AND admin.adminName LIKE CONCAT('%',#{adminName},'%')
+            </if>
+            <if test="adminId!=null and adminId!= '' and adminId != 'null' ">
+                AND admin.adminId=#{adminId}
+            </if>
+            AND admin.type='admin'
+        </where>
+        ORDER BY id LIMIT #{start},#{rows}
+    </select>
+</mapper>

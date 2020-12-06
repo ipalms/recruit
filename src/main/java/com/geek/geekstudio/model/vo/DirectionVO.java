@@ -11,9 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DirectionVO {
-    private int id;
     private int courseId;
-    private String useId;
-    private String courseName;
+    private String userId;
     private String addTime;
+    private String courseName;
 }

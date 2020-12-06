@@ -8,7 +8,7 @@ public class ExceptionCode {
     //操作失败
     public static final int FAILED = -1;
     //操作成功
-    public static final int SUCCESS = 0;
+    public static final int SUCCESS = 200;
     //文件上传失败
     public static final int FILE_ERROR = 405;
     //用户已经存在--不能再注册
@@ -21,6 +21,8 @@ public class ExceptionCode {
     public static final int TOKEN_MISS=425;
     //token过期
     public static final int TOKEN_EXPIRED=430;
+    //token过期
+    public static final int REFRESH_TOKEN_EXPIRED=432;
     //账号或密码错误
     public static final int USERNAME_OR_PASSWORD_WRONG=435;
     //新生还没有激活

@@ -23,7 +23,7 @@ public class Filter0_EncodingFilter implements Filter {
         //解决跨域
         httpResponse.setHeader("Access-Control-Allow-Credentials","true");
         httpResponse.setHeader("Access-Control-Allow-Origin", httpRequest.getHeader("Origin"));
-        httpResponse.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, token");
+        httpResponse.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, token, refreshToken");
         httpResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
         //httpResponse.setHeader("Access-Control-Max-Age", "1728000");
         if (httpRequest.getMethod().equals("OPTIONS")) {

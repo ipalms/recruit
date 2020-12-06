@@ -1,26 +1,64 @@
 package com.geek.geekstudio.handler;
 
-import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.geek.geekstudio.exception.*;
+import com.geek.geekstudio.model.vo.ErrorMsg;
 import com.geek.geekstudio.model.vo.RestInfo;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.mail.MessagingException;
 import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *  全局异常处理
+ *  全局异常处理  若方法仅返回json格式可以使用@ResrControllerAdvice 可以使用log记录异常
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     /**
-     * 参数校验错误抛出的异常（JSR303 标准的系列注解校验注解以及@Validated）
+     * 校验错误拦截处理（使用@Validated注解抛出）
+     */
+    @ResponseBody
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public RestInfo validationBodyException(MethodArgumentNotValidException methodArgumentNotValidException) {
+        BindingResult result = methodArgumentNotValidException.getBindingResult();
+        List<ErrorMsg> errorList = new ArrayList<>();
+        if (result.hasErrors()) {
+            List<ObjectError> errors = result.getAllErrors();
+            if (errors != null) {
+                errors.forEach(p -> {
+                    FieldError fieldError = (FieldError) p;
+                    errorList.add(new ErrorMsg(ExceptionCode.Parameter_Error, "填写的属性"+fieldError.getField()+"不合规范",fieldError.getDefaultMessage()));
+                });
+            }
+        }
+        return handleErrorInfo(ExceptionCode.Parameter_Error, "参数有误",errorList);
+    }
+
+    /**
+     * 参数类型转换错误
+     */
+    @ResponseBody
+    @ExceptionHandler(HttpMessageConversionException.class)
+    public RestInfo parameterTypeException(HttpMessageConversionException httpMessageConversionException) {
+        return handleErrorInfo(ExceptionCode.Parameter_Error, httpMessageConversionException.getMessage());
+    }
+
+    /**
+     * 参数校验错误抛出的异常（@Valid注解抛出）
      * @param violationException
      * @return
      */
@@ -116,13 +154,16 @@ public class GlobalExceptionHandler {
 
     /**
      * token过期处理  前端会会重新请求一个token
-     * @param tokenExpiredException
+     * @param expiredJwtException
      * @return
      */
-    @ExceptionHandler(TokenExpiredException.class)
+    @ExceptionHandler(ExpiredJwtException.class)
     @ResponseBody
-    public RestInfo tokenExpiredExceptionHandler(TokenExpiredException tokenExpiredException){
-        return handleErrorInfo(ExceptionCode.TOKEN_EXPIRED, tokenExpiredException.getMessage());
+    public RestInfo tokenExpiredExceptionHandler(ExpiredJwtException expiredJwtException){
+        if(expiredJwtException.getMessage().equals("token过期了")){
+            return  handleErrorInfo(ExceptionCode.TOKEN_EXPIRED, expiredJwtException.getMessage());
+        }
+        return handleErrorInfo(ExceptionCode.REFRESH_TOKEN_EXPIRED, expiredJwtException.getMessage());
     }
 
     /**
@@ -171,7 +212,6 @@ public class GlobalExceptionHandler {
 
 /*    *//**
      * exception异常，用于捕获其他异常(未定义出来的) 捕捉以后不能查看异常所在
-     * @param exception
      * @return
      *//*
     @ExceptionHandler(Exception.class)

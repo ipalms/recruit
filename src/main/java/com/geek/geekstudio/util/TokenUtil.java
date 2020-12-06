@@ -1,62 +1,81 @@
 package com.geek.geekstudio.util;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.auth0.jwt.interfaces.JWTVerifier;
+
+
 import com.geek.geekstudio.model.po.UserPO;
+import io.jsonwebtoken.*;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Token工具类
  */
 @Component
 public class TokenUtil {
+    //密钥（盐）
+    private static final  String JWT_SECRET="7786df7fc3a34e26a61c034d5ec8245d";
 
-    @Autowired
-    private RedisTemplate<Object,Object> redisTemplate;
-
-    private static final String secret = "coffee";
-    private static final String Subject = "recruit";
-
-    public String create(UserPO userPO, Integer expireSeconds) {
-        long time = System.currentTimeMillis();
-        return JWT.create()
-                /*设置 载荷 Payload*/
-//                .withIssuer(Issuer)//签名是有谁生成 例如 服务器
-//                .withSubject(Subject)//签名的主题
-                .withAudience(userPO.getUserId() + "")//签名的观众 也可以理解谁接受签名的
-                .withIssuedAt(new Date(time)) //生成签名的时间
-                .withExpiresAt(new Date(time + expireSeconds * 1000))//签名过期的时间
-                /*签名 Signature */
-                .sign(Algorithm.HMAC256(userPO.getPassword()));
+    /**
+     * 创建jwt
+     * @param subject 签收主体-userID
+     * @param ttlMillis 过期的时间长度
+     * @param type 对象的类型
+     * @throws Exception
+     */
+    public static String createJWT(String subject,String type, long ttlMillis) {
+        //指定签名的时候使用的签名算法--header那部分
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+        //生成JWT的时间
+        long nowMillis = System.currentTimeMillis();
+        Date now = new Date(nowMillis);
+        //创建payload的私有声明
+        Map<String, Object> claims = new HashMap<String, Object>();
+        claims.put("type", type);
+        //生成签名的时候使用的秘钥secret,这个方法本地封装了的
+        SecretKey key = generalKey();
+        //下面就是在为payload添加各种标准声明和私有声明了
+        JwtBuilder builder = Jwts.builder() //这里其实就是new一个JwtBuilder，设置jwt的body
+                .setClaims(claims)          //如果有私有声明，一定要先设置这个自己创建的私有的声明，这个是给builder的claim赋值，一旦写在标准的声明赋值之后，就是覆盖了那些标准的声明的
+                .setIssuedAt(now)           //iat: jwt的签发时间
+                .setSubject(subject)        //sub(Subject)：代表这个JWT的主体，即它的所有人，这个是一个json格式的字符串，可以存放什么userId作为什么用户的唯一标志。
+                .signWith(signatureAlgorithm, key);//设置签名使用的签名算法和签名使用的秘钥
+        if (ttlMillis >= 0) {
+            long expMillis = nowMillis + ttlMillis;
+            Date exp = new Date(expMillis);
+            builder.setExpiration(exp);     //设置过期时间
+        }
+        return builder.compact();           //压缩为jwt
     }
 
-    public DecodedJWT verify(String token) {
-        try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(secret))
-                    .build();
-            return verifier.verify(token);
-        } catch (JWTVerificationException exception) {
-            exception.printStackTrace();
-        }
-        return null;
+    /**
+     * 解密jwt
+     * @param jwt
+     * @throws ExpiredJwtException  token过期
+     */
+    public static Claims parseJWT(String jwt) throws ExpiredJwtException{
+        SecretKey key = generalKey();  //签名秘钥，和生成的签名的秘钥一模一样
+        Claims claims = Jwts.parser()  //得到DefaultJwtParser
+                .setSigningKey(key)         //设置签名的秘钥
+                .parseClaimsJws(jwt).getBody();//设置需要解析的jwt
+        return claims;
     }
 
-    public DecodedJWT verify1(String token) {
-        try {
-            DecodedJWT verify = JWT.require(Algorithm.HMAC256(secret)).build().verify(token);
-            return verify;
-        } catch (JWTVerificationException e) {
-            throw new TokenExpiredException("资源访问受限!请重新登录！");
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        return null;
+    /**
+     * 由字符串生成加密key
+     * @return
+     */
+    public static SecretKey generalKey(){
+        //String stringKey = Constant.JWT_SECRET;//本地配置文件中加密的密文
+        byte[] encodedKey = Base64.decodeBase64(JWT_SECRET);
+        SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");// 根据给定的字节数组使用AES加密算法构造一个密钥
+        return key;
     }
 }

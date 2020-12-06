@@ -1,4 +1,4 @@
-package com.geek.geekstudio.model.po;
+package com.geek.geekstudio.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,16 +8,16 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- *管理员类，对应数据库direction表
+ *封装前端的direction相关数据
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DirectionPO {
+public class DirectionDTO {
     private int id;
-    @NotNull
+    @NotNull(message = "方向ID不能为空！")
     private int courseId;
-    @NotBlank
+    @NotBlank@NotNull(message = "用户ID不能为空！")
     private String userId;
     private String addTime;
 }
