@@ -6,7 +6,7 @@ package com.geek.geekstudio.exception;
 public class ExceptionCode {
 
     //操作失败
-    public static final int FAILED = -1;
+    public static final int FAILED = 400;
     //操作成功
     public static final int SUCCESS = 200;
     //文件上传失败

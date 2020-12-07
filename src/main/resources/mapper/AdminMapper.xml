@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.geek.geekstudio.mapper.AdminMapper">
+<mapper namespace="com.geek.geekstudio.mapper.SuperAdminMapper">
     <!-- 如果需要封装特定需要的内容  暂时不用
     <resultMap id="adminPO" type="com.geek.geekstudio.model.po.AdminPO">
         <result column="id" property="id"/>

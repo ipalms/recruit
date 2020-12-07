@@ -8,5 +8,5 @@ import javax.mail.MessagingException;
 
 public interface JavaMailService {
     //发送激活邮件
-    void sendActiveMail(String userId,String mail) throws MessagingException;
+    void sendActiveMail(String userId,String mail,Integer codeType) throws MessagingException;
 }

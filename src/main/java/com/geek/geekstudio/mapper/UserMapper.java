@@ -5,6 +5,7 @@ import com.geek.geekstudio.model.po.UserPO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -37,4 +38,15 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE userId=#{userId} AND password=#{password}")
     UserPO queryUserByUserIdAndPassword(@Param("userId") String userId,@Param("password") String password);
 
+    /**
+     *修改密码
+     */
+    @Update("UPDATE user SET password=#{newPassword} WHERE userId=#{userId}")
+    void updatePassword(@Param("userId")String userId,@Param("newPassword") String newPassword);
+
+    /**
+     *设置介绍
+     */
+    @Update("UPDATE user SET introduce=#{introduce} WHERE userId=#{userId}")
+    void updateIntroduce(String userId, String introduce);
 }

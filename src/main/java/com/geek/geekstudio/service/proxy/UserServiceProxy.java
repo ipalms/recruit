@@ -37,9 +37,9 @@ public class UserServiceProxy implements UserService {
      *发送验证邮箱
      */
     @Override
-    public RestInfo sendActiveMail(String userId,String mail) throws MessagingException {
-        log.info("用户注册发送邮箱验证：userId:"+userId+",mail:"+mail);
-        return userService.sendActiveMail(userId,mail);
+    public RestInfo sendActiveMail(String userId,String mail,Integer codeType) throws MessagingException {
+        log.info("向用户发送邮件：userId:"+userId+",mail:"+mail+",codeType:"+codeType);
+        return userService.sendActiveMail(userId,mail,codeType);
     }
     /**
      * 统一登录（管理员和新生）
@@ -67,6 +67,34 @@ public class UserServiceProxy implements UserService {
         return userService.resetToken(refreshToken);
     }
 
+    /**
+     *用户修改密码
+     */
+    @Override
+    public RestInfo resetPassword(UserDTO userDTO, String token) {
+        log.info("用户修改密码：userId:"+userDTO.getUserId()+"修改密码, 新密码newPassword:"+userDTO.getNewPassword());
+        return userService.resetPassword(userDTO,token);
+    }
+
+    @Override
+    public RestInfo checkUserLegality(UserDTO userDTO) throws ParameterError {
+        return userService.checkUserLegality(userDTO);
+    }
+
+    /**
+     * 用户忘记密码-设置新密码
+     */
+    @Override
+    public RestInfo findBackPassword(UserDTO userDTO) throws EmailCodeWrongException {
+        log.info("用户忘记密码校验：userId:"+userDTO.getUserId()+", 新密码newPassword:"+userDTO.getNewPassword()+", 验证码code:"+userDTO.getActiveCode());
+        return userService.findBackPassword(userDTO);
+    }
+
+    @Override
+    public RestInfo setIntroduce(UserDTO userDTO) {
+        return userService.setIntroduce(userDTO);
+    }
+
     @Override
     public RestInfo chooseCourse(DirectionDTO directionDTO) throws ParameterError {
         return userService.chooseCourse(directionDTO);
@@ -76,6 +104,8 @@ public class UserServiceProxy implements UserService {
     public RestInfo delCourse(DirectionDTO directionDTO) throws ParameterError {
         return userService.delCourse(directionDTO);
     }
+
+
 
 
 

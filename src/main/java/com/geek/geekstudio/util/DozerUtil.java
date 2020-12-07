@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 数据模型之间相互转换
+ * 双锁检测单例
  */
 
 @NoArgsConstructor

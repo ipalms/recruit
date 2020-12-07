@@ -1,22 +1,17 @@
 package com.geek.geekstudio.service.impl;
 
 import com.geek.geekstudio.exception.*;
-import com.geek.geekstudio.mapper.AdminMapper;
+import com.geek.geekstudio.mapper.SuperAdminMapper;
 import com.geek.geekstudio.mapper.DirectionMapper;
 import com.geek.geekstudio.mapper.UserMapper;
 import com.geek.geekstudio.model.dto.DirectionDTO;
 import com.geek.geekstudio.model.dto.UserDTO;
 import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.UserPO;
-import com.geek.geekstudio.model.vo.AdminVO;
 import com.geek.geekstudio.model.vo.RestInfo;
-import com.geek.geekstudio.model.vo.UserVO;
-import com.geek.geekstudio.service.JavaMailService;
 import com.geek.geekstudio.service.UserService;
 import com.geek.geekstudio.util.DateUtil;
-import com.geek.geekstudio.util.DozerUtil;
 import com.geek.geekstudio.util.TokenUtil;
-import com.geek.geekstudio.util.UuidUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -48,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
     @Autowired
-    AdminMapper adminMapper;
+    SuperAdminMapper adminMapper;
     @Autowired
     DirectionMapper directionMapper;
     @Autowired
@@ -63,11 +55,12 @@ public class UserServiceImpl implements UserService {
     //可以让事件在遇到非运行时异常时也回滚 回到没注册状态
     @Transactional(rollbackFor = Exception.class)
     public RestInfo register(UserDTO userDTO) throws UserRegisteredException, EmailCodeWrongException {
+        String active=null;
         if(userMapper.queryUserByUserId(userDTO.getUserId())!=null){
             //再检验一遍学号是否被注册了
             throw new UserRegisteredException();
         }
-        String active =(String) redisTemplate.opsForValue().get(userDTO.getUserId());
+        active=(String) redisTemplate.opsForValue().get(userDTO.getUserId());
         if(active==null||active.length()==0){
             throw new EmailCodeWrongException("请点击再次发送邮件");
         }
@@ -82,9 +75,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public RestInfo sendActiveMail(String userId,String mail) throws  MessagingException {
-        javaMailServiceImpl.sendActiveMail(userId,mail);
-        return RestInfo.success("激活邮件发送成功",null);
+    public RestInfo sendActiveMail(String userId,String mail,Integer codeType) throws  MessagingException {
+        javaMailServiceImpl.sendActiveMail(userId,mail,codeType);
+        return RestInfo.success("邮件发送成功",null);
     }
 
     /**
@@ -172,6 +165,54 @@ public class UserServiceImpl implements UserService {
         data.put("token",token);
         data.put("refreshToken",refreshToken);
         return RestInfo.success("重新生成token成功！",data);
+    }
+
+    /**
+     *用户修改密码
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public RestInfo resetPassword(UserDTO userDTO, String token) {
+        userMapper.updatePassword(userDTO.getUserId(),userDTO.getNewPassword());
+        //删除原先的token-refreshToken
+        redisTemplate.delete(token);
+        redisTemplate.delete(userDTO.getRefreshToken());
+        return RestInfo.success("修改密码成功！",null);
+    }
+
+    @Override
+    public RestInfo checkUserLegality(UserDTO userDTO) throws ParameterError {
+        UserPO userPO=userMapper.queryUserByUserId(userDTO.getUserId());
+        if(userPO==null){
+            throw new ParameterError("学号不存在！");
+        }
+        if(!userDTO.getMail().equals(userPO.getMail())){
+            throw new ParameterError("请检查学号或邮箱正确性！");
+        }
+        return RestInfo.success("可发送找回密码邮件",null);
+    }
+
+    /**
+     * 用户忘记密码-设置新密码
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public RestInfo findBackPassword(UserDTO userDTO) throws EmailCodeWrongException {
+        String active=(String) redisTemplate.opsForValue().get(userDTO.getUserId());
+        if(active==null||active.length()==0){
+            throw new EmailCodeWrongException("请点击再次发送邮件");
+        }
+        if(!userDTO.getActiveCode().equals(active)){
+            throw new EmailCodeWrongException("验证码输入错误，请重新输入");
+        }
+        userMapper.updatePassword(userDTO.getUserId(),userDTO.getNewPassword());
+        return RestInfo.success("更改密码成功，请您用新密码登录！",null);
+    }
+
+    @Override
+    public RestInfo setIntroduce(UserDTO userDTO) {
+        userMapper.updateIntroduce(userDTO.getUserId(),userDTO.getIntroduce());
+        return RestInfo.success("设置签名成功！",null);
     }
 
     /**

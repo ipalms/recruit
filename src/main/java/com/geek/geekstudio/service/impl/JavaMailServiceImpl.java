@@ -28,25 +28,31 @@ public class JavaMailServiceImpl implements JavaMailService {
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
 
     /**
-     * 发送激活邮件
+     * 发送激活邮件 -- 发送找回密码邮件
      */
     //回滚到没发送验证码
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void sendActiveMail(String userId, String mail) throws MessagingException {
+    public void sendActiveMail(String userId, String mail,Integer codeType) throws MessagingException {
             String code= (String) redisTemplate.opsForValue().get(userId);
             if(code!=null){
-                log.info("用户"+userId+":已经发送过激活码将删除第一次的验证码"+code);
+                log.info("用户"+userId+":已经发送过验证码将删除第一次的验证码-->"+code);
                 //删除掉之前的验证码
                 redisTemplate.delete(userId);
             }
             //创建一个消息邮件
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
-            //邮件设置  开启html支持
-            helper.setSubject("极客网注册激活邮件");
             String activeCode=UuidUtil.getActiveCode();
-            helper.setText("亲，您的验证码是："+activeCode+"，请尽快填写哦~~",true);
+            //邮件设置  开启html支持
+            if(codeType==1){
+                helper.setSubject("极客网注册激活邮件");
+                helper.setText("亲，您的验证码是："+activeCode+"，请尽快填写哦~~",true);
+            }
+            if(codeType==2){
+                helper.setSubject("找回密码邮件");
+                helper.setText("找回密码校验码为："+activeCode+"，请尽快填写哦~~",true);
+            }
             helper.setFrom(publicEmailAccount);
             helper.setTo(mail);
             javaMailSender.send(mimeMessage);

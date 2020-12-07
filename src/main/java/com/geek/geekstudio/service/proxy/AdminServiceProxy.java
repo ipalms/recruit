@@ -1,19 +1,11 @@
 package com.geek.geekstudio.service.proxy;
 
-import com.geek.geekstudio.exception.NoUserException;
-import com.geek.geekstudio.exception.ParameterError;
-import com.geek.geekstudio.exception.PermissionDeniedException;
-import com.geek.geekstudio.exception.UserRegisteredException;
-import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.AdminService;
 import com.geek.geekstudio.service.impl.AdminServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Slf4j
@@ -22,43 +14,10 @@ public class AdminServiceProxy implements AdminService {
     AdminServiceImpl adminService;
 
     /**
-     * 添加管理员
-     */
-    public RestInfo addAdmin(AdminPO adminPO) throws UserRegisteredException {
-        log.info("添加管理员 adminPO —— adminId:"+adminPO.getAdminId()+" ,userName:"+adminPO.getAdminName()
-                + ", password:"+adminPO.getPassword()+ ", courseName:"+adminPO.getCourseName());
-        return adminService.addAdmin(adminPO);
-    }
-
-    /**
-     * 删除管理员
+     *报名人数（包括前端、后端等具体方向）
      */
     @Override
-    public RestInfo delAdmin(String userId) throws NoUserException {
-        log.info("删除管理员 adminId="+userId);
-        return adminService.delAdmin(userId);
+    public RestInfo countAllUser(Integer courseId) {
+        return adminService.countAllUser(courseId);
     }
-
-    @Override
-    public RestInfo delAdmins(List<Object> userIdList) {
-        return adminService.delAdmins(userIdList);
-    }
-
-    /**
-     * 更新一个管理员信息
-     */
-    @Override
-    public RestInfo updateAdmin(AdminPO adminPO) throws UserRegisteredException, PermissionDeniedException {
-        log.info("更新管理员 adminId="+adminPO.getId()+"，password="+adminPO.getPassword());
-        return adminService.updateAdmin(adminPO);
-    }
-
-    /**
-     * 查询管理员
-     */
-    @Override
-    public RestInfo queryAdmins(int page, int rows, String courseName, String adminName, String adminId) {
-        return adminService.queryAdmins(page,rows,courseName,adminName,adminId);
-    }
-
 }

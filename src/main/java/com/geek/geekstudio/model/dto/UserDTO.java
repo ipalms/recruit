@@ -41,4 +41,7 @@ public class UserDTO {
     //较po没有的属性
     @NotBlank(message ="验证码不为空",groups ={UserGroupValidated.RegisterValidated.class})
     private String activeCode;
+    private String newPassword;
+    private String refreshToken;
+    private Integer codeType;
 }

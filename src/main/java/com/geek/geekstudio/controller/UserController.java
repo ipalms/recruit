@@ -6,7 +6,7 @@ import com.geek.geekstudio.annotaion.PassToken;
 import com.geek.geekstudio.annotaion.UserLoginToken;
 import com.geek.geekstudio.exception.*;
 import com.geek.geekstudio.group.UserGroupValidated;
-import com.geek.geekstudio.mapper.AdminMapper;
+import com.geek.geekstudio.mapper.SuperAdminMapper;
 import com.geek.geekstudio.mapper.UserMapper;
 import com.geek.geekstudio.model.dto.DirectionDTO;
 import com.geek.geekstudio.model.dto.UserDTO;
@@ -15,17 +15,12 @@ import com.geek.geekstudio.model.po.UserPO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.proxy.UserServiceProxy;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -41,7 +36,7 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
     @Autowired
-    AdminMapper adminMapper;
+    SuperAdminMapper adminMapper;
 
     /**
      * 新生注册 统一json格式提交  用UserDTO封装  采用分组校验
@@ -88,11 +83,12 @@ public class UserController {
 
     /**
      * 发送用户激活邮件 包含重复发送（携带用户ID存储redis判断）  用UserDTO封装（对于只有两个参数来说还可以用Map封装获得属性）
+     * 复用到发送忘记密码邮件
      */
     @PassToken
     @PostMapping("/sendActiveMail")
     public RestInfo sendActiveMail(@RequestBody @Validated(UserGroupValidated.SendMailValidated.class) UserDTO userDTO)throws MessagingException{
-        return userServiceProxy.sendActiveMail(userDTO.getUserId(),userDTO.getMail());
+        return userServiceProxy.sendActiveMail(userDTO.getUserId(),userDTO.getMail(),userDTO.getCodeType());
     }
 
     /**
@@ -105,7 +101,7 @@ public class UserController {
     }
 
     /**
-     *注销
+     *注销--refreshToken可以使用JSONObject获得值，也可封装到对象中获取
      */
     @UserLoginToken
     @PostMapping("/logout")
@@ -124,6 +120,47 @@ public class UserController {
         JSONObject json=JSON.parseObject(refreshToken);
         String refresh_Token= (String) json.get("refreshToken");
         return userServiceProxy.resetToken(refresh_Token);
+    }
+
+    /**
+     * 用户修改密码
+     */
+    @PassToken
+    @PostMapping("/resetPassword")
+    public RestInfo resetPassword(@RequestBody UserDTO userDTO,HttpServletRequest request) throws UsernameOrPasswordIncorrectException {
+        UserPO userPO=userMapper.queryUserByUserIdAndPassword(userDTO.getUserId(),userDTO.getPassword());
+        if(userPO==null){
+            throw new UsernameOrPasswordIncorrectException("密码错误，请重新输入");
+        }
+        return userServiceProxy.resetPassword(userDTO,request.getHeader("token"));
+    }
+
+    /**
+     * 用户忘记密码校验操作
+     * 根据userId查询用户，判断其mail邮箱与所给的是相同
+     */
+    @PassToken
+    @PostMapping("/checkUserLegality")
+    public RestInfo checkUserLegality(@RequestBody UserDTO userDTO) throws ParameterError{
+        return userServiceProxy.checkUserLegality(userDTO);
+    }
+
+    /**
+     * 用户忘记密码-设置新密码
+     */
+    @PassToken
+    @PostMapping("/findBackPassword")
+    public RestInfo findBackPassword(@RequestBody UserDTO userDTO) throws EmailCodeWrongException{
+        return userServiceProxy.findBackPassword(userDTO);
+    }
+
+    /**
+     * 用户设置简介
+     */
+    @PassToken
+    @PostMapping("/setIntroduce")
+    public RestInfo setIntroduce(@RequestBody UserDTO userDTO){
+        return userServiceProxy.setIntroduce(userDTO);
     }
 
     /**
