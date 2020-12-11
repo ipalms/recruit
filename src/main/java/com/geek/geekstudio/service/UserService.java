@@ -46,9 +46,11 @@ public interface UserService {
     //撤销已选方向
     RestInfo delCourse(DirectionDTO directionDTO) throws ParameterError;;
 
+    //查询用户是否接收日常邮件
+    RestInfo queryReceiveMailStatus(String userId);
 
-
-
+    //该变用户接收日常邮件状态
+    RestInfo changeReceiveMailStatus(String userId);
 
 
 

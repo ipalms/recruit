@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LikeVO {
-    private int id;
+
+    //private int id;
     private int articleId;
     private String userId;
     private String likeTime;

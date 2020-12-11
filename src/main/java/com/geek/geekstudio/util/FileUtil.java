@@ -1,5 +1,6 @@
 package com.geek.geekstudio.util;
 
+import com.geek.geekstudio.exception.RecruitFileException;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,57 +17,48 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
- * @className: FileUtil
- * @description: 文件工具类
- *
- *
- * root_dir: 数据库配置目录
- * announce：root_dir/上传人id/
- * material:
- * software:
- * task:     root_dir/教师用户名/教师课程id/任务id/
- * work:     root_dir/教师用户名/教师课程id/学生学号-姓名/
- *
- * @author: ZSZ
- * @date: 2019/10/30 18:54
+  *image位置   rootDir/image/a.jpg
  */
 @Data
 @Component
 public class FileUtil {
 
-
-    private Path fileStorageLocation; // 文件在本地存储的地址
+    private Path fileStorageLocation; // 文件在本地存储的根地址
 
     private String announceFilePath;
-
-    private String materialFilePath;
-
-    private String softwareFilePath;
 
     private String taskFilePath;
 
     private String workFilePath;
 
+    private String imageFilePath;
+
+    private String articleFilePath;
+
     //临时文件目录
     private String tmpFilePath;
 
-    /*@PostConstruct
+    /**
+     * springboot应用启动后执行的方法
+     */
+    @PostConstruct
     public void init(){
-        String rootDir = labSystemMapper.queryByKeyName("root_dir");
+        String rootDir="/all";
+        //获取绝对路径
         this.fileStorageLocation = Paths.get(rootDir).toAbsolutePath().normalize();
+        System.out.println("fileStorageLocation: "+fileStorageLocation);
         this.announceFilePath = fileStorageLocation.toString() + "/announce/";
-        this.materialFilePath = fileStorageLocation.toString() + "/material/";
-        this.softwareFilePath = fileStorageLocation.toString() + "/software/";
         this.taskFilePath = fileStorageLocation.toString() + "/task/";
         this.workFilePath = fileStorageLocation.toString() + "/work/";
+        this.imageFilePath = fileStorageLocation.toString() + "/image/";
+        this.articleFilePath = fileStorageLocation.toString() + "/article/";
         this.tmpFilePath = fileStorageLocation.toString() + "/zip/";
-
         try {
             Files.createDirectories(this.fileStorageLocation);
         } catch (Exception ex) {
             throw new RuntimeException("创建上传目录失败");
         }
-    }*/
+    }
 
     /**
      * 重新构建作业文件名
@@ -84,17 +76,15 @@ public class FileUtil {
 
     /**
      * 存储文件到系统
-     *
      * @param file 文件
      * @return 文件名
      */
-    public String storeFile(String path, MultipartFile file, String fileName) throws Exception {
+    public String storeFile(String path, MultipartFile file, String fileName) throws RecruitFileException {
         String filePath;
         try {
             if (file.isEmpty()) {
-                throw new Exception("文件为空");
+                throw new RecruitFileException("文件为空");
             }
-
             // 设置文件存储路径
             filePath= path + fileName;
             File dest = new File(filePath);
@@ -109,13 +99,13 @@ public class FileUtil {
             //覆盖同名文件
             file.transferTo(dest);// 文件写入
         } catch (IOException e) {
-            throw new Exception("文件上传失败！");
+            throw new RecruitFileException("文件上传失败！");
         }
-        //返回绝对路径去除fileStorageLocation的部分
+        //返回绝对路径去除fileStorageLocation的部分 eg:/image/a.jpg
         return path.substring(fileStorageLocation.toString().length())+fileName;
     }
 
-    public boolean deleteFile(String filePath) throws Exception {
+    public boolean deleteFile(String filePath) throws RecruitFileException {
         if(!StringUtils.isEmpty(filePath)){
             File file = new File(filePath);
             if(file.exists()){
@@ -125,7 +115,7 @@ public class FileUtil {
                     return false;
                 }
             }else{
-                throw new Exception("文件不存在！");
+                throw new RecruitFileException("文件不存在！");
             }
         }
         return false;
@@ -321,6 +311,18 @@ public class FileUtil {
         out.close();
     }
 
+    /**
+     *获得服务器上资源完整的路径
+     */
+    public String buildPath(String url){
+        return this.fileStorageLocation+url;
+    }
 
+    /**
+     *构建文章附件的存储位置
+     */
+    public String buildArticleFilePath(String articleId) {
+        return this.articleFilePath+articleId+"/";
+    }
 }
 

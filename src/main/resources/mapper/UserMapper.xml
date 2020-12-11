@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.geekstudio.mapper.UserMapper">
+
+       <!-- 数字类型（Integer）只能判空   -->
+    <select id="queryMails" resultType="String">
+         select DISTINCT u.mail from user u, direction d
+        <where>
+            <if test="courseId!=null">
+            AND d.courseId=#{courseId}
+            </if>
+            AND u.userId=d.userId AND u.receiveMail='yes'
+        </where>
+    </select>
+</mapper>

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FavoriteVO {
     //属性待定
-    private int id;
+    //private int id;
     private int articleId;
     private String userId;
     private String favoriteTime;

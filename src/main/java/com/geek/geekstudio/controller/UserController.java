@@ -9,6 +9,7 @@ import com.geek.geekstudio.group.UserGroupValidated;
 import com.geek.geekstudio.mapper.SuperAdminMapper;
 import com.geek.geekstudio.mapper.UserMapper;
 import com.geek.geekstudio.model.dto.DirectionDTO;
+import com.geek.geekstudio.model.dto.LikeDTO;
 import com.geek.geekstudio.model.dto.UserDTO;
 import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.UserPO;
@@ -181,9 +182,27 @@ public class UserController {
         return userServiceProxy.delCourse(directionDTO);
     }
 
+    /**
+     * 查询当前登录用户是否接收日常邮箱
+     */
+    @UserLoginToken
+    @GetMapping("/queryReceiveMailStatus")
+    public RestInfo queryReceiveMailStatus(@RequestParam("userId") String userId){
+        return userServiceProxy.queryReceiveMailStatus(userId);
+    }
+
+    /**
+     * 改变接收日常邮件的状态
+     */
+    @UserLoginToken
+    @PostMapping("/changeReceiveMailStatus")
+    public RestInfo changeReceiveMailStatus(@RequestBody UserDTO userDTO){
+        return userServiceProxy.changeReceiveMailStatus(userDTO.getUserId());
+    }
 
 
-   /* *//**
+
+    /* *//**
      *激活用户（使用链接的形式）
      *//*
     @PassToken

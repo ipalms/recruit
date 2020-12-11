@@ -9,7 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
-  *PO用户类，对应数据库user表    -- 一般也用DO对应数据库层
+  *PO用户类，对应数据库user表    --  一般也用DO对应数据库层
  */
 @Data
 @NoArgsConstructor
@@ -28,4 +28,5 @@ public class UserPO {
     private String introduce;
     private String grade;
     private String registerTime;
+    private String receiveMail;
 }

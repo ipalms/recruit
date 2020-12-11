@@ -49,4 +49,5 @@ public interface SuperAdminMapper {
      *查询一定条件下某一页的用户信息
      */
     List<AdminPO> queryAdmins(String courseName, String adminName, String adminId, int start, int rows);
+
 }

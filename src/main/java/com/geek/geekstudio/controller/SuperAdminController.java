@@ -87,7 +87,8 @@ public class SuperAdminController {
      * 查询管理员
      * 对于@RequestParam属性required标注true的注解，若未url中没传入此参数则程序会直接中断。
      * 对于@RequestParam属性required标注false(如果该参数也没有设置默认值)，
-     * 或未用@RequestParam标注的参数在url中没有出现，该参数的值为null
+     * 或未用@RequestParam标注的参数在url中没有出现，如果该该参数用引用类型接收（String、Integer）则的值为null
+     * 如果该参数用基本类型接收（int类型则值为0）
      */
     @UserLoginToken
     @SuperAdminPermission

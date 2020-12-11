@@ -28,5 +28,6 @@ public class UserVO {
     private String registerTime;
     private String token;
     private String activeCode;
+    private String receiveMail;
     //private String state;
 }

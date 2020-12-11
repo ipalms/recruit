@@ -60,6 +60,21 @@ public class JavaMailServiceImpl implements JavaMailService {
             redisTemplate.opsForValue().set(userId,activeCode,15, TimeUnit.MINUTES);
     }
 
+    /**
+     * 发送日常邮件
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void sendDailyMail(String mail, String title, String text) throws MessagingException {
+        //创建一个消息邮件
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+        helper.setSubject(title);
+        helper.setText(text,true);
+        helper.setFrom(publicEmailAccount);
+        helper.setTo(mail);
+        javaMailSender.send(mimeMessage);
+    }
 
 
 
@@ -68,7 +83,8 @@ public class JavaMailServiceImpl implements JavaMailService {
 
 
 
-   /* *//**
+
+    /* *//**
      * 发送激活邮件（使用链接的形式激活）
      *//*
     @Override

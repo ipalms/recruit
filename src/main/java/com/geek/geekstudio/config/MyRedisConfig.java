@@ -51,7 +51,7 @@ public class MyRedisConfig {
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory){
         RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofDays(1))  //一天后过期
+                //.entryTtl(Duration.ofDays(1))  //一天后过期
                 .disableCachingNullValues()
                 .serializeKeysWith(RedisSerializationContext.SerializationPair
                         .fromSerializer(new StringRedisSerializer()))

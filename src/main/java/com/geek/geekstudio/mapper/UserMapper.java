@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 定义对User表的数据库操作
  */
@@ -28,8 +30,8 @@ public interface UserMapper {
     /**
      *注册一个新生用户
      */
-    @Insert("INSERT INTO user (userId,userName,mail,password,major,sex,image,introduce,registerTime,grade)" +
-            " VALUES (#{userId},#{userName},#{mail},#{password},#{major},#{sex},#{image},#{introduce},#{registerTime},#{grade})")
+    @Insert("INSERT INTO user (userId,userName,mail,password,major,sex,image,introduce,registerTime,grade,receiveMail)" +
+            " VALUES (#{userId},#{userName},#{mail},#{password},#{major},#{sex},#{image},#{introduce},#{registerTime},#{grade},#{receiveMail})")
     void addUser(UserDTO userDTO);
 
     /**
@@ -49,4 +51,33 @@ public interface UserMapper {
      */
     @Update("UPDATE user SET introduce=#{introduce} WHERE userId=#{userId}")
     void updateIntroduce(String userId, String introduce);
+
+    /**
+     *更新用户的头像地址
+     */
+    @Update("UPDATE user SET image=#{image} WHERE userId=#{userId}")
+    void updateUserImage(String userId, String image);
+
+    /**
+     *查询个人是否接收日常邮件
+     */
+    @Select("SELECT receiveMail FROM user WHERE userId=#{userId}")
+    String queryReceiveMailStatus(String userId);
+
+    /**
+     *改变接收日常邮件的状态
+     */
+    @Update("UPDATE user SET receiveMail=#{newStatus} WHERE userId=#{userId}")
+    void changeReceiveMailStatus(@Param("userId") String userId,@Param("newStatus") String newStatus);
+
+    /**
+     *获取接收邮件大一同学的邮箱   如果courseId为null的话，邮箱需要去重
+     */
+    List<String> queryMails(@Param("courseId") Integer courseId);
+
+    /**
+     *通过id返回邮箱
+     */
+    @Select("SELECT mail FROM user WHERE userId=#{userId} AND receiveMail='yes' ")
+    String queryMailByUserId(String userId);
 }

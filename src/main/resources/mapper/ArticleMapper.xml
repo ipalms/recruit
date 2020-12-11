@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.geekstudio.mapper.ArticleMapper">
+        <!-- 封装字段名不对应的对象 -->
+        <!--<resultMap id="articleInfoVO" type="com.geek.geekstudio.model.vo.ArticleInfoVO">
+            <result column="id" property="id"/>
+            <result column="adminId" property="adminId"/>
+            <result column="adminName" property="adminName"/>
+            <result column="password" property="password"/>
+            <result column="courseName" property="courseName"/>
+            <result column="image" property="image"/>
+            <result column="registerTime" property="registerTime"/>
+            <result column="type" property="type"/>
+        </resultMap>-->
+
+
+    <!--连接查询获得多表之间的想要数据-->
+    <select id="queryArticleTotal" resultType="int">
+        select COUNT(ar.id) from article ar,admin ad,course c
+        <where>
+            <if test="courseName!=null and courseName!= '' and courseName != 'null' ">
+                AND c.courseName LIKE CONCAT('%',#{courseName},'%')
+            </if>
+            <if test="adminName!=null and adminName!= '' and adminName != 'null' ">
+                AND ad.adminName LIKE CONCAT('%',#{adminName},'%')
+            </if>
+            AND ar.userId=ad.adminId AND ar.courseId=c.courseId
+        </where>
+    </select>
+
+    <select id="queryArticle" resultType="articleInfoVO">
+        select ar.id id,c.courseName,ad.adminId,ad.adminName,ad.image,
+        ar.title,ar.addTime,ar.articleType,ar.likeCount
+        from article ar,admin ad,course c
+        <where>
+            <if test="courseName!=null and courseName!= '' and courseName != 'null' ">
+                AND c.courseName LIKE CONCAT('%',#{courseName},'%')
+            </if>
+            <if test="adminName!=null and adminName!= '' and adminName != 'null' ">
+                AND ad.adminName LIKE CONCAT('%',#{adminName},'%')
+            </if>
+            AND ar.userId=ad.adminId AND ar.courseId=c.courseId
+        </where>
+        ORDER BY ar.id DESC  LIMIT #{start},#{rows}
+    </select>
+
+
+    <select id="queryArticleById" resultType="articleInfoVO">
+        select ar.id id,c.courseName,ad.adminId,ad.adminName,ad.image,
+        ar.title,ar.addTime,ar.articleType,ar.likeCount,ar.content
+        from article ar,admin ad,course c
+        <where>
+            ar.id=#{id} AND ar.userId=ad.adminId AND ar.courseId=c.courseId
+        </where>
+    </select>
+
+    <select id="queryFavoriteArticle" resultType="favoriteInfoVO">
+        select ar.id id,c.courseName,ad.adminId,ad.adminName,ad.image,
+        ar.title,ar.articleType,ar.likeCount
+        from article ar,admin ad,course c
+        <where>
+            ar.id=#{id} AND ar.userId=ad.adminId AND ar.courseId=c.courseId
+        </where>
+    </select>
+</mapper>

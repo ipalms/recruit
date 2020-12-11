@@ -9,7 +9,7 @@ public class ExceptionCode {
     public static final int FAILED = 400;
     //操作成功
     public static final int SUCCESS = 200;
-    //文件上传失败
+    //文件操作失败
     public static final int FILE_ERROR = 405;
     //用户已经存在--不能再注册
     public static final int USER_EXIST = 410;

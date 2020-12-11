@@ -48,7 +48,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             if (token==null || "".equals(token)) {
                 throw new NoTokenException();
             }
-            //待完善  token即将过期但是操作使得token时间重置
+            //problem 拿到别人的token可以进行操作
             String userId = (String)redisTemplate.opsForValue().get(token);
             if(userId==null) {
                 //userId为空 说明token过期 或 token是伪造的

@@ -38,6 +38,7 @@ public class UserDTO {
     private String introduce;
     private String grade;
     private String registerTime;
+    private String receiveMail;
     //较po没有的属性
     @NotBlank(message ="验证码不为空",groups ={UserGroupValidated.RegisterValidated.class})
     private String activeCode;

@@ -33,6 +33,7 @@ public class UserServiceProxy implements UserService {
                 " ,mail:"+userDTO.getMail()+", password:"+userDTO.getPassword()+" ,major:"+userDTO.getMajor()+" ,activeCode:"+userDTO.getActiveCode());
         return userService.register(userDTO);
     }
+
     /**
      *发送验证邮箱
      */
@@ -103,6 +104,22 @@ public class UserServiceProxy implements UserService {
     @Override
     public RestInfo delCourse(DirectionDTO directionDTO) throws ParameterError {
         return userService.delCourse(directionDTO);
+    }
+
+    /**
+     * 查询当前登录用户是否接收日常邮箱
+     */
+    @Override
+    public RestInfo queryReceiveMailStatus(String userId) {
+        return userService.queryReceiveMailStatus(userId);
+    }
+
+    /**
+     * 改变接收日常邮件的状态
+     */
+    @Override
+    public RestInfo changeReceiveMailStatus(String userId) {
+        return userService.changeReceiveMailStatus(userId);
     }
 
 

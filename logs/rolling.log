@@ -1,76 +1,79 @@
-12-07 00:16:22.812 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-12-07 00:16:22.856 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 10144 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-12-07 00:16:22.859 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
-12-07 00:16:23.323 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-12-07 00:16:23.329 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-12-07 00:16:23.360 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
-12-07 00:16:23.700 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-12-07 00:16:23.706 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-12-07 00:16:23.707 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-12-07 00:16:23.707 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-12-07 00:16:23.769 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-12-07 00:16:23.769 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 868 ms
-12-07 00:16:24.409 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-12-07 00:16:24.428 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-12-07 00:16:24.447 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-12-07 00:16:24.456 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.917 seconds (JVM running for 3.848)
-12-07 00:18:29.683 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-12-07 00:18:29.683 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-12-07 00:18:29.690 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
-12-07 00:18:29.850 [ INFO] [              c.g.g.s.p.UserServiceProxy: 41] - 向用户发送邮件：userId:201922277,mail:wangjiahui20011014@163.com,codeType:1
-12-07 00:18:29.858 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-12-07 00:18:30.154 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-12-07 00:19:16.160 [ INFO] [              c.g.g.s.p.UserServiceProxy: 41] - 向用户发送邮件：userId:201922277,mail:wangjiahui20011014@163.com,codeType:2
-12-07 00:19:16.183 [ INFO] [           c.g.g.s.i.JavaMailServiceImpl: 39] - 用户201922277:已经发送过验证码将删除第一次的验证码808598
-12-07 00:37:14.512 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-12-07 00:37:14.547 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 3816 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-12-07 00:37:14.549 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
-12-07 00:37:15.022 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-12-07 00:37:15.029 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-12-07 00:37:15.061 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
-12-07 00:37:15.380 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-12-07 00:37:15.386 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-12-07 00:37:15.387 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-12-07 00:37:15.387 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-12-07 00:37:15.450 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-12-07 00:37:15.450 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 854 ms
-12-07 00:37:16.116 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-12-07 00:37:16.134 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-12-07 00:37:16.152 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-12-07 00:37:16.161 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.906 seconds (JVM running for 3.686)
-12-07 00:38:01.141 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-12-07 00:38:01.142 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-12-07 00:38:01.149 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
-12-07 00:38:01.314 [ INFO] [              c.g.g.s.p.UserServiceProxy: 41] - 向用户发送邮件：userId:201922222,mail:wangjiahui20011014@163.com,codeType:2
-12-07 00:38:01.321 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-12-07 00:38:01.563 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-12-07 00:40:14.342 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? AND password=? 
-12-07 00:40:14.362 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - ==> Parameters: 201922222(String), null
-12-07 00:40:14.384 [DEBUG] [  c.g.g.m.U.queryUserByUserIdAndPassword:159] - <==      Total: 0
-12-07 00:40:40.377 [ INFO] [              c.g.g.s.p.UserServiceProxy: 84] - 用户忘记密码校验：userId:201922222, 新密码newPassword:996633, 验证码code:401055
-12-07 00:40:40.398 [DEBUG] [                c.g.g.m.U.updatePassword:159] - ==>  Preparing: UPDATE user SET password=? WHERE userId=? 
-12-07 00:40:40.399 [DEBUG] [                c.g.g.m.U.updatePassword:159] - ==> Parameters: 996633(String), 201922222(String)
-12-07 00:40:40.404 [DEBUG] [                c.g.g.m.U.updatePassword:159] - <==    Updates: 1
-12-07 00:42:12.654 [ INFO] [              c.g.g.s.p.UserServiceProxy: 84] - 用户忘记密码校验：userId:201922222, 新密码newPassword:996634, 验证码code:401065
-12-07 00:42:19.753 [ INFO] [              c.g.g.s.p.UserServiceProxy: 84] - 用户忘记密码校验：userId:201922222, 新密码newPassword:996634, 验证码code:
-12-07 00:42:52.171 [ INFO] [              c.g.g.s.p.UserServiceProxy: 84] - 用户忘记密码校验：userId:201922222, 新密码newPassword:996634, 验证码code:null
-12-07 00:42:52.188 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
-java.lang.NullPointerException: null
-	at com.geek.geekstudio.service.impl.UserServiceImpl.findBackPassword(UserServiceImpl.java:192) ~[classes/:?]
-	at com.geek.geekstudio.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$9d2d7d4c.invoke(<generated>) ~[classes/:?]
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+12-11 00:02:57.817 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-11 00:02:57.861 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 10668 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-11 00:02:57.863 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-11 00:02:58.358 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-11 00:02:58.361 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-11 00:02:58.409 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
+12-11 00:02:58.739 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-11 00:02:58.745 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-11 00:02:58.746 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-11 00:02:58.746 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-11 00:02:58.809 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-11 00:02:58.809 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 900 ms
+12-11 00:02:59.515 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-11 00:02:59.533 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-11 00:02:59.559 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-11 00:02:59.568 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.018 seconds (JVM running for 3.699)
+12-11 00:05:29.693 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-11 00:05:29.693 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-11 00:05:29.698 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 5 ms
+12-11 00:05:31.332 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:05:31.362 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.NumberFormatException: For input string: "null"
+### Cause: java.lang.NumberFormatException: For input string: "null"] with root cause
+java.lang.NumberFormatException: For input string: "null"
+	at jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054) ~[?:?]
+	at jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110) ~[?:?]
+	at java.lang.Double.parseDouble(Double.java:543) ~[?:?]
+	at org.apache.ibatis.ognl.OgnlOps.doubleValue(OgnlOps.java:243) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.compareWithConversion(OgnlOps.java:101) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.isEqual(OgnlOps.java:143) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.equal(OgnlOps.java:802) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTNotEq.getValueBody(ASTNotEq.java:53) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTAnd.getValueBody(ASTAnd.java:61) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:493) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:457) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.OgnlCache.getValue(OgnlCache.java:46) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.ExpressionEvaluator.evaluateBoolean(ExpressionEvaluator.java:32) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.IfSqlNode.apply(IfSqlNode.java:34) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.TrimSqlNode.apply(TrimSqlNode.java:55) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.DynamicSqlSource.getBoundSql(DynamicSqlSource.java:41) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.mapping.MappedStatement.getBoundSql(MappedStatement.java:293) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141) ~[mybatis-3.5.0.jar:3.5.0]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at com.sun.proxy.$Proxy87.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:144) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:77) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy90.queryMails(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:367) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at com.geek.geekstudio.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$3db5f21d.findBackPassword(<generated>) ~[classes/:?]
-	at com.geek.geekstudio.service.proxy.UserServiceProxy.findBackPassword(UserServiceProxy.java:85) ~[classes/:?]
-	at com.geek.geekstudio.controller.UserController.findBackPassword(UserController.java:149) ~[classes/:?]
-	at com.geek.geekstudio.controller.UserController$$FastClassBySpringCGLIB$$4e8617e2.invoke(<generated>) ~[classes/:?]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.sun.proxy.$Proxy91.queryMails(Unknown Source) ~[?:?]
+	at com.geek.geekstudio.service.impl.AdminServiceImpl.sendDailyMail(AdminServiceImpl.java:55) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.AdminServiceProxy.sendDailyMail(AdminServiceProxy.java:31) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController.sendDailyMail(AdminController.java:39) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController$$FastClassBySpringCGLIB$$9d08190.invoke(<generated>) ~[classes/:?]
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
@@ -79,7 +82,7 @@ java.lang.NullPointerException: null
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
-	at com.geek.geekstudio.controller.UserController$$EnhancerBySpringCGLIB$$166cd839.findBackPassword(<generated>) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController$$EnhancerBySpringCGLIB$$214519e5.sendDailyMail(<generated>) ~[classes/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -125,36 +128,443 @@ java.lang.NullPointerException: null
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
 	at java.lang.Thread.run(Thread.java:834) [?:?]
-12-07 22:11:27.848 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-12-07 22:11:27.924 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 11736 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-12-07 22:11:27.926 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
-12-07 22:11:28.903 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-12-07 22:11:28.914 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-12-07 22:11:28.966 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 Redis repository interfaces.
-12-07 22:11:29.660 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-12-07 22:11:29.669 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-12-07 22:11:29.671 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-12-07 22:11:29.672 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-12-07 22:11:29.793 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-12-07 22:11:29.794 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1785 ms
-12-07 22:11:31.137 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-12-07 22:11:31.174 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-12-07 22:11:31.204 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-12-07 22:11:31.222 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 3.908 seconds (JVM running for 6.696)
-12-07 22:14:01.110 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-12-07 22:14:01.111 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-12-07 22:14:01.118 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
-12-07 22:14:01.272 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-12-07 22:14:01.632 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-12-07 22:14:01.641 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
-12-07 22:14:01.671 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 201922222(String)
-12-07 22:14:01.698 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 1
-12-07 22:14:09.635 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
-12-07 22:14:09.636 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 201922225(String)
-12-07 22:14:09.639 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
-12-07 22:14:15.524 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
-12-07 22:14:15.526 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 201922225(String)
-12-07 22:14:15.531 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 0
-12-07 22:14:20.559 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==>  Preparing: SELECT * FROM user WHERE userId=? 
-12-07 22:14:20.560 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - ==> Parameters: 201922222(String)
-12-07 22:14:20.566 [DEBUG] [             c.g.g.m.U.queryUserByUserId:159] - <==      Total: 1
+12-11 00:10:25.232 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-11 00:10:25.268 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 14848 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-11 00:10:25.269 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-11 00:10:25.768 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-11 00:10:25.770 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-11 00:10:25.794 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+12-11 00:10:26.124 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-11 00:10:26.129 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-11 00:10:26.130 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-11 00:10:26.130 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-11 00:10:26.210 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-11 00:10:26.210 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 893 ms
+12-11 00:10:26.906 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-11 00:10:26.924 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-11 00:10:26.943 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-11 00:10:26.952 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.97 seconds (JVM running for 3.613)
+12-11 00:10:31.708 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-11 00:10:31.708 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-11 00:10:31.714 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
+12-11 00:10:33.439 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:10:33.440 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 54] - courseId:1
+12-11 00:10:33.470 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.NumberFormatException: For input string: "null"
+### Cause: java.lang.NumberFormatException: For input string: "null"] with root cause
+java.lang.NumberFormatException: For input string: "null"
+	at jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054) ~[?:?]
+	at jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110) ~[?:?]
+	at java.lang.Double.parseDouble(Double.java:543) ~[?:?]
+	at org.apache.ibatis.ognl.OgnlOps.doubleValue(OgnlOps.java:243) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.compareWithConversion(OgnlOps.java:101) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.isEqual(OgnlOps.java:143) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.equal(OgnlOps.java:802) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTNotEq.getValueBody(ASTNotEq.java:53) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTAnd.getValueBody(ASTAnd.java:61) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:493) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:457) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.OgnlCache.getValue(OgnlCache.java:46) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.ExpressionEvaluator.evaluateBoolean(ExpressionEvaluator.java:32) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.IfSqlNode.apply(IfSqlNode.java:34) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.TrimSqlNode.apply(TrimSqlNode.java:55) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.DynamicSqlSource.getBoundSql(DynamicSqlSource.java:41) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.mapping.MappedStatement.getBoundSql(MappedStatement.java:293) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141) ~[mybatis-3.5.0.jar:3.5.0]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at com.sun.proxy.$Proxy87.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:144) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:77) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy90.queryMails(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.sun.proxy.$Proxy91.queryMails(Unknown Source) ~[?:?]
+	at com.geek.geekstudio.service.impl.AdminServiceImpl.sendDailyMail(AdminServiceImpl.java:56) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.AdminServiceProxy.sendDailyMail(AdminServiceProxy.java:31) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController.sendDailyMail(AdminController.java:39) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController$$FastClassBySpringCGLIB$$9d08190.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.AdminController$$EnhancerBySpringCGLIB$$214519e5.sendDailyMail(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-11 00:16:22.909 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-11 00:16:22.943 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 15088 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-11 00:16:22.944 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-11 00:16:23.419 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-11 00:16:23.421 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-11 00:16:23.445 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+12-11 00:16:23.776 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-11 00:16:23.782 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-11 00:16:23.782 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-11 00:16:23.783 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-11 00:16:23.861 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-11 00:16:23.862 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 874 ms
+12-11 00:16:24.547 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-11 00:16:24.565 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-11 00:16:24.583 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-11 00:16:24.591 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.947 seconds (JVM running for 3.596)
+12-11 00:16:38.240 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-11 00:16:38.241 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-11 00:16:38.247 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
+12-11 00:16:39.922 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:16:39.922 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 54] - courseId:1
+12-11 00:16:39.952 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.NumberFormatException: For input string: "null"
+### Cause: java.lang.NumberFormatException: For input string: "null"] with root cause
+java.lang.NumberFormatException: For input string: "null"
+	at jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054) ~[?:?]
+	at jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110) ~[?:?]
+	at java.lang.Double.parseDouble(Double.java:543) ~[?:?]
+	at org.apache.ibatis.ognl.OgnlOps.doubleValue(OgnlOps.java:243) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.compareWithConversion(OgnlOps.java:101) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.isEqual(OgnlOps.java:143) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.equal(OgnlOps.java:802) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTNotEq.getValueBody(ASTNotEq.java:53) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTAnd.getValueBody(ASTAnd.java:61) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:493) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:457) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.OgnlCache.getValue(OgnlCache.java:46) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.ExpressionEvaluator.evaluateBoolean(ExpressionEvaluator.java:32) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.IfSqlNode.apply(IfSqlNode.java:34) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.TrimSqlNode.apply(TrimSqlNode.java:55) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.DynamicSqlSource.getBoundSql(DynamicSqlSource.java:41) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.mapping.MappedStatement.getBoundSql(MappedStatement.java:293) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141) ~[mybatis-3.5.0.jar:3.5.0]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at com.sun.proxy.$Proxy87.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:144) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:77) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy90.queryMails(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.sun.proxy.$Proxy91.queryMails(Unknown Source) ~[?:?]
+	at com.geek.geekstudio.service.impl.AdminServiceImpl.sendDailyMail(AdminServiceImpl.java:56) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.AdminServiceProxy.sendDailyMail(AdminServiceProxy.java:31) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController.sendDailyMail(AdminController.java:39) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController$$FastClassBySpringCGLIB$$9d08190.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.AdminController$$EnhancerBySpringCGLIB$$214519e5.sendDailyMail(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-11 00:19:38.837 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-11 00:19:38.879 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 5132 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-11 00:19:38.881 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-11 00:19:39.335 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-11 00:19:39.337 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-11 00:19:39.360 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+12-11 00:19:39.676 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-11 00:19:39.682 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-11 00:19:39.682 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-11 00:19:39.683 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-11 00:19:39.752 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-11 00:19:39.752 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 835 ms
+12-11 00:19:40.452 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-11 00:19:40.470 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-11 00:19:40.488 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-11 00:19:40.496 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 1.932 seconds (JVM running for 3.614)
+12-11 00:19:49.435 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-11 00:19:49.435 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-11 00:19:49.441 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 5 ms
+12-11 00:19:51.098 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:19:51.098 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 54] - courseId:1
+12-11 00:19:51.127 [ERROR] [     o.a.c.c.C.[.[.[.[dispatcherServlet]:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.NumberFormatException: For input string: "null"
+### Cause: java.lang.NumberFormatException: For input string: "null"] with root cause
+java.lang.NumberFormatException: For input string: "null"
+	at jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054) ~[?:?]
+	at jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110) ~[?:?]
+	at java.lang.Double.parseDouble(Double.java:543) ~[?:?]
+	at org.apache.ibatis.ognl.OgnlOps.doubleValue(OgnlOps.java:243) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.compareWithConversion(OgnlOps.java:101) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.isEqual(OgnlOps.java:143) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.OgnlOps.equal(OgnlOps.java:802) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTNotEq.getValueBody(ASTNotEq.java:53) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.ASTAnd.getValueBody(ASTAnd.java:61) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:493) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:457) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.OgnlCache.getValue(OgnlCache.java:46) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.ExpressionEvaluator.evaluateBoolean(ExpressionEvaluator.java:32) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.IfSqlNode.apply(IfSqlNode.java:34) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.TrimSqlNode.apply(TrimSqlNode.java:55) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:33) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.scripting.xmltags.DynamicSqlSource.getBoundSql(DynamicSqlSource.java:41) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.mapping.MappedStatement.getBoundSql(MappedStatement.java:293) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141) ~[mybatis-3.5.0.jar:3.5.0]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at com.sun.proxy.$Proxy87.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230) ~[mybatis-spring-2.0.0.jar:2.0.0]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:144) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:77) ~[mybatis-3.5.0.jar:3.5.0]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) ~[mybatis-3.5.0.jar:3.5.0]
+	at com.sun.proxy.$Proxy90.queryMails(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.sun.proxy.$Proxy91.queryMails(Unknown Source) ~[?:?]
+	at com.geek.geekstudio.service.impl.AdminServiceImpl.sendDailyMail(AdminServiceImpl.java:56) ~[classes/:?]
+	at com.geek.geekstudio.service.proxy.AdminServiceProxy.sendDailyMail(AdminServiceProxy.java:31) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController.sendDailyMail(AdminController.java:39) ~[classes/:?]
+	at com.geek.geekstudio.controller.AdminController$$FastClassBySpringCGLIB$$9d08190.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:119) ~[spring-context-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at com.geek.geekstudio.controller.AdminController$$EnhancerBySpringCGLIB$$be28fe35.sendDailyMail(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.38.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at com.geek.geekstudio.filter.Filter0_EncodingFilter.doFilter(Filter0_EncodingFilter.java:32) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.9.RELEASE.jar:5.2.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+12-11 00:22:40.211 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+12-11 00:22:40.255 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 14420 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+12-11 00:22:40.258 [ INFO] [             c.g.g.GeekstudioApplication:651] - No active profile set, falling back to default profiles: default
+12-11 00:22:40.886 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+12-11 00:22:40.892 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+12-11 00:22:40.922 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+12-11 00:22:41.269 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+12-11 00:22:41.275 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+12-11 00:22:41.275 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+12-11 00:22:41.276 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+12-11 00:22:41.344 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+12-11 00:22:41.344 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1037 ms
+12-11 00:22:42.059 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+12-11 00:22:42.087 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+12-11 00:22:42.107 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+12-11 00:22:42.116 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 2.17 seconds (JVM running for 3.794)
+12-11 00:22:51.020 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12-11 00:22:51.020 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+12-11 00:22:51.028 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+12-11 00:22:52.702 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:22:52.703 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 54] - courseId:1
+12-11 00:22:52.731 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+12-11 00:22:52.925 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+12-11 00:22:52.930 [DEBUG] [                    c.g.g.m.U.queryMails:159] - ==>  Preparing: select DISTINCT u.mail from user u, direction d WHERE d.courseId=? AND u.userId=d.userId AND u.receiveMail='yes' 
+12-11 00:22:52.947 [DEBUG] [                    c.g.g.m.U.queryMails:159] - ==> Parameters: 1(Integer)
+12-11 00:22:52.962 [DEBUG] [                    c.g.g.m.U.queryMails:159] - <==      Total: 2
+12-11 00:25:38.620 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:25:38.621 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 54] - courseId:1
+12-11 00:25:38.623 [DEBUG] [                    c.g.g.m.U.queryMails:159] - ==>  Preparing: select DISTINCT u.mail from user u, direction d WHERE d.courseId=? AND u.userId=d.userId AND u.receiveMail='yes' 
+12-11 00:25:38.624 [DEBUG] [                    c.g.g.m.U.queryMails:159] - ==> Parameters: 1(Integer)
+12-11 00:25:38.626 [DEBUG] [                    c.g.g.m.U.queryMails:159] - <==      Total: 1
+12-11 00:29:03.838 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:29:03.838 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 54] - courseId:null
+12-11 00:29:03.840 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==>  Preparing: SELECT mail FROM user WHERE userId=? AND receiveMail='yes' 
+12-11 00:29:03.841 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==> Parameters: 201922222(String)
+12-11 00:29:03.844 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - <==      Total: 1
+12-11 00:29:03.845 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==>  Preparing: SELECT mail FROM user WHERE userId=? AND receiveMail='yes' 
+12-11 00:29:03.846 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==> Parameters: 2019666(String)
+12-11 00:29:03.848 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - <==      Total: 1
+12-11 00:29:46.512 [ INFO] [             c.g.g.s.p.AdminServiceProxy: 30] - 管理员：null向大一同学推送了日常邮件
+12-11 00:29:46.513 [ INFO] [              c.g.g.s.i.AdminServiceImpl: 54] - courseId:null
+12-11 00:29:46.514 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==>  Preparing: SELECT mail FROM user WHERE userId=? AND receiveMail='yes' 
+12-11 00:29:46.515 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==> Parameters: 201922222(String)
+12-11 00:29:46.518 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - <==      Total: 1
+12-11 00:29:46.519 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==>  Preparing: SELECT mail FROM user WHERE userId=? AND receiveMail='yes' 
+12-11 00:29:46.520 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - ==> Parameters: 2019666(String)
+12-11 00:29:46.521 [DEBUG] [             c.g.g.m.U.queryMailByUserId:159] - <==      Total: 0

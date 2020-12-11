@@ -24,5 +24,4 @@ public class GeekstudioApplication {
     public static void main(String[] args) {
         SpringApplication.run(GeekstudioApplication.class, args);
     }
-
 }

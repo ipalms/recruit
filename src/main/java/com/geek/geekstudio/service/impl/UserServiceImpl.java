@@ -70,6 +70,8 @@ public class UserServiceImpl implements UserService {
         userDTO.setRegisterTime(DateUtil.creatDate());
         userDTO.setIntroduce("亲还没有个人介绍呢~~");
         userDTO.setGrade("2021");
+        //默认接收日常邮件
+        userDTO.setReceiveMail("yes");
         userMapper.addUser(userDTO);
         return RestInfo.success("注册成功，亲可以去登录了！",null);
     }
@@ -93,10 +95,12 @@ public class UserServiceImpl implements UserService {
         Object user=userMapper.queryUserByUserIdAndPassword(userId,password);
         if(user!=null){
             type="student";
+            ((UserPO)user).setPassword("***");
         }else{//该用户不存在于新生表
             user=adminMapper.queryAdminByUserIdAndPassword(userId,password);
             if(user!=null){
                 type=((AdminPO)user).getType();
+                ((AdminPO)user).setPassword("***");
             }else {
                 //用户或密码错误
                 throw new UsernameOrPasswordIncorrectException();
@@ -180,6 +184,10 @@ public class UserServiceImpl implements UserService {
         return RestInfo.success("修改密码成功！",null);
     }
 
+    /**
+     * 用户忘记密码校验操作
+     * 根据userId查询用户，判断其mail邮箱与所给的是相同
+     */
     @Override
     public RestInfo checkUserLegality(UserDTO userDTO) throws ParameterError {
         UserPO userPO=userMapper.queryUserByUserId(userDTO.getUserId());
@@ -209,6 +217,9 @@ public class UserServiceImpl implements UserService {
         return RestInfo.success("更改密码成功，请您用新密码登录！",null);
     }
 
+    /**
+     * 用户设置简介
+     */
     @Override
     public RestInfo setIntroduce(UserDTO userDTO) {
         userMapper.updateIntroduce(userDTO.getUserId(),userDTO.getIntroduce());
@@ -240,6 +251,35 @@ public class UserServiceImpl implements UserService {
         directionMapper.delByUserIdAndCourseId(directionDTO.getUserId(),directionDTO.getCourseId());
         return RestInfo.success("撤销已方向成功",null);
     }
+
+    /**
+     * 查询当前登录用户是否接收日常邮箱
+     */
+    @Override
+    public RestInfo queryReceiveMailStatus(String userId) {
+        String status=userMapper.queryReceiveMailStatus(userId);
+        return RestInfo.success("用户是否接收日常邮件",status);
+    }
+
+    /**
+     * 改变接收日常邮件的状态
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public RestInfo changeReceiveMailStatus(String userId) {
+        String status=userMapper.queryReceiveMailStatus(userId);
+        String newStatus=null;
+        if(status.equals("yes")){
+            newStatus="no";
+        }else {
+            newStatus="yes";
+        }
+        userMapper.changeReceiveMailStatus(userId,newStatus);
+        return RestInfo.success("改变接收邮件状态成功！");
+    }
+
+
+
 
     /*
     （使用链接的形式激活）

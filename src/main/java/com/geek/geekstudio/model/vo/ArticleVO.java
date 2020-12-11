@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 public class ArticleVO {
     //属性待定
     private int id;
+    private int courseId;
     private String userId;
     private String title;
     private String content;
-    private String fileName;
-    private String filePath;
     private String addTime;
+    private String articleType;
     private int likeCount;
 }

@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArticlePO {
     private int id;
+    private int courseId;
     private String userId;
     private String title;
     private String content;
-    private String fileName;
-    private String filePath;
     private String addTime;
+    private String articleType;
     private int likeCount;
 }
