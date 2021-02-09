@@ -22,8 +22,6 @@ public class UserPO {
     private String password;
     private String major;
     private String sex;
-    private String securityQuestion;
-    private String answer;
     private String image;
     private String introduce;
     private String grade;

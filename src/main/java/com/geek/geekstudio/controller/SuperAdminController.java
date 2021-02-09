@@ -49,10 +49,8 @@ public class SuperAdminController {
     @UserLoginToken
     @SuperAdminPermission
     @PostMapping("/delAdmin")
-    public RestInfo delAdmin(@RequestBody @NotBlank(message ="用户ID不能为空") String userId) throws NoUserException {
-        JSONObject json= JSON.parseObject(userId);
-        String userID= (String) json.get("userId");
-        return superAdminServiceProxy.delAdmin(userID);
+    public RestInfo delAdmin(@RequestBody AdminPO adminPO) throws NoUserException {
+        return superAdminServiceProxy.delAdmin(adminPO.getAdminId());
     }
 
     /**

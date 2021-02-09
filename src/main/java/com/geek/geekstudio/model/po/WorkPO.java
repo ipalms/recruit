@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *管理员类，对应数据库work表
+ *管理员类，对应数据库work表 no use now
  */
 @Data
 @NoArgsConstructor
@@ -15,8 +15,6 @@ public class WorkPO {
     private int taskId;
     private int courseId;
     private String userId;
-    private String workName;
-    private String workFilePath;
     private String addTime;
     private String grade;
 }

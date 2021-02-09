@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *管理员类，对应数据库favorite表
+ *管理员类，对应数据库favorite表  no use now
  */
 @Data
 @NoArgsConstructor

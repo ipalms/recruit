@@ -12,8 +12,14 @@ public interface FileService {
     RestInfo imageUpload(String userId, MultipartFile file) throws RecruitFileException, ParameterError;
 
     //文章文件上传-- markdown
-    RestInfo articleFileUpload(String articleId, MultipartFile file) throws RecruitFileException;
+    RestInfo articleFileUpload(int articleId, MultipartFile file) throws RecruitFileException;
 
     //多个文章文件上传
-    RestInfo articleFilesUpload(String articleId, MultipartFile[] file);
+    RestInfo articleFilesUpload(int articleId, MultipartFile[] file);
+
+    //task文件上传
+    RestInfo taskFileUpload(int taskId, MultipartFile file) throws RecruitFileException;
+
+    //多个task文件上传
+    RestInfo taskFilesUpload(int taskId, MultipartFile[] files);
 }

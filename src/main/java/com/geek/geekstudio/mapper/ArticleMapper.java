@@ -32,4 +32,8 @@ public interface ArticleMapper {
 
     //查询收藏的文章部分信息
     FavoriteInfoVO queryFavoriteArticle(@Param("id") int id);
+
+    //删除一篇文章
+    @Delete("DELETE FROM article WHERE id=#{id}")
+    void deleteByArticleId(int id);
 }

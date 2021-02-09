@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 封装返回前端的TaskBean
+ * 封装返回前端的TaskBean no use now
  */
 @Data
 @NoArgsConstructor
@@ -16,9 +16,9 @@ public class TaskVO {
     private int courseId;
     private String adminId;
     private String taskName;
-    private String taskFileName;
-    private String taskFilePath;
     private String addTime;
     private String closeTime;
-    private String isClosed;
+    private int commitLate;
+    private int isClosed;
+    private int weight;
 }

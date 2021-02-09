@@ -13,10 +13,11 @@ import lombok.NoArgsConstructor;
 public class AnnounceVO {
     //属性待定
     private int id;
+    private int courseId;
     private String adminId;
     private String title;
-    private String content;
+    //private String content;
     private String addTime;
-    private String fileName;
-    private String filePath;
+    //private String fileName;
+    //private String filePath;
 }

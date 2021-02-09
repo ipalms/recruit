@@ -26,7 +26,7 @@ public interface UserService {
     RestInfo logout(String token, String refreshToken) throws NoTokenException;
 
     //过期重新生成token
-    RestInfo resetToken(String refreshToken);
+    RestInfo resetToken(String refreshToken) throws PermissionDeniedException;
 
     //用户修改密码
     RestInfo resetPassword(UserDTO userDTO, String token);

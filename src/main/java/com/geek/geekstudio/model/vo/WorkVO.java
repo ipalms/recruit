@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 封装返回前端的WorkBean
+ * 封装返回前端的WorkBean no use now
  */
 @Data
 @NoArgsConstructor
@@ -16,8 +16,6 @@ public class WorkVO {
     private int taskId;
     private int courseId;
     private String userId;
-    private String workName;
-    private String workFilePath;
     private String addTime;
     private String grade;
 }

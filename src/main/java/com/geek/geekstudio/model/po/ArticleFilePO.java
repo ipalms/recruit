@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *PO用户类，对应数据库articlefile表
+ *PO文件类，对应数据库articlefile表  no use now
  */
 @Data
 @NoArgsConstructor

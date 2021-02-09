@@ -44,7 +44,7 @@ public class FavoriteController {
      */
     @UserLoginToken
     @GetMapping("/queryFavorites")
-    public RestInfo queryFavorites(@RequestParam(name = "page",defaultValue = "1") int page,
+    public RestInfo queryFavorites(@RequestParam(name = "page",defaultValue = "1",required=false) int page,
                                 @RequestParam(name = "userId") String userId,
                                 @RequestParam(name = "rows",required = false,defaultValue = "10")int rows){
         return favoriteServiceProxy.queryFavorites(page,rows,userId);

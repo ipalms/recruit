@@ -70,7 +70,7 @@ class GeekstudioApplicationTests {
         String path = "D:\\all\\article\\9\\SpringBoot会用到的注解.md";
         try {
             // default StandardCharsets.UTF_8
-            //将文章markdown内容转成字符串
+            //将文章markdown内容转成字符串  jdk11提供的
             String content = Files.readString(Paths.get(path));
             System.out.println(content);
         } catch (IOException e) {

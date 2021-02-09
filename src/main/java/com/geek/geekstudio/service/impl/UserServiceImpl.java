@@ -14,6 +14,7 @@ import com.geek.geekstudio.util.DateUtil;
 import com.geek.geekstudio.util.TokenUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -33,9 +34,9 @@ import java.util.concurrent.TimeUnit;
 public class UserServiceImpl implements UserService {
 
     //token默认失效时间为4小时
-    private long expiresAtTime = 4*60*60*1000;
+    private static long expiresAtTime = 4*60*60*1000;
     //refreshToken默认失效时间为8天
-    private long longExpiresAtTime = 8*24*60*60*1000;
+    private static long longExpiresAtTime = 8*24*60*60*1000;
 
     @Autowired
     UserMapper userMapper;
@@ -137,7 +138,7 @@ public class UserServiceImpl implements UserService {
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public RestInfo resetToken(String refreshToken) {
+    public RestInfo resetToken(String refreshToken) throws PermissionDeniedException {
         String token;
         Object user;
         //返回前端数据
@@ -148,6 +149,8 @@ public class UserServiceImpl implements UserService {
             message= TokenUtil.parseJWT(refreshToken);
         } catch (ExpiredJwtException e) {
             throw new ExpiredJwtException(e.getHeader(),e.getClaims(),"refreshToken过期了");
+        }catch (SignatureException k){
+            throw new PermissionDeniedException("请登录");
         }
         String userId= message.getSubject();
         String type=message.get("type", String.class);
@@ -253,7 +256,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 查询当前登录用户是否接收日常邮箱
+     * 查询当前登录用户是否接收日常邮件
      */
     @Override
     public RestInfo queryReceiveMailStatus(String userId) {

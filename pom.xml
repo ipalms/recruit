@@ -89,7 +89,7 @@
             <version>0.7.0</version>
         </dependency>
 
-        <!--压缩生成Token时用到-->
+        <!--jdk9后不再携带，需要手动导入 压缩生成Token时用到-->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>

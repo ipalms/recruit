@@ -21,7 +21,7 @@ public class UserDTO {
     @NotBlank(message = "学号不能为空！",groups = {UserGroupValidated.RegisterValidated.class,UserGroupValidated.SendMailValidated.class,UserGroupValidated.LoginValidated.class})
     @Length(min = 5,max = 30,groups = {UserGroupValidated.RegisterValidated.class,UserGroupValidated.SendMailValidated.class,UserGroupValidated.LoginValidated.class})
     private String userId;
-    @NotBlank(message = "姓名不能为空！",groups = {UserGroupValidated.RegisterValidated.class})
+    @NotBlank(message = "用户名不能为空！",groups = {UserGroupValidated.RegisterValidated.class})
     private String userName;
     @Email(message = "邮箱格式错误",groups ={UserGroupValidated.RegisterValidated.class,UserGroupValidated.SendMailValidated.class})
     @NotBlank(message = "邮箱不能为空！",groups ={UserGroupValidated.RegisterValidated.class,UserGroupValidated.SendMailValidated.class})
@@ -32,8 +32,6 @@ public class UserDTO {
     @NotBlank(message = "专业不能为空！",groups = {UserGroupValidated.RegisterValidated.class})
     private String major;
     private String sex;
-    private String securityQuestion;
-    private String answer;
     private String image;
     private String introduce;
     private String grade;

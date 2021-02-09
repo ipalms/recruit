@@ -38,5 +38,4 @@ public class AdminController {
     public RestInfo sendDailyMail(@RequestBody DailyMailDTO dailyMailDTO){
         return adminServiceProxy.sendDailyMail(dailyMailDTO);
     }
-
 }

@@ -4,7 +4,6 @@ package com.geek.geekstudio.service;
 import com.geek.geekstudio.model.dto.DailyMailDTO;
 import com.geek.geekstudio.model.vo.RestInfo;
 
-import javax.mail.MessagingException;
 
 public interface AdminService {
 

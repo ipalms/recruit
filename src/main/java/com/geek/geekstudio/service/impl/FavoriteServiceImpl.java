@@ -3,7 +3,6 @@ package com.geek.geekstudio.service.impl;
 import com.geek.geekstudio.annotaion.AdminPermission;
 import com.geek.geekstudio.mapper.ArticleMapper;
 import com.geek.geekstudio.mapper.FavoriteMapper;
-import com.geek.geekstudio.model.po.FavoritePO;
 import com.geek.geekstudio.model.vo.FavoriteInfoVO;
 import com.geek.geekstudio.model.vo.FavoriteVO;
 import com.geek.geekstudio.model.vo.PageListVO;

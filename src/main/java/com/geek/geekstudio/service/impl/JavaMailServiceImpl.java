@@ -2,26 +2,30 @@ package com.geek.geekstudio.service.impl;
 
 import com.geek.geekstudio.service.JavaMailService;
 import com.geek.geekstudio.util.UuidUtil;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
 public class JavaMailServiceImpl implements JavaMailService {
     private static String urlAddress="http://127.0.0.1";
-    private static String publicEmailAccount="2534232295@qq.com";
+    @Value("${spring.mail.username}")
+    private String publicEmailAccount;
     @Autowired
     JavaMailSender javaMailSender;
     @Autowired
@@ -30,7 +34,7 @@ public class JavaMailServiceImpl implements JavaMailService {
     /**
      * 发送激活邮件 -- 发送找回密码邮件
      */
-    //回滚到没发送验证码
+    //事务支持，异常回滚到没发送验证码
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void sendActiveMail(String userId, String mail,Integer codeType) throws MessagingException {
@@ -62,18 +66,28 @@ public class JavaMailServiceImpl implements JavaMailService {
 
     /**
      * 发送日常邮件
+     * @return
      */
+    //使用异步任务发送邮件
+    @Async("taskExecutor")// 指定线程池，也可以直接写@Async
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void sendDailyMail(String mail, String title, String text) throws MessagingException {
+    public Future<String> sendDailyMail(String mail, String title, String text) throws Exception {
         //创建一个消息邮件
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
-        helper.setSubject(title);
-        helper.setText(text,true);
-        helper.setFrom(publicEmailAccount);
-        helper.setTo(mail);
-        javaMailSender.send(mimeMessage);
+        try {
+            log.info("11111");
+            //Thread.sleep(10000); //测试异步任务用时
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+            helper.setSubject(title);
+            helper.setText(text,true);
+            helper.setFrom(publicEmailAccount);
+            helper.setTo(mail);
+            javaMailSender.send(mimeMessage);
+        } catch (Exception e){
+            throw new Exception();
+        }
+        return new AsyncResult<String>("ok");
     }
 
 
@@ -81,12 +95,8 @@ public class JavaMailServiceImpl implements JavaMailService {
 
 
 
-
-
-
-    /* *//**
+    /**
      * 发送激活邮件（使用链接的形式激活）
-     *//*
     @Override
     public void sendActiveMail(String mail, String activeCode) throws MessagingException {
             //创建一个复杂的消息邮件

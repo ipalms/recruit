@@ -6,6 +6,7 @@ import com.geek.geekstudio.interceptor.SuperAdminPermissionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
@@ -40,4 +41,14 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addInterceptor(superAdminPermissionInterceptor).order(3);
         super.addInterceptors(registry);
     }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //和页面有关的静态目录都放在项目的static目录下
+        //registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        //上传文件都在D盘下的all目录下，访问路径如：http://localhost:8080/source/image/picture5-778899.jpg
+        //其中source表示访问的前缀。"file:D:/all/"是文件真实的存储路径
+        registry.addResourceHandler("/source/**").addResourceLocations("file:D:/all/");
+    }
+
 }

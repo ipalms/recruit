@@ -63,7 +63,7 @@ public class UserServiceProxy implements UserService {
      * 用户操作时token过期，为其再生成一个token
      */
     @Override
-    public RestInfo resetToken(String refreshToken) {
+    public RestInfo resetToken(String refreshToken) throws PermissionDeniedException {
         log.info("刷新token的refreshToken："+refreshToken);
         return userService.resetToken(refreshToken);
     }

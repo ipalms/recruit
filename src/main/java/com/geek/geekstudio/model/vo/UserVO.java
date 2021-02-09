@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 封装返回前端的UserBean Object类型对象
+ * 封装返回前端的UserBean Object类型对象  no use now
  */
 @Data
 @NoArgsConstructor
@@ -20,8 +20,6 @@ public class UserVO {
     private String password;
     private String major;
     private String sex;
-    private String securityQuestion;
-    private String answer;
     private String image;
     private String introduce;
     private String grade;

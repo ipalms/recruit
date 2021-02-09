@@ -53,12 +53,9 @@ public class UserController {
      */
     @PassToken
     @PostMapping("/checkUserId")
-    public RestInfo checkStatus(@RequestBody @NotBlank String userId) throws UserRegisteredException {
-        //获得value值
-        JSONObject json=JSON.parseObject(userId);
-        String userID= (String) json.get("userId");
-        UserPO userPO = userMapper.queryUserByUserId(userID);
-        AdminPO adminPO=adminMapper.queryAdminByAdminId(userID);
+    public RestInfo checkStatus(@RequestBody UserDTO userDTO) throws UserRegisteredException {
+        UserPO userPO = userMapper.queryUserByUserId(userDTO.getUserId());
+        AdminPO adminPO=adminMapper.queryAdminByAdminId(userDTO.getUserId());
         if(userPO!=null||adminPO!=null){
             //该学号已被注册
             throw new UserRegisteredException("学号已被注册");
@@ -71,10 +68,8 @@ public class UserController {
      */
     @PassToken
     @PostMapping("/checkEmail")
-    public RestInfo checkEmail(@RequestBody @NotBlank String mail) throws UserRegisteredException {
-        JSONObject json=JSON.parseObject(mail);
-        String email= (String) json.get("mail");
-        UserPO userPO = userMapper.queryUserByMail(email);
+    public RestInfo checkEmail(@RequestBody UserDTO userDTO) throws UserRegisteredException {
+        UserPO userPO = userMapper.queryUserByMail(userDTO.getMail());
         if(userPO!=null){
             //该邮箱已被注册
             throw new UserRegisteredException("该邮箱已被注册");
@@ -106,10 +101,8 @@ public class UserController {
      */
     @UserLoginToken
     @PostMapping("/logout")
-    public RestInfo logout(@RequestBody String refreshToken,HttpServletRequest request) throws NoTokenException {
-        JSONObject json=JSON.parseObject(refreshToken);
-        String refresh_Token= (String) json.get("refreshToken");
-        return userServiceProxy.logout(request.getHeader("token"),refresh_Token);
+    public RestInfo logout(@RequestBody UserDTO userDTO,HttpServletRequest request) throws NoTokenException {
+        return userServiceProxy.logout(request.getHeader("token"),userDTO.getRefreshToken());
     }
 
     /**
@@ -117,16 +110,14 @@ public class UserController {
      */
     @PassToken
     @PostMapping("/resetToken")
-    public RestInfo resetToken(@RequestBody String refreshToken) throws RecruitException{
-        JSONObject json=JSON.parseObject(refreshToken);
-        String refresh_Token= (String) json.get("refreshToken");
-        return userServiceProxy.resetToken(refresh_Token);
+    public RestInfo resetToken(@RequestBody UserDTO userDTO) throws RecruitException{
+        return userServiceProxy.resetToken(userDTO.getRefreshToken());
     }
 
     /**
      * 用户修改密码
      */
-    @PassToken
+    @UserLoginToken
     @PostMapping("/resetPassword")
     public RestInfo resetPassword(@RequestBody UserDTO userDTO,HttpServletRequest request) throws UsernameOrPasswordIncorrectException {
         UserPO userPO=userMapper.queryUserByUserIdAndPassword(userDTO.getUserId(),userDTO.getPassword());

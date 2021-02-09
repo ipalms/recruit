@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 封装返回前端的CourseBean
+ * 封装返回前端的CourseBean no use now
  */
 @Data
 @NoArgsConstructor

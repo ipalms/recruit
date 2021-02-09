@@ -3,12 +3,14 @@ package com.geek.geekstudio.util;
 import com.geek.geekstudio.exception.RecruitFileException;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.io.*;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,12 +40,15 @@ public class FileUtil {
     //临时文件目录
     private String tmpFilePath;
 
+    @Value("${files.path}")
+    private String rootDir;
+
     /**
-     * springboot应用启动后执行的方法
+     * FileUtil类的构造函数被执行完且依赖注入完成后才执行的方法
      */
     @PostConstruct
     public void init(){
-        String rootDir="/all";
+        //String rootDir="/all";
         //获取绝对路径
         this.fileStorageLocation = Paths.get(rootDir).toAbsolutePath().normalize();
         System.out.println("fileStorageLocation: "+fileStorageLocation);
@@ -54,7 +59,9 @@ public class FileUtil {
         this.articleFilePath = fileStorageLocation.toString() + "/article/";
         this.tmpFilePath = fileStorageLocation.toString() + "/zip/";
         try {
-            Files.createDirectories(this.fileStorageLocation);
+            if(!Files.exists(this.fileStorageLocation)) {
+                Files.createDirectories(this.fileStorageLocation);
+            }
         } catch (Exception ex) {
             throw new RuntimeException("创建上传目录失败");
         }
@@ -88,14 +95,14 @@ public class FileUtil {
             // 设置文件存储路径
             filePath= path + fileName;
             File dest = new File(filePath);
-            // 检测是否存在目录
+            // 检测是否存在父目录
             if (!dest.getParentFile().exists()) {
                 dest.getParentFile().mkdirs();// 新建文件夹
             }
-            // 检测是否存在该文件
-//            if (dest.exists()) {
-//                throw new Exception("覆盖同名文件！");
-//            }
+            /*// 检测是否存在该文件
+            if (dest.exists()) {
+                throw new Exception("覆盖同名文件！");
+            }*/
             //覆盖同名文件
             file.transferTo(dest);// 文件写入
         } catch (IOException e) {
@@ -105,10 +112,12 @@ public class FileUtil {
         return path.substring(fileStorageLocation.toString().length())+fileName;
     }
 
+    //删除某个文件
     public boolean deleteFile(String filePath) throws RecruitFileException {
         if(!StringUtils.isEmpty(filePath)){
             File file = new File(filePath);
             if(file.exists()){
+                //考虑删除后判断当父目录为空将父目录也删除掉
                 if(file.delete()){
                     return true;
                 }else{
@@ -121,6 +130,7 @@ public class FileUtil {
         return false;
     }
 
+    //递归删除某个文件夹
     public boolean deleteDir(File dir) {
         if (dir.isDirectory()) {
             String[] children = dir.list();
@@ -136,14 +146,25 @@ public class FileUtil {
         return dir.delete();
     }
 
-    /**
-     * 返回前端可以访问本地文件url
-     * @param baseUrl
-     * @param filePath
-     * @return
-     */
-    public String getFileUrl(String baseUrl,String filePath){
-                return baseUrl+"/lab"+filePath;
+    //递归删除某个文件夹下的所有文件[最后会留存一个空文件夹]   NIO
+    public boolean deleteDir2(String dir)  {
+        Path directory=Paths.get(dir);
+        try {
+            if (Files.isDirectory(directory)) {
+                try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory)) {
+                    for (Path e : stream) {
+                        if (Files.isDirectory(e)) {//是文件夹就递归删除
+                            deleteDir2(e.toRealPath().toString());
+                        }
+                        //遍历删除文件(或空文件夹)
+                        Files.delete(e);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
     }
 
 
@@ -212,7 +233,6 @@ public class FileUtil {
      * @throws IOException
      */
     public void unzipFilesWithTier(byte[] bytes, String prefix) throws IOException {
-
         InputStream bais = new ByteArrayInputStream(bytes);
         ZipInputStream zin = new ZipInputStream(bais);
         ZipEntry ze;
@@ -312,17 +332,38 @@ public class FileUtil {
     }
 
     /**
-     *获得服务器上资源完整的路径
+     * 返回前端可以访问本地文件url（url中输入访问到实际资源的路径）
+     */
+    public String getFileUrl(String baseUrl,String filePath){
+        return baseUrl+"/source"+filePath;
+    }
+
+    /**
+     *获得服务器上资源完整的路径(实际的物理路径)
      */
     public String buildPath(String url){
-        return this.fileStorageLocation+url;
+        return this.fileStorageLocation.toString()+url;
     }
 
     /**
      *构建文章附件的存储位置
      */
-    public String buildArticleFilePath(String articleId) {
+    public String buildArticleFilePath(int articleId) {
         return this.articleFilePath+articleId+"/";
+    }
+
+    /**
+     * 构建公告所涉及文件的存储位置
+     */
+    public String buildAnnounceFilePath(int courseId){
+        return this.announceFilePath+courseId+"/";
+    }
+
+    /**
+     *构建task文件的存储位置
+     */
+    public String buildTaskFilePath(int taskId) {
+        return this.taskFilePath+taskId+"/";
     }
 }
 

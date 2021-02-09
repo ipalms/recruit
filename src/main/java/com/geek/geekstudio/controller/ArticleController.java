@@ -51,7 +51,7 @@ public class ArticleController {
      */
     @PassToken
     @GetMapping("/queryArticles")
-    public RestInfo queryArticles(@RequestParam(name = "page",defaultValue = "1") int page,
+    public RestInfo queryArticles(@RequestParam(name = "page",defaultValue = "1",required=false) int page,
                                   @RequestParam(name = "rows",required = false,defaultValue = "10")int rows,
                                   @RequestParam(name = "adminName",required = false) String adminName,
                                   @RequestParam(name = "courseName",required = false) String courseName,

@@ -1,5 +1,6 @@
 package com.geek.geekstudio.controller;
 
+import com.geek.geekstudio.annotaion.AdminPermission;
 import com.geek.geekstudio.annotaion.UserLoginToken;
 import com.geek.geekstudio.exception.ParameterError;
 import com.geek.geekstudio.exception.RecruitException;
@@ -39,9 +40,10 @@ public class FileController {
      *文章文件上传-- markdown   (也可图片)
      */
     @UserLoginToken
+    @AdminPermission
     @PostMapping("/articleFileUpload")
-    public RestInfo articleFileUpload(@NotBlank(message = "文章id不能为空") String articleId,
-                                @NotNull(message = "文件不能为null") MultipartFile file) throws RecruitException {
+    public RestInfo articleFileUpload(int articleId,
+                                      @NotNull(message = "文件不能为null") MultipartFile file) throws RecruitException {
         return fileServiceProxy.articleFileUpload(articleId,file);
     }
 
@@ -49,9 +51,32 @@ public class FileController {
      * 多个文章文件上传
      */
     @UserLoginToken
+    @AdminPermission
     @PostMapping("/articleFilesUpload")
-    public RestInfo articleFilesUpload(@NotBlank(message = "文章id不能为空") String articleId,
+    public RestInfo articleFilesUpload(int articleId,
                                       @NotNull(message = "文件不能为null") MultipartFile[] file) throws RecruitException {
         return fileServiceProxy.articleFilesUpload(articleId,file);
+    }
+
+    /**
+     *发布作业的文件上传--task
+     */
+    @UserLoginToken
+    @AdminPermission
+    @PostMapping("/taskFileUpload")
+    public RestInfo taskFileUpload(int taskId,
+                                   @NotNull(message = "文件不能为null") MultipartFile file) throws RecruitException {
+        return fileServiceProxy.taskFileUpload(taskId,file);
+    }
+
+    /**
+     *多个作业的文件上传--task
+     */
+    @UserLoginToken
+    @AdminPermission
+    @PostMapping("/taskFilesUpload")
+    public RestInfo taskFilesUpload(int taskId,
+                                    @NotNull(message = "文件不能为null") MultipartFile[] files) throws RecruitException {
+        return fileServiceProxy.taskFilesUpload(taskId,files);
     }
 }
