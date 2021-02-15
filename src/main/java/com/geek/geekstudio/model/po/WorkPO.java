@@ -16,5 +16,5 @@ public class WorkPO {
     private int courseId;
     private String userId;
     private String addTime;
-    private String grade;
+    private int score;
 }

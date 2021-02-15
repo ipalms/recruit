@@ -303,11 +303,9 @@ public class FileUtil {
     }
 
     /**
-     * 压缩以";"分隔的文件
-     * @param pathList
-     * @param zipPath
+     * 压缩pathList[]路径下的文件到zipPath中
      */
-    public void zipFileByPathList(String[] pathList,String zipPath,String prefix) throws IOException {
+    public void zipFileByPathList(String[] pathList,String zipPath) throws IOException {
         File zipFile = new File(zipPath);
         if(zipFile.exists()) {
             zipFile.delete();
@@ -320,12 +318,12 @@ public class FileUtil {
         ZipOutputStream out = new ZipOutputStream(
                 new BufferedOutputStream( new FileOutputStream(zipFile)));
         for (String path:pathList) {
-            String srcFile = prefix + path;
-            File file = new File(srcFile);
+            //String srcFile = prefix + path;
+            File file = new File(path);
             if(!file.exists()){
                 continue;
             }
-            zipFiles(srcFile,out,"");
+            zipFiles(path,out,"");
         }
         //不关闭会出现错误
         out.close();
@@ -339,6 +337,13 @@ public class FileUtil {
     }
 
     /**
+     * 得到某一任务所有作业的父目录
+     */
+    public String getAllWork(int courseId, int taskId){
+        return this.workFilePath+courseId+"/"+taskId;
+    }
+
+    /**
      *获得服务器上资源完整的路径(实际的物理路径)
      */
     public String buildPath(String url){
@@ -346,7 +351,7 @@ public class FileUtil {
     }
 
     /**
-     *构建文章附件的存储位置
+     *构建文章附件的存储位置（考虑加上adminId）
      */
     public String buildArticleFilePath(int articleId) {
         return this.articleFilePath+articleId+"/";
@@ -362,8 +367,15 @@ public class FileUtil {
     /**
      *构建task文件的存储位置
      */
-    public String buildTaskFilePath(int taskId) {
-        return this.taskFilePath+taskId+"/";
+    public String buildTaskFilePath(int courseId,int taskId) {
+        return this.taskFilePath+courseId+"/"+taskId+"/";
+    }
+
+    /**
+     *构建work文件的存储位置
+     */
+    public String buildWorkFilePath(int courseId,String userId, int taskId) {
+        return this.workFilePath+courseId+"/"+taskId+"/"+userId+"/";
     }
 }
 

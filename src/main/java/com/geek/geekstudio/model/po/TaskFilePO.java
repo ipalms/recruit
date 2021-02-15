@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *PO文件类，对应数据库taskfile表  no use now
+ *PO文件类，对应数据库taskfile表
  */
 @Data
 @NoArgsConstructor

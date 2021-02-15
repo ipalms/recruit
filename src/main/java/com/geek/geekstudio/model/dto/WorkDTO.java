@@ -1,27 +1,25 @@
-package com.geek.geekstudio.model.vo;
+package com.geek.geekstudio.model.dto;
 
-import com.geek.geekstudio.model.po.WorkFilePO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 /**
- * 封装返回前端的WorkBean
+ *接收前端传来的work相关参数
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WorkVO {
+public class WorkDTO {
     private int id;
     private int taskId;
     private int courseId;
     private String userId;
-    private UserVO userVO;
     private String addTime;
     private Integer score;
-    private Integer weight;
-    private String filePath;
-    private List<WorkFileVO> workFileVOList;
+    private List<String> userIdList;
 }

@@ -8,9 +8,11 @@ import com.geek.geekstudio.model.dto.DirectionDTO;
 import com.geek.geekstudio.model.dto.UserDTO;
 import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.UserPO;
+import com.geek.geekstudio.model.vo.DirectionVO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.UserService;
 import com.geek.geekstudio.util.DateUtil;
+import com.geek.geekstudio.util.FileUtil;
 import com.geek.geekstudio.util.TokenUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -23,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -45,7 +48,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     DirectionMapper directionMapper;
     @Autowired
+    FileUtil fileUtil;
+    @Autowired
     JavaMailServiceImpl javaMailServiceImpl;
+    @Autowired
+    CourseServiceImpl courseService;
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
 
@@ -87,7 +94,7 @@ public class UserServiceImpl implements UserService {
      * 统一登录（管理员和新生）
      */
     @Override
-    public RestInfo login(String userId, String password) throws UsernameOrPasswordIncorrectException {
+    public RestInfo login(String userId, String password, String baseUrl) throws UsernameOrPasswordIncorrectException {
         //生成token 和 refreshToken
         String token,refreshToken;
         //返回前端数据
@@ -96,12 +103,21 @@ public class UserServiceImpl implements UserService {
         Object user=userMapper.queryUserByUserIdAndPassword(userId,password);
         if(user!=null){
             type="student";
-            ((UserPO)user).setPassword("***");
+            UserPO userPO=(UserPO)user;
+            //加入新生的专业选择
+            RestInfo restInfo=courseService.queryMyCourse(userPO.getUserId());
+            userPO.setDirectionVOList((List<DirectionVO>)restInfo.getData());
+            if(userPO.getImage()!=null) {
+                userPO.setImage(fileUtil.getFileUrl(baseUrl, userPO.getImage()));
+            }
         }else{//该用户不存在于新生表
             user=adminMapper.queryAdminByUserIdAndPassword(userId,password);
             if(user!=null){
-                type=((AdminPO)user).getType();
-                ((AdminPO)user).setPassword("***");
+                AdminPO adminPO=(AdminPO)user;
+                type=adminPO.getType();
+                if(adminPO.getImage()!=null) {
+                    adminPO.setImage(fileUtil.getFileUrl(baseUrl, adminPO.getImage()));
+                }
             }else {
                 //用户或密码错误
                 throw new UsernameOrPasswordIncorrectException();

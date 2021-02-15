@@ -22,4 +22,16 @@ public interface FileService {
 
     //多个task文件上传
     RestInfo taskFilesUpload(int taskId, MultipartFile[] files);
+
+    //task文件的删除
+    RestInfo delTaskFile(int id,String adminId) throws RecruitException;
+
+    //work文件上传
+    RestInfo workFileUpload(int workId, MultipartFile file) throws RecruitFileException, ParameterError;
+
+    //多个work文件上传
+    RestInfo workFilesUpload(int workId, MultipartFile[] files);
+
+    //work文件的删除
+    RestInfo delWorkFile(int id, String userId) throws RecruitException;
 }

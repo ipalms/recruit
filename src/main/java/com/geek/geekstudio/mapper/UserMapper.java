@@ -2,6 +2,8 @@ package com.geek.geekstudio.mapper;
 
 import com.geek.geekstudio.model.dto.UserDTO;
 import com.geek.geekstudio.model.po.UserPO;
+import com.geek.geekstudio.model.vo.UserInfo;
+import com.geek.geekstudio.model.vo.UserVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -37,7 +39,8 @@ public interface UserMapper {
     /**
      *通过id 密码查新生
      */
-    @Select("SELECT * FROM user WHERE userId=#{userId} AND password=#{password}")
+    @Select("SELECT id,userId,userName,mail,major,sex,image,introduce,grade,registerTime,receiveMail" +
+            " FROM user WHERE userId=#{userId} AND password=#{password}")
     UserPO queryUserByUserIdAndPassword(@Param("userId") String userId,@Param("password") String password);
 
     /**
@@ -80,4 +83,22 @@ public interface UserMapper {
      */
     @Select("SELECT mail FROM user WHERE userId=#{userId} AND receiveMail='yes' ")
     String queryMailByUserId(String userId);
+
+    /**
+     *具体某个方向人数
+     */
+    @Select("SELECT COUNT(DISTINCT userId) total FROM direction WHERE (courseId = #{courseId} or #{courseId}=0)")
+    int countDetailUser(int courseId);
+
+    /**
+     *查询学生信息详情
+     */
+    @Select("SELECT DISTINCT u.userId,u.userName,u.mail,u.major,u.image,u.grade FROM user u, direction d WHERE (d.courseId = #{courseId} or #{courseId}=0) AND u.userId=d.userId LIMIT #{start},#{rows}")
+    List<UserVO> queryUsersInfo(@Param("courseId")int courseId,@Param("start") int start,@Param("rows") int rows);
+
+    /**
+     *查询某一方向所有学生信息详情
+     */
+    @Select("SELECT DISTINCT u.userId,u.userName,u.mail,u.major,u.image,u.grade FROM user u, direction d WHERE d.courseId = #{courseId}  AND u.userId=d.userId")
+    List<UserInfo> queryAllUsersInfo(int courseId);
 }

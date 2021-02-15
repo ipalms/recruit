@@ -46,9 +46,9 @@ public class UserServiceProxy implements UserService {
      * 统一登录（管理员和新生）
      */
     @Override
-    public RestInfo login(String userId, String password) throws UsernameOrPasswordIncorrectException {
+    public RestInfo login(String userId, String password, String baseUrl) throws UsernameOrPasswordIncorrectException {
         log.info("用户登录：userId:"+userId+", password:"+password);
-        return userService.login(userId,password);
+        return userService.login(userId,password,baseUrl);
     }
 
     /**

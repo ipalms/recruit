@@ -31,4 +31,8 @@ public interface FavoriteMapper {
     //查询个人收藏记录的最新rows条
     @Select("SELECT * FROM favorite WHERE userId=#{userId} ORDER BY id DESC LIMIT #{start},#{rows}")
     List<FavoriteVO> queryMyFavorites(@Param("userId") String userId,@Param("start")  int start,@Param("rows")int rows);
+
+    //删除一篇文章对应的收藏记录
+    @Delete("DELETE FROM favorite WHERE articleId=#{articleId}")
+    void deleteFavoriteRecordById(int articleId);
 }

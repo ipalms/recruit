@@ -1,6 +1,7 @@
 package com.geek.geekstudio.mapper;
 
 import com.geek.geekstudio.model.dto.ArticleDTO;
+import com.geek.geekstudio.model.po.ArticlePO;
 import com.geek.geekstudio.model.vo.ArticleInfoVO;
 import com.geek.geekstudio.model.vo.FavoriteInfoVO;
 import org.apache.ibatis.annotations.*;
@@ -36,4 +37,16 @@ public interface ArticleMapper {
     //删除一篇文章
     @Delete("DELETE FROM article WHERE id=#{id}")
     void deleteByArticleId(int id);
+
+    //查询自己发布的文章总数
+    @Select("SELECT COUNT(*) FROM article WHERE userId=#{userId}")
+    int queryMyTotal(String userId);
+
+    //查询自己发布的文章的明细
+    @Select("SELECT id,title,content,addTime,articleType,likeCount FROM article WHERE userId=#{userId} ORDER BY id DESC LIMIT #{start},#{rows}")
+    List<ArticleInfoVO> queryMyArticles(String userId, int start, int rows);
+
+    //查询一篇文章的明细
+    @Select("SELECT * FROM article WHERE id=#{id}")
+    ArticlePO queryOneArticleById(int id);
 }

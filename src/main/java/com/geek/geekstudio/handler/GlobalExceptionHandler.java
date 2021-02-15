@@ -30,6 +30,7 @@ public class GlobalExceptionHandler {
 
     /**
      * 校验错误拦截处理（使用@Validated注解抛出）
+     * 抛出的信息是List<ErrorMsg> 集合
      */
     @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -186,6 +187,17 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public RestInfo permissionDeniedExceptionHandler(PermissionDeniedException permissionDeniedException){
         return handleErrorInfo(ExceptionCode.Permission_Denied,permissionDeniedException.getMessage());
+    }
+
+    /**
+     * 文件操作失败
+     * @param recruitFileException
+     * @return
+     */
+    @ExceptionHandler(RecruitFileException.class)
+    @ResponseBody
+    public RestInfo permissionDeniedExceptionHandler(RecruitFileException recruitFileException){
+        return handleErrorInfo(ExceptionCode.FILE_ERROR,recruitFileException.getMessage());
     }
 
     /**

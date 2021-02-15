@@ -86,12 +86,12 @@ public class SuperAdminController {
      * 对于@RequestParam属性required标注true的注解，若未url中没传入此参数则程序会直接中断。
      * 对于@RequestParam属性required标注false(如果该参数也没有设置默认值)，
      * 或未用@RequestParam标注的参数在url中没有出现，如果该该参数用引用类型接收（String、Integer）则的值为null
-     * 如果该参数用基本类型接收（int类型则值为0）
+     * 如果该参数用基本类型（如int）接收需要给定默认值,否则报错
      */
     @UserLoginToken
     @SuperAdminPermission
     @GetMapping("/queryAdmins")
-    public RestInfo queryAdmins(@RequestParam(name = "page",defaultValue = "1") int page,
+    public RestInfo queryAdmins(@RequestParam(name = "page",required = false,defaultValue = "1") int page,
                                 @RequestParam(name = "rows",required = false,defaultValue = "10")int rows,
                                 @RequestParam(name = "courseName",required = false) String courseName,
                                 @RequestParam(name = "adminName",required = false) String adminName,

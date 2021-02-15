@@ -20,7 +20,7 @@ public interface UserService {
     RestInfo sendActiveMail(String userId,String mail,Integer codeType) throws  MessagingException;
 
     //登录
-    RestInfo login(String userId, String password) throws UsernameOrPasswordIncorrectException;
+    RestInfo login(String userId, String password, String baseUrl) throws UsernameOrPasswordIncorrectException;
 
     //注销用户
     RestInfo logout(String token, String refreshToken) throws NoTokenException;

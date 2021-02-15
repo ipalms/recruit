@@ -4,6 +4,8 @@ import com.geek.geekstudio.annotaion.AdminPermission;
 import com.geek.geekstudio.annotaion.PassToken;
 import com.geek.geekstudio.annotaion.SuperAdminPermission;
 import com.geek.geekstudio.annotaion.UserLoginToken;
+import com.geek.geekstudio.exception.ParameterError;
+import com.geek.geekstudio.exception.PermissionDeniedException;
 import com.geek.geekstudio.exception.RecruitFileException;
 import com.geek.geekstudio.model.dto.ArticleDTO;
 import com.geek.geekstudio.model.vo.RestInfo;
@@ -41,8 +43,8 @@ public class ArticleController {
     @AdminPermission
     @PostMapping("/addArticle")
     public RestInfo addArticle(@RequestBody ArticleDTO articleDTO){
-        System.out.println("文章详情userId:"+articleDTO.getUserId()+",courseId:"+articleDTO.getCourseId()
-                +",articleType:"+articleDTO.getArticleType()+",title:"+articleDTO.getTitle());
+        /*System.out.println("文章详情userId:"+articleDTO.getUserId()+",courseId:"+articleDTO.getCourseId()
+                +",articleType:"+articleDTO.getArticleType()+",title:"+articleDTO.getTitle());*/
         return articleServiceProxy.addArticle(articleDTO);
     }
 
@@ -56,7 +58,7 @@ public class ArticleController {
                                   @RequestParam(name = "adminName",required = false) String adminName,
                                   @RequestParam(name = "courseName",required = false) String courseName,
                                   @RequestParam(name = "userId",required = false) String userId){
-        System.out.println("courseName:"+courseName);
+        //System.out.println("courseName:"+courseName);
         return articleServiceProxy.queryArticles(page,rows,adminName,courseName,userId);
     }
 
@@ -71,20 +73,35 @@ public class ArticleController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
+    /**
+     * 查询自己发表的文章
+     */
+    @UserLoginToken
+    @AdminPermission
+    @GetMapping("/queryMyArticles")
+    public RestInfo queryMyArticles(@RequestParam(name = "page",defaultValue = "1",required=false) int page,
+                                    @RequestParam(name = "rows",required = false,defaultValue = "10")int rows,
+                                    @RequestParam(name = "userId") String userId){
+        return articleServiceProxy.queryMyArticles(page,rows,userId);
+    }
 
     /**
-     *传给前端markdown中的二进制文件流(任然是以下载的形式进行的)
+     * 删除一篇发布的文章
      */
+    @UserLoginToken
+    @AdminPermission
+    @PostMapping("/deleteArticle")
+    public RestInfo deleteArticle(@RequestBody ArticleDTO articleDTO) throws ParameterError, PermissionDeniedException {
+        return articleServiceProxy.deleteArticle(articleDTO);
+    }
+
+
+
+
+
+/*    *//**
+     *传给前端markdown中的二进制文件流(任然是以下载的形式进行的)
+     *//*
     @PassToken
     @GetMapping(value = "/tohead")
     public ResponseEntity<FileSystemResource> getFile(@RequestParam("fileName") String fileName) throws FileNotFoundException {
@@ -109,5 +126,5 @@ public class ArticleController {
         headers.add("Last-Modified", new Date().toString());
         headers.add("ETag", String.valueOf(System.currentTimeMillis()));
         return ResponseEntity.ok().headers(headers).contentLength(file.length()).contentType(MediaType.parseMediaType("application/octet-stream")).body(new FileSystemResource(file));
-    }
+    }*/
 }

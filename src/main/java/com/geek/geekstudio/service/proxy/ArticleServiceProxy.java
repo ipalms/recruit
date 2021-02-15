@@ -1,5 +1,7 @@
 package com.geek.geekstudio.service.proxy;
 
+import com.geek.geekstudio.exception.ParameterError;
+import com.geek.geekstudio.exception.PermissionDeniedException;
 import com.geek.geekstudio.exception.RecruitFileException;
 import com.geek.geekstudio.model.dto.ArticleDTO;
 import com.geek.geekstudio.model.vo.RestInfo;
@@ -40,5 +42,22 @@ public class ArticleServiceProxy implements ArticleService {
     @Override
     public RestInfo queryOneArticle(int articleId, String articleType) throws RecruitFileException {
         return articleService.queryOneArticle(articleId,articleType);
+    }
+
+    /**
+     * 查询自己发表的文章
+     */
+    @Override
+    public RestInfo queryMyArticles(int page, int rows, String userId) {
+        return articleService.queryMyArticles(page, rows, userId);
+    }
+
+    /**
+     * 删除一篇发布的文章
+     */
+    @Override
+    public RestInfo deleteArticle(ArticleDTO articleDTO) throws ParameterError, PermissionDeniedException {
+        log.info("管理员"+articleDTO.getUserId()+" 删除了id为"+articleDTO.getId()+"了一篇文章");
+        return articleService.deleteArticle(articleDTO);
     }
 }

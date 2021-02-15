@@ -6,12 +6,22 @@
 
     <!-- 数字类型（Integer）只能判空   -->
     <select id="queryMails" resultType="String">
-         select DISTINCT u.mail from user u, direction d
+        select DISTINCT u.mail from user u, direction d
         <where>
             <if test="courseId!=null">
-            AND d.courseId=#{courseId}
+                AND d.courseId=#{courseId}
             </if>
             AND u.userId=d.userId AND u.receiveMail='yes'
         </where>
     </select>
+
+    <!--<select id="queryUsersInfo" resultType="userVO">
+        select DISTINCT u.userId,u.userName,u.mail,u.major,u.image,u.grade FROM user u, direction d
+        <where>
+            <if test="courseId!=0">
+                AND d.courseId=#{courseId}
+            </if>
+            AND u.userId=d.userId LIMIT #{start},#{rows}
+        </where>
+    </select>-->
 </mapper>

@@ -21,7 +21,7 @@ public class ExceptionCode {
     public static final int TOKEN_MISS=425;
     //token过期
     public static final int TOKEN_EXPIRED=430;
-    //token过期
+    //refreshToken过期
     public static final int REFRESH_TOKEN_EXPIRED=432;
     //账号或密码错误
     public static final int USERNAME_OR_PASSWORD_WRONG=435;
@@ -35,6 +35,8 @@ public class ExceptionCode {
     public static final int EMAIL_SEND_WRONG = 455;
     //验证码过期或不存在
     public static final int EMAIL_CODE_WRONG = 460;
+    //提交作业时间关闭
+    public static final int DELAY_SUBMIT = 465;
     //服务器内部错误
     public static final int Server_Internal_Error = 500;
 

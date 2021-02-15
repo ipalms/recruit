@@ -20,7 +20,7 @@ public class AnnounceServiceProxy implements AnnounceService {
      *发布公告
      */
     @Override
-    public RestInfo addAnnounce(String adminId, int courseId, String title, String content, MultipartFile file) throws RecruitException {
+    public RestInfo addAnnounce(String adminId, Integer courseId, String title, String content, MultipartFile file) throws RecruitException {
         log.info("管理员："+adminId+"发布了公告");
         return announceServiceImpl.addAnnounce(adminId,courseId,title,content,file);
     }

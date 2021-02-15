@@ -10,23 +10,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserVO {
-
-    //属性待定
-//    private int id;
+public class UserInfo implements Comparable<UserInfo> {
     private String userId;
     private String userName;
     private String mail;
-//    private String password;
     private String major;
-//    private String sex;
     private String image;
-//    private String introduce;
     private String grade;
+    private int submitCount;
     private double avgScore;
-//    private String registerTime;
-//    private String token;
-//    private String activeCode;
-//    private String receiveMail;
-//    private String state;
+
+    @Override
+    public int compareTo(UserInfo o) {
+        return (int)((o.avgScore-this.avgScore)*100);
+    }
 }

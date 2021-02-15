@@ -1,7 +1,6 @@
 package com.geek.geekstudio.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.concurrent.ListenableFuture;
 
@@ -11,20 +10,19 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 //可替换线程池中的new的线程池对象
 //此类作为线程池类可以在每次提交线程的时候都会将当前线程池的运行状况打印
+@Slf4j
 public class VisibleThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
-    private static final Logger logger = LoggerFactory.getLogger(VisibleThreadPoolTaskExecutor.class);
-
     /**
      * showThreadPoolInfo方法中将任务总数、已完成数、活跃线程数，队列大小都打印出来了。
      * 然后Override了父类的execute、submit等方法，在里面调用showThreadPoolInfo方法，
      * 这样每次有任务被提交到线程池的时候，都会将当前线程池的基本情况打印到日志中；
      */
-    private void showThreadPoolInfo(String prefix){
+    private void showThreadPoolInfo(String prefix) {
         ThreadPoolExecutor threadPoolExecutor = getThreadPoolExecutor();
-        if(null==threadPoolExecutor){
+        if (null == threadPoolExecutor) {
             return;
         }
-        logger.info("{}, {},taskCount [{}], completedTaskCount [{}], activeCount [{}], queueSize [{}]",
+        log.info("{}, {},taskCount [{}], completedTaskCount [{}], activeCount [{}], queueSize [{}]",
                 this.getThreadNamePrefix(),
                 prefix,
                 threadPoolExecutor.getTaskCount(),

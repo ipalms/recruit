@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface AnnounceService {
 
     //发布公告
-    RestInfo addAnnounce(String adminId, int courseId, String title, String content, MultipartFile file)throws RecruitException;
+    RestInfo addAnnounce(String adminId, Integer courseId, String title, String content, MultipartFile file)throws RecruitException;
 
     //删除公告
     RestInfo delAnnounce(int id)throws RecruitException;

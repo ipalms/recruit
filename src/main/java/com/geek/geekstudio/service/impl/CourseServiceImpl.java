@@ -22,8 +22,10 @@ import java.util.List;
 @Service
 @Slf4j
 public class CourseServiceImpl implements CourseService {
+
     @Autowired
     CourseMapper courseMapper;
+
     @Autowired
     DirectionMapper directionMapper;
 
@@ -73,9 +75,11 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public RestInfo queryMyCourse(String userId) {
         List<DirectionVO> directionVOList=directionMapper.queryMyCourse(userId);
-        for(DirectionVO directionVO:directionVOList){
-            CoursePO coursePO=courseMapper.queryCourseByCourseId(directionVO.getCourseId());
-            directionVO.setCourseName(coursePO.getCourseName());
+        if(directionVOList!=null) {
+            for (DirectionVO directionVO : directionVOList) {
+                CoursePO coursePO = courseMapper.queryCourseByCourseId(directionVO.getCourseId());
+                directionVO.setCourseName(coursePO.getCourseName());
+            }
         }
         return RestInfo.success("个人所选方向数据",directionVOList);
     }

@@ -59,8 +59,4 @@ public class DateUtil {
     public static long date2TimeStamp(String date_str) throws ParseException {
         return format.parse(date_str).getTime();
     }
-
-    public static void main(String[] args) throws ParseException {
-        System.out.println(date2TimeStamp("2021-02-08:22-28-49"));
-    }
 }

@@ -30,11 +30,11 @@ public class AnnounceServiceImpl implements AnnounceService {
     FileUtil fileUtil;
 
     /**
-     *发布公告
+     *发布公告 还未限制文件大小，默认1G
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public RestInfo addAnnounce(String adminId, int courseId, String title, String content, MultipartFile file) throws RecruitException {
+    public RestInfo addAnnounce(String adminId, Integer courseId, String title, String content, MultipartFile file) throws RecruitException {
         String fileName=null,filePath=null,url=null;
         if(file!=null){
             fileName = file.getOriginalFilename();
@@ -85,6 +85,7 @@ public class AnnounceServiceImpl implements AnnounceService {
             throw new ParameterError();
         }
         if(announcePO.getFileName()!=null){
+            //改成直接路径
             announcePO.setFilePath(fileUtil.getFileUrl(baseUrl,announcePO.getFilePath()));
         }
         return RestInfo.success("公告详情",announcePO);

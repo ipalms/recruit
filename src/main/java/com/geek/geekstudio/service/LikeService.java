@@ -10,4 +10,6 @@ public interface LikeService {
 
     //改变点赞状态
     RestInfo changeLikeStatus(String userId,int articleId);
+
+
 }

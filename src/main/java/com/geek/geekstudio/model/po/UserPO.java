@@ -1,5 +1,6 @@
 package com.geek.geekstudio.model.po;
 
+import com.geek.geekstudio.model.vo.DirectionVO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 /**
   *PO用户类，对应数据库user表    --  一般也用DO对应数据库层
@@ -27,4 +29,5 @@ public class UserPO {
     private String grade;
     private String registerTime;
     private String receiveMail;
+    private List<DirectionVO> directionVOList;
 }

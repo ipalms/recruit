@@ -11,7 +11,8 @@ public interface SuperAdminMapper {
     /**
      *通过id 密码查管理员
      */
-    @Select("SELECT * FROM admin WHERE adminId=#{adminId} AND password=#{password}")
+    @Select("SELECT id,adminId,adminName,courseName,image,registerTime,type," +
+            " FROM admin WHERE adminId=#{adminId} AND password=#{password}")
     AdminPO queryAdminByUserIdAndPassword(String adminId, String password);
 
     /**

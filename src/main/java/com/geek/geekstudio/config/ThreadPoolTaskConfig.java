@@ -35,7 +35,7 @@ public class ThreadPoolTaskConfig {
 
     @Bean("taskExecutor") // bean的名称，默认为首字母小写的方法名
     public ThreadPoolTaskExecutor taskExecutor(){
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        ThreadPoolTaskExecutor executor = new VisibleThreadPoolTaskExecutor();
         executor.setCorePoolSize(corePoolSize);
         executor.setMaxPoolSize(maxPoolSize);
         executor.setQueueCapacity(queueCapacity);

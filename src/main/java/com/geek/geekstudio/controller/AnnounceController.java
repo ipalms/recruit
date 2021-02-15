@@ -37,7 +37,7 @@ public class AnnounceController {
     @UserLoginToken
     @PostMapping("/addAnnounce")
     public RestInfo addAnnounce(@RequestParam(name = "adminId") @NotBlank(message = "管理员id不能为空")String adminId,
-                                @RequestParam(name = "courseId",required = false) int courseId,
+                                @RequestParam(name = "courseId",required = false) Integer courseId,
                                 @RequestParam(name = "title") @Size(min = 1,max=60)String title,
                                 @RequestParam(name = "content") String content,
                                 @RequestParam(name = "file", required = false)MultipartFile file) throws RecruitException {
@@ -71,7 +71,7 @@ public class AnnounceController {
     @PassToken
     @GetMapping("/queryOneAnnounce/{id}")
     public RestInfo queryOneAnnounce(@PathVariable(name = "id") int id,HttpServletRequest request) throws ParameterError {
-        log.info(request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath());
+        //log.info(request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath());
         String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
         return announceServiceProxy.queryOneAnnounce(id,baseUrl);
     }
