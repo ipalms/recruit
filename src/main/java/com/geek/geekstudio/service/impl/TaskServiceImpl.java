@@ -116,12 +116,25 @@ public class TaskServiceImpl implements TaskService {
                 &&!("super".equals(adminMapper.queryTypeById(adminId)))){
             throw new PermissionDeniedException("非发布该作业管理员，不可删除！");
         }
+        int courseId=taskDTO.getCourseId();
         taskMapper.deleteByTaskId(id);
         taskFileMapper.deleteFilesByTaskId(id);
         try {
             fileUtil.deleteDir(new File(fileUtil.buildTaskFilePath(taskDTO.getCourseId(),id)));
         } catch (Exception e) {
             log.info("taskID为"+id+" 文件夹删除文件失败");
+        }
+        List<WorkVO> workVOList=workMapper.queryWorkByTaskId(id);
+        if(workVOList!=null){
+            try {
+                fileUtil.deleteDir(new File(fileUtil.getAllWork(courseId,id)));
+            } catch (Exception e) {
+                log.info("workID为"+id+" 文件夹删除文件失败");
+            }
+            for(WorkVO workVO:workVOList){
+                workFileMapper.deleteFilesByWorkId(workVO.getId());
+                workMapper.deleteByWorkId(workVO.getId());
+            }
         }
         return RestInfo.success("删除发布的作业成功",null);
     }

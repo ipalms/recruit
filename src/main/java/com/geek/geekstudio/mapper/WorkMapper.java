@@ -45,6 +45,10 @@ public interface WorkMapper {
     @Select("SELECT * FROM work WHERE taskId=#{taskId} LIMIT #{start},#{rows}")
     List<WorkVO> queryWorksByTaskId(int taskId, int start, int rows);
 
+    //查询可能提交的作业
+    @Select("SELECT * FROM work WHERE taskId=#{taskId} ")
+    List<WorkVO> queryWorkByTaskId(int taskId);
+
     //给某项作业打分
     @Update("UPDATE work SET score=#{score} WHERE id=#{id}")
     void updateScore(int id, Integer score);

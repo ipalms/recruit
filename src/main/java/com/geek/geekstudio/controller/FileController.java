@@ -38,7 +38,7 @@ public class FileController {
     }
 
     /**
-     *文章文件上传-- markdown   (也可图片)
+     *文章文件上传-- markdown
      */
     @UserLoginToken
     @AdminPermission

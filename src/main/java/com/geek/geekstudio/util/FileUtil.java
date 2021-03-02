@@ -51,7 +51,7 @@ public class FileUtil {
         //String rootDir="/all";
         //获取绝对路径
         this.fileStorageLocation = Paths.get(rootDir).toAbsolutePath().normalize();
-        System.out.println("fileStorageLocation: "+fileStorageLocation);
+        //System.out.println("fileStorageLocation: "+fileStorageLocation);
         this.announceFilePath = fileStorageLocation.toString() + "/announce/";
         this.taskFilePath = fileStorageLocation.toString() + "/task/";
         this.workFilePath = fileStorageLocation.toString() + "/work/";

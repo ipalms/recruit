@@ -66,13 +66,12 @@ public class AnnounceController {
     }
 
     /**
-     * 查看一条公告的详情  注：返回的文件地址可能有些问题
+     * 查看一条公告的详情
      */
     @PassToken
     @GetMapping("/queryOneAnnounce/{id}")
     public RestInfo queryOneAnnounce(@PathVariable(name = "id") int id,HttpServletRequest request) throws ParameterError {
-        //log.info(request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath());
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return announceServiceProxy.queryOneAnnounce(id,baseUrl);
     }
 }

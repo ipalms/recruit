@@ -75,7 +75,7 @@ public class JavaMailServiceImpl implements JavaMailService {
     public Future<String> sendDailyMail(String mail, String title, String text) throws Exception {
         //创建一个消息邮件
         try {
-            log.info("11111");
+            //log.info("11111");
             //Thread.sleep(10000); //测试异步任务用时
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);

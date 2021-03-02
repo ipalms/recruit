@@ -44,6 +44,9 @@ public class FileServiceImpl implements FileService {
     AdminMapper adminMapper;
 
     @Autowired
+    ArticleMapper articleMapper;
+
+    @Autowired
     ArticleFileMapper articleFileMapper;
 
     @Autowired
@@ -107,13 +110,21 @@ public class FileServiceImpl implements FileService {
     @Transactional(rollbackFor = Exception.class)
     public RestInfo articleFileUpload(int articleId, MultipartFile file) throws RecruitFileException {
         try {
+            if(file.getSize()/1000>singleMaxImageSize){
+                throw new RecruitFileException("文件大于10M，请重新上传");
+            }
             String url=null;
             //同一文章上传同一名字文件会覆盖原文件
             String originalFileName = file.getOriginalFilename();
             String filePath = fileUtil.buildArticleFilePath(articleId);
             url = fileUtil.storeFile(filePath,file,originalFileName);
             //增加一条文件上传记录
-            articleFileMapper.addUploadRecord(articleId,originalFileName,url,DateUtil.creatDate());
+            ArticleFilePO articleFilePO=articleFileMapper.queryArticleFileByFilePath(url);
+            if(articleFilePO==null) {
+                articleFileMapper.addUploadRecord(articleId,originalFileName,url,DateUtil.creatDate());
+            }else {
+                articleFileMapper.updateRecordTime(articleFilePO.getId(),DateUtil.creatDate());
+            }
             return RestInfo.success("文章附件上传成功！",null);
         } catch (Exception e) {
             throw new RecruitFileException();
@@ -127,16 +138,19 @@ public class FileServiceImpl implements FileService {
     //@Transactional(rollbackFor = Exception.class)
     public RestInfo articleFilesUpload(int articleId, MultipartFile[] file) {
         int total=file.length;
-        List<ErrorMsg> errorList = new ArrayList<>();
+        ErrorMsg errorMsg =null;
         for (int i = 0; i < total; i++) {
             try {
                 //同一个类内调用@Transactional修饰的方法，事务不生效
                 articleFileUpload(articleId, file[i]);
             } catch (RecruitFileException e) {
-                errorList.add(new ErrorMsg(405, "第" + (i + 1) + "个文件上传失败!", e.getMessage()));
+                //捕获到一个异常就中止文件的上传
+                articleFileMapper.deleteFilesByArticleId(articleId);
+                articleMapper.deleteByArticleId(articleId);
+                return RestInfo.failed(405,"部分文件上传失败",new ErrorMsg(405, "第" + (i + 1) + "个文件上传失败!", e.getMessage()));
             }
         }
-        return RestInfo.success("成功上传"+(total-errorList.size())+"个文章附件",errorList);
+        return RestInfo.success("成功上传"+total+"个文章附件",null);
     }
 
     /**
@@ -158,7 +172,7 @@ public class FileServiceImpl implements FileService {
             String originalFileName = file.getOriginalFilename();
             String filePath = fileUtil.buildTaskFilePath(taskPO.getCourseId(),taskId);
             url = fileUtil.storeFile(filePath,file,originalFileName);
-            //int i=1/0; 测试异常
+            //int i=1/0; //测试异常
             //对上传同名文件上传的处理
             TaskFilePO taskFilePO=taskFileMapper.queryTaskFileByFilePath(url);
             if(taskFilePO==null){
@@ -166,15 +180,21 @@ public class FileServiceImpl implements FileService {
             }else {
                 taskFileMapper.updateRecordTime(taskFilePO.getId(),DateUtil.creatDate());
             }
-            return RestInfo.success("发布作业成功！",null);
+            return RestInfo.success("上传作业文件成功！",null);
         } catch (Exception e) {
             throw new RecruitFileException(e.getMessage());
         }
     }
 
-    /**
+    //空实现
+    @Override
+    public RestInfo taskFilesUpload(int taskId, MultipartFile[] files) {
+        return null;
+    }
+
+    /*    *//**
      *多个作业的文件上传--没有事务支持，除非把此方法内容放至到proxy类调用
-     */
+     *//*
     @Override
     public RestInfo taskFilesUpload(int taskId, MultipartFile[] files) {
         int total=files.length;
@@ -188,7 +208,7 @@ public class FileServiceImpl implements FileService {
             }
         }
         return RestInfo.success("成功布置"+(total-errorList.size())+"个作业文件",errorList);
-    }
+    }*/
 
     /**
      * task文件的删除（目前仅删除taskfile相应的记录和磁盘中的文件）
@@ -240,9 +260,15 @@ public class FileServiceImpl implements FileService {
         }
     }
 
+    //空实现
+    @Override
+    public RestInfo workFilesUpload(int workId, MultipartFile[] files) {
+        return null;
+    }
+
     /**
      *多个作业的文件上传
-     */
+     *//*
     @Override
     public RestInfo workFilesUpload(int workId, MultipartFile[] files) {
         int total=files.length;
@@ -256,7 +282,7 @@ public class FileServiceImpl implements FileService {
             }
         }
         return RestInfo.success("成功上传"+(total-errorList.size())+"个作业文件",errorList);
-    }
+    }*/
 
     /**
      * work文件的删除（撤回上传的作业）

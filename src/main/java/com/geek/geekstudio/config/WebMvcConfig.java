@@ -47,8 +47,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         //和页面有关的静态目录都放在项目的static目录下
         //registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         //上传文件都在D盘下的all目录下，访问路径如：http://localhost:8080/source/image/picture5-778899.jpg
-        //其中source表示访问的前缀。"file:D:/all/"是文件真实的存储路径
-        registry.addResourceHandler("/source/**").addResourceLocations("file:D:/all/");
+        //其中source表示访问的前缀。"file:D:/all/"是 windows系统下文件真实的存储路径
+        //registry.addResourceHandler("/source/**").addResourceLocations("file:D:/all/");
+        registry.addResourceHandler("/source/**").addResourceLocations("file:/all/");
     }
 
 }

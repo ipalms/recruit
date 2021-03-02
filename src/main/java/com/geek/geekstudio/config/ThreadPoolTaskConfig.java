@@ -31,7 +31,7 @@ public class ThreadPoolTaskConfig {
 
     @Value("${async.executor.thread.name.prefix}")
     /** 线程池名前缀 */
-    private static String threadNamePrefix;
+    private String threadNamePrefix;
 
     @Bean("taskExecutor") // bean的名称，默认为首字母小写的方法名
     public ThreadPoolTaskExecutor taskExecutor(){

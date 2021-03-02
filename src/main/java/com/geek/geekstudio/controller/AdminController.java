@@ -69,7 +69,7 @@ public class AdminController {
     @GetMapping("/queryMyTasks")
     public RestInfo queryMyTasks(@RequestParam(name = "adminId") String adminId,
                                  HttpServletRequest request)  {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return taskServiceProxy.queryMyTasks(adminId,baseUrl);
     }
 
@@ -83,7 +83,7 @@ public class AdminController {
                                  @RequestParam(name = "rows",defaultValue = "10",required = false)int rows,
                                  @RequestParam(name = "taskId") int taskId,
                                  HttpServletRequest request)  {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return taskServiceProxy.queryOneTask(page,rows,taskId,baseUrl);
     }
 
@@ -99,6 +99,11 @@ public class AdminController {
         return taskServiceProxy.giveScore(workDTO);
     }
 
+    /** request.getScheme();//http
+        request.getServerName();//localhost
+        request.getServerPort();//8080
+        request.getContextPath();//项目名
+        String url = scheme+"://"+serverName+":"+serverPort+contextPath;//http://127.0.0.1:8080/test*/
     /**
      * 批下载一个任务对应的作业
      * 参数：1.taskId 2.List<String> userIdList
@@ -109,7 +114,7 @@ public class AdminController {
     @PostMapping("downloadWorks")
     public RestInfo downloadWorks(@RequestBody WorkDTO workDTO,
                                   HttpServletRequest request) throws ParameterError, RecruitFileException {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return taskServiceProxy.downloadWorks(workDTO,baseUrl);
     }
 

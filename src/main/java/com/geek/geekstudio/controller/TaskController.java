@@ -60,7 +60,7 @@ public class TaskController {
     /**
      *删除该作业，删除的是task以及涉及的taskfile的所有东西（数据库记录+磁盘文件）（发布者和超级管理员可以）
      *需要提供参数1.id(自增的) 2.adminId
-     * （特殊情况可能有提交的作业记录-------）
+     * （特殊情况可能有提交的作业记录---write）
      */
     @UserLoginToken
     @AdminPermission
@@ -76,7 +76,7 @@ public class TaskController {
     @GetMapping("/queryTasks")
     public RestInfo queryTasks(@RequestParam(name = "courseId") int courseId,
                                HttpServletRequest request)  {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return taskServiceProxy.queryTasks(courseId,baseUrl);
     }
 

@@ -51,21 +51,20 @@ public class WorkController {
     public RestInfo queryAllMyWorks(@RequestParam(name = "courseId") int courseId,
                                     @RequestParam(name = "userId") String userId,
                                     HttpServletRequest request) throws PermissionDeniedException {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return workServiceProxy.queryAllMyWorks(courseId,userId,baseUrl);
     }
 
     /**
      * 查看自己提交的某一方向的一项作业记录
-     * 参数：1.courseId 2.userId 3.taskId
+     * 参数：1.taskId 2.userId
      */
     @UserLoginToken
     @GetMapping("/queryOneWork")
     public RestInfo queryOneWork(@RequestParam(name = "taskId") int taskId,
                                  @RequestParam(name = "userId") String userId,
                                  HttpServletRequest request) {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":8080" + request.getContextPath();
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return workServiceProxy.queryOneWork(taskId,userId,baseUrl);
     }
-
 }

@@ -60,7 +60,7 @@ public class WorkServiceImpl implements WorkService {
             if(taskPO.getIsClosed()==0){
                 taskMapper.shutUpCommit(taskPO.getId());
             }
-            log.info("学生id为"+workDTO.getUserId()+" 由于作业通道关闭提交作业id为"+workDTO.getTaskId()+" 的作业失败");
+            //log.info("学生id为"+workDTO.getUserId()+" 由于作业通道关闭提交作业id为"+workDTO.getTaskId()+" 的作业失败");
             return RestInfo.failed(ExceptionCode.DELAY_SUBMIT,"作业通道已关闭，不可提交作业！");
         }
         workDTO.setAddTime(currentTime);
