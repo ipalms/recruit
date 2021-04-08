@@ -13,6 +13,7 @@ import com.geek.geekstudio.util.DateUtil;
 import com.geek.geekstudio.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +30,10 @@ public class AnnounceServiceImpl implements AnnounceService {
     @Autowired
     FileUtil fileUtil;
 
+    /** 注入缓存 */
+    @Autowired
+    RedisTemplate<Object,Object> redisTemplate;
+
     /**
      *发布公告 还未限制文件大小，默认1G
      */
@@ -41,8 +46,10 @@ public class AnnounceServiceImpl implements AnnounceService {
             filePath = fileUtil.buildAnnounceFilePath(courseId);
             url=fileUtil.storeFile(filePath,file,fileName);
         }
-        announceMapper.addAnnounce(courseId,adminId,title,content, DateUtil.creatDate(),fileName,url);
-        return RestInfo.success("推送公告成功",null);
+        AnnouncePO announcePO=new AnnouncePO(courseId,adminId,title,content,DateUtil.creatDate(),fileName,url);
+        announceMapper.addAnnounce(announcePO);
+        redisTemplate.opsForHash().put("announce",announcePO.getId()+"",announcePO);
+        return RestInfo.success("推送公告成功",announcePO.getId());
     }
 
     /**
@@ -60,6 +67,7 @@ public class AnnounceServiceImpl implements AnnounceService {
             fileUtil.deleteFile(fileUtil.buildPath(announcePO.getFilePath()));
         }
         announceMapper.delAnnounce(id);
+        redisTemplate.opsForHash().delete("announce",announcePO.getId()+"");
         return RestInfo.success("删除公告成功",null);
     }
 
@@ -80,9 +88,13 @@ public class AnnounceServiceImpl implements AnnounceService {
      */
     @Override
     public RestInfo queryOneAnnounce(int id, String baseUrl) throws ParameterError {
-        AnnouncePO announcePO=announceMapper.findAnnounceById(id);
+        AnnouncePO announcePO= (AnnouncePO) redisTemplate.opsForHash().get("announce",id+"");
         if(announcePO==null){
-            throw new ParameterError();
+            announcePO=announceMapper.findAnnounceById(id);
+            if(announcePO==null){
+                throw new ParameterError();
+            }
+            redisTemplate.opsForHash().put("announce",announcePO.getId()+"",announcePO);
         }
         if(announcePO.getFileName()!=null){
             //改成直接路径

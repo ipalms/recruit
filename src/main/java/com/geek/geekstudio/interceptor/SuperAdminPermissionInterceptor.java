@@ -1,10 +1,7 @@
 package com.geek.geekstudio.interceptor;
 
-import com.geek.geekstudio.annotaion.AdminPermission;
 import com.geek.geekstudio.annotaion.SuperAdminPermission;
 import com.geek.geekstudio.exception.PermissionDeniedException;
-import com.geek.geekstudio.model.po.AdminPO;
-import com.geek.geekstudio.model.po.UserPO;
 import com.geek.geekstudio.util.TokenUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -47,8 +44,7 @@ public class SuperAdminPermissionInterceptor implements HandlerInterceptor {
             String type=message.get("type", String.class);
             if("super".equals(type)){
                 return true;
-            }
-            else{
+            }else{
                 throw new PermissionDeniedException("权限不足！需要超级管理员权限！");
             }
         }

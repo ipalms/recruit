@@ -272,6 +272,7 @@ public class TaskServiceImpl implements TaskService {
 
 
     /**
+     * 考虑每晚进行一次gc(垃圾回收)----
      * 定时任务，每周日凌晨2自动扫描任务查看其提交通道是否应该关闭
      * 0 0 2 ? * 1   每周日凌晨2点执行一次
      * 0 1 0 * * ?    每天晚上12：01分执行一次

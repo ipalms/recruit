@@ -22,6 +22,9 @@ public interface UserService {
     //登录
     RestInfo login(String userId, String password, String baseUrl) throws UsernameOrPasswordIncorrectException;
 
+    //更新用户信息
+    RestInfo updateInfo(String token, String baseUrl);
+
     //注销用户
     RestInfo logout(String token, String refreshToken) throws NoTokenException;
 
@@ -51,7 +54,6 @@ public interface UserService {
 
     //该变用户接收日常邮件状态
     RestInfo changeReceiveMailStatus(String userId);
-
 
 
 

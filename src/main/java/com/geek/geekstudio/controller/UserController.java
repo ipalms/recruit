@@ -99,6 +99,16 @@ public class UserController {
     }
 
     /**
+     * 改变用户信息的时候更新用户信息
+     */
+    @UserLoginToken
+    @GetMapping("/updateInfo")
+    public RestInfo updateInfo(HttpServletRequest request){
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return userServiceProxy.updateInfo(request.getHeader("token"),baseUrl);
+    }
+
+    /**
      *注销--refreshToken可以使用JSONObject获得值，也可封装到对象中获取
      */
     @UserLoginToken

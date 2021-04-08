@@ -52,6 +52,14 @@ public class UserServiceProxy implements UserService {
     }
 
     /**
+     *更新用户信息
+     */
+    @Override
+    public RestInfo updateInfo(String token, String baseUrl) {
+        return userService.updateInfo(token,baseUrl);
+    }
+
+    /**
      *注销登录用户
      */
     @Override
@@ -64,7 +72,7 @@ public class UserServiceProxy implements UserService {
      */
     @Override
     public RestInfo resetToken(String refreshToken) throws PermissionDeniedException {
-        log.info("刷新token的refreshToken："+refreshToken);
+        //log.info("刷新token的refreshToken："+refreshToken);
         return userService.resetToken(refreshToken);
     }
 

@@ -22,5 +22,12 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 class GeekstudioApplicationTests {
-
+    public static void main(String[] args) {
+        String id="dakmkda";
+        String substring = id.substring(0, 4);
+        Integer a=Integer.valueOf(substring);
+        System.out.println(Integer.valueOf(substring));
+        //substring
+        //System.out.println(id.substring(0,4));
+    }
 }

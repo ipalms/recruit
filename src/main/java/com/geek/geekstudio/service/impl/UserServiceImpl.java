@@ -63,7 +63,8 @@ public class UserServiceImpl implements UserService {
     //可以让事件在遇到非运行时异常时也回滚 回到没注册状态
     @Transactional(rollbackFor = Exception.class)
     public RestInfo register(UserDTO userDTO) throws UserRegisteredException, EmailCodeWrongException {
-        String active=null;
+        String active;
+        String grade;
         if(userMapper.queryUserByUserId(userDTO.getUserId())!=null){
             //再检验一遍学号是否被注册了
             throw new UserRegisteredException();
@@ -77,7 +78,13 @@ public class UserServiceImpl implements UserService {
         }
         userDTO.setRegisterTime(DateUtil.creatDate());
         userDTO.setIntroduce("亲还没有个人介绍呢~~");
-        userDTO.setGrade("2021");
+        grade = userDTO.getUserId().substring(0, 4);
+        try {
+            Integer.valueOf(grade);
+        } catch (Exception e) {
+            grade=null;
+        }
+        userDTO.setGrade(grade);
         //默认接收日常邮件
         userDTO.setReceiveMail("yes");
         userMapper.addUser(userDTO);
@@ -98,7 +105,7 @@ public class UserServiceImpl implements UserService {
         //生成token 和 refreshToken
         String token,refreshToken;
         //返回前端数据
-        Map<Object,Object> data=new HashMap<Object,Object>();
+        Map<String,Object> data=new HashMap<String,Object>();
         String type = null;
         Object user=userMapper.queryUserByUserIdAndPassword(userId,password);
         if(user!=null){
@@ -133,6 +140,34 @@ public class UserServiceImpl implements UserService {
         data.put("token",token);
         data.put("refreshToken",refreshToken);
         return RestInfo.success(data);
+    }
+
+    /**
+     *更新用户信息
+     */
+    @Override
+    public RestInfo updateInfo(String token, String baseUrl) {
+        String userId = (String)redisTemplate.opsForValue().get(token);
+        if(userId==null) {
+            throw new ExpiredJwtException(null,null,"token过期了");
+        }
+        Object user=userMapper.queryUserByUserId(userId);
+        if(user!=null){
+            UserPO userPO=(UserPO)user;
+            //加入新生的专业选择
+            RestInfo restInfo=courseService.queryMyCourse(userPO.getUserId());
+            userPO.setDirectionVOList((List<DirectionVO>)restInfo.getData());
+            if(userPO.getImage()!=null) {
+                userPO.setImage(fileUtil.getFileUrl(baseUrl, userPO.getImage()));
+            }
+        }else{
+            user=adminMapper.queryAdminByAdminId(userId);
+            AdminPO adminPO=(AdminPO)user;
+            if(adminPO.getImage()!=null) {
+                adminPO.setImage(fileUtil.getFileUrl(baseUrl, adminPO.getImage()));
+            }
+        }
+        return RestInfo.success(user);
     }
 
     /**

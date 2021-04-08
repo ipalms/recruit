@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -184,5 +185,30 @@ public class FileServiceProxy implements FileService {
     public RestInfo delWorkFile(int id, String userId) throws RecruitException {
         log.info("用户编号为：" + userId + " 尝试删除已上传作业编号为" + id + "的文件");
         return fileService.delWorkFile(id, userId);
+    }
+
+    /**
+     * announce文件上传  --断点续传（未做异常回滚操作）
+     */
+    @Override
+    public RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, String fileName, Integer courseId, String fileKey) throws RecruitFileException {
+        log.info("上传文件的第"+shardIndex+"片文件");
+        return fileService.announceUpload(file, shardIndex, shardTotal, fileSize, fileName, courseId, fileKey);
+    }
+
+    /**
+     * 检查数据库中有没有这个文件的存在(根据文件的唯一标识)
+     */
+    @Override
+    public RestInfo check(String fileKey,int shardSize) {
+        return fileService.check(fileKey,shardSize);
+    }
+
+    /**
+     *合并announce分页文件
+     */
+    @Override
+    public RestInfo merge(String fileKey,int id) throws RecruitFileException, InterruptedException{
+        return fileService.merge(fileKey,id);
     }
 }

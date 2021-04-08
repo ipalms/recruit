@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -68,7 +69,7 @@ public class JavaMailServiceImpl implements JavaMailService {
      * 发送日常邮件
      * @return
      */
-    //使用异步任务发送邮件
+    //使用异步任务发送邮件（异步方法--实质开线程实现）
     @Async("taskExecutor")// 指定线程池，也可以直接写@Async
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -76,6 +77,7 @@ public class JavaMailServiceImpl implements JavaMailService {
         //创建一个消息邮件
         try {
             //log.info("11111");
+            //Callable
             //Thread.sleep(10000); //测试异步任务用时
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);

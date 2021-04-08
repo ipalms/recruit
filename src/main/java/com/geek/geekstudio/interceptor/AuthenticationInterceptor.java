@@ -29,6 +29,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     //注入一个redisTemplate操纵redis缓存
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
+
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws NoTokenException, PermissionDeniedException  {
         //SpringMVC会将请求通过处理器映射器将请求交给匹配的Handler处理，这个handler参数就是描述的处理请求的Handler。
         //如果不是映射到方法直接通过

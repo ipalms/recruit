@@ -19,7 +19,7 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
-  *image位置   rootDir/image/a.jpg
+  *image位置   /all/image/a.jpg
  */
 @Data
 @Component
@@ -65,20 +65,6 @@ public class FileUtil {
         } catch (Exception ex) {
             throw new RuntimeException("创建上传目录失败");
         }
-    }
-
-    /**
-     * 重新构建作业文件名
-     * @param userId
-     * @param userName
-     * @param task
-     * @param fileName
-     * @return
-     */
-    public String getWorkName(String userId,String userName,String task,String fileName){
-        int index = fileName.lastIndexOf('.');
-        String suffix = fileName.substring(index);
-        return userId+"-"+userName+"-"+task+suffix;
     }
 
     /**
@@ -227,10 +213,7 @@ public class FileUtil {
     }
 
     /**
-     * 解压问价
-     * @param bytes
-     * @param prefix
-     * @throws IOException
+     * 解压文件
      */
     public void unzipFilesWithTier(byte[] bytes, String prefix) throws IOException {
         InputStream bais = new ByteArrayInputStream(bytes);
@@ -362,6 +345,10 @@ public class FileUtil {
      */
     public String buildAnnounceFilePath(int courseId){
         return this.announceFilePath+courseId+"/";
+    }
+
+    public String buildAnnounceFullPath(String filePath, String fileName) {
+        return filePath.substring(fileStorageLocation.toString().length())+fileName;
     }
 
     /**

@@ -6,6 +6,8 @@ import com.geek.geekstudio.exception.RecruitFileException;
 import com.geek.geekstudio.model.vo.RestInfo;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileNotFoundException;
+
 public interface FileService {
 
     //头像上传
@@ -34,4 +36,13 @@ public interface FileService {
 
     //work文件的删除
     RestInfo delWorkFile(int id, String userId) throws RecruitException;
+
+    //announce文件上传
+    RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize,String fileName, Integer courseId, String fileKey) throws RecruitFileException;
+
+    //检查数据库中有没有这个文件的存在
+    RestInfo check(String fileKey,int shardSize);
+
+    //合并announce分页文件
+    RestInfo merge(String fileKey,int id) throws FileNotFoundException, InterruptedException, RecruitFileException;
 }

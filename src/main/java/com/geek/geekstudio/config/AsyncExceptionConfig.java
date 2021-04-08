@@ -15,10 +15,10 @@ import java.lang.reflect.Method;
 //@Configuration
 @Slf4j
 public class AsyncExceptionConfig implements AsyncConfigurer {
-    /**
+   /* *//**
      * @description  :   设置异步方法线程参数
-     */
-    /*@Bean
+     *//*
+    *//*@Bean
     @Override
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -30,7 +30,7 @@ public class AsyncExceptionConfig implements AsyncConfigurer {
         executor.setThreadNamePrefix("SpringAsyncThread-");
 
         return executor;
-    }*/
+    }*//*
 
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
@@ -47,6 +47,6 @@ public class AsyncExceptionConfig implements AsyncConfigurer {
             //根据方法名字 记录异常  略。。。。
             log.info("------我是Async无返回方法的异常处理方法---------");
         }
-    }
+    }*/
 }
 

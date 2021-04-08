@@ -9,8 +9,8 @@ import java.io.IOException;
 /**
  * 编码过滤器，注解方式的过滤器通过文件名的排序作为执行顺序设置响应头，解决跨域
  */
-@WebFilter(filterName = "Filter0_EncodingFilter",urlPatterns = "/*")
-public class Filter0_EncodingFilter implements Filter {
+@WebFilter(filterName = "GlobalFilter",urlPatterns = "/*")
+public class GlobalFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

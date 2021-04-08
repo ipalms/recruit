@@ -154,7 +154,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * token过期处理  前端会会重新请求一个token
+     * token过期处理  前端会重新请求一个token
      * @param expiredJwtException
      * @return
      */
@@ -212,13 +212,13 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 实验室系统错误
+     * 异常父类
      * @param labException
      * @return
      */
     @ExceptionHandler(RecruitException.class)
     @ResponseBody
-    public RestInfo labExceptionHandler(RecruitException labException){
+    public RestInfo recruitExceptionHandler(RecruitException labException){
         return handleErrorInfo(labException.getMessage());
     }
 

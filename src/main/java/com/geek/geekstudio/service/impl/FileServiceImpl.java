@@ -16,10 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -60,6 +61,9 @@ public class FileServiceImpl implements FileService {
 
     @Autowired
     WorkFileMapper workFileMapper;
+
+    @Autowired
+    AnnounceMapper announceMapper;
 
     @Autowired
     FileUtil fileUtil;
@@ -138,7 +142,6 @@ public class FileServiceImpl implements FileService {
     //@Transactional(rollbackFor = Exception.class)
     public RestInfo articleFilesUpload(int articleId, MultipartFile[] file) {
         int total=file.length;
-        ErrorMsg errorMsg =null;
         for (int i = 0; i < total; i++) {
             try {
                 //同一个类内调用@Transactional修饰的方法，事务不生效
@@ -242,7 +245,7 @@ public class FileServiceImpl implements FileService {
             if(workPO==null){
                 throw new ParameterError();
             }
-            String url=null;
+            String url;
             //上传同一名字文件会覆盖原文件
             String originalFileName = file.getOriginalFilename();
             String filePath = fileUtil.buildWorkFilePath(workPO.getCourseId(),workPO.getUserId(),workPO.getTaskId());
@@ -305,5 +308,143 @@ public class FileServiceImpl implements FileService {
         }
         fileUtil.deleteFile(fileUtil.buildPath(workVO.getFilePath()));
         return RestInfo.success("删除上传作业文件成功！",null);
+    }
+
+    /**
+     * announce文件上传  --断点续传
+     */
+    @Override
+    public RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, String fileName,  Integer courseId, String fileKey) throws RecruitFileException {
+        //文件的名称(包含文件的扩展名)
+        String filePath = fileUtil.buildAnnounceFilePath(courseId);
+        //这个是分片的名字
+        String fragmentFileName = fileName + "." + shardIndex; // course\6sfSqfOwzmik4A4icMYuUe.mp4.1
+        //保存这个分片到磁盘(同名文件覆盖)
+        fileUtil.storeFile(filePath,file,fragmentFileName);
+        //查询数据库中有无此文件的存在
+        FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
+        //数据库中的已上传分片大小小于当前的则进行替换
+        if(fragmentFilePO!=null&&(fragmentFilePO.getShardIndex()<shardIndex)){
+           announceMapper.updateFileInfo(fragmentFilePO.getId(),shardIndex,DateUtil.creatDate());
+        }else if(fragmentFilePO==null) {
+            filePath=fileUtil.buildAnnounceFullPath(filePath,fileName);
+            announceMapper.insertFileInfo(fileName,filePath,fileSize,DateUtil.creatDate(),DateUtil.creatDate(),shardIndex,shardTotal,fileKey);
+        }
+        return RestInfo.success();
+    }
+
+    /**
+     * 检查数据库中有没有这个文件的存在(根据文件的唯一标识)
+     */
+    @Override
+    public RestInfo check(String fileKey,int shardSize) {
+        FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
+        //说明这个文件之前上传过(找到文件中最稳定的断开片段,即该片段前的每一片段都存在)
+        if(fragmentFilePO!=null){
+            log.info("中断过的文件check");
+            String path=fileUtil.buildPath(fragmentFilePO.getFilePath());
+            int index=fragmentFilePO.getShardIndex();
+            int total=fragmentFilePO.getShardTotal();
+            int totalSize=fragmentFilePO.getFileSize();
+            boolean lastComplete =true;
+            for (int i = 0; i <index ; i++) {
+                File part1=new File(path + "." + (i + 1));
+                //如果index对应文件及之前的文件不存在，或大小小于规定大小（文件缺失了），
+                //或最后一片不完整就设置新的index结点
+                if((part1.exists()&&part1.length()<shardSize)||!part1.exists()||(i+1==total&&((total-1)*shardSize+part1.length()!=totalSize))){
+                    //往后的文件可以不删除，因为同名的文件会覆盖
+                    /*for(int j=i; j<total;j++){
+                        File part2=new File(path + "." + (j + 1));
+                        if(part2.exists()){
+                            //删除文件不再做进一步判断
+                            part2.delete();
+                        }
+                    }*/
+                    announceMapper.updateFileInfo(fragmentFilePO.getId(),i,DateUtil.creatDate());
+                    if(i+1==total){
+                        lastComplete=false;
+                    }
+                    //更改index值为i+1
+                    fragmentFilePO.setShardIndex(i+1);
+                    break;
+                }
+            }
+            if(index==total&&lastComplete){
+                return RestInfo.success();
+            }
+            return RestInfo.success(fragmentFilePO);
+        }
+        //返回状态码400，表示之前不存在该文件
+        return RestInfo.failed();
+    }
+
+    /**
+     *合并announce分页文件
+     */
+    @Override
+    public RestInfo merge(String fileKey,int id) throws RecruitFileException,InterruptedException {
+        FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
+        if(fragmentFilePO==null){
+            RestInfo.failed("该文件不存在或已被修改，请重新上传");
+        }
+        /*//在网络请求中不能确定最后一个分片是否等于total index 为integer型
+        if(fragmentFilePO.getShardIndex()<fragmentFilePO.getShardTotal()){
+            RestInfo.failed("该文件尚未上传完毕，不可合并");
+        }*/
+        //合并分片开始
+        log.info("分片合并开始");
+        //获取到的路径 没有.1 .2 这样的东西
+        String path=fileUtil.buildPath(fragmentFilePO.getFilePath());
+        int shardTotal= fragmentFilePO.getShardTotal();
+        FileOutputStream outputStream = null; // 文件追加写入
+        try {
+            outputStream = new FileOutputStream(path,true);
+        } catch (FileNotFoundException e) {
+            throw new RecruitFileException("文件合并出错");
+        }
+        FileInputStream fileInputStream = null; //分片文件
+        byte[] byt = new byte[10 * 1024 * 1024];//一次写入10M
+        int len;
+        try {
+            for (int i = 0; i < shardTotal; i++) {
+                File part=new File(path + "." + (i + 1));
+                if(!part.exists()){
+                    throw new RecruitFileException("文件合并出错");
+                }
+                // 读取第i个分片
+                fileInputStream = new FileInputStream(part); //  course\6sfSqfOwzmik4A4icMYuUe.mp4.1
+                while ((len = fileInputStream.read(byt)) != -1) {
+                    outputStream.write(byt, 0, len);
+                }
+            }
+        } catch (IOException e) {
+            throw new RecruitFileException("文件合并出错");
+        } finally {
+            try {
+                if (fileInputStream != null) {
+                    fileInputStream.close();
+                }
+                outputStream.close();
+            } catch (Exception e) {
+                log.error("IO流关闭出错", e);
+            }
+        }
+        log.info("分片结束了");
+        //告诉java虚拟机去回收垃圾 至于什么时候回收  这个取决于 虚拟机的决定
+        System.gc();
+        //等待100毫秒 等待垃圾回收去 回收完垃圾
+        Thread.sleep(100);
+        log.info("删除分片开始");
+        for (int i = 0; i < shardTotal; i++) {
+            String filePath = path + "." + (i + 1);
+            File file = new File(filePath);
+            file.delete();
+        }
+        //同步数据库相关信息
+        announceMapper.updateAnnounceFile(id,fragmentFilePO.getFileName(),fragmentFilePO.getFilePath());
+        if(fragmentFilePO.getShardIndex()!=fragmentFilePO.getShardTotal()){
+            announceMapper.updateFileInfo(fragmentFilePO.getId(),fragmentFilePO.getShardTotal(),DateUtil.creatDate());
+        }
+        return RestInfo.success();
     }
 }
