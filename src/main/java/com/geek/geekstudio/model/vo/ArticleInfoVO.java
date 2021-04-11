@@ -21,7 +21,7 @@ public class ArticleInfoVO {
     private String addTime;
     private String articleType;
     private int likeCount;
-    private String likeStatus;
-    private String favoriteStatus;
+    private int likeStatus;   //0未点赞 1点赞
+    private int favoriteStatus; //0未收藏 1收藏
     private List<ArticleFileVO> articleFileVOList;
 }

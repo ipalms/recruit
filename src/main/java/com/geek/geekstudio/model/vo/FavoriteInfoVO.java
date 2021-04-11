@@ -19,6 +19,6 @@ public class FavoriteInfoVO {
     private String title;
     private String articleType;
     private int likeCount;
-    //private String likeStatus;
+    private int likeStatus;
     private String favoriteTime;
 }

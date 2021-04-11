@@ -1,6 +1,7 @@
 package com.geek.geekstudio.service.impl;
 
 import com.geek.geekstudio.exception.*;
+import com.geek.geekstudio.mapper.CourseMapper;
 import com.geek.geekstudio.mapper.SuperAdminMapper;
 import com.geek.geekstudio.mapper.DirectionMapper;
 import com.geek.geekstudio.mapper.UserMapper;
@@ -14,6 +15,7 @@ import com.geek.geekstudio.service.UserService;
 import com.geek.geekstudio.util.DateUtil;
 import com.geek.geekstudio.util.FileUtil;
 import com.geek.geekstudio.util.TokenUtil;
+import com.geek.geekstudio.websocket.service.UserSessionImpl;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -48,11 +50,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     DirectionMapper directionMapper;
     @Autowired
+    CourseMapper courseMapper;
+    @Autowired
     FileUtil fileUtil;
     @Autowired
     JavaMailServiceImpl javaMailServiceImpl;
     @Autowired
     CourseServiceImpl courseService;
+    @Autowired
+    UserSessionImpl userSession;
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
 
@@ -88,6 +94,8 @@ public class UserServiceImpl implements UserService {
         //默认接收日常邮件
         userDTO.setReceiveMail("yes");
         userMapper.addUser(userDTO);
+        //维护allUser变量
+        userSession.allUser.add(userDTO.getUserId());
         return RestInfo.success("注册成功，亲可以去登录了！",null);
     }
 
@@ -290,6 +298,8 @@ public class UserServiceImpl implements UserService {
         }
         directionDTO.setAddTime(DateUtil.creatDate());
         directionMapper.addDirection(directionDTO);
+        //维护courseUser 变量
+        userSession.courseUser.get(courseMapper.queryCourseNameById(directionDTO.getCourseId())).add(directionDTO.getUserId());
         return RestInfo.success("选择方向成功",null);
     }
 

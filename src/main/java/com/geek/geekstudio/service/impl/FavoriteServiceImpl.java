@@ -3,6 +3,7 @@ package com.geek.geekstudio.service.impl;
 import com.geek.geekstudio.annotaion.AdminPermission;
 import com.geek.geekstudio.mapper.ArticleMapper;
 import com.geek.geekstudio.mapper.FavoriteMapper;
+import com.geek.geekstudio.mapper.LikeMapper;
 import com.geek.geekstudio.model.vo.FavoriteInfoVO;
 import com.geek.geekstudio.model.vo.FavoriteVO;
 import com.geek.geekstudio.model.vo.PageListVO;
@@ -25,15 +26,18 @@ public class FavoriteServiceImpl implements FavoriteService {
     FavoriteMapper favoriteMapper;
 
     @Autowired
+    LikeServiceImpl likeService;
+
+    @Autowired
     ArticleMapper articleMapper;
 
     /**
      *查询收藏状态
      */
     @Override
-    public String queryFavoriteStatus(String userId, int articleId) {
+    public int queryFavoriteStatus(String userId, int articleId) {
         FavoriteVO favoriteVO=favoriteMapper.queryFavoriteStatus(userId,articleId);
-        return favoriteVO==null?"未收藏":"已收藏";
+        return favoriteVO==null?0:1;
     }
 
     /**
@@ -65,6 +69,7 @@ public class FavoriteServiceImpl implements FavoriteService {
         if(favoriteVOList!=null) {
             for (FavoriteVO favoriteVO : favoriteVOList) {
                 FavoriteInfoVO favoriteInfoVO = articleMapper.queryFavoriteArticle(favoriteVO.getArticleId());
+                favoriteInfoVO.setLikeStatus(likeService.queryLikeStatus(userId,favoriteVO.getArticleId()));
                 favoriteInfoVO.setFavoriteTime(favoriteVO.getFavoriteTime());
                 favoriteInfoVOList.add(favoriteInfoVO);
             }

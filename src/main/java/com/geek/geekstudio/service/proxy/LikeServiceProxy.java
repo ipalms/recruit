@@ -19,7 +19,7 @@ public class LikeServiceProxy implements LikeService {
      *查询当前用户的点赞状态
      */
     @Override
-    public String queryLikeStatus(String userId, int articleId) {
+    public int queryLikeStatus(String userId, int articleId) {
         return likeService.queryLikeStatus(userId,articleId);
     }
 

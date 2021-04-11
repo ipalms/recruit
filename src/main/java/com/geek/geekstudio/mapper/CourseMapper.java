@@ -22,6 +22,12 @@ public interface CourseMapper {
     CoursePO queryCourseByCourseId(int courseId);
 
     /**
+     *通过课程号找课程名
+     */
+    @Select("SELECT courseName FROM course WHERE courseId=#{courseId}")
+    String queryCourseNameById(int courseId);
+
+    /**
      *添加课程
      */
     @Insert("INSERT INTO course (courseId,courseName,addTime) VALUES (#{courseId},#{courseName},#{addTime})")

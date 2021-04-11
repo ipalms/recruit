@@ -26,7 +26,7 @@ public class FavoriteController {
     @UserLoginToken
     @GetMapping("/queryFavoriteStatus")
     public RestInfo queryFavoriteStatus(String userId, int articleId){
-        String favoriteStatus=favoriteServiceProxy.queryFavoriteStatus(userId,articleId);
+        int favoriteStatus=favoriteServiceProxy.queryFavoriteStatus(userId,articleId);
         return RestInfo.success("收藏状态查询",favoriteStatus);
     }
 

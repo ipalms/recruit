@@ -42,9 +42,9 @@ public interface AnnounceMapper {
     void updateFileInfo(int id, int shardIndex, String updatedTime);
 
     //保存第一次存入的断点续传文件文件信息
-    @Insert("INSERT INTO fragmentfile (fileName,filePath,fileSize,createdTime,updatedTime,shardIndex,shardTotal,fileKey)" +
-            "VALUES (#{fileName},#{filePath},#{fileSize},#{createdTime},#{updatedTime},#{shardIndex},#{shardTotal},#{fileKey})")
-    void insertFileInfo(String fileName, String filePath, Integer fileSize, String createdTime, String updatedTime, Integer shardIndex, Integer shardTotal, String fileKey);
+    @Insert("INSERT INTO fragmentfile (filePath,fileSize,createdTime,updatedTime,shardIndex,shardTotal,fileKey)" +
+            "VALUES (#{filePath},#{fileSize},#{createdTime},#{updatedTime},#{shardIndex},#{shardTotal},#{fileKey})")
+    void insertFileInfo(String filePath, Integer fileSize, String createdTime, String updatedTime, Integer shardIndex, Integer shardTotal, String fileKey);
 
     //根据key值查询断点续传文件是否存在
     @Select("SELECT * FROM fragmentfile WHERE fileKey=#{fileKey}")

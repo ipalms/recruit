@@ -1,10 +1,15 @@
 package com.geek.geekstudio;
 
+import com.geek.geekstudio.websocket.NettyServer;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -23,8 +28,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //开启异步执行
 @EnableAsync
 public class GeekstudioApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(GeekstudioApplication.class, args);
+        try {
+            //netty和springboot程序运行于不同的端口，即两程序运行的上下文是不同的--不能直接依赖注入
+            //注意启动netty服务器的时候，如果netty中有阻塞方法（如channel().closeFuture().sync()）
+            //会阻塞主线程的进行，如果spring boot启动类有其他逻辑处于netty服务器启动后执行就会被阻塞住
+            System.out.println("http://127.0.0.1:8080/work");
+            new NettyServer().start();
+        } catch (Exception e) {
+            System.out.println("启动netty出错:" + e.getMessage());
+        }
+        System.out.println("阻塞了！！！!!!");
     }
 }

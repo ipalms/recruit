@@ -5,7 +5,7 @@ import com.geek.geekstudio.model.vo.RestInfo;
 public interface FavoriteService {
 
     //查询当前用户的收藏状态
-    String queryFavoriteStatus(String userId,int articleId);
+    int queryFavoriteStatus(String userId,int articleId);
 
     //改变当前登录用户对文章的收藏状态
     RestInfo changeFavoriteStatus(String userId, int articleId);

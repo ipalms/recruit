@@ -191,9 +191,9 @@ public class FileServiceProxy implements FileService {
      * announce文件上传  --断点续传（未做异常回滚操作）
      */
     @Override
-    public RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, String fileName, Integer courseId, String fileKey) throws RecruitFileException {
-        log.info("上传文件的第"+shardIndex+"片文件");
-        return fileService.announceUpload(file, shardIndex, shardTotal, fileSize, fileName, courseId, fileKey);
+    public RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException {
+        //log.info("上传文件的第"+shardIndex+"片文件");
+        return fileService.announceUpload(file, shardIndex, shardTotal, fileSize, courseId, fileKey);
     }
 
     /**
@@ -208,7 +208,7 @@ public class FileServiceProxy implements FileService {
      *合并announce分页文件
      */
     @Override
-    public RestInfo merge(String fileKey,int id) throws RecruitFileException, InterruptedException{
-        return fileService.merge(fileKey,id);
+    public RestInfo merge(String fileKey,int id,String fileName) throws RecruitFileException, InterruptedException{
+        return fileService.merge(fileKey,id,fileName);
     }
 }

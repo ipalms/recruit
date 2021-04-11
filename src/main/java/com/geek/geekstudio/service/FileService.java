@@ -38,11 +38,11 @@ public interface FileService {
     RestInfo delWorkFile(int id, String userId) throws RecruitException;
 
     //announce文件上传
-    RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize,String fileName, Integer courseId, String fileKey) throws RecruitFileException;
+    RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException;
 
     //检查数据库中有没有这个文件的存在
     RestInfo check(String fileKey,int shardSize);
 
     //合并announce分页文件
-    RestInfo merge(String fileKey,int id) throws FileNotFoundException, InterruptedException, RecruitFileException;
+    RestInfo merge(String fileKey,int id, String fileName) throws FileNotFoundException, InterruptedException, RecruitFileException;
 }

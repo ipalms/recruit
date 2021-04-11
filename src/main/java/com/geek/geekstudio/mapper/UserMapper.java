@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -101,4 +102,16 @@ public interface UserMapper {
      */
     @Select("SELECT DISTINCT u.userId,u.userName,u.mail,u.major,u.image,u.grade FROM user u, direction d WHERE d.courseId = #{courseId}  AND u.userId=d.userId")
     List<UserInfo> queryAllUsersInfo(int courseId);
+
+    /**
+     * 查询注册的所有用户的学号
+     */
+    @Select("SELECT userId FROM user")
+    List<String> queryAllUserId();
+
+    /**
+     * 查询某一方向所有学生的学号
+     */
+    @Select("SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = #{courseId}  AND u.userId=d.userId")
+    ArrayList<String> queryCourseUserId(int courseId);
 }

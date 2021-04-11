@@ -27,7 +27,11 @@ class GeekstudioApplicationTests {
         String substring = id.substring(0, 4);
         Integer a=Integer.valueOf(substring);
         System.out.println(Integer.valueOf(substring));
+
+
+        System.out.println(011111111);
         //substring
         //System.out.println(id.substring(0,4));
+        System.out.println("xxxxxxxx");
     }
 }

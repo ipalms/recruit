@@ -24,9 +24,9 @@ public class LikeServiceImpl implements LikeService {
      *查询当前用户的点赞状态
      */
     @Override
-    public String queryLikeStatus(String userId, int articleId) {
+    public int queryLikeStatus(String userId, int articleId) {
         LikeVO likeVO=likeMapper.queryLikeStatus(userId,articleId);
-        return likeVO==null?"未点赞":"已点赞";
+        return likeVO==null?0:1;
     }
 
     /**

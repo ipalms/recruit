@@ -18,7 +18,7 @@ public class FavoriteServiceProxy implements FavoriteService {
      *查询收藏状态
      */
     @Override
-    public String queryFavoriteStatus(String userId, int articleId) {
+    public int queryFavoriteStatus(String userId, int articleId) {
         return favoriteService.queryFavoriteStatus(userId,articleId);
     }
 

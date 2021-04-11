@@ -73,9 +73,9 @@ public class ArticleServiceImpl implements ArticleService {
         List<ArticleInfoVO> articleInfoVOList=articleMapper.queryArticle(adminName,courseName,start,rows);
         if(userId!=null&&articleInfoVOList!=null) {
             for (ArticleInfoVO articleInfoVO : articleInfoVOList) {
-                //如果此时用户已登录，可查看点赞、收藏状态
-                String likeStatus=likeService.queryLikeStatus(userId, articleInfoVO.getId());
-                String favoriteStatus=favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId());
+                //如果此时用户已登录，可查看点赞、收藏状态   文章点赞状态分开查询了
+                int likeStatus=likeService.queryLikeStatus(userId, articleInfoVO.getId());
+                int favoriteStatus=favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId());
                 articleInfoVO.setLikeStatus(likeStatus);
                 articleInfoVO.setFavoriteStatus(favoriteStatus);
             }
@@ -121,8 +121,8 @@ public class ArticleServiceImpl implements ArticleService {
         int start=(page-1)*rows;
         List<ArticleInfoVO> articleInfoVOList=articleMapper.queryMyArticles(userId,start,rows);
         for (ArticleInfoVO articleInfoVO : articleInfoVOList) {
-            String likeStatus=likeService.queryLikeStatus(userId, articleInfoVO.getId());
-            String favoriteStatus=favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId());
+            int likeStatus=likeService.queryLikeStatus(userId, articleInfoVO.getId());
+            int favoriteStatus=favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId());
             articleInfoVO.setLikeStatus(likeStatus);
             articleInfoVO.setFavoriteStatus(favoriteStatus);
         }

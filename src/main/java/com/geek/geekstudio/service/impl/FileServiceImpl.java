@@ -314,21 +314,21 @@ public class FileServiceImpl implements FileService {
      * announce文件上传  --断点续传
      */
     @Override
-    public RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, String fileName,  Integer courseId, String fileKey) throws RecruitFileException {
+    public RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException {
         //文件的名称(包含文件的扩展名)
         String filePath = fileUtil.buildAnnounceFilePath(courseId);
         //这个是分片的名字
-        String fragmentFileName = fileName + "." + shardIndex; // course\6sfSqfOwzmik4A4icMYuUe.mp4.1
+        String fragmentFileName = fileKey + "." + shardIndex; // course\6sfSqfOwzmik4A4icMYuUe.mp4.1
         //保存这个分片到磁盘(同名文件覆盖)
         fileUtil.storeFile(filePath,file,fragmentFileName);
-        //查询数据库中有无此文件的存在
+        //查询数据库中有无此文件的存在fileKey
         FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
         //数据库中的已上传分片大小小于当前的则进行替换
         if(fragmentFilePO!=null&&(fragmentFilePO.getShardIndex()<shardIndex)){
            announceMapper.updateFileInfo(fragmentFilePO.getId(),shardIndex,DateUtil.creatDate());
         }else if(fragmentFilePO==null) {
-            filePath=fileUtil.buildAnnounceFullPath(filePath,fileName);
-            announceMapper.insertFileInfo(fileName,filePath,fileSize,DateUtil.creatDate(),DateUtil.creatDate(),shardIndex,shardTotal,fileKey);
+            filePath=fileUtil.buildAnnounceFullPath(filePath,fileKey);
+            announceMapper.insertFileInfo(filePath,fileSize,DateUtil.creatDate(),DateUtil.creatDate(),shardIndex,shardTotal,fileKey);
         }
         return RestInfo.success();
     }
@@ -341,7 +341,6 @@ public class FileServiceImpl implements FileService {
         FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
         //说明这个文件之前上传过(找到文件中最稳定的断开片段,即该片段前的每一片段都存在)
         if(fragmentFilePO!=null){
-            log.info("中断过的文件check");
             String path=fileUtil.buildPath(fragmentFilePO.getFilePath());
             int index=fragmentFilePO.getShardIndex();
             int total=fragmentFilePO.getShardTotal();
@@ -382,23 +381,19 @@ public class FileServiceImpl implements FileService {
      *合并announce分页文件
      */
     @Override
-    public RestInfo merge(String fileKey,int id) throws RecruitFileException,InterruptedException {
+    public RestInfo merge(String fileKey,int id,String fileName) throws RecruitFileException,InterruptedException {
         FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
         if(fragmentFilePO==null){
             RestInfo.failed("该文件不存在或已被修改，请重新上传");
         }
-        /*//在网络请求中不能确定最后一个分片是否等于total index 为integer型
-        if(fragmentFilePO.getShardIndex()<fragmentFilePO.getShardTotal()){
-            RestInfo.failed("该文件尚未上传完毕，不可合并");
-        }*/
-        //合并分片开始
-        log.info("分片合并开始");
         //获取到的路径 没有.1 .2 这样的东西
+        String mergeFilePath=fragmentFilePO.getFilePath().replaceAll(fileKey,fileName);
         String path=fileUtil.buildPath(fragmentFilePO.getFilePath());
+        String realPath=fileUtil.buildPath(mergeFilePath);
         int shardTotal= fragmentFilePO.getShardTotal();
         FileOutputStream outputStream = null; // 文件追加写入
         try {
-            outputStream = new FileOutputStream(path,true);
+            outputStream = new FileOutputStream(realPath,true);
         } catch (FileNotFoundException e) {
             throw new RecruitFileException("文件合并出错");
         }
@@ -429,22 +424,20 @@ public class FileServiceImpl implements FileService {
                 log.error("IO流关闭出错", e);
             }
         }
-        log.info("分片结束了");
-        //告诉java虚拟机去回收垃圾 至于什么时候回收  这个取决于 虚拟机的决定
+/*      //告诉java虚拟机去回收垃圾 至于什么时候回收  这个取决于 虚拟机的决定
         System.gc();
         //等待100毫秒 等待垃圾回收去 回收完垃圾
-        Thread.sleep(100);
-        log.info("删除分片开始");
+        Thread.sleep(100);*/
         for (int i = 0; i < shardTotal; i++) {
             String filePath = path + "." + (i + 1);
             File file = new File(filePath);
             file.delete();
         }
         //同步数据库相关信息
-        announceMapper.updateAnnounceFile(id,fragmentFilePO.getFileName(),fragmentFilePO.getFilePath());
-        if(fragmentFilePO.getShardIndex()!=fragmentFilePO.getShardTotal()){
+        announceMapper.updateAnnounceFile(id,fileName,mergeFilePath);
+        /*if(fragmentFilePO.getShardIndex()!=fragmentFilePO.getShardTotal()){
             announceMapper.updateFileInfo(fragmentFilePO.getId(),fragmentFilePO.getShardTotal(),DateUtil.creatDate());
-        }
+        }*/
         return RestInfo.success();
     }
 }

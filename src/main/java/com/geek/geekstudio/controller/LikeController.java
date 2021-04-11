@@ -26,7 +26,7 @@ public class LikeController {
     @UserLoginToken
     @GetMapping("/queryLikeStatus")
     public RestInfo queryLikeStatus(String userId, int articleId){
-        String likeStatus=likeServiceProxy.queryLikeStatus(userId,articleId);
+        int likeStatus=likeServiceProxy.queryLikeStatus(userId,articleId);
         return RestInfo.success("点赞状态查询",likeStatus);
     }
 
