@@ -67,7 +67,6 @@ public class JavaMailServiceImpl implements JavaMailService {
 
     /**
      * 发送日常邮件
-     * @return
      */
     //使用异步任务发送邮件（异步方法--实质开线程实现）
     @Async("taskExecutor")// 指定线程池，也可以直接写@Async
@@ -89,7 +88,7 @@ public class JavaMailServiceImpl implements JavaMailService {
         } catch (Exception e){
             throw new Exception();
         }
-        return new AsyncResult<String>("ok");
+        return new AsyncResult<>("ok");
     }
 
 

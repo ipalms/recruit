@@ -1,6 +1,7 @@
 package com.geek.geekstudio.websocket.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import io.netty.channel.Channel;
 
 import java.util.ArrayList;
@@ -43,12 +44,27 @@ public interface UserSession {
      * @param toId
      * @param msg
      */
-    void putMessage(String toId, String msg);
+    void putMessage(String toId,String msg);
 
     /**
      * 读取历史消息，并清空已读
      * @param uid
      * @return
      */
-    LinkedList<String> getMessage(String uid);
+    ArrayList<String> getMessage(String uid);
+
+    /**
+     * 发送消息
+     * @param toId
+     * @param fromId
+     * @param word
+     */
+    void sendMessage(String toId,String fromId,String word);
+
+    /**
+     * 对某个对象发送消息
+     * @param toId
+     * @param jsonObject
+     */
+    void sendOneMessage(String toId, JSONObject jsonObject);
 }

@@ -10,20 +10,21 @@ import java.util.UUID;
  */
 @Component
 public class UuidUtil {
-	private UuidUtil(){}
-	//生成随机uuid
-	public static String getUuid(){
-		return UUID.randomUUID().toString().replace("-","");
-	}
+    private UuidUtil() {
+    }
 
-	//生成6位随机验证码
-	public static String getActiveCode(){
-		Random random = new Random();
-		String result="";
-		for (int i=0;i<6;i++)
-		{
-			result+=random.nextInt(10);
-		}
-		return result;
-	}
+    //生成随机uuid
+    public static String getUuid() {
+        return UUID.randomUUID().toString().replace("-", "");
+    }
+
+    //生成6位随机验证码
+    public static String getActiveCode() {
+        Random random = new Random();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            result.append(random.nextInt(10));
+        }
+        return result.toString();
+    }
 }

@@ -5,6 +5,8 @@ import com.geek.geekstudio.annotaion.UserLoginToken;
 import com.geek.geekstudio.exception.ParameterError;
 import com.geek.geekstudio.exception.RecruitFileException;
 import com.geek.geekstudio.model.dto.DailyMailDTO;
+import com.geek.geekstudio.model.dto.MessageDTO;
+import com.geek.geekstudio.model.dto.UserDTO;
 import com.geek.geekstudio.model.dto.WorkDTO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.AdminService;
@@ -146,5 +148,15 @@ public class AdminController {
     @GetMapping("clearZipFile")
     public RestInfo clearZipFile(@RequestParam(name = "courseId",required = false,defaultValue = "0") int courseId) {
         return adminServiceProxy.clearZipFile(courseId);
+    }
+
+    /**
+     * 开放接口可以向学员推送消息
+     */
+    @AdminPermission
+    @UserLoginToken
+    @PostMapping("/sendMessage")
+    public RestInfo sendMessage(@RequestBody MessageDTO messageDTO){
+        return adminServiceProxy.sendMessage(messageDTO);
     }
 }

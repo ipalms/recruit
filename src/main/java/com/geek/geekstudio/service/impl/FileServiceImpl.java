@@ -17,10 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 @Service
 @Slf4j
@@ -77,9 +73,9 @@ public class FileServiceImpl implements FileService {
         if(file.getSize()/1000>singleMaxImageSize){
             throw new RecruitFileException("头像大小超过10M，请重新上传");
         }
-        UserPO userPO=null;
-        AdminPO adminPO=null;
-        String url = null;
+        UserPO userPO;
+        AdminPO adminPO;
+        String url;
         //删除之前的头像
         userPO=userMapper.queryUserByUserId(userId);
         if(userPO!=null){
@@ -117,11 +113,10 @@ public class FileServiceImpl implements FileService {
             if(file.getSize()/1000>singleMaxImageSize){
                 throw new RecruitFileException("文件大于10M，请重新上传");
             }
-            String url=null;
             //同一文章上传同一名字文件会覆盖原文件
             String originalFileName = file.getOriginalFilename();
             String filePath = fileUtil.buildArticleFilePath(articleId);
-            url = fileUtil.storeFile(filePath,file,originalFileName);
+            String url = fileUtil.storeFile(filePath,file,originalFileName);
             //增加一条文件上传记录
             ArticleFilePO articleFilePO=articleFileMapper.queryArticleFileByFilePath(url);
             if(articleFilePO==null) {
@@ -170,7 +165,7 @@ public class FileServiceImpl implements FileService {
             if(taskPO==null){
                 throw new ParameterError();
             }
-            String url=null;
+            String url;
             //上传同一名字文件会覆盖原文件
             String originalFileName = file.getOriginalFilename();
             String filePath = fileUtil.buildTaskFilePath(taskPO.getCourseId(),taskId);

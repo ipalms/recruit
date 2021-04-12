@@ -88,10 +88,11 @@ public class ArticleServiceImpl implements ArticleService {
      *查询一篇文章详细内容   目前和查询所有文章使用同一个对象封装返回数据
      */
     @Override
-    public RestInfo queryOneArticle(int articleId, String articleType) throws RecruitFileException {
-        String fileStorageLocation=null;
+    public RestInfo queryOneArticle(int articleId) throws RecruitFileException {
+        String fileStorageLocation;
         List<ArticleFileVO> articleFileVOList=null;
-        if(articleType.equals("md")){
+        ArticleInfoVO articleInfoVO=articleMapper.queryArticleById(articleId);
+        if("md".equals(articleInfoVO.getArticleType())){
             articleFileVOList=articleFileMapper.queryFilesByArticleId(articleId);
             fileStorageLocation=fileUtil.getFileStorageLocation().toString();
             if(articleFileVOList!=null) {
@@ -107,7 +108,6 @@ public class ArticleServiceImpl implements ArticleService {
                 }
             }
         }
-        ArticleInfoVO articleInfoVO=articleMapper.queryArticleById(articleId);
         articleInfoVO.setArticleFileVOList(articleFileVOList);
         return RestInfo.success("文章详细内容",articleInfoVO);
     }

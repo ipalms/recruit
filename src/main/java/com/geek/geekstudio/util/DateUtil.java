@@ -10,12 +10,10 @@ import java.util.Date;
 public class DateUtil {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss");
-    private static SimpleDateFormat shortGFormat = new SimpleDateFormat("yyyy-MM-dd");
+    //private static SimpleDateFormat shortGFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * 时间转字符串
-     * @param date
-     * @return
      */
     public static String DateToStr(Date date) {
         String str = format.format(date);
@@ -24,7 +22,6 @@ public class DateUtil {
 
     /**
      * 生成系统时间字符串
-     * @return
      */
     public static String creatDate() {
         String str = format.format(new Date(System.currentTimeMillis()));
@@ -33,9 +30,6 @@ public class DateUtil {
 
     /**
      * 字符串转时间
-     * @param str
-     * @return
-     * @throws ParseException
      */
     public static Date StrToDate(String str) throws ParseException {
         Date date = null;
@@ -46,7 +40,6 @@ public class DateUtil {
     /**
      * 时间戳转换成日期格式字符串
      * @param seconds 时间戳
-     * @return
      */
     public static String timeStampToDate(long seconds) {
         return format.format(new Date(seconds));
@@ -54,7 +47,6 @@ public class DateUtil {
 
     /**
      * 日期格式字符串转换成时间戳
-     * @return
      */
     public static long date2TimeStamp(String date_str) throws ParseException {
         return format.parse(date_str).getTime();

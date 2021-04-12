@@ -64,7 +64,7 @@ public class FavoriteServiceImpl implements FavoriteService {
         int start=(page-1)*rows;
         //先取出个人的收藏记录
         List<FavoriteVO> favoriteVOList=favoriteMapper.queryMyFavorites(userId,start,rows);
-        List<FavoriteInfoVO> favoriteInfoVOList=new ArrayList<FavoriteInfoVO>();
+        List<FavoriteInfoVO> favoriteInfoVOList=new ArrayList<>();
         //读取记录对应的文章
         if(favoriteVOList!=null) {
             for (FavoriteVO favoriteVO : favoriteVOList) {

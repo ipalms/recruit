@@ -113,8 +113,8 @@ public class UserServiceImpl implements UserService {
         //生成token 和 refreshToken
         String token,refreshToken;
         //返回前端数据
-        Map<String,Object> data=new HashMap<String,Object>();
-        String type = null;
+        Map<String,Object> data=new HashMap<>();
+        String type ;
         Object user=userMapper.queryUserByUserIdAndPassword(userId,password);
         if(user!=null){
             type="student";
@@ -201,9 +201,9 @@ public class UserServiceImpl implements UserService {
         String token;
         Object user;
         //返回前端数据
-        Map<Object,Object> data=new HashMap<Object,Object>();
+        Map<Object,Object> data=new HashMap<>();
         //检验refreshToken是否过期
-        Claims message=null;
+        Claims message;
         try {
             message= TokenUtil.parseJWT(refreshToken);
         } catch (ExpiredJwtException e) {
@@ -299,7 +299,7 @@ public class UserServiceImpl implements UserService {
         directionDTO.setAddTime(DateUtil.creatDate());
         directionMapper.addDirection(directionDTO);
         //维护courseUser 变量
-        userSession.courseUser.get(courseMapper.queryCourseNameById(directionDTO.getCourseId())).add(directionDTO.getUserId());
+        userSession.courseUser.get(userSession.courseRelation.get(directionDTO.getCourseId())).add(directionDTO.getUserId());
         return RestInfo.success("选择方向成功",null);
     }
 
@@ -332,7 +332,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = Exception.class)
     public RestInfo changeReceiveMailStatus(String userId) {
         String status=userMapper.queryReceiveMailStatus(userId);
-        String newStatus=null;
+        String newStatus;
         if(status.equals("yes")){
             newStatus="no";
         }else {

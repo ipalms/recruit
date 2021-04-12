@@ -2,6 +2,7 @@ package com.geek.geekstudio.service.proxy;
 
 import com.geek.geekstudio.exception.ParameterError;
 import com.geek.geekstudio.model.dto.DailyMailDTO;
+import com.geek.geekstudio.model.dto.MessageDTO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.AdminService;
 import com.geek.geekstudio.service.impl.AdminServiceImpl;
@@ -62,5 +63,13 @@ public class AdminServiceProxy implements AdminService {
     @Override
     public RestInfo clearZipFile(int courseId) {
         return adminService.clearZipFile(courseId);
+    }
+
+    /**
+     * 开放接口可以向学员推送消息
+     */
+    @Override
+    public RestInfo sendMessage(MessageDTO messageDTO) {
+        return adminService.sendMessage(messageDTO);
     }
 }

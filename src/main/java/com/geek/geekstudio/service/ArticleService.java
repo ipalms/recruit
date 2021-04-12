@@ -17,7 +17,7 @@ public interface ArticleService {
     RestInfo queryArticles(int page, int rows, String adminName, String courseName ,String userId);
 
     //查询一篇文章的详情
-    RestInfo queryOneArticle(int articleId, String articleType) throws RecruitFileException;
+    RestInfo queryOneArticle(int articleId) throws RecruitFileException;
 
     //查询自己发布的文章
     RestInfo queryMyArticles(int page, int rows, String userId);

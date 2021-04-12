@@ -11,6 +11,7 @@ import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.AnnounceService;
 import com.geek.geekstudio.util.DateUtil;
 import com.geek.geekstudio.util.FileUtil;
+import com.geek.geekstudio.websocket.service.UserSessionImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -30,6 +31,9 @@ public class AnnounceServiceImpl implements AnnounceService {
     @Autowired
     FileUtil fileUtil;
 
+    @Autowired
+    UserSessionImpl userSession;
+
     /** 注入缓存 */
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;
@@ -40,7 +44,7 @@ public class AnnounceServiceImpl implements AnnounceService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public RestInfo addAnnounce(String adminId, Integer courseId, String title, String content, MultipartFile file) throws RecruitException {
-        String fileName=null,filePath=null,url=null;
+        String fileName=null,filePath,url=null;
         if(file!=null){
             fileName = file.getOriginalFilename();
             filePath = fileUtil.buildAnnounceFilePath(courseId);
@@ -49,12 +53,17 @@ public class AnnounceServiceImpl implements AnnounceService {
         AnnouncePO announcePO=new AnnouncePO(courseId,adminId,title,content,DateUtil.creatDate(),fileName,url);
         announceMapper.addAnnounce(announcePO);
         redisTemplate.opsForHash().put("announce",announcePO.getId()+"",announcePO);
+        /*if(courseId!=null){
+            String dir = userSession.courseRelation.get(courseId);
+            userSession.sendMessage(dir,"系统","您所选"+dir+"的方向有一条新公告");
+        }else {
+            userSession.sendMessage("all","系统","有一条新公告");
+        }*/
         return RestInfo.success("推送公告成功",announcePO.getId());
     }
 
     /**
      * 删除公告
-     * @param id
      */
     @Transactional(rollbackFor = Exception.class)
     @Override

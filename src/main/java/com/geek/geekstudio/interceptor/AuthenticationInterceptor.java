@@ -4,6 +4,7 @@ import com.geek.geekstudio.annotaion.PassToken;
 import com.geek.geekstudio.annotaion.UserLoginToken;
 import com.geek.geekstudio.exception.NoTokenException;
 import com.geek.geekstudio.exception.PermissionDeniedException;
+import com.geek.geekstudio.exception.RecruitException;
 import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.UserPO;
 import com.geek.geekstudio.util.TokenUtil;
@@ -25,7 +26,6 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
-    private static final long CLOSE_TIME= 600;
     //注入一个redisTemplate操纵redis缓存
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
@@ -57,8 +57,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     TokenUtil.parseJWT(token);
                 } catch (ExpiredJwtException e) {
                     throw new ExpiredJwtException(e.getHeader(),e.getClaims(),"token过期了");
-                } catch (SignatureException k){
-                    //否则就是伪造的token--抛出权限不够
+                } catch (Exception k){
+                    //否则就是伪造的token--抛出权限不够等等..问题
                     throw new PermissionDeniedException("请登录");
                 }
             }

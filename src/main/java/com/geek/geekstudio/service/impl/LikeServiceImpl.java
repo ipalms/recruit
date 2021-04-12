@@ -36,7 +36,7 @@ public class LikeServiceImpl implements LikeService {
     @Transactional(rollbackFor = Exception.class)
     public RestInfo changeLikeStatus(String userId,int articleId) {
         LikeVO likeVO=likeMapper.queryLikeStatus(userId,articleId);
-        int variation=0;
+        int variation;
         if(likeVO==null){
             likeMapper.addLikeRecord(userId,articleId, DateUtil.creatDate());
             variation=1;

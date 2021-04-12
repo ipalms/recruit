@@ -27,7 +27,6 @@ public class AnnounceServiceProxy implements AnnounceService {
 
     /**
      * 删除公告
-     * @param id
      */
     @Override
     public RestInfo delAnnounce(int id) throws RecruitException {

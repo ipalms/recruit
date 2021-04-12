@@ -97,7 +97,7 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public RestInfo queryAllMyWorks(int courseId, String userId, String baseUrl) {
         Map<String,Object> data=new HashMap<>();
-        List<WorkFileVO> workFileVOList=null;
+        List<WorkFileVO> workFileVOList;
         List<WorkVO> workVOList=workMapper.queryWorkByCidAndUid(courseId,userId);
         int total=0;
         if(workVOList!=null){
@@ -122,7 +122,7 @@ public class WorkServiceImpl implements WorkService {
      */
     @Override
     public RestInfo queryOneWork(int taskId, String userId, String baseUrl) {
-        List<WorkFileVO> workFileVOList=null;
+        List<WorkFileVO> workFileVOList;
         WorkVO workVO=workMapper.queryWorkByIDS(taskId,userId);
         if(workVO==null){
             return RestInfo.success("还没有提交作业，赶快提交吧！",null);

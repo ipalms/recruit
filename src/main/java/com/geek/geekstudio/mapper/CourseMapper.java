@@ -21,11 +21,6 @@ public interface CourseMapper {
     @Select("SELECT * FROM course WHERE courseId=#{courseId}")
     CoursePO queryCourseByCourseId(int courseId);
 
-    /**
-     *通过课程号找课程名
-     */
-    @Select("SELECT courseName FROM course WHERE courseId=#{courseId}")
-    String queryCourseNameById(int courseId);
 
     /**
      *添加课程

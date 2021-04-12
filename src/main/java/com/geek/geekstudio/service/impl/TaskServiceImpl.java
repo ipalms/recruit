@@ -13,6 +13,7 @@ import com.geek.geekstudio.service.TaskService;
 import com.geek.geekstudio.util.DateUtil;
 import com.geek.geekstudio.util.DozerUtil;
 import com.geek.geekstudio.util.FileUtil;
+import com.geek.geekstudio.websocket.service.UserSessionImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -29,6 +30,10 @@ import java.util.Map;
 @Service
 @Slf4j
 public class TaskServiceImpl implements TaskService {
+
+    @Autowired
+    UserSessionImpl userSession;
+
     @Autowired
     TaskMapper taskMapper;
 
@@ -57,8 +62,8 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public RestInfo addTask(TaskDTO taskDTO) throws ParameterError {
-        String addTime=null,closeTime=null;
-        TaskPO taskPO=null;
+        String addTime,closeTime;
+        TaskPO taskPO;
         if(taskDTO.getEffectiveTime()<System.currentTimeMillis()){
             throw new ParameterError("截至日期设置错误");
         }else {
@@ -67,6 +72,10 @@ public class TaskServiceImpl implements TaskService {
         }
         taskPO=new TaskPO(taskDTO.getCourseId(),taskDTO.getAdminId(),taskDTO.getTaskName(),addTime,closeTime,taskDTO.getCommitLate(),taskDTO.getIsClosed(),taskDTO.getWeight());
         taskMapper.addTask(taskPO);
+        /*
+        String dir = userSession.courseRelation.get(taskDTO.getCourseId());
+        userSession.sendMessage(dir,"系统","您所选"+dir+"的方向有新作业啦！");
+        */
         return RestInfo.success("发布作业记录上传成功",taskPO.getId());
     }
 
@@ -76,8 +85,8 @@ public class TaskServiceImpl implements TaskService {
     @Override
     //@Transactional(rollbackFor = Exception.class)
     public RestInfo updateTask(TaskDTO taskDTO) throws ParameterError, PermissionDeniedException {
-        String closeTime=null;
-        if(!(taskMapper.queryAdminIdById(taskDTO.getId())).equals(taskDTO.getAdminId())
+        String closeTime;
+        if(!(taskMapper.queryAdminIdById(taskDTO.getId()).getAdminId()).equals(taskDTO.getAdminId())
                 &&!("super".equals(adminMapper.queryTypeById(taskDTO.getAdminId())))){
             throw new PermissionDeniedException("非发布该作业管理员，不可修改！");
         }
@@ -95,7 +104,7 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public RestInfo closeTask(TaskDTO taskDTO) throws PermissionDeniedException {
-        if(!(taskMapper.queryAdminIdById(taskDTO.getId())).equals(taskDTO.getAdminId())
+        if(!(taskMapper.queryAdminIdById(taskDTO.getId()).getAdminId()).equals(taskDTO.getAdminId())
                 &&!("super".equals(adminMapper.queryTypeById(taskDTO.getAdminId())))){
             throw new PermissionDeniedException("非发布该作业管理员，不可修改！");
         }
@@ -145,7 +154,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public RestInfo queryTasks(int courseId, String baseUrl) {
         Map<String,Object> data=new HashMap<>();
-        List<TaskFileVO> taskFileVOList=null;
+        List<TaskFileVO> taskFileVOList;
         List <TaskVO> taskPOList=taskMapper.queryTasksByCourseId(courseId);
         int total=0;
         if(taskPOList!=null){
@@ -171,7 +180,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public RestInfo queryMyTasks(String adminId, String baseUrl) {
         Map<String,Object> data=new HashMap<>();
-        List<TaskFileVO> taskFileVOList=null;
+        List<TaskFileVO> taskFileVOList;
         List <TaskVO> taskPOList=taskMapper.queryTasksByAdminId(adminId);
         int total=0;
         if(taskPOList!=null){
@@ -198,7 +207,7 @@ public class TaskServiceImpl implements TaskService {
     public RestInfo queryOneTask(int page, int rows, int taskId, String baseUrl) {
         int total=workMapper.querySubmitTotal(taskId);
         int start=(page-1)*rows;
-        List<WorkFileVO> workFileVOList=null;
+        List<WorkFileVO> workFileVOList;
         List<WorkVO> workVOList=workMapper.queryWorksByTaskId(taskId,start,rows);
         if(workVOList!=null){
             for(WorkVO workVO:workVOList){

@@ -67,9 +67,8 @@ public class ArticleController {
      */
     @PassToken
     @GetMapping("/queryOneArticle")
-    public RestInfo queryOneArticle(@RequestParam("articleId") int articleId,
-                                    @RequestParam("articleType") String articleType) throws RecruitFileException {
-        return articleServiceProxy.queryOneArticle(articleId,articleType);
+    public RestInfo queryOneArticle(@RequestParam("articleId") int articleId) throws RecruitFileException {
+        return articleServiceProxy.queryOneArticle(articleId);
     }
 
 

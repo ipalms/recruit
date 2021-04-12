@@ -14,6 +14,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -104,11 +105,7 @@ public class FileUtil {
             File file = new File(filePath);
             if(file.exists()){
                 //考虑删除后判断当父目录为空将父目录也删除掉
-                if(file.delete()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return file.delete();
             }else{
                 throw new RecruitFileException("文件不存在！");
             }
@@ -121,10 +118,12 @@ public class FileUtil {
         if (dir.isDirectory()) {
             String[] children = dir.list();
             //递归删除目录中的子目录下
-            for (int i=0; i<children.length; i++) {
-                 boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
+            if(children!=null){
+                for (String child : children) {
+                    boolean success = deleteDir(new File(dir, child));
+                    if (!success) {
+                        return false;
+                    }
                 }
             }
         }
@@ -156,8 +155,6 @@ public class FileUtil {
 
     /**
      * 压缩文件
-     * @param srcFiles
-     * @param zipPath
      */
     public void zipFileWithTier(String srcFiles, String zipPath) {
         try {
@@ -182,19 +179,18 @@ public class FileUtil {
      * @param filePath
      * @param out
      * @param prefix
-     * @throws IOException
      */
     public void zipFiles(String filePath, ZipOutputStream out, String prefix)
             throws IOException {
         File file = new File(filePath);
         if (file.isDirectory()) {
-            if (file.listFiles().length == 0) {
+            if (Objects.requireNonNull(file.listFiles()).length == 0) {
                 ZipEntry zipEntry = new ZipEntry(prefix + file.getName() + "/");
                 out.putNextEntry(zipEntry);
                 out.closeEntry();
             } else {
                 prefix += file.getName() + File.separator;
-                for (File f : file.listFiles())
+                for (File f : Objects.requireNonNull(file.listFiles()))
                     zipFiles(f.getAbsolutePath(), out, prefix);
             }
         } else {
@@ -268,9 +264,6 @@ public class FileUtil {
         try {
             fos = new FileOutputStream(file);
             fos.write(bytes);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

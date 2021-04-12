@@ -7,10 +7,12 @@ import com.geek.geekstudio.mapper.TaskMapper;
 import com.geek.geekstudio.mapper.UserMapper;
 import com.geek.geekstudio.mapper.WorkMapper;
 import com.geek.geekstudio.model.dto.DailyMailDTO;
+import com.geek.geekstudio.model.dto.MessageDTO;
 import com.geek.geekstudio.model.po.TaskPO;
 import com.geek.geekstudio.model.vo.*;
 import com.geek.geekstudio.service.AdminService;
 import com.geek.geekstudio.util.FileUtil;
+import com.geek.geekstudio.websocket.service.UserSessionImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ import java.util.concurrent.*;
 @Service
 @Slf4j
 public class AdminServiceImpl implements AdminService {
+
+    @Autowired
+    UserSessionImpl userSession;
 
     @Autowired
     UserMapper userMapper;
@@ -57,15 +62,16 @@ public class AdminServiceImpl implements AdminService {
         //收集异常
         List<ErrorMsg> errorList = new ArrayList<>();
         Map<String,Future<String>> futureList=new HashMap<>();
-        List<String> mails=null;
-        List<String> userIdList=null;
-        String mail=null;
+        //局部变量如果在使用前一定会被赋值则可以不初始化为null，否则要初始化为null或给定一个默认值
+        List<String> mails;
+        List<String> userIdList;
+        String mail;
         log.info("courseId:"+dailyMailDTO.getCourseId());
         if(dailyMailDTO.getUserIdList()==null){
             mails=userMapper.queryMails(dailyMailDTO.getCourseId());
         }else {
             //向给定的几个用户id发邮件
-            mails=new ArrayList<String>();
+            mails=new ArrayList<>();
             userIdList=dailyMailDTO.getUserIdList();
             for(String userId:userIdList){
                 mail=userMapper.queryMailByUserId(userId);
@@ -124,7 +130,7 @@ public class AdminServiceImpl implements AdminService {
             return RestInfo.success("该方向还没有一个作业，无数据！");
         }
         int totalScore=0;
-        double avgScore=0.0,userScore=0.0;
+        double avgScore,userScore=0.0;
         for(TaskVO taskVO:taskVOList){
             totalScore+=taskVO.getWeight()*10.0;
         }
@@ -188,6 +194,16 @@ public class AdminServiceImpl implements AdminService {
         }
         fileUtil.deleteDir(new File(fileUtil.buildPath(zipPath)));
         return RestInfo.success("删除zip文件成功！");
+    }
+
+    /**
+     * 开放接口可以向学员推送消息
+     * 待定--可根据参数进行不同对象推送
+     */
+    @Override
+    public RestInfo sendMessage(MessageDTO messageDTO) {
+        userSession.sendMessage(messageDTO.getToId(),messageDTO.getFormId(),messageDTO.getWord());
+        return RestInfo.success();
     }
 
 

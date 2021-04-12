@@ -17,21 +17,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 class GeekstudioApplicationTests {
-    public static void main(String[] args) {
-        String id="dakmkda";
-        String substring = id.substring(0, 4);
-        Integer a=Integer.valueOf(substring);
-        System.out.println(Integer.valueOf(substring));
 
-
-        System.out.println(011111111);
-        //substring
-        //System.out.println(id.substring(0,4));
-        System.out.println("xxxxxxxx");
-    }
 }

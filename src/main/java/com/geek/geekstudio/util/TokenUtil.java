@@ -28,7 +28,6 @@ public class TokenUtil {
      * @param subject 签收主体-userID
      * @param ttlMillis 过期的时间长度
      * @param type 对象的类型
-     * @throws Exception
      */
     public static String createJWT(String subject,String type, long ttlMillis) {
         //指定签名的时候使用的签名算法--header那部分
@@ -37,7 +36,7 @@ public class TokenUtil {
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
         //创建payload的私有声明
-        Map<String, Object> claims = new HashMap<String, Object>();
+        Map<String, Object> claims = new HashMap<>();
         claims.put("type", type);
         //生成签名的时候使用的秘钥secret,这个方法本地封装了的
         SecretKey key = generalKey();
@@ -57,25 +56,22 @@ public class TokenUtil {
 
     /**
      * 解密jwt
-     * @param jwt
+     * @param jwt token
      * @throws ExpiredJwtException  token过期
      */
     public static Claims parseJWT(String jwt) throws ExpiredJwtException{
         SecretKey key = generalKey();  //签名秘钥，和生成的签名的秘钥一模一样
-        Claims claims = Jwts.parser()  //得到DefaultJwtParser
+        return Jwts.parser()  //得到DefaultJwtParser
                 .setSigningKey(key)         //设置签名的秘钥
-                .parseClaimsJws(jwt).getBody();//设置需要解析的jwt
-        return claims;
+                .parseClaimsJws(jwt).getBody();
     }
 
     /**
      * 由字符串生成加密key
-     * @return
      */
     public static SecretKey generalKey(){
         //String stringKey = Constant.JWT_SECRET;//本地配置文件中加密的密文
         byte[] encodedKey = Base64.decodeBase64(JWT_SECRET);
-        SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");// 根据给定的字节数组使用AES加密算法构造一个密钥
-        return key;
+        return new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
     }
 }

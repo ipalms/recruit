@@ -3,6 +3,7 @@ package com.geek.geekstudio.service;
 
 import com.geek.geekstudio.exception.ParameterError;
 import com.geek.geekstudio.model.dto.DailyMailDTO;
+import com.geek.geekstudio.model.dto.MessageDTO;
 import com.geek.geekstudio.model.vo.RestInfo;
 
 
@@ -25,4 +26,7 @@ public interface AdminService {
 
     //清理下载学生作业而产生的过程数据
     RestInfo clearZipFile(int courseId);
+
+    //开放接口可以向学员推送消息
+    RestInfo sendMessage(MessageDTO messageDTO);
 }

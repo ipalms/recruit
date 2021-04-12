@@ -1,6 +1,5 @@
 package com.geek.geekstudio.group;
 
-import org.springframework.validation.annotation.Validated;
 
 /**
  * 用户类分组校验

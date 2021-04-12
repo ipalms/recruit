@@ -36,7 +36,7 @@ public class AdminPermissionInterceptor implements HandlerInterceptor {
         Method method = ((HandlerMethod) handler).getMethod();
         //如果有AdminPermission注释则需要验证
         if(method.isAnnotationPresent(AdminPermission.class)){
-            Claims message=null;
+            Claims message;
             try {
                 message=TokenUtil.parseJWT(request.getHeader("token"));
             } catch (ExpiredJwtException e) {

@@ -40,8 +40,8 @@ public class ArticleServiceProxy implements ArticleService {
      *查询一篇文章详细内容
      */
     @Override
-    public RestInfo queryOneArticle(int articleId, String articleType) throws RecruitFileException {
-        return articleService.queryOneArticle(articleId,articleType);
+    public RestInfo queryOneArticle(int articleId) throws RecruitFileException {
+        return articleService.queryOneArticle(articleId);
     }
 
     /**

@@ -17,7 +17,7 @@
     function init() {
         if (window.WebSocket) {
             console.log($("#uid").val());
-            socket = new WebSocket("ws://127.0.0.1:8090/websocket?uid="+$("#uid").val());
+            socket = new WebSocket("ws://127.0.0.1:8090/websocket?uid="+$("#uid").val()+"&token="+$("#token").val());
             socket.onmessage = function (event) {
                 var ta = document.getElementById('responseText');
                 console.log(event.data);
@@ -113,7 +113,8 @@
 <form onSubmit="return false;">
     <label>fromId</label><input  id="uid" type="text" name="uid" value="2019211300"/> <br/>
     <label>toId</label><input id="toId"  type="text" name="toId" value="2019211302"/> <br/>
-    <label>TEXT</label><input id="message" type="text" name="message" value="这里输入消息"/> <br/><br/>
+    <label>token</label><input id="token" style="width: 1024px"  type="text" name="token" value=""/> <br/><br/>
+    <label>TEXT</label><input id="message" type="text" name="message" value="测试！！"/> <br/><br/>
 
     <button><a onclick="start()">开启socket</a></button><br/><br/>
     <input type="button" value="关闭socket" onClick="closeSocket()"/> <br/><br/>
