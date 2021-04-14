@@ -46,17 +46,17 @@ public class UserServiceProxy implements UserService {
      * 统一登录（管理员和新生）
      */
     @Override
-    public RestInfo login(String userId, String password, String baseUrl) throws UsernameOrPasswordIncorrectException {
+    public RestInfo login(String userId, String password) throws UsernameOrPasswordIncorrectException {
         log.info("用户登录：userId:"+userId+", password:"+password);
-        return userService.login(userId,password,baseUrl);
+        return userService.login(userId,password);
     }
 
     /**
      *更新用户信息
      */
     @Override
-    public RestInfo updateInfo(String token, String baseUrl) {
-        return userService.updateInfo(token,baseUrl);
+    public RestInfo updateInfo(String token) {
+        return userService.updateInfo(token);
     }
 
     /**

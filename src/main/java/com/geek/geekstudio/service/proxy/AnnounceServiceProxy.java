@@ -46,7 +46,7 @@ public class AnnounceServiceProxy implements AnnounceService {
      * 查看发布的公告
      */
     @Override
-    public RestInfo queryOneAnnounce(int id, String baseUrl) throws ParameterError {
-        return announceServiceImpl.queryOneAnnounce(id,baseUrl);
+    public RestInfo queryOneAnnounce(int id) throws ParameterError {
+        return announceServiceImpl.queryOneAnnounce(id);
     }
 }

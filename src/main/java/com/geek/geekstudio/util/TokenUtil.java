@@ -16,7 +16,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Token工具类
+ * Token工具类 Json Web Token(JWT)有两种是具体实现，分别时JWS与JWE，其中jws是我们常用的概念
+ * token相当于是有时限的密码，而普通的用户密码的时限是由用户自己决定（用户改密）
+ * --使用token可以作为身份鉴别、权限的管理的钥匙去访问API
+ * --token是无状态的，用户拿到了token就可以进行这个token所标注能使用的所有权限
+ * --所以jwt不可以识别token是否被劫持（冒用了），不管谁持有系统办法的正常token在使用jwt解密时都会正常通过（除非过期了）
+ * --但是jwt可以去鉴别token是否被篡改过（比如改失效时间），篡改的token在使用jwt解密时会抛出异常
+ * --当然可以配合内存组件维护有效token的（维护token黑白名单、redis）
  */
 @Component
 public class TokenUtil {
@@ -55,11 +61,13 @@ public class TokenUtil {
     }
 
     /**
-     * 解密jwt
+     * 解密jwt--可能会抛出很多种异常
      * @param jwt token
-     * @throws ExpiredJwtException  token过期
+     * @throws ExpiredJwtException  token过期--能被解析，但是检验时效时已过期抛出
+     * @throws SignatureException  签名异常
+     * @throws MalformedJwtException  jwt格式不正确
      */
-    public static Claims parseJWT(String jwt) throws ExpiredJwtException{
+    public static Claims parseJWT(String jwt) throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException{
         SecretKey key = generalKey();  //签名秘钥，和生成的签名的秘钥一模一样
         return Jwts.parser()  //得到DefaultJwtParser
                 .setSigningKey(key)         //设置签名的秘钥

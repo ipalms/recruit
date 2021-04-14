@@ -1,303 +1,51 @@
-04-12 00:39:52.085 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-04-12 00:39:52.198 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 20180 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-04-12 00:39:52.200 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
-04-12 00:39:52.286 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
-04-12 00:39:52.287 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
-04-12 00:39:52.290 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-04-12 00:39:52.292 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-04-12 00:39:53.185 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-04-12 00:39:53.189 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-04-12 00:39:53.242 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 39ms. Found 0 Redis repository interfaces.
-04-12 00:39:54.221 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-04-12 00:39:54.231 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-04-12 00:39:54.232 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-04-12 00:39:54.232 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-04-12 00:39:54.331 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-04-12 00:39:54.331 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2039 ms
-04-12 00:39:55.015 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-04-12 00:39:55.379 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-04-12 00:39:55.386 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
-04-12 00:39:55.412 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
-04-12 00:39:55.435 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 12
-04-12 00:39:55.440 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
-04-12 00:39:55.440 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
-04-12 00:39:55.445 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
-04-12 00:39:55.446 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:39:55.447 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
-04-12 00:39:55.449 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
-04-12 00:39:55.450 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:39:55.451 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
-04-12 00:39:55.453 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
-04-12 00:39:55.454 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:39:55.454 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
-04-12 00:39:55.456 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
-04-12 00:39:55.457 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:39:55.457 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
-04-12 00:39:55.460 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
-04-12 00:39:55.831 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
-04-12 00:39:55.832 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
-04-12 00:39:56.315 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-04-12 00:39:56.412 [ INFO] [      o.s.b.d.a.OptionalLiveReloadServer: 58] - LiveReload server is running on port 35729
-04-12 00:39:56.423 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-04-12 00:39:56.453 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-04-12 00:39:56.453 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-04-12 00:39:56.462 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 9 ms
-04-12 00:39:56.464 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-04-12 00:39:56.477 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.91 seconds (JVM running for 5.957)
-04-12 00:40:25.589 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 00:40:25.947 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 00:48:30.184 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-04-12 00:48:30.269 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 9844 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-04-12 00:48:30.271 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
-04-12 00:48:30.386 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
-04-12 00:48:30.386 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
-04-12 00:48:30.388 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-04-12 00:48:30.390 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-04-12 00:48:31.324 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-04-12 00:48:31.328 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-04-12 00:48:31.374 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 35ms. Found 0 Redis repository interfaces.
-04-12 00:48:32.351 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-04-12 00:48:32.369 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-04-12 00:48:32.370 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-04-12 00:48:32.370 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-04-12 00:48:32.457 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-04-12 00:48:32.458 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2067 ms
-04-12 00:48:33.111 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-04-12 00:48:33.478 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-04-12 00:48:33.487 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
-04-12 00:48:33.518 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
-04-12 00:48:33.544 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 12
-04-12 00:48:33.550 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
-04-12 00:48:33.550 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
-04-12 00:48:33.554 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
-04-12 00:48:33.555 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:48:33.556 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
-04-12 00:48:33.558 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
-04-12 00:48:33.559 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:48:33.559 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
-04-12 00:48:33.561 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
-04-12 00:48:33.561 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:48:33.562 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
-04-12 00:48:33.563 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
-04-12 00:48:33.564 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 00:48:33.564 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
-04-12 00:48:33.565 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
-04-12 00:48:33.913 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
-04-12 00:48:33.915 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
-04-12 00:48:34.315 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-04-12 00:48:34.461 [ INFO] [      o.s.b.d.a.OptionalLiveReloadServer: 58] - LiveReload server is running on port 35729
-04-12 00:48:34.471 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-04-12 00:48:34.498 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-04-12 00:48:34.498 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-04-12 00:48:34.505 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 6 ms
-04-12 00:48:34.507 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-04-12 00:48:34.521 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 5.024 seconds (JVM running for 6.308)
-04-12 00:48:42.483 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 00:48:42.804 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 00:52:55.292 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 00:52:55.309 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 00:54:09.171 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 00:54:41.339 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 00:54:41.355 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 00:55:22.715 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 00:55:22.726 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 01:02:43.178 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 01:02:43.190 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 01:04:11.854 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-04-12 01:04:11.940 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 7728 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-04-12 01:04:11.945 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
-04-12 01:04:12.047 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
-04-12 01:04:12.048 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
-04-12 01:04:12.051 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-04-12 01:04:12.051 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-04-12 01:04:12.940 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-04-12 01:04:12.944 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-04-12 01:04:12.983 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
-04-12 01:04:14.066 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-04-12 01:04:14.077 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-04-12 01:04:14.078 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-04-12 01:04:14.079 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-04-12 01:04:14.191 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-04-12 01:04:14.192 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2140 ms
-04-12 01:04:14.892 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-04-12 01:04:15.241 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-04-12 01:04:15.248 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
-04-12 01:04:15.274 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
-04-12 01:04:15.298 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 12
-04-12 01:04:15.303 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
-04-12 01:04:15.304 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
-04-12 01:04:15.308 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
-04-12 01:04:15.310 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:04:15.310 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
-04-12 01:04:15.313 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
-04-12 01:04:15.313 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:04:15.314 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
-04-12 01:04:15.317 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
-04-12 01:04:15.318 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:04:15.318 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
-04-12 01:04:15.320 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
-04-12 01:04:15.321 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:04:15.321 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
-04-12 01:04:15.323 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
-04-12 01:04:15.660 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
-04-12 01:04:15.662 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
-04-12 01:04:16.152 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-04-12 01:04:16.267 [ INFO] [      o.s.b.d.a.OptionalLiveReloadServer: 58] - LiveReload server is running on port 35729
-04-12 01:04:16.279 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-04-12 01:04:16.309 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-04-12 01:04:16.309 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-04-12 01:04:16.319 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 10 ms
-04-12 01:04:16.321 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-04-12 01:04:16.337 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.875 seconds (JVM running for 5.888)
-04-12 01:04:38.522 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 01:04:38.822 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 01:05:48.225 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 01:05:48.239 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 01:09:47.875 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-04-12 01:09:47.982 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 13672 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-04-12 01:09:47.985 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
-04-12 01:09:48.127 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
-04-12 01:09:48.127 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
-04-12 01:09:48.132 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-04-12 01:09:48.133 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-04-12 01:09:48.983 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-04-12 01:09:48.988 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-04-12 01:09:49.034 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 33ms. Found 0 Redis repository interfaces.
-04-12 01:09:50.042 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-04-12 01:09:50.056 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-04-12 01:09:50.057 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-04-12 01:09:50.058 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-04-12 01:09:50.170 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-04-12 01:09:50.171 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2036 ms
-04-12 01:09:50.841 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-04-12 01:09:51.239 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-04-12 01:09:51.248 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
-04-12 01:09:51.273 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
-04-12 01:09:51.298 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 12
-04-12 01:09:51.304 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
-04-12 01:09:51.305 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
-04-12 01:09:51.310 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
-04-12 01:09:51.312 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:09:51.313 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
-04-12 01:09:51.316 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
-04-12 01:09:51.317 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:09:51.318 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
-04-12 01:09:51.320 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
-04-12 01:09:51.321 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:09:51.321 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
-04-12 01:09:51.323 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
-04-12 01:09:51.323 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:09:51.324 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
-04-12 01:09:51.325 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
-04-12 01:09:51.652 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
-04-12 01:09:51.654 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
-04-12 01:09:52.078 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-04-12 01:09:52.167 [ INFO] [      o.s.b.d.a.OptionalLiveReloadServer: 58] - LiveReload server is running on port 35729
-04-12 01:09:52.180 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-04-12 01:09:52.214 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-04-12 01:09:52.214 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-04-12 01:09:52.222 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
-04-12 01:09:52.223 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-04-12 01:09:52.234 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.761 seconds (JVM running for 5.807)
-04-12 01:10:06.034 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 01:10:06.353 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 01:10:28.993 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 01:10:29.009 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 01:12:13.752 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-04-12 01:12:13.777 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 29620 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-04-12 01:12:13.780 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
-04-12 01:12:13.880 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
-04-12 01:12:13.881 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
-04-12 01:12:13.883 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-04-12 01:12:13.884 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-04-12 01:12:14.782 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-04-12 01:12:14.787 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-04-12 01:12:14.838 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 37ms. Found 0 Redis repository interfaces.
-04-12 01:12:15.821 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-04-12 01:12:15.830 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-04-12 01:12:15.831 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-04-12 01:12:15.831 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-04-12 01:12:15.925 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-04-12 01:12:15.926 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2042 ms
-04-12 01:12:16.583 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-04-12 01:12:16.922 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-04-12 01:12:16.934 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
-04-12 01:12:16.963 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
-04-12 01:12:16.987 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 12
-04-12 01:12:16.992 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
-04-12 01:12:16.993 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
-04-12 01:12:16.997 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
-04-12 01:12:16.998 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:12:16.999 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
-04-12 01:12:17.003 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
-04-12 01:12:17.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:12:17.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
-04-12 01:12:17.006 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
-04-12 01:12:17.007 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:12:17.007 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
-04-12 01:12:17.009 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
-04-12 01:12:17.009 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 01:12:17.010 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
-04-12 01:12:17.011 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
-04-12 01:12:17.347 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
-04-12 01:12:17.349 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
-04-12 01:12:17.789 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-04-12 01:12:17.927 [ INFO] [      o.s.b.d.a.OptionalLiveReloadServer: 58] - LiveReload server is running on port 35729
-04-12 01:12:17.941 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-04-12 01:12:17.971 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-04-12 01:12:17.971 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-04-12 01:12:17.980 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 8 ms
-04-12 01:12:17.982 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-04-12 01:12:17.999 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.836 seconds (JVM running for 5.851)
-04-12 01:12:29.870 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 01:12:30.172 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 16:43:51.659 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
-04-12 16:43:51.724 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 8088 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
-04-12 16:43:51.729 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
-04-12 16:43:51.809 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
-04-12 16:43:51.809 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
-04-12 16:43:51.811 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-04-12 16:43:51.811 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-04-12 16:43:52.684 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
-04-12 16:43:52.688 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-04-12 16:43:52.729 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
-04-12 16:43:53.689 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
-04-12 16:43:53.709 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
-04-12 16:43:53.709 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
-04-12 16:43:53.709 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
-04-12 16:43:53.799 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
-04-12 16:43:53.799 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1988 ms
-04-12 16:43:54.494 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
-04-12 16:43:54.904 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
-04-12 16:43:54.909 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
-04-12 16:43:54.929 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
-04-12 16:43:54.959 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 12
-04-12 16:43:54.959 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
-04-12 16:43:54.959 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
-04-12 16:43:54.969 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
-04-12 16:43:54.969 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 16:43:54.969 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
-04-12 16:43:54.969 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
-04-12 16:43:54.969 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 16:43:54.969 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
-04-12 16:43:54.969 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
-04-12 16:43:54.969 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 16:43:54.979 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
-04-12 16:43:54.979 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
-04-12 16:43:54.979 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
-04-12 16:43:54.979 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
-04-12 16:43:54.979 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
-04-12 16:43:55.279 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
-04-12 16:43:55.279 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
-04-12 16:43:55.744 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
-04-12 16:43:55.839 [ INFO] [      o.s.b.d.a.OptionalLiveReloadServer: 58] - LiveReload server is running on port 35729
-04-12 16:43:55.854 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
-04-12 16:43:55.889 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-04-12 16:43:55.889 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
-04-12 16:43:55.889 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 0 ms
-04-12 16:43:55.899 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
-04-12 16:43:55.914 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.622 seconds (JVM running for 5.874)
-04-12 16:44:20.024 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 16:44:20.348 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
-04-12 16:46:12.861 [ INFO] [                     c.g.g.w.NettyServer: 44] - 收到新连接
-04-12 16:46:12.874 [ INFO] [            c.g.g.w.TextWebSocketHandler:103] - 身份验证通过！！！
+04-15 00:01:00.013 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor: 22] - Async-Service-, 2. do submit,taskCount [0], completedTaskCount [0], activeCount [0], queueSize [0]
+04-15 00:01:00.030 [ INFO] [               c.g.g.s.i.TaskServiceImpl:295] - 定时任务--关闭已经超时的提交作业通道
+04-15 00:01:00.033 [DEBUG] [                 c.g.g.m.T.queryTaskList:159] - ==>  Preparing: SELECT * FROM task WHERE closeTime<? AND commitLate=0 AND isClosed=0 
+04-15 00:01:00.034 [DEBUG] [                 c.g.g.m.T.queryTaskList:159] - ==> Parameters: 2021-04-15:00-01-00(String)
+04-15 00:01:00.048 [DEBUG] [                 c.g.g.m.T.queryTaskList:159] - <==      Total: 0
+04-15 00:16:24.332 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+04-15 00:16:24.378 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 27344 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+04-15 00:16:24.380 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
+04-15 00:16:24.509 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
+04-15 00:16:24.509 [ INFO] [                o.s.b.d.r.ChangeableUrls:225] - The Class-Path manifest attribute in D:\maven_repository\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/maven_repository/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
+04-15 00:16:24.511 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+04-15 00:16:24.511 [ INFO] [.e.DevToolsPropertyDefaultsPostProcessor:225] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+04-15 00:16:25.275 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+04-15 00:16:25.278 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+04-15 00:16:25.317 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 27ms. Found 0 Redis repository interfaces.
+04-15 00:16:26.284 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+04-15 00:16:26.306 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+04-15 00:16:26.306 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+04-15 00:16:26.307 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+04-15 00:16:26.401 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+04-15 00:16:26.401 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1889 ms
+04-15 00:16:27.072 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+04-15 00:16:27.500 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+04-15 00:16:27.518 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
+04-15 00:16:27.587 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
+04-15 00:16:27.626 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 12
+04-15 00:16:27.636 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
+04-15 00:16:27.636 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
+04-15 00:16:27.644 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
+04-15 00:16:27.645 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+04-15 00:16:27.647 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
+04-15 00:16:27.651 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
+04-15 00:16:27.653 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+04-15 00:16:27.654 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
+04-15 00:16:27.658 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
+04-15 00:16:27.659 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+04-15 00:16:27.659 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
+04-15 00:16:27.662 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
+04-15 00:16:27.663 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+04-15 00:16:27.663 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
+04-15 00:16:27.665 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
+04-15 00:16:27.992 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
+04-15 00:16:27.993 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
+04-15 00:16:28.398 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+04-15 00:16:28.520 [ INFO] [      o.s.b.d.a.OptionalLiveReloadServer: 58] - LiveReload server is running on port 35729
+04-15 00:16:28.531 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+04-15 00:16:28.562 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+04-15 00:16:28.563 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+04-15 00:16:28.570 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+04-15 00:16:28.573 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+04-15 00:16:28.587 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 4.739 seconds (JVM running for 5.801)

@@ -16,7 +16,7 @@
        //获取表单中的file
        var file=$('#inputfile').get(0).files[0];
        //文件分片  以20MB去分片
-       var shardSize = 20 * 1024 * 1024;
+       var shardSize = 10 * 1024 * 1024;
        //定义分片索引
        var shardIndex = shardIndex;
        //定义分片的起始位置
@@ -43,7 +43,7 @@
        fd.append('file',fileShard);
        fd.append('fileName',file.name);
        fd.append('shardIndex',shardIndex);
-       //fd.append('shardSize',shardSize);
+       fd.append('shardSize',shardSize);
        fd.append('shardTotal',shardTotal);
        fd.append('fileSize',size);
        fd.append("fileKey",key62);
@@ -76,7 +76,9 @@
        var file=$('#inputfile').get(0).files[0];
        //把视频的信息存储为一个字符串
        var filedetails=file.name+file.size+file.type+file.lastModifiedDate;
-       var shardSize = 20 * 1024 * 1024;
+       var shardSize = 10 * 1024 * 1024;
+       var size = file.size;
+       var shardTotal = Math.ceil(size / shardSize);
        //使用当前文件的信息用md5加密生成一个key 这个加密是根据文件的信息来加密的  如果相同的文件 加的密还是一样的
        var key = hex_md5(filedetails);
        var key10 = parseInt(key,16);
@@ -97,13 +99,14 @@
                }
                else
                {
-                   if(data.data.shardIndex == data.data.shardTotal)
+                   console.log(data);
+                   if(data.data == null)
                    {
                        alert("极速上传成功");
                    }else
                    {
                        //表示文件已经上传过，但是没有上传完 找到这个是第几片 去重新上传
-                       test1(parseInt(data.data.shardIndex));
+                       test1(parseInt(data.data));
                    }
                }
            }

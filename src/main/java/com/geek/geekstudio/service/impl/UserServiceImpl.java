@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserService {
      * 统一登录（管理员和新生）
      */
     @Override
-    public RestInfo login(String userId, String password, String baseUrl) throws UsernameOrPasswordIncorrectException {
+    public RestInfo login(String userId, String password) throws UsernameOrPasswordIncorrectException {
         //生成token 和 refreshToken
         String token,refreshToken;
         //返回前端数据
@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserService {
             RestInfo restInfo=courseService.queryMyCourse(userPO.getUserId());
             userPO.setDirectionVOList((List<DirectionVO>)restInfo.getData());
             if(userPO.getImage()!=null) {
-                userPO.setImage(fileUtil.getFileUrl(baseUrl, userPO.getImage()));
+                userPO.setImage(fileUtil.getFileUrl(userPO.getImage()));
             }
         }else{//该用户不存在于新生表
             user=adminMapper.queryAdminByUserIdAndPassword(userId,password);
@@ -131,7 +131,7 @@ public class UserServiceImpl implements UserService {
                 AdminPO adminPO=(AdminPO)user;
                 type=adminPO.getType();
                 if(adminPO.getImage()!=null) {
-                    adminPO.setImage(fileUtil.getFileUrl(baseUrl, adminPO.getImage()));
+                    adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
                 }
             }else {
                 //用户或密码错误
@@ -154,7 +154,7 @@ public class UserServiceImpl implements UserService {
      *更新用户信息
      */
     @Override
-    public RestInfo updateInfo(String token, String baseUrl) {
+    public RestInfo updateInfo(String token) {
         String userId = (String)redisTemplate.opsForValue().get(token);
         if(userId==null) {
             throw new ExpiredJwtException(null,null,"token过期了");
@@ -166,13 +166,13 @@ public class UserServiceImpl implements UserService {
             RestInfo restInfo=courseService.queryMyCourse(userPO.getUserId());
             userPO.setDirectionVOList((List<DirectionVO>)restInfo.getData());
             if(userPO.getImage()!=null) {
-                userPO.setImage(fileUtil.getFileUrl(baseUrl, userPO.getImage()));
+                userPO.setImage(fileUtil.getFileUrl(userPO.getImage()));
             }
         }else{
             user=adminMapper.queryAdminByAdminId(userId);
             AdminPO adminPO=(AdminPO)user;
             if(adminPO.getImage()!=null) {
-                adminPO.setImage(fileUtil.getFileUrl(baseUrl, adminPO.getImage()));
+                adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
             }
         }
         return RestInfo.success(user);
@@ -208,7 +208,7 @@ public class UserServiceImpl implements UserService {
             message= TokenUtil.parseJWT(refreshToken);
         } catch (ExpiredJwtException e) {
             throw new ExpiredJwtException(e.getHeader(),e.getClaims(),"refreshToken过期了");
-        }catch (SignatureException k){
+        }catch (Exception k){
             throw new PermissionDeniedException("请登录");
         }
         String userId= message.getSubject();

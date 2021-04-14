@@ -94,7 +94,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
             System.out.println("result:"+result);
             //验证失败
             if(!result){
-                //释放通道（channel）
+                //关闭通道（channel）
                 ctx.channel().close();
                 System.out.println("dddd");
                 //return防止方法继续执行到下面的其他逻辑--因为关闭channel这个方法是异步的
@@ -148,6 +148,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
         if ("heart".equals(word)) {
             TextWebSocketFrame back = new TextWebSocketFrame("heart");
             ctx.writeAndFlush(back);
+            //结束方法--防止线程继续执行下去
             return;
         }
         //{"toId":"20","word":"xmas"}

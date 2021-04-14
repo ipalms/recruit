@@ -59,24 +59,24 @@ public class TaskServiceProxy implements TaskService {
      *查看发布的作业
      */
     @Override
-    public RestInfo queryTasks(int courseId, String baseUrl) {
-        return taskService.queryTasks(courseId,baseUrl);
+    public RestInfo queryTasks(int courseId) {
+        return taskService.queryTasks(courseId);
     }
 
     /**
      *管理员查看自己发布的作业
      */
     @Override
-    public RestInfo queryMyTasks(String adminId, String baseUrl) {
-        return taskService.queryMyTasks(adminId,baseUrl);
+    public RestInfo queryMyTasks(String adminId) {
+        return taskService.queryMyTasks(adminId);
     }
 
     /**
      *管理员查看某项作业提交作业名单及详细数据（分页）
      */
     @Override
-    public RestInfo queryOneTask(int page, int rows, int taskId, String baseUrl) {
-        return taskService.queryOneTask(page,rows,taskId,baseUrl);
+    public RestInfo queryOneTask(int page, int rows, int taskId) {
+        return taskService.queryOneTask(page,rows,taskId);
     }
 
     /**
@@ -92,9 +92,9 @@ public class TaskServiceProxy implements TaskService {
      * 批下载一个任务对应的作业
      */
     @Override
-    public RestInfo downloadWorks(WorkDTO workDTO, String baseUrl) throws ParameterError, RecruitFileException {
+    public RestInfo downloadWorks(WorkDTO workDTO) throws ParameterError, RecruitFileException {
         log.info("管理员尝试下载taskId为"+workDTO.getTaskId()+" 的一些作业");
-        return taskService.downloadWorks(workDTO,baseUrl);
+        return taskService.downloadWorks(workDTO);
     }
 
 }

@@ -92,10 +92,9 @@ public class UserController {
      */
     @PassToken
     @PostMapping("/login")
-    public RestInfo login(@RequestBody @Validated(UserGroupValidated.LoginValidated.class) UserDTO userDTO,
-                          HttpServletRequest request) throws UsernameOrPasswordIncorrectException {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return userServiceProxy.login(userDTO.getUserId(),userDTO.getPassword(),baseUrl);
+    public RestInfo login(@RequestBody @Validated(UserGroupValidated.LoginValidated.class) UserDTO userDTO) throws UsernameOrPasswordIncorrectException {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return userServiceProxy.login(userDTO.getUserId(),userDTO.getPassword());
     }
 
     /**
@@ -104,8 +103,8 @@ public class UserController {
     @UserLoginToken
     @GetMapping("/updateInfo")
     public RestInfo updateInfo(HttpServletRequest request){
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return userServiceProxy.updateInfo(request.getHeader("token"),baseUrl);
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return userServiceProxy.updateInfo(request.getHeader("token"));
     }
 
     /**

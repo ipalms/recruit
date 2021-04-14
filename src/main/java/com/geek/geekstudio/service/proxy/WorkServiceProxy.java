@@ -40,15 +40,15 @@ public class WorkServiceProxy implements WorkService {
      * 查看自己提交的某一方向所有作业记录
      */
     @Override
-    public RestInfo queryAllMyWorks(int courseId, String userId, String baseUrl) {
-        return workService.queryAllMyWorks(courseId,userId,baseUrl);
+    public RestInfo queryAllMyWorks(int courseId, String userId) {
+        return workService.queryAllMyWorks(courseId,userId);
     }
 
     /**
      * 查看自己提交的某一方向的一项作业记录
      */
     @Override
-    public RestInfo queryOneWork(int taskId, String userId, String baseUrl) {
-        return workService.queryOneWork(taskId,userId,baseUrl);
+    public RestInfo queryOneWork(int taskId, String userId) {
+        return workService.queryOneWork(taskId,userId);
     }
 }

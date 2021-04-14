@@ -49,10 +49,9 @@ public class WorkController {
     @UserLoginToken
     @GetMapping("/queryAllMyWorks")
     public RestInfo queryAllMyWorks(@RequestParam(name = "courseId") int courseId,
-                                    @RequestParam(name = "userId") String userId,
-                                    HttpServletRequest request) throws PermissionDeniedException {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return workServiceProxy.queryAllMyWorks(courseId,userId,baseUrl);
+                                    @RequestParam(name = "userId") String userId) throws PermissionDeniedException {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return workServiceProxy.queryAllMyWorks(courseId,userId);
     }
 
     /**
@@ -62,9 +61,8 @@ public class WorkController {
     @UserLoginToken
     @GetMapping("/queryOneWork")
     public RestInfo queryOneWork(@RequestParam(name = "taskId") int taskId,
-                                 @RequestParam(name = "userId") String userId,
-                                 HttpServletRequest request) {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return workServiceProxy.queryOneWork(taskId,userId,baseUrl);
+                                 @RequestParam(name = "userId") String userId) {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return workServiceProxy.queryOneWork(taskId,userId);
     }
 }

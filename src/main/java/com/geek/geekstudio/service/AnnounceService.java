@@ -18,5 +18,5 @@ public interface AnnounceService {
     RestInfo queryAnnounce(int page, int rows, int courseId);
 
     //查看一条公告的详情
-    RestInfo queryOneAnnounce(int id,String baseUrl) throws ParameterError;
+    RestInfo queryOneAnnounce(int id) throws ParameterError;
 }

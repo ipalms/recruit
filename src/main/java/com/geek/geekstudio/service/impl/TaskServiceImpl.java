@@ -152,7 +152,7 @@ public class TaskServiceImpl implements TaskService {
      *查看发布的作业
      */
     @Override
-    public RestInfo queryTasks(int courseId, String baseUrl) {
+    public RestInfo queryTasks(int courseId) {
         Map<String,Object> data=new HashMap<>();
         List<TaskFileVO> taskFileVOList;
         List <TaskVO> taskPOList=taskMapper.queryTasksByCourseId(courseId);
@@ -163,7 +163,7 @@ public class TaskServiceImpl implements TaskService {
                 taskFileVOList=taskFileMapper.queryTaskFileById(taskVO.getId());
                 if(taskFileVOList!=null) {
                     for (TaskFileVO taskFileVO : taskFileVOList) {
-                        taskFileVO.setFilePath(fileUtil.getFileUrl(baseUrl, taskFileVO.getFilePath()));
+                        taskFileVO.setFilePath(fileUtil.getFileUrl(taskFileVO.getFilePath()));
                     }
                 }
                 taskVO.setTaskFileVOList(taskFileVOList);
@@ -178,7 +178,7 @@ public class TaskServiceImpl implements TaskService {
      *管理员查看自己发布的作业
      */
     @Override
-    public RestInfo queryMyTasks(String adminId, String baseUrl) {
+    public RestInfo queryMyTasks(String adminId) {
         Map<String,Object> data=new HashMap<>();
         List<TaskFileVO> taskFileVOList;
         List <TaskVO> taskPOList=taskMapper.queryTasksByAdminId(adminId);
@@ -189,7 +189,7 @@ public class TaskServiceImpl implements TaskService {
                 taskFileVOList=taskFileMapper.queryTaskFileById(taskVO.getId());
                 if(taskFileVOList!=null) {
                     for (TaskFileVO taskFileVO : taskFileVOList) {
-                        taskFileVO.setFilePath(fileUtil.getFileUrl(baseUrl, taskFileVO.getFilePath()));
+                        taskFileVO.setFilePath(fileUtil.getFileUrl(taskFileVO.getFilePath()));
                     }
                 }
                 taskVO.setTaskFileVOList(taskFileVOList);
@@ -204,7 +204,7 @@ public class TaskServiceImpl implements TaskService {
      *管理员查看某项作业提交作业名单及详细数据（分页）
      */
     @Override
-    public RestInfo queryOneTask(int page, int rows, int taskId, String baseUrl) {
+    public RestInfo queryOneTask(int page, int rows, int taskId) {
         int total=workMapper.querySubmitTotal(taskId);
         int start=(page-1)*rows;
         List<WorkFileVO> workFileVOList;
@@ -214,12 +214,13 @@ public class TaskServiceImpl implements TaskService {
                 UserPO userPO = userMapper.queryUserByUserId(workVO.getUserId());
                 if(userPO!=null){
                     UserVO userVO = DozerUtil.getDozerBeanMapper().map(userPO,UserVO.class);
+                    userVO.setImage(fileUtil.getFileUrl(userVO.getImage()));
                     workVO.setUserVO(userVO);
                 }
                 workFileVOList=workFileMapper.queryFilesByWorkId(workVO.getId());
                 if(workFileVOList!=null){
                     for(WorkFileVO workFileVO:workFileVOList){
-                        workFileVO.setFilePath(fileUtil.getFileUrl(baseUrl, workFileVO.getFilePath()));
+                        workFileVO.setFilePath(fileUtil.getFileUrl(workFileVO.getFilePath()));
                     }
                 }
                 workVO.setWorkFileVOList(workFileVOList);
@@ -248,7 +249,7 @@ public class TaskServiceImpl implements TaskService {
      * 批下载一个任务对应的作业
      */
     @Override
-    public RestInfo downloadWorks(WorkDTO workDTO, String baseUrl) throws ParameterError, RecruitFileException {
+    public RestInfo downloadWorks(WorkDTO workDTO) throws ParameterError, RecruitFileException {
         TaskPO taskPO = taskMapper.queryOneTaskById(workDTO.getTaskId());
         if(taskPO==null){
             throw new ParameterError();
@@ -275,7 +276,7 @@ public class TaskServiceImpl implements TaskService {
         } catch (IOException e) {
             throw new RecruitFileException("作业文件合并出错，请重试！");
         }
-        String url = fileUtil.getFileUrl(baseUrl,zipPath);
+        String url = fileUtil.getFileUrl(zipPath);
         return RestInfo.success(url);
     }
 

@@ -50,6 +50,10 @@ public interface AnnounceMapper {
     @Select("SELECT * FROM fragmentfile WHERE fileKey=#{fileKey}")
     FragmentFilePO queryFileByKey(String fileKey);
 
+    //更新文件状态
+    @Update("UPDATE fragmentfile SET filePath=#{filePath},updatedTime=#{updatedTime} WHERE id =#{id}")
+    void updateFilePath(int id, String filePath, String updatedTime);
+
     //合并完成后添加file记录到announce表中
     @Update("UPDATE announce SET fileName=#{fileName},filePath=#{filePath} WHERE id =#{id}")
     void updateAnnounceFile(int id, String fileName, String filePath);

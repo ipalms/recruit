@@ -95,7 +95,7 @@ public class WorkServiceImpl implements WorkService {
      * 参数：1.courseId 2.userId
      */
     @Override
-    public RestInfo queryAllMyWorks(int courseId, String userId, String baseUrl) {
+    public RestInfo queryAllMyWorks(int courseId, String userId) {
         Map<String,Object> data=new HashMap<>();
         List<WorkFileVO> workFileVOList;
         List<WorkVO> workVOList=workMapper.queryWorkByCidAndUid(courseId,userId);
@@ -106,7 +106,7 @@ public class WorkServiceImpl implements WorkService {
                 workFileVOList=workFileMapper.queryFilesByWorkId(workVO.getId());
                 if(workFileVOList!=null){
                     for(WorkFileVO workFileVO:workFileVOList){
-                        workFileVO.setFilePath(fileUtil.getFileUrl(baseUrl, workFileVO.getFilePath()));
+                        workFileVO.setFilePath(fileUtil.getFileUrl(workFileVO.getFilePath()));
                     }
                 }
                 workVO.setWorkFileVOList(workFileVOList);
@@ -121,7 +121,7 @@ public class WorkServiceImpl implements WorkService {
      * 查看自己提交的某一方向的一项作业记录
      */
     @Override
-    public RestInfo queryOneWork(int taskId, String userId, String baseUrl) {
+    public RestInfo queryOneWork(int taskId, String userId) {
         List<WorkFileVO> workFileVOList;
         WorkVO workVO=workMapper.queryWorkByIDS(taskId,userId);
         if(workVO==null){
@@ -130,7 +130,7 @@ public class WorkServiceImpl implements WorkService {
             workFileVOList=workFileMapper.queryFilesByWorkId(workVO.getId());
             if(workFileVOList!=null){
                 for(WorkFileVO workFileVO:workFileVOList){
-                    workFileVO.setFilePath(fileUtil.getFileUrl(baseUrl, workFileVO.getFilePath()));
+                    workFileVO.setFilePath(fileUtil.getFileUrl(workFileVO.getFilePath()));
                 }
             }
             workVO.setWorkFileVOList(workFileVOList);

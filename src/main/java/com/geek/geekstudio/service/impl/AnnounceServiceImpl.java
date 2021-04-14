@@ -96,7 +96,7 @@ public class AnnounceServiceImpl implements AnnounceService {
      * 查看发布的公告
      */
     @Override
-    public RestInfo queryOneAnnounce(int id, String baseUrl) throws ParameterError {
+    public RestInfo queryOneAnnounce(int id) throws ParameterError {
         AnnouncePO announcePO= (AnnouncePO) redisTemplate.opsForHash().get("announce",id+"");
         if(announcePO==null){
             announcePO=announceMapper.findAnnounceById(id);
@@ -107,7 +107,7 @@ public class AnnounceServiceImpl implements AnnounceService {
         }
         if(announcePO.getFileName()!=null){
             //改成直接路径
-            announcePO.setFilePath(fileUtil.getFileUrl(baseUrl,announcePO.getFilePath()));
+            announcePO.setFilePath(fileUtil.getFileUrl(announcePO.getFilePath()));
         }
         return RestInfo.success("公告详情",announcePO);
     }

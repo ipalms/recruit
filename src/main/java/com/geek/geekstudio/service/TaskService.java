@@ -22,17 +22,17 @@ public interface TaskService {
     RestInfo deleteTask(TaskDTO taskDTO) throws PermissionDeniedException;
 
     //查看作业
-    RestInfo queryTasks(int courseId, String baseUrl);
+    RestInfo queryTasks(int courseId);
 
     //管理员查看自己发布的作业
-    RestInfo queryMyTasks(String adminId, String baseUrl);
+    RestInfo queryMyTasks(String adminId);
 
     //管理员查看某项作业提交作业名单及详细数据
-    RestInfo queryOneTask(int page, int rows, int taskId, String baseUrl);
+    RestInfo queryOneTask(int page, int rows, int taskId);
 
     //给某个作业打分（分值1~10）
     RestInfo giveScore(WorkDTO workDTO) throws ParameterError;
 
     //批下载一个任务对应的作业
-    RestInfo downloadWorks(WorkDTO workDTO, String baseUrl) throws ParameterError, RecruitFileException;
+    RestInfo downloadWorks(WorkDTO workDTO) throws ParameterError, RecruitFileException;
 }

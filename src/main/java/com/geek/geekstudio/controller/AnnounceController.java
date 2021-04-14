@@ -80,9 +80,9 @@ public class AnnounceController {
      */
     @PassToken
     @GetMapping("/queryOneAnnounce/{id}")
-    public RestInfo queryOneAnnounce(@PathVariable(name = "id") int id,HttpServletRequest request) throws ParameterError {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return announceServiceProxy.queryOneAnnounce(id,baseUrl);
+    public RestInfo queryOneAnnounce(@PathVariable(name = "id") int id) throws ParameterError {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return announceServiceProxy.queryOneAnnounce(id);
     }
 
     /**
@@ -90,8 +90,11 @@ public class AnnounceController {
      * 其次这个demo续传的文件是按分片分成了数个文件，最后再做合并的【追加文件到末尾】。
      * 也可以采用RandomAccessFile类对同一个文件追加数据。
      */
+
     /**
      * announce文件上传（断点续传）
+     *
+     * 当多个请求同时上传分片--即分片请求到fragmentFilePO都为空并都打算插入数据，那么这可能会插入生成了几个一样的数据库记录--并发
      * @param file  //代表这个文件的file对象
      * @param shardIndex   //当前要上传的分页
      * @param shardTotal  //文件分片的总数
@@ -104,11 +107,12 @@ public class AnnounceController {
     @PostMapping("/announceUpload")
     public RestInfo announceUpload(MultipartFile file,
                          int shardIndex,
+                         int shardSize,
                          int shardTotal,
                          Integer fileSize,
                          @RequestParam(defaultValue = "0",required = false) int courseId,
                          String fileKey) throws RecruitFileException {
-        return fileServiceProxy.announceUpload(file, shardIndex, shardTotal, fileSize, courseId, fileKey);
+        return fileServiceProxy.announceUpload(file, shardIndex, shardSize, shardTotal, fileSize, courseId, fileKey);
     }
 
     /**
@@ -116,19 +120,21 @@ public class AnnounceController {
      * 如果没有前端就直接从第一个分页开始上传
      * 如果有的话，返回这个文件稳定的上传分页点（即前面断点的文件完整）
      * 如过是最后一页的话就说明已上传成功，否则就从当前断开的分页开始继续上传
+     *
+     * 考虑给分片文件记录加上completed字段代表该文件本人已经上传成功或存在其他人上传过现象
      */
-   /* @UserLoginToken
-    @AdminPermission
+/*    @UserLoginToken
+    @AdminPermission*/
     @PostMapping("/check")
     public RestInfo check(@RequestBody FragmentFileDTO fragmentFileDTO){
-        return fileServiceProxy.check(fragmentFileDTO.getKey());
-    }*/
+        return fileServiceProxy.check(fragmentFileDTO.getFileKey(),fragmentFileDTO.getShardSize());
+    }
 
 
-    @PostMapping("/check")
+/*    @PostMapping("/check")
     public RestInfo check(String fileKey ,int shardSize){
         return fileServiceProxy.check(fileKey,shardSize);
-    }
+    }*/
 
     /**
      * 合并分页 json

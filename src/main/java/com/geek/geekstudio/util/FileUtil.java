@@ -44,6 +44,14 @@ public class FileUtil {
     @Value("${files.path}")
     private String rootDir;
 
+    @Value("${server.port}")
+    private String port;
+
+    @Value("${application.address}")
+    private String address;
+
+    String baseUrl;
+
     /**
      * FileUtil类的构造函数被执行完且依赖注入完成后才执行的方法
      */
@@ -59,6 +67,9 @@ public class FileUtil {
         this.imageFilePath = fileStorageLocation.toString() + "/image/";
         this.articleFilePath = fileStorageLocation.toString() + "/article/";
         this.tmpFilePath = fileStorageLocation.toString() + "/zip/";
+        //构造baseUrl
+        baseUrl="http://"+address+":"+port;
+        System.out.println("baseUrl:"+baseUrl);
         try {
             if(!Files.exists(this.fileStorageLocation)) {
                 Files.createDirectories(this.fileStorageLocation);
@@ -308,8 +319,8 @@ public class FileUtil {
     /**
      * 返回前端可以访问本地文件url（url中输入访问到实际资源的路径）
      */
-    public String getFileUrl(String baseUrl,String filePath){
-        return baseUrl+"/source"+filePath;
+    public String getFileUrl(String filePath){
+        return this.baseUrl+"/source"+filePath;
     }
 
     /**

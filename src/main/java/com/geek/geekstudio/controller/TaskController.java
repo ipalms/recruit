@@ -74,10 +74,9 @@ public class TaskController {
      */
     @UserLoginToken
     @GetMapping("/queryTasks")
-    public RestInfo queryTasks(@RequestParam(name = "courseId") int courseId,
-                               HttpServletRequest request)  {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return taskServiceProxy.queryTasks(courseId,baseUrl);
+    public RestInfo queryTasks(@RequestParam(name = "courseId") int courseId)  {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return taskServiceProxy.queryTasks(courseId);
     }
 
 }

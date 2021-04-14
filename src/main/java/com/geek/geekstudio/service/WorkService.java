@@ -15,8 +15,8 @@ public interface WorkService {
     RestInfo deleteWork(WorkDTO workDTO) throws PermissionDeniedException;
 
     //查看自己提交的某一方向所有作业记录
-    RestInfo queryAllMyWorks(int courseId, String userId, String baseUrl);
+    RestInfo queryAllMyWorks(int courseId, String userId);
 
     //查看自己提交的某一方向的一项作业记录
-    RestInfo queryOneWork(int taskId, String userId, String baseUrl);
+    RestInfo queryOneWork(int taskId, String userId);
 }

@@ -38,7 +38,7 @@ public interface FileService {
     RestInfo delWorkFile(int id, String userId) throws RecruitException;
 
     //announce文件上传
-    RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException;
+    RestInfo announceUpload(MultipartFile file, int shardIndex,int shardSize, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException;
 
     //检查数据库中有没有这个文件的存在
     RestInfo check(String fileKey,int shardSize);

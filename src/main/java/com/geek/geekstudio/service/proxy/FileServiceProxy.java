@@ -191,9 +191,9 @@ public class FileServiceProxy implements FileService {
      * announce文件上传  --断点续传（未做异常回滚操作）
      */
     @Override
-    public RestInfo announceUpload(MultipartFile file, int shardIndex, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException {
+    public RestInfo announceUpload(MultipartFile file, int shardIndex,int shardSize, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException {
         //log.info("上传文件的第"+shardIndex+"片文件");
-        return fileService.announceUpload(file, shardIndex, shardTotal, fileSize, courseId, fileKey);
+        return fileService.announceUpload(file, shardIndex, shardSize, shardTotal, fileSize, courseId, fileKey);
     }
 
     /**

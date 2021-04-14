@@ -58,7 +58,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 } catch (ExpiredJwtException e) {
                     throw new ExpiredJwtException(e.getHeader(),e.getClaims(),"token过期了");
                 } catch (Exception k){
-                    //否则就是伪造的token--抛出权限不够等等..问题
+                    //否则就是伪造的token（或者token被篡改了，比如改了过期时间让其永不过期）--抛出权限不够等等..问题
                     throw new PermissionDeniedException("请登录");
                 }
             }

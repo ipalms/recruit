@@ -114,6 +114,9 @@ public class AdminServiceImpl implements AdminService {
         int start=(page-1)*rows;
         //这个查询write了两种sql形式，一种xml一种注解形式
         List<UserVO> usersInfo=userMapper.queryUsersInfo(courseId,start,rows);
+        for(UserVO userVO:usersInfo){
+            userVO.setImage(fileUtil.getFileUrl(userVO.getImage()));
+        }
         int totalPage=total%rows==0?total/rows:total/rows+1;
         return RestInfo.success(new PageListVO(total,page,totalPage,rows,usersInfo));
     }
@@ -150,12 +153,13 @@ public class AdminServiceImpl implements AdminService {
                     avgScore=(double) Math.round(((userScore/totalScore))*1000)/100;
                     user.setAvgScore(avgScore);
                     user.setSubmitCount(workVOList.size());
+                    user.setImage(fileUtil.getFileUrl(user.getImage()));
                     userScore=0;
                 }
             }
+            //按从大到小排序
+            Collections.sort(usersInfo);
         }
-        //按从大到小排序
-        Collections.sort(usersInfo);
         data.put("total",taskVOList.size());
         data.put("users",usersInfo);
         return RestInfo.success(data);
