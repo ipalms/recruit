@@ -60,6 +60,7 @@ public class AdminController {
     public RestInfo queryUsersInfo(@RequestParam(name = "page",defaultValue = "1",required=false) int page,
                                    @RequestParam(name = "rows",required = false,defaultValue = "10")int rows,
                                    @RequestParam(value = "courseId",required = false,defaultValue = "0") int courseId){
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return adminServiceProxy.queryUsersInfo(page,rows,courseId);
     }
 
@@ -69,10 +70,9 @@ public class AdminController {
     @AdminPermission
     @UserLoginToken
     @GetMapping("/queryMyTasks")
-    public RestInfo queryMyTasks(@RequestParam(name = "adminId") String adminId,
-                                 HttpServletRequest request)  {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return taskServiceProxy.queryMyTasks(adminId,baseUrl);
+    public RestInfo queryMyTasks(@RequestParam(name = "adminId") String adminId)  {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return taskServiceProxy.queryMyTasks(adminId);
     }
 
     /**
@@ -83,10 +83,9 @@ public class AdminController {
     @GetMapping("/queryOneTask")
     public RestInfo queryOneTask(@RequestParam(name = "page",defaultValue = "1",required=false) int page,
                                  @RequestParam(name = "rows",defaultValue = "10",required = false)int rows,
-                                 @RequestParam(name = "taskId") int taskId,
-                                 HttpServletRequest request)  {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return taskServiceProxy.queryOneTask(page,rows,taskId,baseUrl);
+                                 @RequestParam(name = "taskId") int taskId)  {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return taskServiceProxy.queryOneTask(page,rows,taskId);
     }
 
     /**
@@ -114,10 +113,9 @@ public class AdminController {
     @AdminPermission
     @UserLoginToken
     @PostMapping("downloadWorks")
-    public RestInfo downloadWorks(@RequestBody WorkDTO workDTO,
-                                  HttpServletRequest request) throws ParameterError, RecruitFileException {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        return taskServiceProxy.downloadWorks(workDTO,baseUrl);
+    public RestInfo downloadWorks(@RequestBody WorkDTO workDTO) throws ParameterError, RecruitFileException {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return taskServiceProxy.downloadWorks(workDTO);
     }
 
     /**
@@ -127,6 +125,7 @@ public class AdminController {
     @UserLoginToken
     @GetMapping("queryScores")
     public RestInfo queryGrades(@RequestParam(name = "courseId") int courseId) {
+        //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return adminServiceProxy.queryScores(courseId);
     }
 
