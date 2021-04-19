@@ -6,6 +6,7 @@ import com.geek.geekstudio.exception.RecruitFileException;
 import com.geek.geekstudio.mapper.*;
 import com.geek.geekstudio.model.dto.TaskDTO;
 import com.geek.geekstudio.model.dto.WorkDTO;
+import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.TaskPO;
 import com.geek.geekstudio.model.po.UserPO;
 import com.geek.geekstudio.model.vo.*;
@@ -48,6 +49,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Autowired
     AdminMapper adminMapper;
+
+    @Autowired
+    SuperAdminMapper superAdminMapper;
 
     @Autowired
     UserMapper userMapper;
@@ -163,10 +167,15 @@ public class TaskServiceImpl implements TaskService {
                 taskFileVOList=taskFileMapper.queryTaskFileById(taskVO.getId());
                 if(taskFileVOList!=null) {
                     for (TaskFileVO taskFileVO : taskFileVOList) {
-                        taskFileVO.setFilePath(fileUtil.getFileUrl(taskFileVO.getFilePath()));
+                        if(taskFileVO.getFileName()!=null){
+                            taskFileVO.setFilePath(fileUtil.getFileUrl(taskFileVO.getFilePath()));
+                        }
                     }
                 }
                 taskVO.setTaskFileVOList(taskFileVOList);
+                AdminPO adminPO = superAdminMapper.queryByAdminId(taskVO.getAdminId());
+                adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
+                taskVO.setAdminPO(adminPO);
             }
         }
         data.put("total",total);
@@ -189,7 +198,9 @@ public class TaskServiceImpl implements TaskService {
                 taskFileVOList=taskFileMapper.queryTaskFileById(taskVO.getId());
                 if(taskFileVOList!=null) {
                     for (TaskFileVO taskFileVO : taskFileVOList) {
-                        taskFileVO.setFilePath(fileUtil.getFileUrl(taskFileVO.getFilePath()));
+                        if(taskFileVO.getFileName()!=null) {
+                            taskFileVO.setFilePath(fileUtil.getFileUrl(taskFileVO.getFilePath()));
+                        }
                     }
                 }
                 taskVO.setTaskFileVOList(taskFileVOList);

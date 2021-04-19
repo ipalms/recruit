@@ -113,7 +113,7 @@ public class WorkServiceImpl implements WorkService {
             }
         }
         data.put("total",total);
-        data.put("taskPOList",workVOList);
+        data.put("workPOList",workVOList);
         return RestInfo.success("查询所有提交作业成功",data);
     }
 

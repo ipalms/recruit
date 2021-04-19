@@ -56,7 +56,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
         textWebSocketHandler.userSessionImpl=this.userSessionImpl;
     }*/
 
-    private boolean readNoReceive = true;
+    private volatile boolean readNoReceive = true;
     private String uid;
     private String token;
 
@@ -91,16 +91,14 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
             //进行身份验证
             token = paramMap.get("token");
             boolean result = checkUserLegality(token);
-            System.out.println("result:"+result);
             //验证失败
             if(!result){
                 //关闭通道（channel）
+                log.info("验证失败");
                 ctx.channel().close();
-                System.out.println("dddd");
                 //return防止方法继续执行到下面的其他逻辑--因为关闭channel这个方法是异步的
                 return;
             }
-            log.info("身份验证通过！！！");
             uid = paramMap.get("uid");
             userSession.bind(ctx.channel(), uid);
             //如果url包含参数，需要处理
@@ -177,7 +175,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
     //客户端连接断开
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("与客户端断开连接，通道关闭！");
+        log.info("与客户端断开连接，通道关闭！");
         if (uid!=null&&userSession.containChannel(uid)) {
             userSession.unbind(uid);
         }
@@ -186,7 +184,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
     //客户端因为异常连接断开
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        System.out.println("出现异常，channel断开--异常原因：" + cause.getMessage());
+        log.info("出现异常，channel断开--异常原因:{}",cause.getMessage());
         cause.printStackTrace();
         if (uid!=null&&userSession.containChannel(uid)) {
             userSession.unbind(uid);

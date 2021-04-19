@@ -9,32 +9,28 @@ import java.util.Date;
  */
 public class DateUtil {
 
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss");
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     //private static SimpleDateFormat shortGFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * 时间转字符串
      */
     public static String DateToStr(Date date) {
-        String str = format.format(date);
-        return str;
+        return format.format(date);
     }
 
     /**
      * 生成系统时间字符串
      */
     public static String creatDate() {
-        String str = format.format(new Date(System.currentTimeMillis()));
-        return str;
+        return format.format(new Date(System.currentTimeMillis()));
     }
 
     /**
      * 字符串转时间
      */
     public static Date StrToDate(String str) throws ParseException {
-        Date date = null;
-        date = format.parse(str);
-        return date;
+        return format.parse(str);
     }
 
     /**

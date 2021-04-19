@@ -17,7 +17,8 @@
     function init() {
         if (window.WebSocket) {
             console.log($("#uid").val());
-            socket = new WebSocket("ws://127.0.0.1:8090/websocket?uid="+$("#uid").val()+"&token="+$("#token").val());
+            //ws://120.79.138.134:8090/websocket  服务器地址
+            socket = new WebSocket("ws://120.79.138.134:8090/websocket?uid="+$("#uid").val()+"&token="+$("#token").val());
             socket.onmessage = function (event) {
                 var ta = document.getElementById('responseText');
                 console.log(event.data);
@@ -120,7 +121,7 @@
     <input type="button" value="关闭socket" onClick="closeSocket()"/> <br/><br/>
     <input type="button" value="清空消息" onClick="clearMessage()"/> <br/><br/>
     <input type="button" value="发送ws消息" onClick="send()"/> <br/><br/>
-    <hr color="black"/>
+    <hr color="black"/>8
 
     <h3>服务端返回的应答消息</h3>
     <textarea id="responseText" style="width: 1024px;height: 300px;"></textarea>

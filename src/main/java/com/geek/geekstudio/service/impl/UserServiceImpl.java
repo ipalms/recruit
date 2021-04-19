@@ -62,6 +62,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
 
+    private static final String defaultPicture="/image/default.jpg";
+
     /**
      * 新生注册
      */
@@ -71,11 +73,12 @@ public class UserServiceImpl implements UserService {
     public RestInfo register(UserDTO userDTO) throws UserRegisteredException, EmailCodeWrongException {
         String active;
         String grade;
+        String image;
         if(userMapper.queryUserByUserId(userDTO.getUserId())!=null){
             //再检验一遍学号是否被注册了
             throw new UserRegisteredException();
         }
-        active=(String) redisTemplate.opsForValue().get(userDTO.getUserId());
+        active=(String) redisTemplate.opsForValue().get("code-"+userDTO.getUserId());
         if(active==null||active.length()==0){
             throw new EmailCodeWrongException("请点击再次发送邮件");
         }
@@ -87,10 +90,13 @@ public class UserServiceImpl implements UserService {
         grade = userDTO.getUserId().substring(0, 4);
         try {
             Integer.valueOf(grade);
+            image="/image/picture"+(Integer.parseInt(userDTO.getUserId())%12)+".jpg";
         } catch (Exception e) {
             grade=null;
+            image=defaultPicture;
         }
         userDTO.setGrade(grade);
+        userDTO.setImage(image);
         //默认接收日常邮件
         userDTO.setReceiveMail("yes");
         userMapper.addUser(userDTO);
@@ -122,17 +128,13 @@ public class UserServiceImpl implements UserService {
             //加入新生的专业选择
             RestInfo restInfo=courseService.queryMyCourse(userPO.getUserId());
             userPO.setDirectionVOList((List<DirectionVO>)restInfo.getData());
-            if(userPO.getImage()!=null) {
-                userPO.setImage(fileUtil.getFileUrl(userPO.getImage()));
-            }
+            userPO.setImage(fileUtil.getFileUrl(userPO.getImage()));
         }else{//该用户不存在于新生表
             user=adminMapper.queryAdminByUserIdAndPassword(userId,password);
             if(user!=null){
                 AdminPO adminPO=(AdminPO)user;
                 type=adminPO.getType();
-                if(adminPO.getImage()!=null) {
-                    adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
-                }
+                adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
             }else {
                 //用户或密码错误
                 throw new UsernameOrPasswordIncorrectException();
@@ -165,15 +167,11 @@ public class UserServiceImpl implements UserService {
             //加入新生的专业选择
             RestInfo restInfo=courseService.queryMyCourse(userPO.getUserId());
             userPO.setDirectionVOList((List<DirectionVO>)restInfo.getData());
-            if(userPO.getImage()!=null) {
-                userPO.setImage(fileUtil.getFileUrl(userPO.getImage()));
-            }
+            userPO.setImage(fileUtil.getFileUrl(userPO.getImage()));
         }else{
             user=adminMapper.queryAdminByAdminId(userId);
             AdminPO adminPO=(AdminPO)user;
-            if(adminPO.getImage()!=null) {
-                adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
-            }
+            adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
         }
         return RestInfo.success(user);
     }
@@ -268,7 +266,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public RestInfo findBackPassword(UserDTO userDTO) throws EmailCodeWrongException {
-        String active=(String) redisTemplate.opsForValue().get(userDTO.getUserId());
+        String active=(String) redisTemplate.opsForValue().get("code-"+userDTO.getUserId());
         if(active==null||active.length()==0){
             throw new EmailCodeWrongException("请点击再次发送邮件");
         }
@@ -298,7 +296,7 @@ public class UserServiceImpl implements UserService {
         }
         directionDTO.setAddTime(DateUtil.creatDate());
         directionMapper.addDirection(directionDTO);
-        //维护courseUser 变量
+        //维护courseUser变量
         userSession.courseUser.get(userSession.courseRelation.get(directionDTO.getCourseId())).add(directionDTO.getUserId());
         return RestInfo.success("选择方向成功",null);
     }

@@ -24,7 +24,7 @@ public class SuperAdminServiceProxy implements SuperAdminService {
      */
     public RestInfo addAdmin(AdminPO adminPO) throws UserRegisteredException {
         log.info("添加管理员 adminPO —— adminId:"+adminPO.getAdminId()+" ,userName:"+adminPO.getAdminName()
-                + ", password:"+adminPO.getPassword()+ ", courseName:"+adminPO.getCourseName());
+                +", courseName:"+adminPO.getCourseName());
         return superAdminService.addAdmin(adminPO);
     }
 

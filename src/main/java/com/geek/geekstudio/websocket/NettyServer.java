@@ -15,8 +15,6 @@ import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketSe
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
@@ -41,7 +39,6 @@ public class NettyServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // 绑定客户端连接时候触发操作
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            log.info("收到新连接");
                             ch.pipeline()
                                     //websocket协议本身是基于http协议的，所以这边也要使用http解编码器 转成httpRequest消息
                                     .addLast(new HttpServerCodec())
@@ -56,7 +53,7 @@ public class NettyServer {
                                     .addLast(new WebSocketServerCompressionHandler())
                                     //1小时内没有读取到消息关闭连接--close通道
                                     //超时产生ReadTimeoutException异常
-
+                                    //.addLast(new ReadTimeoutHandler(1,TimeUnit.HOURS))
                                     //自定义处理TextWebSocketFrame帧的handler--放在WebSocketServerProtocolHandler是为了提取出url的参数
                                     //防止升级到websocket协议失败
                                     .addLast(new TextWebSocketHandler())

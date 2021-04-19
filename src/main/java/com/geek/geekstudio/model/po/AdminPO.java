@@ -15,15 +15,14 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class AdminPO {
     private int id;
-    @NotBlank(message = "唯一标识不能为空!")
-    @Length(min = 5,max = 30)
+/*    @NotBlank(message = "唯一标识不能为空!")
+    @Length(min = 5,max = 30)*/
     private String adminId;
-    @NotBlank(message = "姓名不能为空！")
+/*    @NotBlank(message = "姓名不能为空！")*/
     private String adminName;
-    @NotBlank(message = "密码不能为空！")
-    @Length(min = 3,max = 30)
+/*    @NotBlank(message = "密码不能为空！")
+    @Length(min = 3,max = 30)*/
     private String password;
-    @NotBlank(message = "所在方向不能为空！")
     private String courseName;
     private String image;
     private String registerTime;

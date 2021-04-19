@@ -26,6 +26,8 @@ public class SuperAdminServiceImpl implements SuperAdminService {
     @Autowired
     CourseMapper courseMapper;
 
+    private static final String defaultPicture="/image/default.jpg";
+
     /**
      * 添加管理员
      */
@@ -36,6 +38,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
         }
         adminPO.setRegisterTime(DateUtil.creatDate());
         adminPO.setType("admin");
+        adminPO.setImage(defaultPicture);
         superAdminMapper.addAdmin(adminPO);
         return RestInfo.success("管理员添加成功！",null);
     }

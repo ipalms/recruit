@@ -2,7 +2,10 @@ package com.geek.geekstudio.service.impl;
 
 import com.geek.geekstudio.exception.ParameterError;
 import com.geek.geekstudio.exception.RecruitException;
+import com.geek.geekstudio.mapper.AdminMapper;
 import com.geek.geekstudio.mapper.AnnounceMapper;
+import com.geek.geekstudio.mapper.SuperAdminMapper;
+import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.AnnouncePO;
 import com.geek.geekstudio.model.vo.AnnounceVO;
 import com.geek.geekstudio.model.vo.ArticleInfoVO;
@@ -29,6 +32,9 @@ public class AnnounceServiceImpl implements AnnounceService {
     AnnounceMapper announceMapper;
 
     @Autowired
+    SuperAdminMapper adminMapper;
+
+    @Autowired
     FileUtil fileUtil;
 
     @Autowired
@@ -52,6 +58,12 @@ public class AnnounceServiceImpl implements AnnounceService {
         }
         AnnouncePO announcePO=new AnnouncePO(courseId,adminId,title,content,DateUtil.creatDate(),fileName,url);
         announceMapper.addAnnounce(announcePO);
+        AdminPO adminPO = adminMapper.queryByAdminId(adminId);
+        if(adminPO==null){
+            throw new ParameterError();
+        }
+        adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
+        announcePO.setAdminPO(adminPO);
         redisTemplate.opsForHash().put("announce",announcePO.getId()+"",announcePO);
         /*if(courseId!=null){
             String dir = userSession.courseRelation.get(courseId);
@@ -103,6 +115,9 @@ public class AnnounceServiceImpl implements AnnounceService {
             if(announcePO==null){
                 throw new ParameterError();
             }
+            AdminPO adminPO = adminMapper.queryByAdminId(announcePO.getAdminId());
+            adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
+            announcePO.setAdminPO(adminPO);
             redisTemplate.opsForHash().put("announce",announcePO.getId()+"",announcePO);
         }
         if(announcePO.getFileName()!=null){

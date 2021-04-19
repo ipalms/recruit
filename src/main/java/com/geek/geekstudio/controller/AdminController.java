@@ -112,7 +112,7 @@ public class AdminController {
      */
     @AdminPermission
     @UserLoginToken
-    @PostMapping("downloadWorks")
+    @PostMapping("/downloadWorks")
     public RestInfo downloadWorks(@RequestBody WorkDTO workDTO) throws ParameterError, RecruitFileException {
         //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return taskServiceProxy.downloadWorks(workDTO);
@@ -123,7 +123,7 @@ public class AdminController {
      */
     @AdminPermission
     @UserLoginToken
-    @GetMapping("queryScores")
+    @GetMapping("/queryScores")
     public RestInfo queryGrades(@RequestParam(name = "courseId") int courseId) {
         //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return adminServiceProxy.queryScores(courseId);
@@ -134,7 +134,7 @@ public class AdminController {
      */
     @AdminPermission
     @UserLoginToken
-    @GetMapping("countStudent")
+    @GetMapping("/countStudent")
     public RestInfo countStudent(@RequestParam(name = "taskId") int taskId) throws ParameterError {
         return adminServiceProxy.countStudent(taskId);
     }
@@ -144,7 +144,7 @@ public class AdminController {
      */
     @AdminPermission
     @UserLoginToken
-    @GetMapping("clearZipFile")
+    @GetMapping("/clearZipFile")
     public RestInfo clearZipFile(@RequestParam(name = "courseId",required = false,defaultValue = "0") int courseId) {
         return adminServiceProxy.clearZipFile(courseId);
     }

@@ -41,6 +41,6 @@ public interface WorkFileMapper {
     void deleteFilesByWorkId(int workId);
 
     //根据workId查询记录
-    @Select("SELECT fileName,filePath,addTime FROM workfile  WHERE workId=#{workId}")
+    @Select("SELECT id,fileName,filePath,addTime FROM workfile  WHERE workId=#{workId}")
     List<WorkFileVO> queryFilesByWorkId(int workId);
 }

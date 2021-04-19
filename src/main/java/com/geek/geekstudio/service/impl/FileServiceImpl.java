@@ -80,12 +80,12 @@ public class FileServiceImpl implements FileService {
         //删除之前的头像
         userPO=userMapper.queryUserByUserId(userId);
         if(userPO!=null){
-            if(userPO.getImage()!=null) {
+            if(userPO.getImage()!=null&&userPO.getImage().contains("-"+userId)) {
                 fileUtil.deleteFile(fileUtil.buildPath(userPO.getImage()));
             }
         }else {
             adminPO=superAdminMapper.queryAdminByAdminId(userId);
-            if(adminPO.getImage()!=null){
+            if(adminPO.getImage()!=null&&adminPO.getImage().contains("-"+userId)){
                 fileUtil.deleteFile(fileUtil.buildPath(adminPO.getImage()));
             }
         }
@@ -410,7 +410,7 @@ public class FileServiceImpl implements FileService {
         String path=fileUtil.buildPath(fragmentFilePO.getFilePath());
         String realPath=fileUtil.buildPath(mergeFilePath);
         int shardTotal= fragmentFilePO.getShardTotal();
-        FileOutputStream outputStream = null; // 文件追加写入
+        FileOutputStream outputStream; // 文件追加写入
         try {
             outputStream = new FileOutputStream(realPath,true);
         } catch (FileNotFoundException e) {
@@ -419,7 +419,7 @@ public class FileServiceImpl implements FileService {
         FileInputStream fileInputStream = null; //分片文件
         byte[] byt = new byte[10 * 1024 * 1024];//一次写入10M
         int len;
-        File part =null;
+        File part;
         try {
             for (int i = 0; i < shardTotal; i++) {
                 part=new File(path + "." + (i + 1));

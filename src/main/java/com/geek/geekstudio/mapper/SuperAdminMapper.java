@@ -22,6 +22,12 @@ public interface SuperAdminMapper {
     AdminPO queryAdminByAdminId(String adminId);
 
     /**
+     *通过id查管理员
+     */
+    @Select("SELECT adminName,courseName,image FROM admin WHERE adminId=#{adminId}")
+    AdminPO queryByAdminId(String adminId);
+
+    /**
      *添加管理员
      */
     @Insert("INSERT INTO admin (adminId,adminName,password,courseName,image,registerTime,type)" +

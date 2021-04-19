@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkFileVO {
-    //private int id;
+    private int id;
     //private Integer workId;
     private String fileName;
     private String filePath;

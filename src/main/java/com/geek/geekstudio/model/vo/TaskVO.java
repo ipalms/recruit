@@ -1,5 +1,6 @@
 package com.geek.geekstudio.model.vo;
 
+import com.geek.geekstudio.model.po.AdminPO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +25,5 @@ public class TaskVO {
     private int weight;
     private List<TaskFileVO> taskFileVOList; //task记录对应的文件
     private String filePath;
+    private AdminPO adminPO;
 }

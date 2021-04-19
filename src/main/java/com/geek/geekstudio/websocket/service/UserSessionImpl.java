@@ -1,6 +1,5 @@
 package com.geek.geekstudio.websocket.service;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.geek.geekstudio.mapper.CourseMapper;
 import com.geek.geekstudio.mapper.UserMapper;
@@ -153,7 +152,7 @@ public class UserSessionImpl implements UserSession {
     public void sendOneMessage(String toId, JSONObject jsonObject){
         //将消息传输到对应toId用户--用户在线
         if (usernameChannelMap.containsKey(toId)) {
-            System.out.println(jsonObject.toJSONString());
+            System.out.println("消息："+jsonObject.toJSONString());
             System.out.println("channel"+usernameChannelMap.get(toId));
             usernameChannelMap.get(toId).writeAndFlush(new TextWebSocketFrame(jsonObject.toJSONString()));
         } else {

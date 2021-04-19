@@ -35,15 +35,12 @@ public class JavaMailServiceImpl implements JavaMailService {
     /**
      * 发送激活邮件 -- 发送找回密码邮件
      */
-    //事务支持，异常回滚到没发送验证码
-    @Transactional(rollbackFor = Exception.class)
     @Override
     public void sendActiveMail(String userId, String mail,Integer codeType) throws MessagingException {
-            String code= (String) redisTemplate.opsForValue().get(userId);
+            String code= (String) redisTemplate.opsForValue().get("code-"+userId);
             if(code!=null){
-                log.info("用户"+userId+":已经发送过验证码将删除第一次的验证码-->"+code);
                 //删除掉之前的验证码
-                redisTemplate.delete(userId);
+                redisTemplate.delete("code-"+userId);
             }
             //创建一个消息邮件
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -62,7 +59,7 @@ public class JavaMailServiceImpl implements JavaMailService {
             helper.setTo(mail);
             javaMailSender.send(mimeMessage);
             //将验证码存入redis 15分钟过期
-            redisTemplate.opsForValue().set(userId,activeCode,15, TimeUnit.MINUTES);
+            redisTemplate.opsForValue().set("code-"+userId,activeCode,15, TimeUnit.MINUTES);
     }
 
     /**
@@ -76,7 +73,6 @@ public class JavaMailServiceImpl implements JavaMailService {
         //创建一个消息邮件
         try {
             //log.info("11111");
-            //Callable
             //Thread.sleep(10000); //测试异步任务用时
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);

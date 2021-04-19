@@ -19,6 +19,7 @@ public class AnnouncePO {
     private String addTime;
     private String fileName;
     private String filePath;
+    private AdminPO adminPO;
 
     public AnnouncePO(Integer courseId, String adminId, String title, String content, String addTime, String fileName, String filePath) {
         this.courseId = courseId;
