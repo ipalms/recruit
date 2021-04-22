@@ -79,8 +79,8 @@ public class AnnounceController {
      * 查看一条公告的详情
      */
     @PassToken
-    @GetMapping("/queryOneAnnounce/{id}")
-    public RestInfo queryOneAnnounce(@PathVariable(name = "id") int id) throws ParameterError {
+    @GetMapping("/queryOneAnnounce")
+    public RestInfo queryOneAnnounce(@RequestParam(name = "id") int id) throws ParameterError {
         //String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         return announceServiceProxy.queryOneAnnounce(id);
     }

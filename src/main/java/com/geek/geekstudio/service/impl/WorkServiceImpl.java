@@ -4,6 +4,7 @@ import com.geek.geekstudio.exception.ExceptionCode;
 import com.geek.geekstudio.exception.ParameterError;
 import com.geek.geekstudio.exception.PermissionDeniedException;
 import com.geek.geekstudio.exception.RecruitFileException;
+import com.geek.geekstudio.mapper.DirectionMapper;
 import com.geek.geekstudio.mapper.TaskMapper;
 import com.geek.geekstudio.mapper.WorkFileMapper;
 import com.geek.geekstudio.mapper.WorkMapper;
@@ -38,6 +39,9 @@ public class WorkServiceImpl implements WorkService {
     WorkFileMapper workFileMapper;
 
     @Autowired
+    DirectionMapper directionMapper;
+
+    @Autowired
     TaskMapper taskMapper;
 
     @Autowired
@@ -52,6 +56,9 @@ public class WorkServiceImpl implements WorkService {
         TaskPO taskPO=taskMapper.queryOneTaskById(workDTO.getTaskId());
         if(taskPO==null){
             throw new ParameterError();
+        }
+        if(directionMapper.queryByUserIdAndCourseId(workDTO.getUserId(),workDTO.getCourseId())==null){
+            throw new ParameterError("请您选择该方向后再提交作业哦~~");
         }
         //判断两种作业提交通道已关闭情况，一是数据库字段已关闭二是数据库还没更新关闭字段的情况
         if((taskPO.getCommitLate()==0&&taskPO.getIsClosed()==1)||

@@ -59,6 +59,8 @@ public class UserSessionImpl implements UserSession {
             courseRelation.put(coursePO.getCourseId(),coursePO.getCourseName());
             this.courseUser.put(coursePO.getCourseName(),userMapper.queryCourseUserId(coursePO.getId()));
         }
+        Set<Map.Entry<Integer, String>> entries = courseRelation.entrySet();
+
     }
 
 

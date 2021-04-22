@@ -67,7 +67,7 @@ public class AdminServiceImpl implements AdminService {
         List<String> userIdList;
         String mail;
         log.info("courseId:"+dailyMailDTO.getCourseId());
-        if(dailyMailDTO.getUserIdList()==null){
+        if(dailyMailDTO.getUserIdList().size()==0||dailyMailDTO.getUserIdList()==null){
             mails=userMapper.queryMails(dailyMailDTO.getCourseId());
         }else {
             //向给定的几个用户id发邮件

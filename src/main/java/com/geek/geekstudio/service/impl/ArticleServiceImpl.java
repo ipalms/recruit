@@ -63,6 +63,8 @@ public class ArticleServiceImpl implements ArticleService {
         return RestInfo.success("文章发表成功",articleDTO.getId());
     }
 
+    //考虑加入缓存
+
     /**
      *查询文章  可根据发布者名字或方向名查询
      */
@@ -71,13 +73,19 @@ public class ArticleServiceImpl implements ArticleService {
         int total=articleMapper.queryArticleTotal(adminName,courseName);
         int start=(page-1)*rows;
         List<ArticleInfoVO> articleInfoVOList=articleMapper.queryArticle(adminName,courseName,start,rows);
-        if(userId!=null&&articleInfoVOList!=null) {
+        if(userId!=null&&userId.length()!=0&&articleInfoVOList!=null) {
             for (ArticleInfoVO articleInfoVO : articleInfoVOList) {
-                //如果此时用户已登录，可查看点赞、收藏状态   文章点赞状态分开查询了
+                //如果此时用户已登录，可查看点赞、收藏状态   文章点赞状态分开查询了，聚合有些乱
                 int likeStatus=likeService.queryLikeStatus(userId, articleInfoVO.getId());
                 int favoriteStatus=favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId());
                 articleInfoVO.setLikeStatus(likeStatus);
                 articleInfoVO.setFavoriteStatus(favoriteStatus);
+                articleInfoVO.setImage(fileUtil.getFileUrl(articleInfoVO.getImage()));
+            }
+        }
+        if(userId==null||userId.length()==0){
+            for (ArticleInfoVO articleInfoVO : articleInfoVOList) {
+                articleInfoVO.setImage(fileUtil.getFileUrl(articleInfoVO.getImage()));
             }
         }
         int totalPage=total%rows==0?total/rows:total/rows+1;
@@ -85,13 +93,18 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     *查询一篇文章详细内容   目前和查询所有文章使用同一个对象封装返回数据
+     *查询一篇文章详细内容
      */
     @Override
-    public RestInfo queryOneArticle(int articleId) throws RecruitFileException {
+    public RestInfo queryOneArticle(int articleId,String userId) throws RecruitFileException {
         String fileStorageLocation;
         List<ArticleFileVO> articleFileVOList=null;
         ArticleInfoVO articleInfoVO=articleMapper.queryArticleById(articleId);
+        articleInfoVO.setImage(fileUtil.getFileUrl(articleInfoVO.getImage()));
+        if(userId!=null&&userId.length()!=0){
+            articleInfoVO.setLikeStatus(likeService.queryLikeStatus(userId, articleInfoVO.getId()));
+            articleInfoVO.setFavoriteStatus(favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId()));
+        }
         if("md".equals(articleInfoVO.getArticleType())){
             articleFileVOList=articleFileMapper.queryFilesByArticleId(articleId);
             fileStorageLocation=fileUtil.getFileStorageLocation().toString();
@@ -121,10 +134,8 @@ public class ArticleServiceImpl implements ArticleService {
         int start=(page-1)*rows;
         List<ArticleInfoVO> articleInfoVOList=articleMapper.queryMyArticles(userId,start,rows);
         for (ArticleInfoVO articleInfoVO : articleInfoVOList) {
-            int likeStatus=likeService.queryLikeStatus(userId, articleInfoVO.getId());
-            int favoriteStatus=favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId());
-            articleInfoVO.setLikeStatus(likeStatus);
-            articleInfoVO.setFavoriteStatus(favoriteStatus);
+            articleInfoVO.setLikeStatus(likeService.queryLikeStatus(userId, articleInfoVO.getId()));
+            articleInfoVO.setFavoriteStatus(favoriteService.queryFavoriteStatus(userId,articleInfoVO.getId()));
         }
         int totalPage=total%rows==0?total/rows:total/rows+1;
         return RestInfo.success(new PageListVO(total,page,totalPage,rows,articleInfoVOList));

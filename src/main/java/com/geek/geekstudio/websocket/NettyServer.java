@@ -63,7 +63,7 @@ public class NettyServer {
                                     .addLast(new WebSocketServerProtocolHandler("/websocket", null, true, 65536 * 10));
                         }
                     });
-            ChannelFuture cf = sb.bind(8090).sync(); // 服务器异步创建绑定
+            ChannelFuture cf = sb.bind(8549).sync(); // 服务器异步创建绑定
             //System.out.println(NettyServer.class + " 启动正在监听： " + cf.channel().localAddress());
             cf.channel().closeFuture().sync(); // 关闭服务器通道
         } finally {

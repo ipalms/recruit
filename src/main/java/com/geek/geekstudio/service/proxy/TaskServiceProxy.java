@@ -96,5 +96,4 @@ public class TaskServiceProxy implements TaskService {
         log.info("管理员尝试下载taskId为"+workDTO.getTaskId()+" 的一些作业");
         return taskService.downloadWorks(workDTO);
     }
-
 }

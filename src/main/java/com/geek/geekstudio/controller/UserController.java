@@ -1,7 +1,5 @@
 package com.geek.geekstudio.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.geek.geekstudio.annotaion.PassToken;
 import com.geek.geekstudio.annotaion.UserLoginToken;
 import com.geek.geekstudio.exception.*;
@@ -15,6 +13,7 @@ import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.UserPO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.proxy.UserServiceProxy;
+import com.geek.geekstudio.websocket.service.UserSessionImpl;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -38,6 +37,8 @@ public class UserController {
     UserMapper userMapper;
     @Autowired
     SuperAdminMapper adminMapper;
+    @Autowired
+    UserSessionImpl userSession;
 
     /**
      * 新生注册 统一json格式提交  用UserDTO封装  采用分组校验
@@ -54,9 +55,7 @@ public class UserController {
     @PassToken
     @PostMapping("/checkUserId")
     public RestInfo checkStatus(@RequestBody UserDTO userDTO) throws UserRegisteredException {
-        UserPO userPO = userMapper.queryUserByUserId(userDTO.getUserId());
-        AdminPO adminPO=adminMapper.queryAdminByAdminId(userDTO.getUserId());
-        if(userPO!=null||adminPO!=null){
+        if(userSession.allUser.contains(userDTO.getUserId())||adminMapper.queryAdminByAdminId(userDTO.getUserId())!=null){
             //该学号已被注册
             throw new UserRegisteredException("学号已被注册");
         }
@@ -202,6 +201,14 @@ public class UserController {
         return userServiceProxy.changeReceiveMailStatus(userDTO.getUserId());
     }
 
+    /**
+     * 更改用户名称
+     */
+    @UserLoginToken
+    @PostMapping("/changeUserName")
+    public RestInfo changeUserName(@RequestBody UserDTO userDTO){
+        return userServiceProxy.changeUserName(userDTO.getUserId(),userDTO.getUserName());
+    }
 
 
     /* *//**

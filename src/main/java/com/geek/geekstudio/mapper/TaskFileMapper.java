@@ -29,7 +29,7 @@ public interface TaskFileMapper {
     void deleteFilesByTaskId(int taskId);
 
     //通过taskId查询
-    @Select("SELECT fileName,filePath,addTime FROM taskfile  WHERE taskId=#{taskId}")
+    @Select("SELECT id,fileName,filePath,addTime FROM taskfile  WHERE taskId=#{taskId}")
     List<TaskFileVO> queryTaskFileById(int taskId);
 
     //等值连接查询task完整记录

@@ -4,7 +4,12 @@ import com.geek.geekstudio.interceptor.AdminPermissionInterceptor;
 import com.geek.geekstudio.interceptor.AuthenticationInterceptor;
 import com.geek.geekstudio.interceptor.SuperAdminPermissionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -56,9 +61,11 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/source/**").addResourceLocations("file:/all/");
     }
 
-   /* //注册视图转换器
+/*    //注册视图转换器
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/show").setViewName("file");
+        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/index.html").setViewName("index");
     }*/
 }

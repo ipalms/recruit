@@ -4,6 +4,7 @@ import com.geek.geekstudio.exception.*;
 import com.geek.geekstudio.model.vo.ErrorMsg;
 import com.geek.geekstudio.model.vo.RestInfo;
 import io.jsonwebtoken.ExpiredJwtException;
+import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.validation.BindException;
@@ -39,22 +40,30 @@ public class GlobalExceptionHandler {
         List<ErrorMsg> errorList = new ArrayList<>();
         if (result.hasErrors()) {
             List<ObjectError> errors = result.getAllErrors();
-            if (errors != null) {
-                errors.forEach(p -> {
-                    FieldError fieldError = (FieldError) p;
-                    errorList.add(new ErrorMsg(ExceptionCode.Parameter_Error, "填写的属性"+fieldError.getField()+"不合规范",fieldError.getDefaultMessage()));
-                });
-            }
+            errors.forEach(p -> {
+                FieldError fieldError = (FieldError) p;
+                errorList.add(new ErrorMsg(ExceptionCode.Parameter_Error, "填写的属性"+fieldError.getField()+"不合规范",fieldError.getDefaultMessage()));
+            });
         }
         return handleErrorInfo(ExceptionCode.Parameter_Error, "参数有误",errorList);
     }
+
+    /**
+     * 插入过快导致
+     */
+    @ResponseBody
+    @ExceptionHandler(TooManyResultsException.class)
+    public RestInfo parameterTypeException(TooManyResultsException tooManyResultsException) {
+        return handleErrorInfo(ExceptionCode.Parameter_Error, "请求次数太多，出现了一些错误！！");
+    }
+
 
     /**
      * 参数类型转换错误
      */
     @ResponseBody
     @ExceptionHandler(HttpMessageConversionException.class)
-    public RestInfo parameterTypeException(HttpMessageConversionException httpMessageConversionException) {
+    public RestInfo httpMessageConversionExceptionHandler(HttpMessageConversionException httpMessageConversionException) {
         return handleErrorInfo(ExceptionCode.Parameter_Error, httpMessageConversionException.getMessage());
     }
 

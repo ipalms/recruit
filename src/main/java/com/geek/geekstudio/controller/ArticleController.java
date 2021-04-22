@@ -67,8 +67,9 @@ public class ArticleController {
      */
     @PassToken
     @GetMapping("/queryOneArticle")
-    public RestInfo queryOneArticle(@RequestParam("articleId") int articleId) throws RecruitFileException {
-        return articleServiceProxy.queryOneArticle(articleId);
+    public RestInfo queryOneArticle(@RequestParam("articleId") int articleId,
+                                    @RequestParam(name = "userId",required = false) String userId) throws RecruitFileException {
+        return articleServiceProxy.queryOneArticle(articleId,userId);
     }
 
 
@@ -93,37 +94,4 @@ public class ArticleController {
     public RestInfo deleteArticle(@RequestBody ArticleDTO articleDTO) throws ParameterError, PermissionDeniedException {
         return articleServiceProxy.deleteArticle(articleDTO);
     }
-
-
-
-
-
-/*    *//**
-     *传给前端markdown中的二进制文件流(任然是以下载的形式进行的)
-     *//*
-    @PassToken
-    @GetMapping(value = "/tohead")
-    public ResponseEntity<FileSystemResource> getFile(@RequestParam("fileName") String fileName) throws FileNotFoundException {
-        String filePath="D:\\all\\article\\9";
-        File file = new File(filePath, fileName);
-        if (file.exists()) {
-            return export(file);
-        }
-        System.out.println(file);
-        return null;
-    }
-
-    public ResponseEntity<FileSystemResource> export(File file) {
-        if (file == null) {
-            return null;
-        }
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
-        headers.add("Content-Disposition", "attachment; filename=" + file.getName());
-        headers.add("Pragma", "no-cache");
-        headers.add("Expires", "0");
-        headers.add("Last-Modified", new Date().toString());
-        headers.add("ETag", String.valueOf(System.currentTimeMillis()));
-        return ResponseEntity.ok().headers(headers).contentLength(file.length()).contentType(MediaType.parseMediaType("application/octet-stream")).body(new FileSystemResource(file));
-    }*/
 }

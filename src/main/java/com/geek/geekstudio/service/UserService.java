@@ -55,6 +55,9 @@ public interface UserService {
     //该变用户接收日常邮件状态
     RestInfo changeReceiveMailStatus(String userId);
 
+    //更改用户名称
+    RestInfo changeUserName(String userId, String userName);
+
 
 
 

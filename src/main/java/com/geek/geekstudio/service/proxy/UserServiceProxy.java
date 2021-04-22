@@ -130,6 +130,14 @@ public class UserServiceProxy implements UserService {
         return userService.changeReceiveMailStatus(userId);
     }
 
+    /**
+     * 更改用户名称
+     */
+    @Override
+    public RestInfo changeUserName(String userId, String userName) {
+        return userService.changeUserName(userId,userName);
+    }
+
 
 
 

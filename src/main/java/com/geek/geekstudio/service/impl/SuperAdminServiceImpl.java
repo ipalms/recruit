@@ -9,6 +9,8 @@ import com.geek.geekstudio.model.vo.PageListVO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.SuperAdminService;
 import com.geek.geekstudio.util.DateUtil;
+import com.geek.geekstudio.websocket.service.UserSession;
+import com.geek.geekstudio.websocket.service.UserSessionImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ public class SuperAdminServiceImpl implements SuperAdminService {
     SuperAdminMapper superAdminMapper;
     @Autowired
     CourseMapper courseMapper;
+    @Autowired
+    UserSessionImpl userSession;
 
     private static final String defaultPicture="/image/default.jpg";
 
@@ -33,7 +37,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
      */
     @Override
     public RestInfo addAdmin(AdminPO adminPO) throws UserRegisteredException {
-        if(superAdminMapper.queryAdminByAdminId(adminPO.getAdminId())!=null){
+        if(superAdminMapper.queryAdminByAdminId(adminPO.getAdminId())!=null||userSession.allUser.contains(adminPO.getAdminId())){
             throw new UserRegisteredException("此管理员ID已被注册");
         }
         adminPO.setRegisterTime(DateUtil.creatDate());
@@ -80,11 +84,19 @@ public class SuperAdminServiceImpl implements SuperAdminService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public RestInfo updateAdmin(AdminPO adminPO) throws UserRegisteredException, PermissionDeniedException {
-        if(superAdminMapper.queryAdminByAdminId(adminPO.getAdminId())!=null){
-            throw new UserRegisteredException();
+        AdminPO adminPO1=superAdminMapper.queryAdminById(adminPO.getId());
+        //改了adminId
+        if(!adminPO.getAdminId().equals(adminPO1.getAdminId())){
+            //这个adminId已经存在
+            if(superAdminMapper.queryByAdminId(adminPO.getAdminId())!=null) {
+                throw new UserRegisteredException();
+            }
         }
         if("super".equals(adminPO.getType())){
             throw new PermissionDeniedException("不能更改到super权限");
+        }
+        if(adminPO.getPassword()==null){
+            adminPO.setPassword(adminPO1.getPassword());
         }
         superAdminMapper.updateAdmin(adminPO);
         return RestInfo.success("修改管理员信息成功！",null);

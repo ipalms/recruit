@@ -72,6 +72,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
         super.channelUnregistered(ctx);
     }
 
+    //后于channelRegistered（）方法的调用，此时channel已经注册了读事件
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channelActive....channel为" + ctx.channel());
@@ -122,12 +123,12 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
         return userId != null;
     }
 
-    //channel读取完成，且每次读都执行
+    //channel读取完成【传播链都调用了channelRead()以后】，且每次读都执行
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         if (readNoReceive&&uid!=null) {
             ArrayList<String> message = userSession.getMessage(uid);
-            System.out.println(message);
+            System.out.println("未读消息："+message);
             for (String word : message) {
                 ctx.channel().writeAndFlush(new TextWebSocketFrame(word));
             }

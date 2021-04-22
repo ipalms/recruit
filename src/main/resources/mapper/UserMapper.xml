@@ -11,7 +11,7 @@
             <if test="courseId!=null">
                 AND d.courseId=#{courseId}
             </if>
-            AND u.userId=d.userId AND u.receiveMail='yes'
+            AND u.userId=d.userId AND u.receiveMail=1
         </where>
     </select>
 

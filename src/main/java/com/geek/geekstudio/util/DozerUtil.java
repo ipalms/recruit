@@ -31,5 +31,4 @@ public class DozerUtil {
         }
         return mapper;
     }
-
 }

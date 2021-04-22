@@ -47,7 +47,7 @@ public class SuperAdminServiceProxy implements SuperAdminService {
      */
     @Override
     public RestInfo updateAdmin(AdminPO adminPO) throws UserRegisteredException, PermissionDeniedException {
-        log.info("更新管理员 adminId="+adminPO.getId()+"，password="+adminPO.getPassword());
+        log.info("更新管理员 id="+adminPO.getId()+"，password="+adminPO.getPassword());
         return superAdminService.updateAdmin(adminPO);
     }
 

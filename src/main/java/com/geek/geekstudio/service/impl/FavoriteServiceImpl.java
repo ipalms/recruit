@@ -10,6 +10,7 @@ import com.geek.geekstudio.model.vo.PageListVO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.FavoriteService;
 import com.geek.geekstudio.util.DateUtil;
+import com.geek.geekstudio.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,9 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Autowired
     ArticleMapper articleMapper;
 
+    @Autowired
+    FileUtil fileUtil;
+
     /**
      *查询收藏状态
      */
@@ -41,14 +45,18 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     /**
-     *改变单篇文章收藏状态
+     *改变单篇文章收藏状态  更改过快可能会导致数据库插入重复数据--加入唯一索引
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public RestInfo changeFavoriteStatus(String userId, int articleId) {
         FavoriteVO favoriteVO=favoriteMapper.queryFavoriteStatus(userId,articleId);
         if(favoriteVO==null){
-            favoriteMapper.addFavoriteRecord(userId,articleId, DateUtil.creatDate());
+            try {
+                favoriteMapper.addFavoriteRecord(userId,articleId, DateUtil.creatDate());
+            } catch (Exception e) {
+                favoriteMapper.deleteFavoriteRecord(userId,articleId);
+            }
         }else {
             favoriteMapper.deleteFavoriteRecord(userId,articleId);
         }
@@ -71,6 +79,7 @@ public class FavoriteServiceImpl implements FavoriteService {
                 FavoriteInfoVO favoriteInfoVO = articleMapper.queryFavoriteArticle(favoriteVO.getArticleId());
                 favoriteInfoVO.setLikeStatus(likeService.queryLikeStatus(userId,favoriteVO.getArticleId()));
                 favoriteInfoVO.setFavoriteTime(favoriteVO.getFavoriteTime());
+                favoriteInfoVO.setImage(fileUtil.getFileUrl(favoriteInfoVO.getImage()));
                 favoriteInfoVOList.add(favoriteInfoVO);
             }
         }

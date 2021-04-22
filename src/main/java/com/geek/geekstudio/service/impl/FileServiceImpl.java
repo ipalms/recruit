@@ -12,6 +12,7 @@ import com.geek.geekstudio.util.DateUtil;
 import com.geek.geekstudio.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -64,6 +65,9 @@ public class FileServiceImpl implements FileService {
 
     @Autowired
     FileUtil fileUtil;
+
+    @Autowired
+    RedisTemplate<Object,Object> redisTemplate;
 
     /**
      * 管理员和大一同学头像上传 --覆盖掉之前的头像
@@ -312,10 +316,12 @@ public class FileServiceImpl implements FileService {
      *   1.使用synchronized锁住构造的字符串常量对象，对于判断到数据库无记录的情况先去尝试获取锁
      *       --缺点锁的效率问题，以及当请求次数变多会导致运行时常量池变大
      *   2.对fileKey加唯一索引，对于后续并发插入失败的情况catch异常然后执行update操作
+     *     对于唯一索引坏处是每次插入的时候要全局扫描表中有没有该唯一索引的记录
      */
     @Override
     @Transactional
     public RestInfo announceUpload(MultipartFile file, int shardIndex,int shardSize, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException {
+
         if((shardIndex<shardTotal&&file.getSize()<shardSize)||(shardIndex==shardTotal&&((shardTotal-1)*shardSize+file.getSize()!=fileSize))){
             throw new RecruitFileException("文件传输出错！");
         }
@@ -326,7 +332,6 @@ public class FileServiceImpl implements FileService {
         //保存这个分片到磁盘(同名文件覆盖)
         fileUtil.storeFile(filePath,file,fragmentFileName);
         //查询数据库中有无此文件的存在fileKey
-        log.info("upload 1");
         FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
         //数据库中的已上传分片大小小于当前的则进行替换
         if(fragmentFilePO!=null&&(fragmentFilePO.getShardIndex()<shardIndex)){
@@ -335,7 +340,6 @@ public class FileServiceImpl implements FileService {
             //获取锁
             synchronized (fileKey.intern()){
                 //再次判断记录有没有被插入进去
-                log.info("upload 2");
                 fragmentFilePO=announceMapper.queryFileByKey(fileKey);
                 if(fragmentFilePO==null){
                     filePath=fileUtil.buildAnnounceFullPath(filePath,fileKey);
@@ -354,7 +358,6 @@ public class FileServiceImpl implements FileService {
      */
     @Override
     public RestInfo check(String fileKey,int shardSize) {
-        log.info("check find 1");
         FragmentFilePO fragmentFilePO=announceMapper.queryFileByKey(fileKey);
         //说明这个文件之前上传过(找到文件中最稳定的断开片段,即该片段前的每一片段都存在)
         if(fragmentFilePO!=null){
@@ -460,6 +463,12 @@ public class FileServiceImpl implements FileService {
         //同步数据库相关信息
         announceMapper.updateAnnounceFile(id,fileName,mergeFilePath);
         announceMapper.updateFilePath(fragmentFilePO.getId(),mergeFilePath,DateUtil.creatDate());
+        AnnouncePO announcePO=announceMapper.findAnnounceById(id);
+        AdminPO adminPO = superAdminMapper.queryByAdminId(announcePO.getAdminId());
+        adminPO.setImage(fileUtil.getFileUrl(adminPO.getImage()));
+        announcePO.setAdminPO(adminPO);
+        //更新缓存
+        redisTemplate.opsForHash().put("announce",id+"",announcePO);
         /*if(fragmentFilePO.getShardIndex()!=fragmentFilePO.getShardTotal()){
             announceMapper.updateFileInfo(fragmentFilePO.getId(),fragmentFilePO.getShardTotal(),DateUtil.creatDate());
         }*/

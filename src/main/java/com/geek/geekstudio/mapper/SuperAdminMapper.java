@@ -44,7 +44,7 @@ public interface SuperAdminMapper {
      *更新管理员信息
      */
     @Update("UPDATE admin SET adminId=#{adminId},adminName=#{adminName}," +
-            "password=#{password},courseName=#{courseName},image=#{image} WHERE id=#{id}")
+            "password=#{password},courseName=#{courseName} WHERE id=#{id}")
     void updateAdmin(AdminPO adminPO);
 
     /**
@@ -57,4 +57,9 @@ public interface SuperAdminMapper {
      */
     List<AdminPO> queryAdmins(String courseName, String adminName, String adminId, int start, int rows);
 
+    /**
+     *获得管理员信息
+     */
+    @Select("SELECT adminId,adminName,courseName,image,password FROM admin WHERE id=#{id}")
+    AdminPO queryAdminById(int id);
 }

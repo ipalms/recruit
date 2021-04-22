@@ -17,11 +17,25 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 class GeekstudioApplicationTests {
+    public static void main(String[] args) {
+        Object a=null;
+        ArrayList<String> message =new ArrayList<>();
+        new ArrayList<>(message);
+//        Iterator<String> iterator = message.iterator();
+//        while (iterator.hasNext()){
+//            String next = iterator.next();
+//            System.out.println(next);
+//        }
+//        for (String c:message){
+//            System.out.println(c);
+//        }
+    }
 
 }

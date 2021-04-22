@@ -151,10 +151,10 @@
         <!--test包-->
 
         <!--测试用引进模板引擎-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>io.netty</groupId>
@@ -162,12 +162,6 @@
             <version>4.1.53.Final</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>27.1-jre</version>
-        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -209,12 +203,13 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.yml</include>
+                    <include>**/**</include>
+                    <!--<include>**/*.yml</include>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                     <include>**/*.html</include>
                     <include>**/*.js</include>
-                    <include>**/*.css</include>
+                    <include>**/*.css</include>-->
                 </includes>
                 <filtering>false</filtering>
             </resource>

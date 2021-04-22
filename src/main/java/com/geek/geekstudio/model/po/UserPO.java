@@ -28,6 +28,7 @@ public class UserPO {
     private String introduce;
     private String grade;
     private String registerTime;
-    private String receiveMail;
+    private int receiveMail;
+    private int firstLogin;
     private List<DirectionVO> directionVOList;
 }

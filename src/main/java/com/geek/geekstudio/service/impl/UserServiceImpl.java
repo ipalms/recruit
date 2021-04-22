@@ -58,6 +58,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     CourseServiceImpl courseService;
     @Autowired
+    SuperAdminMapper superAdminMapper;
+    @Autowired
     UserSessionImpl userSession;
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;  //k-v都是对象的
@@ -74,10 +76,11 @@ public class UserServiceImpl implements UserService {
         String active;
         String grade;
         String image;
-        if(userMapper.queryUserByUserId(userDTO.getUserId())!=null){
+        String userId=userDTO.getUserId();
+/*        if(userSession.allUser.contains(userId)||superAdminMapper.queryAdminByAdminId(userId)!=null){
             //再检验一遍学号是否被注册了
             throw new UserRegisteredException();
-        }
+        }*/
         active=(String) redisTemplate.opsForValue().get("code-"+userDTO.getUserId());
         if(active==null||active.length()==0){
             throw new EmailCodeWrongException("请点击再次发送邮件");
@@ -87,10 +90,10 @@ public class UserServiceImpl implements UserService {
         }
         userDTO.setRegisterTime(DateUtil.creatDate());
         userDTO.setIntroduce("亲还没有个人介绍呢~~");
-        grade = userDTO.getUserId().substring(0, 4);
+        grade = userId.substring(0, 4);
         try {
             Integer.valueOf(grade);
-            image="/image/picture"+(Integer.parseInt(userDTO.getUserId())%12)+".jpg";
+            image="/image/picture"+(Integer.parseInt(userId)%12)+".jpg";
         } catch (Exception e) {
             grade=null;
             image=defaultPicture;
@@ -98,10 +101,11 @@ public class UserServiceImpl implements UserService {
         userDTO.setGrade(grade);
         userDTO.setImage(image);
         //默认接收日常邮件
-        userDTO.setReceiveMail("yes");
+        userDTO.setReceiveMail(1);
+        userDTO.setFirstLogin(1);
         userMapper.addUser(userDTO);
         //维护allUser变量
-        userSession.allUser.add(userDTO.getUserId());
+        userSession.allUser.add(userId);
         return RestInfo.success("注册成功，亲可以去登录了！",null);
     }
 
@@ -129,6 +133,9 @@ public class UserServiceImpl implements UserService {
             RestInfo restInfo=courseService.queryMyCourse(userPO.getUserId());
             userPO.setDirectionVOList((List<DirectionVO>)restInfo.getData());
             userPO.setImage(fileUtil.getFileUrl(userPO.getImage()));
+            if(userPO.getFirstLogin()==1){
+                userMapper.updateLoginRecord(userId);
+            }
         }else{//该用户不存在于新生表
             user=adminMapper.queryAdminByUserIdAndPassword(userId,password);
             if(user!=null){
@@ -311,6 +318,8 @@ public class UserServiceImpl implements UserService {
             throw new ParameterError("该方向还未选择");
         }
         directionMapper.delByUserIdAndCourseId(directionDTO.getUserId(),directionDTO.getCourseId());
+        //维护courseUser变量
+        userSession.courseUser.get(userSession.courseRelation.get(directionDTO.getCourseId())).remove(directionDTO.getUserId());
         return RestInfo.success("撤销已方向成功",null);
     }
 
@@ -319,7 +328,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public RestInfo queryReceiveMailStatus(String userId) {
-        String status=userMapper.queryReceiveMailStatus(userId);
+        int status=userMapper.queryReceiveMailStatus(userId);
         return RestInfo.success("用户是否接收日常邮件",status);
     }
 
@@ -329,19 +338,25 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public RestInfo changeReceiveMailStatus(String userId) {
-        String status=userMapper.queryReceiveMailStatus(userId);
-        String newStatus;
-        if(status.equals("yes")){
-            newStatus="no";
+        int status=userMapper.queryReceiveMailStatus(userId);
+        int newStatus;
+        if(status==1){
+            newStatus=0;
         }else {
-            newStatus="yes";
+            newStatus=1;
         }
         userMapper.changeReceiveMailStatus(userId,newStatus);
         return RestInfo.success("改变接收邮件状态成功！");
     }
 
-
-
+    /**
+     * 更改用户名称
+     */
+    @Override
+    public RestInfo changeUserName(String userId, String userName) {
+        userMapper.updateUserName(userId,userName);
+        return RestInfo.success("改名成功~");
+    }
 
     /*
     （使用链接的形式激活）

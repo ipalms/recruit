@@ -30,7 +30,7 @@ public class LikeServiceImpl implements LikeService {
     }
 
     /**
-     *改变点赞状态
+     *改变点赞状态 更改过快可能会导致数据库插入重复数据--加入唯一索引
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -38,8 +38,13 @@ public class LikeServiceImpl implements LikeService {
         LikeVO likeVO=likeMapper.queryLikeStatus(userId,articleId);
         int variation;
         if(likeVO==null){
-            likeMapper.addLikeRecord(userId,articleId, DateUtil.creatDate());
-            variation=1;
+            try {
+                likeMapper.addLikeRecord(userId,articleId, DateUtil.creatDate());
+                variation=1;
+            } catch (Exception e) {
+                likeMapper.deleteLikeRecord(userId,articleId);
+                return RestInfo.success("改变点赞状态成功！");
+            }
         }else {
             likeMapper.deleteLikeRecord(userId,articleId);
             variation=-1;
