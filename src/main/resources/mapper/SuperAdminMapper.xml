@@ -34,7 +34,7 @@
     </select>
 
     <select id="queryAdmins" resultType="adminPO">
-        select id,adminId,adminName,courseName,type  from admin
+        select id,adminId,adminName,courseName,type,registerTime  from admin
         <where>
             <if test="courseName!=null and courseName!= '' and courseName != 'null' ">
                 AND admin.courseName=#{courseName}

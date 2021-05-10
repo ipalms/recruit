@@ -1,1 +1,0 @@
-import{d as t,o as e,c as r,C as o}from"./index.ea109c08.js";var i=t({props:{boxStyle:{type:String,require:!0},title:{type:String,reqire:!0},top:{type:Number}}});i.render=function(t,i,p,a,s,n){return e(),r("div",{style:void 0!==t.top?`top:${t.top}vh;`:"top:0.5vh;",class:"right"===t.boxStyle?"beacon-right":"beacon-left"},o(t.title),7)};export{i as _};

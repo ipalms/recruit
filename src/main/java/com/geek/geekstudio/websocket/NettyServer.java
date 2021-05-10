@@ -24,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class NettyServer {
 
-
     public void start() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -54,12 +53,13 @@ public class NettyServer {
                                     //1小时内没有读取到消息关闭连接--close通道
                                     //超时产生ReadTimeoutException异常
                                     //.addLast(new ReadTimeoutHandler(1,TimeUnit.HOURS))
-                                    //自定义处理TextWebSocketFrame帧的handler--放在WebSocketServerProtocolHandler是为了提取出url的参数
-                                    //防止升级到websocket协议失败
+                                    //自定义处理TextWebSocketFrame帧的handler--放在WebSocketServerProtocolHandler之前是为了提取出url的参数（同时做参数校验）
+                                    //防止升级到websocket协议失败（也可以在这里放入处理FullHttpRequest对象的处理器，将文本处理器放止最后）
                                     .addLast(new TextWebSocketHandler())
                                     // 自定义处理器 - 处理 web socket 二进制消息
                                     /*.addLast(new BinaryWebSocketFrameHandler())*/
                                     //服务器端向外暴露的websocket端点，当客户端传递比较大的对象时，maxFrameSize参数的值需要调大
+                                    //该handler可以协助做handler的自动的动态热插拔，在升级ws协议成功后会去除掉处理http请求的handler
                                     .addLast(new WebSocketServerProtocolHandler("/websocket", null, true, 65536 * 10));
                         }
                     });

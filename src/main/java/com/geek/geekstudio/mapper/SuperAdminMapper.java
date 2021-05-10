@@ -18,7 +18,7 @@ public interface SuperAdminMapper {
     /**
      *通过id查管理员
      */
-    @Select("SELECT * FROM admin WHERE adminId=#{adminId}")
+    @Select("SELECT id,adminId,adminName,courseName,image,registerTime,type FROM admin WHERE adminId=#{adminId}")
     AdminPO queryAdminByAdminId(String adminId);
 
     /**

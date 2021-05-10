@@ -21,7 +21,7 @@ public interface UserMapper {
     /**
      *通过学号查新生信息
      */
-    @Select("SELECT * FROM user WHERE userId=#{userId}")
+    @Select("SELECT id,userId,userName,mail,major,image,introduce,grade,registerTime,receiveMail,firstLogin FROM user WHERE userId=#{userId}")
     UserPO queryUserByUserId(String userId);
 
     /**
@@ -33,14 +33,14 @@ public interface UserMapper {
     /**
      *注册一个新生用户
      */
-    @Insert("INSERT INTO user (userId,userName,mail,password,major,sex,image,introduce,registerTime,grade,receiveMail,firstLogin)" +
-            " VALUES (#{userId},#{userName},#{mail},#{password},#{major},#{sex},#{image},#{introduce},#{registerTime},#{grade},#{receiveMail},#{firstLogin})")
+    @Insert("INSERT INTO user (userId,userName,mail,password,major,image,introduce,registerTime,grade,receiveMail,firstLogin)" +
+            " VALUES (#{userId},#{userName},#{mail},#{password},#{major},#{image},#{introduce},#{registerTime},#{grade},#{receiveMail},#{firstLogin})")
     void addUser(UserDTO userDTO);
 
     /**
      *通过id 密码查新生
      */
-    @Select("SELECT id,userId,userName,mail,major,sex,image,introduce,grade,registerTime,receiveMail,firstLogin" +
+    @Select("SELECT id,userId,userName,mail,major,image,introduce,grade,registerTime,receiveMail,firstLogin" +
             "  FROM user WHERE userId=#{userId} AND password=#{password}")
     UserPO queryUserByUserIdAndPassword(@Param("userId") String userId,@Param("password") String password);
 

@@ -321,10 +321,10 @@ public class FileServiceImpl implements FileService {
     @Override
     @Transactional
     public RestInfo announceUpload(MultipartFile file, int shardIndex,int shardSize, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException {
-
+        /* 似乎没必要
         if((shardIndex<shardTotal&&file.getSize()<shardSize)||(shardIndex==shardTotal&&((shardTotal-1)*shardSize+file.getSize()!=fileSize))){
             throw new RecruitFileException("文件传输出错！");
-        }
+        }*/
         //文件的名称(包含文件的扩展名)
         String filePath = fileUtil.buildAnnounceFilePath(courseId);
         //这个是分片的名字
@@ -469,9 +469,6 @@ public class FileServiceImpl implements FileService {
         announcePO.setAdminPO(adminPO);
         //更新缓存
         redisTemplate.opsForHash().put("announce",id+"",announcePO);
-        /*if(fragmentFilePO.getShardIndex()!=fragmentFilePO.getShardTotal()){
-            announceMapper.updateFileInfo(fragmentFilePO.getId(),fragmentFilePO.getShardTotal(),DateUtil.creatDate());
-        }*/
         return RestInfo.success();
     }
 }

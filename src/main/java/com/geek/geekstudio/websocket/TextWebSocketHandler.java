@@ -81,7 +81,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
 
 
     @Override
-    @SuppressWarnings("all")
+    //@SuppressWarnings("all")
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         //首次连接是FullHttpRequest，处理uri上的参数
         if (msg instanceof FullHttpRequest) {

@@ -40,8 +40,10 @@ public class UserServiceImpl implements UserService {
 
     //token默认失效时间为4小时
     private static long expiresAtTime = 4*60*60*1000;
+    //private static long expiresAtTime =90*1000;
     //refreshToken默认失效时间为8天
     private static long longExpiresAtTime = 8*24*60*60*1000;
+    //private static long longExpiresAtTime =180*1000;
 
     @Autowired
     UserMapper userMapper;
@@ -204,7 +206,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public RestInfo resetToken(String refreshToken) throws PermissionDeniedException {
         String token;
-        Object user;
+        //Object user;
         //返回前端数据
         Map<Object,Object> data=new HashMap<>();
         //检验refreshToken是否过期
@@ -227,12 +229,12 @@ public class UserServiceImpl implements UserService {
         redisTemplate.opsForValue().set(token,userId,4, TimeUnit.HOURS);
         //8天后删除
         redisTemplate.opsForValue().set(refreshToken,userId,8, TimeUnit.DAYS);
-        if("student".equals(type)){
+/*        if("student".equals(type)){
             user=userMapper.queryUserByUserId(userId);
         }else {
             user=adminMapper.queryAdminByAdminId(userId);
         }
-        data.put("user",user);
+        data.put("user",user);*/
         data.put("token",token);
         data.put("refreshToken",refreshToken);
         return RestInfo.success("重新生成token成功！",data);

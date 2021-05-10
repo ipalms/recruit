@@ -57,4 +57,8 @@ public interface AnnounceMapper {
     //合并完成后添加file记录到announce表中
     @Update("UPDATE announce SET fileName=#{fileName},filePath=#{filePath} WHERE id =#{id}")
     void updateAnnounceFile(int id, String fileName, String filePath);
+
+    //删除公告
+    @Delete("DELETE FROM fragmentfile WHERE filePath=#{filePath}")
+    void delFragmentRecord(String filePath);
 }

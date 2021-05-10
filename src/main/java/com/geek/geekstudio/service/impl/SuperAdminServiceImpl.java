@@ -58,7 +58,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
         if(adminPO==null){
             throw new NoUserException("无此用户");
         }
-        //此处应该删除跟管理员相关的一切记录 -->发送的文章、公告等等  待续
+        //此处应该删除跟管理员相关的一切记录 -->发送的文章、公告、作业等等  待续
         superAdminMapper.deleteAdminByAdminId(userId);
         return RestInfo.success("管理员删除成功！",null);
     }

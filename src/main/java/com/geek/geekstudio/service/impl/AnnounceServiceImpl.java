@@ -2,13 +2,11 @@ package com.geek.geekstudio.service.impl;
 
 import com.geek.geekstudio.exception.ParameterError;
 import com.geek.geekstudio.exception.RecruitException;
-import com.geek.geekstudio.mapper.AdminMapper;
 import com.geek.geekstudio.mapper.AnnounceMapper;
 import com.geek.geekstudio.mapper.SuperAdminMapper;
 import com.geek.geekstudio.model.po.AdminPO;
 import com.geek.geekstudio.model.po.AnnouncePO;
 import com.geek.geekstudio.model.vo.AnnounceVO;
-import com.geek.geekstudio.model.vo.ArticleInfoVO;
 import com.geek.geekstudio.model.vo.PageListVO;
 import com.geek.geekstudio.model.vo.RestInfo;
 import com.geek.geekstudio.service.AnnounceService;
@@ -88,6 +86,7 @@ public class AnnounceServiceImpl implements AnnounceService {
             fileUtil.deleteFile(fileUtil.buildPath(announcePO.getFilePath()));
         }
         announceMapper.delAnnounce(id);
+        announceMapper.delFragmentRecord(announcePO.getFilePath());
         redisTemplate.opsForHash().delete("announce",announcePO.getId()+"");
         return RestInfo.success("删除公告成功",null);
     }
