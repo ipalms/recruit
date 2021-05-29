@@ -3,10 +3,7 @@ package com.geek.geekstudio.service.impl;
 import com.geek.geekstudio.exception.*;
 import com.geek.geekstudio.mapper.*;
 import com.geek.geekstudio.model.po.*;
-import com.geek.geekstudio.model.vo.ErrorMsg;
-import com.geek.geekstudio.model.vo.RestInfo;
-import com.geek.geekstudio.model.vo.TaskVO;
-import com.geek.geekstudio.model.vo.WorkVO;
+import com.geek.geekstudio.model.vo.*;
 import com.geek.geekstudio.service.FileService;
 import com.geek.geekstudio.util.DateUtil;
 import com.geek.geekstudio.util.FileUtil;
@@ -117,6 +114,13 @@ public class FileServiceImpl implements FileService {
         try {
             if(file.getSize()/1000>singleMaxImageSize){
                 throw new RecruitFileException("文件大于10M，请重新上传");
+            }
+            ArticlePO articlePO = articleMapper.queryOneArticleById(articleId);
+            if(articlePO==null){
+                throw new ParameterError();
+            }
+            if(!"md".equals(articlePO.getArticleType())){
+                throw new ParameterError("此文章不能上传md文件哦");
             }
             //同一文章上传同一名字文件会覆盖原文件
             String originalFileName = file.getOriginalFilename();

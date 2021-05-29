@@ -48,7 +48,7 @@ public class JavaMailServiceImpl implements JavaMailService {
             String activeCode=UuidUtil.getActiveCode();
             //邮件设置  开启html支持
             if(codeType==1){
-                helper.setSubject("极客网注册激活邮件");
+                helper.setSubject("极客&勤奋蜂招新注册激活邮件");
                 helper.setText("亲，您的验证码是："+activeCode+"，请尽快填写哦~~",true);
             }
             if(codeType==2){

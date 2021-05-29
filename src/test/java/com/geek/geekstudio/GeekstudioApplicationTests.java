@@ -25,17 +25,5 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest
 class GeekstudioApplicationTests {
     public static void main(String[] args) {
-        Object a=null;
-        ArrayList<String> message =new ArrayList<>();
-        new ArrayList<>(message);
-//        Iterator<String> iterator = message.iterator();
-//        while (iterator.hasNext()){
-//            String next = iterator.next();
-//            System.out.println(next);
-//        }
-//        for (String c:message){
-//            System.out.println(c);
-//        }
     }
-
 }

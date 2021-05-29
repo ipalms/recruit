@@ -1,0 +1,82 @@
+05-05 00:06:55.928 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+05-05 00:06:56.044 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 28484 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+05-05 00:06:56.044 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
+05-05 00:06:57.272 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+05-05 00:06:57.287 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+05-05 00:06:57.356 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 63ms. Found 0 Redis repository interfaces.
+05-05 00:06:59.461 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 80 (http)
+05-05 00:06:59.473 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-80"]
+05-05 00:06:59.473 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+05-05 00:06:59.473 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+05-05 00:06:59.602 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+05-05 00:06:59.602 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3427 ms
+05-05 00:07:00.434 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+05-05 00:07:00.882 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+05-05 00:07:00.888 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
+05-05 00:07:00.904 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
+05-05 00:07:00.966 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 13
+05-05 00:07:00.966 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
+05-05 00:07:00.966 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
+05-05 00:07:00.989 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
+05-05 00:07:00.989 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 00:07:00.989 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
+05-05 00:07:00.989 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
+05-05 00:07:00.989 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 00:07:00.989 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
+05-05 00:07:01.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
+05-05 00:07:01.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 00:07:01.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
+05-05 00:07:01.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
+05-05 00:07:01.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 00:07:01.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
+05-05 00:07:01.004 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
+05-05 00:07:01.339 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
+05-05 00:07:01.339 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
+05-05 00:07:01.822 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+05-05 00:07:01.853 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-80"]
+05-05 00:07:01.884 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-05 00:07:01.884 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+05-05 00:07:01.891 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 7 ms
+05-05 00:07:01.891 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 80 (http) with context path ''
+05-05 00:07:01.906 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 6.319 seconds (JVM running for 7.392)
+05-05 21:01:33.725 [ INFO] [                       o.h.v.i.u.Version: 21] - HV000001: Hibernate Validator 6.1.5.Final
+05-05 21:01:33.844 [ INFO] [             c.g.g.GeekstudioApplication: 55] - Starting GeekstudioApplication on DESKTOP-JFM65K6 with PID 30280 (D:\ideaProject\geekstudio\target\classes started by 王家辉 in D:\ideaProject\geekstudio)
+05-05 21:01:33.855 [ INFO] [             c.g.g.GeekstudioApplication:655] - The following profiles are active: test
+05-05 21:01:35.064 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:249] - Multiple Spring Data modules found, entering strict repository configuration mode!
+05-05 21:01:35.069 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+05-05 21:01:35.170 [ INFO] [.s.d.r.c.RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 67ms. Found 0 Redis repository interfaces.
+05-05 21:01:36.290 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:108] - Tomcat initialized with port(s): 80 (http)
+05-05 21:01:36.305 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-80"]
+05-05 21:01:36.305 [ INFO] [                 o.a.c.c.StandardService:173] - Starting service [Tomcat]
+05-05 21:01:36.305 [ INFO] [                  o.a.c.c.StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.38]
+05-05 21:01:36.425 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring embedded WebApplicationContext
+05-05 21:01:36.425 [ INFO] [w.s.c.ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 2475 ms
+05-05 21:01:37.271 [ INFO] [                  c.z.h.HikariDataSource:110] - HikariPool-1 - Starting...
+05-05 21:01:37.780 [ INFO] [                  c.z.h.HikariDataSource:123] - HikariPool-1 - Start completed.
+05-05 21:01:37.790 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==>  Preparing: SELECT userId FROM user 
+05-05 21:01:37.818 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - ==> Parameters: 
+05-05 21:01:37.870 [DEBUG] [                c.g.g.m.U.queryAllUserId:159] - <==      Total: 13
+05-05 21:01:37.877 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==>  Preparing: SELECT * FROM course 
+05-05 21:01:37.878 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - ==> Parameters: 
+05-05 21:01:37.884 [DEBUG] [                   c.g.g.m.C.queryCourse:159] - <==      Total: 4
+05-05 21:01:37.886 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 21:01:37.887 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 1(Integer)
+05-05 21:01:37.901 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 4
+05-05 21:01:37.902 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 21:01:37.902 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 2(Integer)
+05-05 21:01:37.904 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 3
+05-05 21:01:37.905 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 21:01:37.906 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 3(Integer)
+05-05 21:01:37.908 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 1
+05-05 21:01:37.910 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==>  Preparing: SELECT DISTINCT u.userId FROM user u, direction d WHERE d.courseId = ? AND u.userId=d.userId 
+05-05 21:01:37.911 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - ==> Parameters: 4(Integer)
+05-05 21:01:37.912 [DEBUG] [             c.g.g.m.U.queryCourseUserId:159] - <==      Total: 0
+05-05 21:01:38.246 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService
+05-05 21:01:38.247 [ INFO] [   c.g.g.c.VisibleThreadPoolTaskExecutor:181] - Initializing ExecutorService 'taskExecutor'
+05-05 21:01:38.701 [ INFO] [         o.s.s.c.ThreadPoolTaskScheduler:181] - Initializing ExecutorService 'taskScheduler'
+05-05 21:01:38.732 [ INFO] [               o.a.c.h.Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-80"]
+05-05 21:01:38.768 [ INFO] [                       o.a.c.c.C.[.[.[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-05 21:01:38.768 [ INFO] [               o.s.w.s.DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+05-05 21:01:38.779 [ INFO] [               o.s.w.s.DispatcherServlet:547] - Completed initialization in 11 ms
+05-05 21:01:38.780 [ INFO] [             o.s.b.w.e.t.TomcatWebServer:220] - Tomcat started on port(s): 80 (http) with context path ''
+05-05 21:01:38.796 [ INFO] [             c.g.g.GeekstudioApplication: 61] - Started GeekstudioApplication in 5.464 seconds (JVM running for 6.733)

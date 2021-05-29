@@ -19,7 +19,6 @@ public class DozerUtil {
 
     /**
      * 单例，双重判空
-     * @return
      */
     public static DozerBeanMapper getDozerBeanMapper() {
         if (mapper == null) {

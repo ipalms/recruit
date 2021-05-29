@@ -51,7 +51,7 @@ public class FileServiceProxy implements FileService {
      */
     @Override
     public RestInfo imageUpload(String userId, MultipartFile file) throws RecruitFileException, ParameterError {
-        log.info("用户userID为：" + userId + " 上传了头像");
+        //log.info("用户userID为：" + userId + " 上传了头像");
         return fileService.imageUpload(userId, file);
     }
 
@@ -76,12 +76,12 @@ public class FileServiceProxy implements FileService {
      */
     @Override
     public RestInfo articleFilesUpload(int articleId, MultipartFile[] file) {
-        log.info("文章编号为" + articleId + " 上传了多个附件");
+        //log.info("文章编号为" + articleId + " 上传了多个附件");
         return fileService.articleFilesUpload(articleId, file);
     }
 
     /**
-     * 发布作业的文件上传 回滚策略待定
+     * 发布作业的文件上传
      */
     @Override
     public RestInfo taskFileUpload(int taskId, MultipartFile file) throws RecruitFileException {
@@ -135,7 +135,7 @@ public class FileServiceProxy implements FileService {
      */
     @Override
     public RestInfo workFileUpload(int workId, MultipartFile file) throws RecruitFileException {
-        log.info("任务编号为" + workId + " 上传了文件");
+        //log.info("任务编号为" + workId + " 上传了文件");
         try {
             return fileService.workFileUpload(workId, file);
         } catch (RecruitFileException e) {
@@ -192,7 +192,6 @@ public class FileServiceProxy implements FileService {
      */
     @Override
     public RestInfo announceUpload(MultipartFile file, int shardIndex,int shardSize, int shardTotal, Integer fileSize, Integer courseId, String fileKey) throws RecruitFileException {
-        //log.info("上传文件的第"+shardIndex+"片文件");
         return fileService.announceUpload(file, shardIndex, shardSize, shardTotal, fileSize, courseId, fileKey);
     }
 

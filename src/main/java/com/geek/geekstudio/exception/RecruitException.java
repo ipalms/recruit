@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class RecruitException extends Exception {
-    private int code=-1;   //默认的异常code值为-1
+    private int code=400;
     private String message;
 
     public RecruitException(){

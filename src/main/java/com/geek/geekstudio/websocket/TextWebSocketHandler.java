@@ -30,10 +30,6 @@ import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_LENGTH;
  */
 //多例的
 @Slf4j
-/*
-@Scope("prototype")
-@Component
-*/
 public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
     //注入ioc组件方式一
@@ -58,26 +54,14 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
 
     private volatile boolean readNoReceive = true;
     private String uid;
-    private String token;
 
-    @Override
-    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("连接建立");
-        super.channelRegistered(ctx);
-    }
 
-    @Override
-    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("连接断开");
-        super.channelUnregistered(ctx);
-    }
-
-    //后于channelRegistered（）方法的调用，此时channel已经注册了读事件
+/*    //后于channelRegistered（）方法的调用，此时channel已经注册了读事件
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channelActive....channel为" + ctx.channel());
         super.channelActive(ctx);
-    }
+    }*/
 
 
     @Override
@@ -88,14 +72,13 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
             FullHttpRequest request = (FullHttpRequest) msg;
             String uri = request.uri();
             Map<String, String> paramMap = getUrlParams(uri);
-            System.out.println("接收到的参数是：" + JSON.toJSONString(paramMap));
+            //System.out.println("接收到的参数是：" + JSON.toJSONString(paramMap));
             //进行身份验证
-            token = paramMap.get("token");
+            String token = paramMap.get("token");
             boolean result = checkUserLegality(token);
             //验证失败
             if(!result){
                 //关闭通道（channel）
-                log.info("验证失败");
                 ctx.channel().close();
                 //return防止方法继续执行到下面的其他逻辑--因为关闭channel这个方法是异步的
                 return;
@@ -128,7 +111,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         if (readNoReceive&&uid!=null) {
             ArrayList<String> message = userSession.getMessage(uid);
-            System.out.println("未读消息："+message);
+            //System.out.println("未读消息："+message);
             for (String word : message) {
                 ctx.channel().writeAndFlush(new TextWebSocketFrame(word));
             }

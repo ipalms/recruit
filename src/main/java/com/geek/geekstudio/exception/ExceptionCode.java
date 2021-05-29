@@ -27,8 +27,6 @@ public class ExceptionCode {
     public static final int USERNAME_OR_PASSWORD_WRONG=435;
     //新生还没有激活
     public static final int USER_NO_ACTIVE=440;
-    //密码过于简单，重设密码
-    public static final int RESET_PASSWORD = 445;
     //用户不存在
     public static final int NO_USER = 450;
     //邮件发送失败

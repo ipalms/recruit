@@ -1,1 +1,0 @@
-import{a5 as t}from"./vendor.b6c71576.js";let a=null,n=!1,s=0;self.onmessage=async e=>{const o=e.data;"boolean"==typeof o?n=o:async function(e,o){a||(a=await t(),a.init());const i=e.length;for(;s<i;){if(n)return;a.update(new Uint8Array(e[s])),postMessage(s+1),s++}const l=a.digest();a=null,s=0,postMessage([l,o.data],[...o.data])}(o,e)};

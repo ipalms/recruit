@@ -30,7 +30,7 @@ public class UserServiceProxy implements UserService {
     @Override
     public RestInfo register(UserDTO userDTO) throws UserRegisteredException, EmailCodeWrongException {
         log.info("注册 userDTO —— userId:"+userDTO.getUserId()+" ,userName:"+userDTO.getUserName()+
-                " ,mail:"+userDTO.getMail()+", password:"+userDTO.getPassword()+" ,major:"+userDTO.getMajor()+" ,activeCode:"+userDTO.getActiveCode());
+                " ,mail:"+userDTO.getMail());
         return userService.register(userDTO);
     }
 
@@ -39,7 +39,6 @@ public class UserServiceProxy implements UserService {
      */
     @Override
     public RestInfo sendActiveMail(String userId,String mail,Integer codeType) throws MessagingException {
-        log.info("向用户发送邮件：userId:"+userId+",mail:"+mail+",codeType:"+codeType);
         return userService.sendActiveMail(userId,mail,codeType);
     }
     /**
@@ -47,7 +46,7 @@ public class UserServiceProxy implements UserService {
      */
     @Override
     public RestInfo login(String userId, String password) throws UsernameOrPasswordIncorrectException {
-        log.info("用户登录：userId:"+userId+", password:"+password);
+        //log.info("用户userId:"+userId+" , 密码Password:"+password);
         return userService.login(userId,password);
     }
 
@@ -72,7 +71,6 @@ public class UserServiceProxy implements UserService {
      */
     @Override
     public RestInfo resetToken(String refreshToken) throws PermissionDeniedException {
-        //log.info("刷新token的refreshToken："+refreshToken);
         return userService.resetToken(refreshToken);
     }
 
@@ -81,7 +79,7 @@ public class UserServiceProxy implements UserService {
      */
     @Override
     public RestInfo resetPassword(UserDTO userDTO, String token) {
-        log.info("用户修改密码：userId:"+userDTO.getUserId()+"修改密码, 新密码newPassword:"+userDTO.getNewPassword());
+        //log.info("用户修改密码：userId:"+userDTO.getUserId()+"修改密码, 新密码newPassword:"+userDTO.getNewPassword());
         return userService.resetPassword(userDTO,token);
     }
 

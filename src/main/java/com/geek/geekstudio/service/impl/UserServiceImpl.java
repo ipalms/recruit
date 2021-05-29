@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     //token默认失效时间为4小时
     private static long expiresAtTime = 4*60*60*1000;
-    //private static long expiresAtTime =90*1000;
+    //private static long expiresAtTime =60*1000;
     //refreshToken默认失效时间为8天
     private static long longExpiresAtTime = 8*24*60*60*1000;
     //private static long longExpiresAtTime =180*1000;
@@ -151,6 +151,10 @@ public class UserServiceImpl implements UserService {
         }
         token= TokenUtil.createJWT(userId,type,expiresAtTime);
         refreshToken= TokenUtil.createJWT(userId,type,longExpiresAtTime);
+/*        //4小时后删除
+        redisTemplate.opsForValue().set(token,userId,1, TimeUnit.MINUTES);
+        //8天后删除
+        redisTemplate.opsForValue().set(refreshToken,userId,3, TimeUnit.MINUTES);*/
         //4小时后删除
         redisTemplate.opsForValue().set(token,userId,4, TimeUnit.HOURS);
         //8天后删除
@@ -225,7 +229,10 @@ public class UserServiceImpl implements UserService {
         //生成新的token 和 refreshToken
         token= TokenUtil.createJWT(userId,type,expiresAtTime);
         refreshToken= TokenUtil.createJWT(userId,type,longExpiresAtTime);
-        //4小时后删除
+/*        //4小时后删除
+        redisTemplate.opsForValue().set(token,userId,1, TimeUnit.MINUTES);
+        //8天后删除
+        redisTemplate.opsForValue().set(refreshToken,userId,3, TimeUnit.MINUTES);*/
         redisTemplate.opsForValue().set(token,userId,4, TimeUnit.HOURS);
         //8天后删除
         redisTemplate.opsForValue().set(refreshToken,userId,8, TimeUnit.DAYS);

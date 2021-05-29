@@ -31,10 +31,8 @@ public class NettyServer {
             ServerBootstrap sb = new ServerBootstrap();
             //全连接队列长度--当接收请求量过大时连接放入全连接队列
             sb.option(ChannelOption.SO_BACKLOG, 1024);
-            //sb.option(ChannelOption.TCP_NODELAY, true);
             sb.group(bossGroup, workerGroup) // 绑定线程池
                     .channel(NioServerSocketChannel.class) // 指定使用的channel
-                    //.localAddress(this.port)// 绑定监听端口
                     .childHandler(new ChannelInitializer<SocketChannel>() { // 绑定客户端连接时候触发操作
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
@@ -64,7 +62,6 @@ public class NettyServer {
                         }
                     });
             ChannelFuture cf = sb.bind(8549).sync(); // 服务器异步创建绑定
-            //System.out.println(NettyServer.class + " 启动正在监听： " + cf.channel().localAddress());
             cf.channel().closeFuture().sync(); // 关闭服务器通道
         } finally {
             bossGroup.shutdownGracefully().sync(); // 释放线程池资源

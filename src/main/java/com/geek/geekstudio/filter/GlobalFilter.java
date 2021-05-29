@@ -14,7 +14,6 @@ public class GlobalFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-//        System.out.println(request.getAttribute("type"));
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpRequest.setCharacterEncoding("utf-8");

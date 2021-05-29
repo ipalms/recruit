@@ -84,7 +84,6 @@ public class TaskServiceProxy implements TaskService {
      */
     @Override
     public RestInfo giveScore(WorkDTO workDTO) throws ParameterError {
-        log.info("管理员给作业编号为"+workDTO.getId()+" 的作业打"+workDTO.getScore()+" 分");
         return taskService.giveScore(workDTO);
     }
 

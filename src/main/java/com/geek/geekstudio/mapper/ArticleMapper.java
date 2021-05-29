@@ -47,6 +47,6 @@ public interface ArticleMapper {
     List<ArticleInfoVO> queryMyArticles(String userId, int start, int rows);
 
     //查询一篇文章的明细
-    @Select("SELECT * FROM article WHERE id=#{id}")
+    @Select("SELECT id,userId,articleType FROM article WHERE id=#{id}")
     ArticlePO queryOneArticleById(int id);
 }

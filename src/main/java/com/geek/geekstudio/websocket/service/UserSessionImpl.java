@@ -60,12 +60,8 @@ public class UserSessionImpl implements UserSession {
             this.courseUser.put(coursePO.getCourseName(),userMapper.queryCourseUserId(coursePO.getId()));
         }
         Set<Map.Entry<Integer, String>> entries = courseRelation.entrySet();
-
     }
 
-
-    //给channel通道绑定一些属性，如果需要
-//   private final Map<Channel,Map<String,Object>> channelAttributesMap = new ConcurrentHashMap<>();
 
     @Override
     public void bind(Channel channel, String uid) {
@@ -165,8 +161,4 @@ public class UserSessionImpl implements UserSession {
         }
     }
 
-   /* @Override
-    public String toString() {
-        return usernameChannelMap.toString();
-    }*/
 }
