@@ -56,7 +56,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
     private String uid;
 
 
-/*    //后于channelRegistered（）方法的调用，此时channel已经注册了读事件
+    /*    //后于channelRegistered（）方法的调用，此时channel已经注册了读事件
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channelActive....channel为" + ctx.channel());
@@ -127,8 +127,8 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
         String word = msg.text();
         System.out.println(word);
         //前端发送的是心跳包
-        if ("heart".equals(word)) {
-            TextWebSocketFrame back = new TextWebSocketFrame("heart");
+        if ("ping".equals(word)) {
+            TextWebSocketFrame back = new TextWebSocketFrame("pong");
             ctx.writeAndFlush(back);
             //结束方法--防止线程继续执行下去
             return;
@@ -142,9 +142,7 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
         String toId = (String) jsonObject.remove("toId");
         if ("all".equals(toId)) {
             for (String id : userSession.allUser) {
-                //if(!id.equals(uid)) {
-                    userSession.sendOneMessage(id, jsonObject);
-                //}
+                userSession.sendOneMessage(id, jsonObject);
             }
         } else if (userSession.courseUser.containsKey(toId)) {
             ArrayList<String> ids = userSession.courseUser.get(toId);

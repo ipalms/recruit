@@ -2,11 +2,8 @@ package com.geek.geekstudio.util;
 
 
 
-import com.geek.geekstudio.model.po.UserPO;
 import io.jsonwebtoken.*;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -21,8 +18,14 @@ import java.util.Map;
  * --使用token可以作为身份鉴别、权限的管理的钥匙去访问API
  * --token是无状态的，用户拿到了token就可以进行这个token所标注能使用的所有权限
  * --所以jwt不可以识别token是否被劫持（冒用了），不管谁持有系统办法的正常token在使用jwt解密时都会正常通过（除非过期了）
+ *    --可以使用https进行通信加密防止token被劫持
  * --但是jwt可以去鉴别token是否被篡改过（比如改失效时间），篡改的token在使用jwt解密时会抛出异常
- * --当然可以配合内存组件维护有效token的（维护token黑白名单、redis）
+ * --如何防止篡改：
+ *    --Header：对TokenUtil.header（含有加密算法）进行Base64Url编码得到jwt的第一部分；
+ *    --Payload：存放有效信息的地方（Claims部分），Base64Url编码得到第二部分；
+ *    --Signature：是整个数据的认证信息。一般根据前两步的数据（Header、Payload）并通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第3部分
+ *    --服务端验证的时候只需要再执行一次 signature = 加密算法(header+"."+payload, 密钥)--然后对比与原token的signature是否一致，如果一致则说明没有被篡改。
+ * --当然也可以配合内存组件维护有效token的（维护token黑白名单、redis）
  */
 @Component
 public class TokenUtil {

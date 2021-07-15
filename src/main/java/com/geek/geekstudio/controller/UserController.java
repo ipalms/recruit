@@ -210,6 +210,16 @@ public class UserController {
         return userServiceProxy.changeUserName(userDTO.getUserId(),userDTO.getUserName());
     }
 
+    /**
+     * 检测通信对方是否在线
+     */
+     @UserLoginToken
+     @GetMapping("/checkOnline")
+     public RestInfo changeUserName(@RequestParam(name = "userId") String userId){
+         boolean online = userSession.isOnline(userId);
+         return RestInfo.success(online);
+     }
+
 
     /* *//**
      *激活用户（使用链接的形式）

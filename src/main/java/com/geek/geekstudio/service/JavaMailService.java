@@ -1,11 +1,13 @@
 package com.geek.geekstudio.service;
 
+import com.geek.geekstudio.model.vo.ErrorMsg;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 
@@ -14,5 +16,6 @@ public interface JavaMailService {
     void sendActiveMail(String userId,String mail,Integer codeType) throws MessagingException;
 
     //发送日常邮件 , CountDownLatch latch
-    Future<String> sendDailyMail(String mail, String title, String text) throws Exception;
+    //Future<String> sendDailyMail(String mail, String title, String text) throws Exception;
+    void sendDailyMail(String mail, String title, String text, List<ErrorMsg> errorList, CountDownLatch latch) throws Exception;
 }

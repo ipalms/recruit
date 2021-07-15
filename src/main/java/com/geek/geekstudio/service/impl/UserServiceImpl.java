@@ -151,10 +151,6 @@ public class UserServiceImpl implements UserService {
         }
         token= TokenUtil.createJWT(userId,type,expiresAtTime);
         refreshToken= TokenUtil.createJWT(userId,type,longExpiresAtTime);
-/*        //4小时后删除
-        redisTemplate.opsForValue().set(token,userId,1, TimeUnit.MINUTES);
-        //8天后删除
-        redisTemplate.opsForValue().set(refreshToken,userId,3, TimeUnit.MINUTES);*/
         //4小时后删除
         redisTemplate.opsForValue().set(token,userId,4, TimeUnit.HOURS);
         //8天后删除
@@ -396,57 +392,5 @@ public class UserServiceImpl implements UserService {
         userMapper.addUser(userPO);
         javaMailService.sendActiveMail(userPO.getMail(),userPO.getActiveCode());
         return RestInfo.success("注册成功，亲可以去登录了！",null);
-    }*/
-
-
-    /**
-     *给用户设置token属性
-     *//*
-    @Override
-    public RestInfo login(String userId, String password) throws UsernameOrPasswordIncorrectException {
-        UserPO userPO=userMapper.queryAdminByUserIdAndPassword(userId,password);
-        if(userPO!=null){
-            restoreUserInRedis(userPO);
-        }else{
-            //该用户不存在于新生表
-            AdminPO adminPO=adminMapper.queryAdminByUserIdAndPassword(userId,password);
-           if(adminPO!=null){
-               restoreUserInRedis(adminPO);
-           }else {
-               //用户或密码错误
-               throw new UsernameOrPasswordIncorrectException();
-           }
-        }
-        return null;
-    }
-
-    private void restoreUserInRedis(UserPO userPO) {
-        long time=System.currentTimeMillis();
-        String token= JWT.create()
-                .withIssuedAt(new Date(time)) //生成签名的时间
-                .withExpiresAt(new Date(time + expiresAtTime))//签名过期的时间
-                // 签名的观众 也可以理解谁接受签名的
-                .withAudience(userPO.getUserId())
-                // 这里是以用户密码作为密钥
-                .sign(Algorithm.HMAC256(userPO.getPassword()));
-        UserVO userVO = DozerUtil.getDozerBeanMapper().map(userPO,UserVO.class);
-        userVO.setToken(token);
-        redisTemplate.opsForValue().set(token,userVO);
-        log.info("新生登录：userId:"+userPO.getUserId()+", password:"+userPO.getPassword());
-    }
-
-    public void restoreUserInRedis(AdminPO adminPO){
-        long time=System.currentTimeMillis();
-        String token= JWT.create()
-                .withIssuedAt(new Date(time)) //生成签名的时间
-                .withExpiresAt(new Date(time + expiresAtTime))//签名过期的时间
-                // 签名的观众 也可以理解谁接受签名的
-                .withAudience(adminPO.getAdminId())
-                // 这里是以用户密码作为密钥
-                .sign(Algorithm.HMAC256(adminPO.getPassword()));
-        AdminVO adminVO = DozerUtil.getDozerBeanMapper().map(adminPO,AdminVO.class);
-        adminVO.setToken(token);
-        redisTemplate.opsForValue().set(token,adminVO);
-        log.info("管理员登录：userId:"+adminVO.getAdminId()+", password:"+adminVO.getPassword());
     }*/
 }

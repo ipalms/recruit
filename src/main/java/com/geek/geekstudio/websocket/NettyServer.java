@@ -31,6 +31,7 @@ public class NettyServer {
             ServerBootstrap sb = new ServerBootstrap();
             //全连接队列长度--当接收请求量过大时连接放入全连接队列
             sb.option(ChannelOption.SO_BACKLOG, 1024);
+            sb.childOption(ChannelOption.TCP_NODELAY, true);
             sb.group(bossGroup, workerGroup) // 绑定线程池
                     .channel(NioServerSocketChannel.class) // 指定使用的channel
                     .childHandler(new ChannelInitializer<SocketChannel>() { // 绑定客户端连接时候触发操作
@@ -45,12 +46,11 @@ public class NettyServer {
                                     //具体是FullHttpRequest对象还是FullHttpResponse对象取决于是请求还是响应
                                     //需要放到HttpServerCodec这个处理器后面
                                     .addLast(new HttpObjectAggregator(10240))
+                                    //1000s内没有读取到消息关闭连接--close通道
+                                    //超时产生ReadTimeoutException异常
                                     .addLast(new ReadTimeoutHandler(1000, TimeUnit.SECONDS))
                                     // webSocket 数据压缩扩展，当添加这个的时候WebSocketServerProtocolHandler的第三个参数需要设置成true
                                     .addLast(new WebSocketServerCompressionHandler())
-                                    //1小时内没有读取到消息关闭连接--close通道
-                                    //超时产生ReadTimeoutException异常
-                                    //.addLast(new ReadTimeoutHandler(1,TimeUnit.HOURS))
                                     //自定义处理TextWebSocketFrame帧的handler--放在WebSocketServerProtocolHandler之前是为了提取出url的参数（同时做参数校验）
                                     //防止升级到websocket协议失败（也可以在这里放入处理FullHttpRequest对象的处理器，将文本处理器放止最后）
                                     .addLast(new TextWebSocketHandler())
@@ -62,9 +62,11 @@ public class NettyServer {
                         }
                     });
             ChannelFuture cf = sb.bind(8549).sync(); // 服务器异步创建绑定
-            cf.channel().closeFuture().sync(); // 关闭服务器通道
+            //这里sync会阻塞主线程继续执行，直到其他地方将channel通道关闭了--即其他地方调用了channel.close（）方法
+            //目的是优雅的释放nio资源
+            cf.channel().closeFuture().sync();
         } finally {
-            bossGroup.shutdownGracefully().sync(); // 释放线程池资源
+            bossGroup.shutdownGracefully().sync(); // 关闭EventGroup，释放nio线程池资源
             workerGroup.shutdownGracefully().sync();
         }
     }

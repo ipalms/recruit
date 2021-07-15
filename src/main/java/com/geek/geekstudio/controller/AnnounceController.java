@@ -102,8 +102,8 @@ public class AnnounceController {
      * @param courseId  //文件的方向
      * @param fileKey  //文件的唯一标识（同一个文件的唯一标识相同--前端依据文件内容进行md5的hash计算）
      */
-/*       @UserLoginToken
-         @AdminPermission*/
+    @UserLoginToken
+    @AdminPermission
     @PostMapping("/announceUpload")
     public RestInfo announceUpload(MultipartFile file,
                          int shardIndex,
@@ -123,8 +123,8 @@ public class AnnounceController {
      *
      * 考虑给分片文件记录加上completed字段代表该文件本人已经上传成功或存在其他人上传过现象
      */
-/*    @UserLoginToken
-    @AdminPermission*/
+    @UserLoginToken
+    @AdminPermission
     @PostMapping("/check")
     public RestInfo check(@RequestBody FragmentFileDTO fragmentFileDTO){
         return fileServiceProxy.check(fragmentFileDTO.getFileKey(),fragmentFileDTO.getShardSize());
@@ -139,8 +139,8 @@ public class AnnounceController {
     /**
      * 合并分页 json
      */
-    /*    @UserLoginToken
-    @AdminPermission*/
+    @UserLoginToken
+    @AdminPermission
     @PostMapping("/merge")
     public RestInfo merge(@RequestBody FragmentFileDTO fragmentFileDTO) throws RecruitFileException, InterruptedException{
         return fileServiceProxy.merge(fragmentFileDTO.getFileKey(),fragmentFileDTO.getId(),fragmentFileDTO.getFileName());

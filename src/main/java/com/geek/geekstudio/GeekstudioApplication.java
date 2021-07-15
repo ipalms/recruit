@@ -28,13 +28,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class GeekstudioApplication {
     public static void main(String[] args) {
         SpringApplication.run(GeekstudioApplication.class, args);
-        try {
+
+/*        try {
             //netty和springboot程序运行于不同的端口，即两程序运行的上下文是不同的--不能直接依赖注入
             //注意启动netty服务器的时候，如果netty中有阻塞方法（如channel().closeFuture().sync()）
             //会阻塞主线程的进行，如果spring boot启动类有其他逻辑处于netty服务器启动后执行就会被阻塞住
             new NettyServer().start();
         } catch (Exception e) {
             log.info("启动netty出错:{}",e.getMessage());
-        }
+        }*/
     }
 }

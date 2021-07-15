@@ -1,5 +1,7 @@
 package com.geek.geekstudio.service.impl;
 
+import com.geek.geekstudio.exception.ExceptionCode;
+import com.geek.geekstudio.model.vo.ErrorMsg;
 import com.geek.geekstudio.service.JavaMailService;
 import com.geek.geekstudio.util.UuidUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
@@ -62,10 +65,7 @@ public class JavaMailServiceImpl implements JavaMailService {
             redisTemplate.opsForValue().set("code-"+userId,activeCode,15, TimeUnit.MINUTES);
     }
 
-    /**
-     * 发送日常邮件
-     */
-    //使用异步任务发送邮件（异步方法--实质开线程实现）
+    /*
     @Async("taskExecutor")// 指定线程池，也可以直接写@Async
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -73,7 +73,7 @@ public class JavaMailServiceImpl implements JavaMailService {
         //创建一个消息邮件
         try {
             //log.info("11111");
-            //Thread.sleep(10000); //测试异步任务用时
+            //Thread.sleep(10000); //测试多线程发送消息用时
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
             helper.setSubject(title);
@@ -85,9 +85,34 @@ public class JavaMailServiceImpl implements JavaMailService {
             throw new Exception();
         }
         return new AsyncResult<>("ok");
+    }*/
+
+
+    /**
+     * 发送日常邮件
+     * 使用异步CountDownLatch latch任务发送邮件（异步方法--实质开线程实现）
+     */
+    @Async("taskExecutor")// 指定线程池，也可以直接写@Async
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void sendDailyMail(String mail, String title, String text, List<ErrorMsg> errorList, CountDownLatch latch){
+        //创建一个消息邮件
+        try {
+            //log.info("11111");
+            //Thread.sleep(10000); //测试多线程发送消息用时
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+            helper.setSubject(title);
+            helper.setText(text,true);
+            helper.setFrom(publicEmailAccount);
+            helper.setTo(mail);
+            javaMailSender.send(mimeMessage);
+        } catch (Exception e){
+            //后台线程去填充任务执行结果成功失败内容
+            errorList.add(new ErrorMsg(ExceptionCode.EMAIL_SEND_WRONG, "此次通知邮箱号为:"+mail+" 的邮箱发送通知失败!", e.getMessage()));
+        }
+        latch.countDown();
     }
-
-
 
 
 

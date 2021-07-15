@@ -1,16 +1,21 @@
 package com.geek.geekstudio.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.util.concurrent.ListenableFuture;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 线程池配置
  */
 @Configuration
+@Slf4j
 public class ThreadPoolTaskConfig {
     //注：如果参数是通过@Value注入的话，参数不能static修饰
     @Value("${async.executor.thread.core_pool_size}")
@@ -34,7 +39,7 @@ public class ThreadPoolTaskConfig {
     private String threadNamePrefix;
 
     @Bean("taskExecutor") // bean的名称，默认为首字母小写的方法名
-    public ThreadPoolTaskExecutor taskExecutor(){
+    public ThreadPoolTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new VisibleThreadPoolTaskExecutor();
         executor.setCorePoolSize(corePoolSize);
         executor.setMaxPoolSize(maxPoolSize);
@@ -47,5 +52,59 @@ public class ThreadPoolTaskConfig {
         // 初始化
         executor.initialize();
         return executor;
+    }
+
+    static class VisibleThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
+        /**
+         * showThreadPoolInfo方法中将任务总数、已完成数、活跃线程数，队列大小都打印出来了。
+         * 然后Override了父类的execute、submit等方法，在里面调用showThreadPoolInfo方法，
+         * 这样每次有任务被提交到线程池的时候，都会将当前线程池的基本情况打印到日志中；
+         */
+        private void showThreadPoolInfo(String prefix) {
+            ThreadPoolExecutor threadPoolExecutor = getThreadPoolExecutor();
+            log.info("{}, {},taskCount [{}], completedTaskCount [{}], activeCount [{}], queueSize [{}]",
+                    this.getThreadNamePrefix(),
+                    prefix,
+                    threadPoolExecutor.getTaskCount(),
+                    threadPoolExecutor.getCompletedTaskCount(),
+                    threadPoolExecutor.getActiveCount(),
+                    threadPoolExecutor.getQueue().size());
+        }
+
+        @Override
+        public void execute(Runnable task) {
+            showThreadPoolInfo("1. do execute");
+            super.execute(task);
+        }
+
+        @Override
+        public void execute(Runnable task, long startTimeout) {
+            showThreadPoolInfo("2. do execute");
+            super.execute(task, startTimeout);
+        }
+
+        @Override
+        public Future<?> submit(Runnable task) {
+            showThreadPoolInfo("1. do submit");
+            return super.submit(task);
+        }
+
+        @Override
+        public <T> Future<T> submit(Callable<T> task) {
+            showThreadPoolInfo("2. do submit");
+            return super.submit(task);
+        }
+
+        @Override
+        public ListenableFuture<?> submitListenable(Runnable task) {
+            showThreadPoolInfo("1. do submitListenable");
+            return super.submitListenable(task);
+        }
+
+        @Override
+        public <T> ListenableFuture<T> submitListenable(Callable<T> task) {
+            showThreadPoolInfo("2. do submitListenable");
+            return super.submitListenable(task);
+        }
     }
 }

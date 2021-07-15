@@ -59,9 +59,11 @@ public class UserSessionImpl implements UserSession {
             courseRelation.put(coursePO.getCourseId(),coursePO.getCourseName());
             this.courseUser.put(coursePO.getCourseName(),userMapper.queryCourseUserId(coursePO.getId()));
         }
-        Set<Map.Entry<Integer, String>> entries = courseRelation.entrySet();
     }
 
+    public boolean isOnline(String userId){
+        return usernameChannelMap.containsKey(userId);
+    }
 
     @Override
     public void bind(Channel channel, String uid) {
@@ -132,9 +134,7 @@ public class UserSessionImpl implements UserSession {
         jsonObject.put("word", word);
         if("all".equals(toId)){
             for(String id:allUser){
-                //if(!id.equals(fromId)){
-                    sendOneMessage(id,jsonObject);
-                //}
+                sendOneMessage(id,jsonObject);
             }
         }else if(courseUser.containsKey(toId)){
             ArrayList<String> ids = courseUser.get(toId);
@@ -160,5 +160,4 @@ public class UserSessionImpl implements UserSession {
             this.putMessage(toId,jsonObject.toJSONString());
         }
     }
-
 }

@@ -1,2 +1,0 @@
-# geekstudio
-geekStudio-ststem
