@@ -13,13 +13,13 @@ public class ExceptionCode {
     public static final int FILE_ERROR = 405;
     //用户已经存在--不能再注册
     public static final int USER_EXIST = 410;
-    //用户权限不足
+    //用户权限不足 403
     public static final int Permission_Denied = 415;
     //参数错误
     public static final int Parameter_Error = 420;
     //token不存在
     public static final int TOKEN_MISS=425;
-    //token过期
+    //token过期 403
     public static final int TOKEN_EXPIRED=430;
     //refreshToken过期
     public static final int REFRESH_TOKEN_EXPIRED=432;

@@ -315,7 +315,7 @@ public class FileServiceImpl implements FileService {
     }
 
     /**
-     * announce文件上传  --断点续传
+     * announce文件上传  --断点续传（上传文件的用户线程是多线程的，即同时启用多个线程发送多个不完整文件）
      * 解决并发上传导致插入重复的：
      *   1.使用synchronized锁住构造的字符串常量对象，对于判断到数据库无记录的情况先去尝试获取锁
      *       --缺点锁的效率问题，以及当请求次数变多会导致运行时常量池变大
@@ -405,6 +405,12 @@ public class FileServiceImpl implements FileService {
 
     /**
      *合并announce分页文件
+     * 涉及到一个问题：缓存一致性问题（数据库和缓存中的数据是否一致
+     * 在并发时容易出现不一致，例如写写操作或读写操作并发
+     * 一个操作的标准是旁路缓存模式的指定标准
+     * 对于写操作的建议先修改数据库再删除缓存
+     *
+     * 以及开启的io连接一定要记得回收（close()操作），不然资源得不到释放
      */
     @Override
     public RestInfo merge(String fileKey,int id,String fileName) throws RecruitFileException,InterruptedException {
@@ -424,17 +430,18 @@ public class FileServiceImpl implements FileService {
             throw new RecruitFileException("文件合并出错");
         }
         FileInputStream fileInputStream = null; //分片文件
-        byte[] byt = new byte[10 * 1024 * 1024];//一次写入10M
+        byte[] byt = new byte[2 * 1024 * 1024];//一次写入2M
         int len;
         File part;
         try {
+            //分片文件不能并发合并，不然文件内容顺序会改变
             for (int i = 0; i < shardTotal; i++) {
                 part=new File(path + "." + (i + 1));
                 if(!part.exists()){
                     throw new RecruitFileException("文件合并出错");
                 }
                 // 读取第i个分片
-                fileInputStream = new FileInputStream(part); //  course\6sfSqfOwzmik4A4icMYuUe.mp4.1
+                fileInputStream = new FileInputStream(part);
                 while ((len = fileInputStream.read(byt)) != -1) {
                     outputStream.write(byt, 0, len);
                     outputStream.flush();
@@ -455,10 +462,7 @@ public class FileServiceImpl implements FileService {
                 log.error("IO流关闭出错", e);
             }
         }
-        //回收垃圾
-        //System.gc();
-        //等待100毫秒 等待垃圾回收去 回收完垃圾
-        //Thread.sleep(100);
+        byt=null;//帮助垃圾回收
         for (int i = 0; i < shardTotal; i++) {
             String filePath = path + "." + (i + 1);
             File file = new File(filePath);

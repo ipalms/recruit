@@ -21,7 +21,7 @@ public interface FavoriteMapper {
     void addFavoriteRecord(String userId, int articleId, String favoriteTime);
 
     //减少收藏记录
-    @Delete("DELETE FROM favorite WHERE userId=#{userId} AND articleId=#{articleId}")
+    @Delete("DELETE FROM favorite WHERE articleId=#{articleId} AND userId=#{userId}")
     void deleteFavoriteRecord(String userId, int articleId);
 
     //查询个人的收藏总记录

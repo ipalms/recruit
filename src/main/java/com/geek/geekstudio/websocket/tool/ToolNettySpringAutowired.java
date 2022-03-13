@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ToolNettySpringAutowired implements ApplicationContextAware {
 
+    //注意  这里一定是要用static来修饰（表示他是属于类的），这样所有线程都是共享这个对象实例，才能实现容器注入
+    //这也可以看作线程通信的方式，变相的也说明java中线程通信是靠共享内存来实现
     //netty线程可以 拿到spring ioc容器实例--依据ioc容器实例去拿到想要的组件（依赖注入）
     private static ApplicationContext applicationContext;
 

@@ -117,6 +117,7 @@ public class UserController {
 
     /**
      * 用户操作时token过期，根据refreshToken，为其再生成一个token
+     * refreshToken可以设置为只能刷新获得一个token而不能用于登录
      */
     @PassToken
     @PostMapping("/resetToken")

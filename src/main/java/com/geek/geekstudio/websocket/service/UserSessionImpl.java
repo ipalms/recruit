@@ -150,8 +150,8 @@ public class UserSessionImpl implements UserSession {
     public void sendOneMessage(String toId, JSONObject jsonObject){
         //将消息传输到对应toId用户--用户在线
         if (usernameChannelMap.containsKey(toId)) {
-            System.out.println("消息："+jsonObject.toJSONString());
-            System.out.println("channel"+usernameChannelMap.get(toId));
+//            System.out.println("消息："+jsonObject.toJSONString());
+//            System.out.println("channel"+usernameChannelMap.get(toId));
             usernameChannelMap.get(toId).writeAndFlush(new TextWebSocketFrame(jsonObject.toJSONString()));
         } else {
             //用户在线，将消息存直接存储在应用中

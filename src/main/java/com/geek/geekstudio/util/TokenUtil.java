@@ -34,6 +34,8 @@ public class TokenUtil {
 
     /**
      * 创建jwt
+     * 方法列表可以再加一个字段标识是否是refreshToken 是的话在生成token的载荷信息多加入一个标识
+     * 这样起到refreshToken不能用于登录只能用作刷新token的作用
      * @param subject 签收主体-userID
      * @param ttlMillis 过期的时间长度
      * @param type 对象的类型

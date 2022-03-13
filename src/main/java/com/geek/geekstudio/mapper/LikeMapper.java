@@ -18,7 +18,7 @@ public interface LikeMapper {
     void addLikeRecord(String userId, int articleId, String likeTime);
 
     //减少点赞记录
-    @Delete("DELETE FROM `like` WHERE userId=#{userId} AND articleId=#{articleId}")
+    @Delete("DELETE FROM `like` WHERE articleId=#{articleId} AND userId=#{userId}")
     void deleteLikeRecord(String userId, int articleId);
 
     //删除一篇文章的点赞记录

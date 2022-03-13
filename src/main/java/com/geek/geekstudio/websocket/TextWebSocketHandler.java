@@ -14,13 +14,11 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.javassist.scopedpool.SoftValueHashMap;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_LENGTH;
 
@@ -72,7 +70,6 @@ public class TextWebSocketHandler extends SimpleChannelInboundHandler<TextWebSoc
             FullHttpRequest request = (FullHttpRequest) msg;
             String uri = request.uri();
             Map<String, String> paramMap = getUrlParams(uri);
-            //System.out.println("接收到的参数是：" + JSON.toJSONString(paramMap));
             //进行身份验证
             String token = paramMap.get("token");
             boolean result = checkUserLegality(token);
