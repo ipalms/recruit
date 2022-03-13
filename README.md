@@ -1,2 +1,2 @@
 # recruit
-geek recruit project
+GeekStudio recruit project
