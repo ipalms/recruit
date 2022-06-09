@@ -22,7 +22,7 @@ public class ErrorPageConfig {
         };*/
         //第二种写法：java8 lambda写法
         return ((factory) -> {
-            ErrorPage errorPage404 = new ErrorPage(HttpStatus.MOVED_TEMPORARILY, "/index.html");
+            ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, "/index.html");
             factory.addErrorPages(errorPage404);
         });
     }
